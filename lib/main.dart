@@ -2,20 +2,20 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gym_app/firebase_options.dart';
-import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/router_generator.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/helper.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/theamManeager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SharedPrefController().init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  init();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: ColorManager.scaffoldColor,
     statusBarColor: ColorManager.scaffoldColor,
@@ -38,7 +38,7 @@ class GymApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RouteGenerator.onGenerateRoute,
       initialRoute: ScreenName.splashScreen,
-      navigatorKey: AppRouter.navigatorKey,
+      navigatorKey: sl<AppRouter>().navigatorKey,
       scaffoldMessengerKey: UtilsConfig.scaffoldKey,
     );
   }
