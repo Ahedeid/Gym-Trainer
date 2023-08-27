@@ -9,7 +9,7 @@ import 'colors_manger.dart';
 class ThemeManager {
   static ThemeData get lightTheme {
     return ThemeData(
-      useMaterial3: true,
+      // useMaterial3: true,
       brightness: Brightness.light,
       primaryColor: ColorManager.primary,
       scaffoldBackgroundColor: ColorManager.scaffoldColor,
