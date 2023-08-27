@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -10,6 +11,7 @@ import 'package:gym_app/utils/helper.dart';
 class LoginProvider extends ChangeNotifier {
   bool isLoading = false;
   bool isLoadingReSet = false;
+  bool isLoadingSignInWithGoogle = false;
   UserModel? user;
 
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
@@ -81,6 +83,40 @@ class LoginProvider extends ChangeNotifier {
           status: false,
         );
       }
+    }
+  }
+
+//------------------------------ SignIn With Google ----------------------------
+
+  setLoadingSignInWithGoogle(bool value) {
+    isLoadingSignInWithGoogle = value;
+    notifyListeners();
+  }
+
+  Future<void> signInWithGoogle() async {
+    // setLoadingSignInWithGoogle(true);
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      sl<AppRouter>().goToAndRemove(screenName: ScreenName.BNBUser);
+      final credentialSign =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      sl<SharedPrefController>().setLogedin();
+      final uid = credentialSign.user!.uid;
+      sl<SharedPrefController>().setUId(uid);
+      // setLoadingSignInWithGoogle(false);
+    } on FirebaseException catch (e) {
+      // setLoadingSignInWithGoogle(false);
+      final message = e.message.toString();
+      UtilsConfig.showSnackBarMessage(
+        message: message,
+        status: false,
+      );
     }
   }
 }

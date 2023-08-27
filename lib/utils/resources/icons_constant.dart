@@ -3,7 +3,7 @@ String iconsPathBottomNavSelected =
     'assets/icons/bottomNavIcons/bottomNavSelected';
 String iconsPathBottomNavUnSelected =
     'assets/icons/bottomNavIcons/bottomNavUnSelected';
-
+//background_image_third
 class AppIcons {
   static String logo = '$iconsPath/logo.svg';
   static String logooo = '$iconsPath/svgexport-36.svg';
@@ -26,6 +26,8 @@ class AppIcons {
   static String back = '$iconsPath/back.svg';
   static String clockSand = '$iconsPath/clockSand.svg';
   static String level = '$iconsPath/level.svg';
+  static String facebook = '$iconsPath/facebook.svg';
+  static String google = '$iconsPath/google.svg';
 
   // ----------------------- Bottom Nav Selected -------------------------------
   static String familySelected = '$iconsPathBottomNavSelected/family.svg';

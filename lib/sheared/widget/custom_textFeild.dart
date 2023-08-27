@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 
-
 class CustomTextField extends StatelessWidget {
   CustomTextField({
-     this.hintText,
+    this.hintText,
     this.obscureText = false,
     required this.keyboardType,
     this.bottomMargin = 0,
@@ -22,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.minLines = 1,
     this.readOnly = false,
     this.textInputAction,
-    this.backGroundColor = ColorManager.white,
+    // this.backGroundColor = ColorManager.white,
     Key? key,
   }) : super(key: key);
 
@@ -43,7 +42,7 @@ class CustomTextField extends StatelessWidget {
   final double width;
   final bool readOnly;
   final TextInputAction? textInputAction;
-  final Color? backGroundColor;
+  // final Color? backGroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +52,8 @@ class CustomTextField extends StatelessWidget {
       //enableInteractiveSelection: true,
       maxLines: maxLines,
       minLines: minLines,
-      style: const TextStyle(color: ColorManager.primaryTextColor,fontSize: FontSize.s14),
+      style: const TextStyle(
+          color: ColorManager.primaryTextColor, fontSize: FontSize.s14),
       onChanged: onChange as Function(String?)?,
       //   onSaved: onSaved as Function(String?)?,
       controller: controller,
@@ -62,16 +62,43 @@ class CustomTextField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.disabled,
       obscureText: obscureText,
       decoration: InputDecoration(
-        suffixIcon: suffixIcon,
-        suffix: suffix,
-        prefixIcon: prefixIcon,
-        hintText: hintText,
-        fillColor: backGroundColor,
-        // errorStyle: const TextStyle(fontSize: 12, height: 0.9),
         hintStyle: const TextStyle(
           color: ColorManager.secondaryTextColor,
           fontSize: FontSize.s14,
         ),
+        filled: true,
+        fillColor: ColorManager.backgroundInputFiled,
+        contentPadding:
+        const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(color: Colors.transparent)),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(
+              color: ColorManager.borderColor,
+            )),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: Colors.red,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: ColorManager.borderColor,
+            width: 1,
+          ),
+        ),
+        suffixIcon: suffixIcon,
+        suffix: suffix,
+        prefixIcon: prefixIcon,
+        hintText: hintText,
+        // hintStyle: const TextStyle(
+        //   color: ColorManager.secondaryTextColor,
+        //   fontSize: FontSize.s14,
+        // ),
       ),
       //autofocus: true ,
     );

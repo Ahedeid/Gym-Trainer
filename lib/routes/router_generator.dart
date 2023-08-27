@@ -36,8 +36,11 @@ class RouteGenerator {
       // --------------------------- SignUpScreen ------------------------------
       case ScreenName.signUpScreen:
         return MaterialPageRoute(
-          builder: (_) => ChangeNotifierProvider(
-            create: (context) => SignUpProvider(),
+          builder: (_) => MultiProvider(
+            providers: [
+              ChangeNotifierProvider(  create: (context) => SignUpProvider(),),
+              ChangeNotifierProvider(  create: (context) => LoginProvider(),),
+            ],
             child: const SignUpScreen(),
           ),
         );

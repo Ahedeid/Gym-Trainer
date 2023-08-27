@@ -56,7 +56,7 @@ class SignUpProvider extends ChangeNotifier {
           message: 'Account was created Successfully!!',
           status: true,
         );
-        sl<AppRouter>().goTo(screenName: ScreenName.BNBUser, object: 0);
+        sl<AppRouter>().goToAndRemove(screenName: ScreenName.loginScreen, object: 0);
       } on FirebaseException catch (e) {
         setLoading(false);
         final message = e.message.toString();

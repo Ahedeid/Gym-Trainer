@@ -15,7 +15,7 @@ class TextFieldAndAboveText extends StatelessWidget {
     this.textInputAction,
     this.controller,
     this.suffixIcon,
-    this.backGroundColor = ColorManager.white,
+    // this.backGroundColor = ColorManager.white,
   });
 
   final String text;
@@ -26,7 +26,7 @@ class TextFieldAndAboveText extends StatelessWidget {
   final TextInputAction? textInputAction;
   final TextEditingController? controller;
   final Widget? suffixIcon;
-  final Color? backGroundColor;
+  // final Color? backGroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class TextFieldAndAboveText extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         CustomTextField(
-          backGroundColor: backGroundColor,
+          // backGroundColor: backGroundColor,
           keyboardType: keyboardType,
           onChange: onChange,
           validator: validator,
