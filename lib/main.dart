@@ -9,13 +9,14 @@ import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/helper.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/theamManeager.dart';
+
 // pr
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  init();
+  await init();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: ColorManager.scaffoldColor,
     statusBarColor: ColorManager.scaffoldColor,

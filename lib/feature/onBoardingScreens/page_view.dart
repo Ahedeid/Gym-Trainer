@@ -94,44 +94,46 @@ class _PageViewScreensState extends State<PageViewScreens> {
                     topRight: Radius.circular(16)),
                 color: listOfBackGroundColor[_index],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 40),
-                  HeaderTxtOnBoarding(data: _data, index: _index),
-                  const SizedBox(height: 30),
-                  BodyTxtOnBoarding(data: _data, index: _index),
-                  const SizedBox(height: 32),
-                  CustomButtonOnBoarding(
-                    index: _index,
-                    controller: _controller,
-                    color: listOfColor[_index],
-                  ),
-                  const SizedBox(height: 40),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      OnBoardingIndicator(
-                        selected: _index == 0,
-                        mainColor: listOfColor[0],
-                        sColor: listOfSColor[_index],
-                      ),
-                      const SizedBox(width: 6),
-                      OnBoardingIndicator(
-                        selected: _index == 1,
-                        mainColor: listOfColor[1],
-                        sColor: listOfSColor[_index],
-                      ),
-                      const SizedBox(width: 6),
-                      OnBoardingIndicator(
-                        selected: _index == 2,
-                        mainColor: listOfColor[2],
-                        sColor: listOfSColor[_index],
-                      ),
-                    ],
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 40),
+                    HeaderTxtOnBoarding(data: _data, index: _index),
+                    const SizedBox(height: 30),
+                    BodyTxtOnBoarding(data: _data, index: _index),
+                    const SizedBox(height: 32),
+                    CustomButtonOnBoarding(
+                      index: _index,
+                      controller: _controller,
+                      color: listOfColor[_index],
+                    ),
+                    const SizedBox(height: 40),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        OnBoardingIndicator(
+                          selected: _index == 0,
+                          mainColor: listOfColor[0],
+                          sColor: listOfSColor[_index],
+                        ),
+                        const SizedBox(width: 6),
+                        OnBoardingIndicator(
+                          selected: _index == 1,
+                          mainColor: listOfColor[1],
+                          sColor: listOfSColor[_index],
+                        ),
+                        const SizedBox(width: 6),
+                        OnBoardingIndicator(
+                          selected: _index == 2,
+                          mainColor: listOfColor[2],
+                          sColor: listOfSColor[_index],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

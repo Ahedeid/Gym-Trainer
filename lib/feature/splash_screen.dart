@@ -6,7 +6,6 @@ import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
