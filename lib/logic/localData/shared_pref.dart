@@ -3,15 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 enum PrefKeys { user, token, logedIn, showOnce }
 
 class SharedPrefController {
-  static final _instance = SharedPrefController._();
+    SharedPreferences preferences ;
+  SharedPrefController({required this.preferences});
 
-  factory SharedPrefController() {
-    return _instance;
-  }
-
-  late SharedPreferences preferences;
-
-  SharedPrefController._();
 
   Future<void> init() async {
     preferences = await SharedPreferences.getInstance();
@@ -74,4 +68,5 @@ class SharedPrefController {
   clear() {
     preferences.clear();
   }
+
 }

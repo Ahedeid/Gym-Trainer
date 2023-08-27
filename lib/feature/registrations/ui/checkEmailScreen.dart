@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:open_mail_app/open_mail_app.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -104,7 +105,7 @@ class CheckEmailScreen extends StatelessWidget {
               textColor: ColorManager.gray,
               fontSize: 14,
               onPressed: () {
-                AppRouter.goToAndRemove(screenName: ScreenName.loginScreen);
+                sl<AppRouter>().goToAndRemove(screenName: ScreenName.loginScreen);
               },
             )
           ],

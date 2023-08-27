@@ -5,6 +5,7 @@ import 'package:gym_app/feature/onBoardingScreens/widget/cust_button_onBording.d
 import 'package:gym_app/feature/onBoardingScreens/widget/headerTextOnBording.dart';
 import 'package:gym_app/feature/onBoardingScreens/widget/on_boarding_indicatort.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 
@@ -25,7 +26,7 @@ class _PageViewScreensState extends State<PageViewScreens> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    SharedPrefController().setShowOnce(true);
+    sl<SharedPrefController>().setShowOnce(true);
     _controller = PageController();
     _controller.addListener(() {
       setState(() {

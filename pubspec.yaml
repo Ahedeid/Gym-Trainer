@@ -29,6 +29,8 @@ dependencies:
   cloud_firestore: ^4.8.3
   table_calendar_jalali:
   google_fonts: ^5.1.0
+  get_it: ^7.6.0
+  firebase_storage: ^11.2.6
 
 dev_dependencies:
   flutter_test:

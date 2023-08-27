@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:provider/provider.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -96,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {
-                          AppRouter.goTo(
+                          sl<AppRouter>().goTo(
                               screenName: ScreenName.reSetPasswordScreen);
                         },
                         child: const Text(
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       alignment: Alignment.bottomCenter,
                       child: InkWell(
                         onTap: () {
-                          AppRouter.goTo(screenName: ScreenName.signUpScreen);
+                          sl<AppRouter>().goTo(screenName: ScreenName.signUpScreen);
                         },
                         child: RichText(
                           text: const TextSpan(

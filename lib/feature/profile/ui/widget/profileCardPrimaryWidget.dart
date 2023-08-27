@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:provider/provider.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -49,7 +50,7 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
               )
             : ListTile(
                 onTap: () {
-                  AppRouter.goTo(
+                  sl<AppRouter>().goTo(
                       screenName: ScreenName.updateProfileScreen,
                       object: value.userData);
                 },
