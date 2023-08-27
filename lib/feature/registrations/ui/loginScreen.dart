@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:provider/provider.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
@@ -134,25 +135,32 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     SizedBox(height: 16),
                     CustomButtonWidget(
-                      // isLoading: value.isLoading,
+                       isLoading: value.isLoadingSignInWithGoogle,
+                      showIcon: true,
+                      icon: AppIcons.google,
                       title: AppStrings.connectWithGoogle,
                       fontWeight: FontWeight.w600,
                       textColor: ColorManager.primaryTextColor,
                       fontSize: FontSize.s14,
-                      onPressed: () {},
-                      style: Theme.of(context)
-                          .elevatedButtonTheme
-                          .style
-                          ?.copyWith(
-                              backgroundColor: MaterialStatePropertyAll(
-                                  ColorManager.backgroundInputFiled),
-                              side: MaterialStatePropertyAll(BorderSide(
-                                  width: 1.0,
-                                  color: ColorManager.borderColor))),
+                      onPressed: () {
+                        value.signInWithGoogle();
+                      },
+                      style:
+                          Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                                backgroundColor: MaterialStatePropertyAll(
+                                    ColorManager.backgroundInputFiled),
+                                side: MaterialStatePropertyAll(
+                                  BorderSide(
+                                      width: 1.0,
+                                      color: ColorManager.borderColor),
+                                ),
+                              ),
                     ),
                     SizedBox(height: 8),
                     CustomButtonWidget(
                       // isLoading: value.isLoading,
+                      showIcon: true,
+                      icon: AppIcons.facebook,
                       title: AppStrings.connectWithFacebook,
                       fontWeight: FontWeight.w600,
                       fontSize: FontSize.s14,
