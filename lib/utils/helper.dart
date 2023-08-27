@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
@@ -68,7 +69,7 @@ class UtilsConfig {
         alignment: Alignment.topRight,
         child: InkWell(
           onTap: () {
-            AppRouter.back();
+            sl<AppRouter>().back();
           },
           child: const Icon(
             Icons.close,
@@ -107,7 +108,7 @@ class UtilsConfig {
             )),
         ElevatedButton(
           onPressed: () {
-            AppRouter.back();
+            sl<AppRouter>().back();
             UtilsConfig.showSnackBarMessage(
                 message: 'Bank account has been deleted.', status: true);
             //  bank.removeItem(index);

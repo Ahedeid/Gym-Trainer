@@ -1,30 +1,27 @@
-
 import 'package:flutter/material.dart';
 
+class AppRouter {
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-
-class AppRouter{
-  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
-
-  static goToAndRemove({required String screenName,Object? object}){
-    navigatorKey.currentState!.pushReplacementNamed(screenName, arguments: object);
+  goToAndRemove({required String screenName, Object? object}) {
+    navigatorKey.currentState!
+        .pushReplacementNamed(screenName, arguments: object);
   }
 
-  static goTo({required String screenName,Object? object}){
+  goTo({required String screenName, Object? object}) {
     navigatorKey.currentState!.pushNamed(screenName, arguments: object);
   }
 
-  static back() {
+  back() {
     navigatorKey.currentState!.pop();
   }
 
-  static mayBack() {
+  mayBack() {
     navigatorKey.currentState!.maybePop();
   }
 
-  static removeAllBack({required String screenName}) {
-    navigatorKey.currentState!.pushNamedAndRemoveUntil(screenName,(Route<dynamic> route) => false);
+  removeAllBack({required String screenName}) {
+    navigatorKey.currentState!
+        .pushNamedAndRemoveUntil(screenName, (Route<dynamic> route) => false);
   }
-
 }

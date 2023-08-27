@@ -6,6 +6,7 @@ import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/helper.dart';
 
 class SignUpProvider extends ChangeNotifier {
@@ -13,6 +14,8 @@ class SignUpProvider extends ChangeNotifier {
   UserModel? user;
 
   final GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
+  var fbAuth = sl<FirebaseAuth>();
+  var fbStore = sl<FirebaseFirestore>();
 
   bool visibility = true;
 
@@ -36,24 +39,24 @@ class SignUpProvider extends ChangeNotifier {
       try {
         setLoading(true);
         final credential =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            await fbAuth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
         final uid = credential.user!.uid;
-        await FirebaseFirestore.instance.collection(FirebaseConstant.usersCollection).doc(uid).set({
+        await fbStore.collection(FirebaseConstant.usersCollection).doc(uid).set({
           FirebaseConstant.uid: uid,
           FirebaseConstant.email: email,
           FirebaseConstant.name: name.toLowerCase(),
           FirebaseConstant.phone : phone,
         });
-        SharedPrefController().setLogedin();
-        SharedPrefController().setUId(uid);
+        sl<SharedPrefController>().setLogedin();
+        sl<SharedPrefController>().setUId(uid);
         UtilsConfig.showSnackBarMessage(
           message: 'Account was created Successfully!!',
           status: true,
         );
-        AppRouter.goTo(screenName: ScreenName.BNBUser, object: 0);
+        sl<AppRouter>().goTo(screenName: ScreenName.BNBUser, object: 0);
       } on FirebaseException catch (e) {
         setLoading(false);
         final message = e.message.toString();

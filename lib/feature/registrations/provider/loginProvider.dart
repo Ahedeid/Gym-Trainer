@@ -4,6 +4,7 @@ import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/helper.dart';
 
 class LoginProvider extends ChangeNotifier {
@@ -12,6 +13,7 @@ class LoginProvider extends ChangeNotifier {
   UserModel? user;
 
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  var fbAuth = sl<FirebaseAuth>();
 
   bool visibility = true;
 
@@ -32,14 +34,15 @@ class LoginProvider extends ChangeNotifier {
     if (loginFormKey.currentState!.validate()) {
       try {
         setLoading(true);
-        final credential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: email, password: password);
-        SharedPrefController().setLogedin();
+        final credential = await fbAuth.signInWithEmailAndPassword(
+            email: email, password: password);
+        sl<SharedPrefController>().setLogedin();
         final uid = credential.user!.uid;
         print(uid);
-        SharedPrefController().setUId(uid);
+        sl<SharedPrefController>().setUId(uid);
         // SharedPrefController().save(credential);
-        AppRouter.goToAndRemove(screenName: ScreenName.BNBUser, object: 0);
+        sl<AppRouter>()
+            .goToAndRemove(screenName: ScreenName.BNBUser, object: 0);
         setLoading(false);
       } on FirebaseException catch (e) {
         setLoading(false);
@@ -67,8 +70,8 @@ class LoginProvider extends ChangeNotifier {
     if (reSetPasswordFormKey.currentState!.validate()) {
       try {
         setLoadingReSet(true);
-        await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
-        AppRouter.goToAndRemove(screenName: ScreenName.checkEmailScreen);
+        await fbAuth.sendPasswordResetEmail(email: email);
+        sl<AppRouter>().goToAndRemove(screenName: ScreenName.checkEmailScreen);
         setLoadingReSet(false);
       } on FirebaseException catch (e) {
         setLoadingReSet(false);

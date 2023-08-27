@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/logic/localData/shared_pref.dart';
-import 'package:gym_app/routes/app_router.dart';
-import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/utils/app_config.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -20,20 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    bool onBoardingShows = SharedPrefController().getShowOnce();
-    bool isLogIn = SharedPrefController().getLogedin();
-    Future.delayed(
-      const Duration(seconds: 3),
-      () => AppRouter.goToAndRemove(
-        screenName:
-            // ScreenName.BNBUser
-            isLogIn
-                ? ScreenName.BNBUser
-                : onBoardingShows
-                    ? ScreenName.loginScreen
-                    : ScreenName.pageViewScreens,
-      ),
-    );
+    sl<AppConfig>().onDone();
   }
 
   @override

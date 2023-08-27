@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
@@ -159,7 +160,7 @@ class CardClassScreen extends StatelessWidget {
                     textColor: ColorManager.primary,
                     showIcon: true,
                     onPressed: () {
-                      AppRouter.goTo(screenName: ScreenName.classDetailsScreen);
+                      sl<AppRouter>().goTo(screenName: ScreenName.classDetailsScreen);
                     },
                     style: Theme.of(context)
                         .elevatedButtonTheme

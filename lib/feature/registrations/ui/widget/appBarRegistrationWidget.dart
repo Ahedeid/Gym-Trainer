@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 
 class AppBarRegistrationWidget extends StatelessWidget
@@ -15,7 +16,7 @@ class AppBarRegistrationWidget extends StatelessWidget
       elevation: 0,
       leading: IconButton(
         onPressed: () {
-          AppRouter.back();
+          sl<AppRouter>().back();
         },
         icon: const Icon(
           Icons.arrow_back_ios_new,

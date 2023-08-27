@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 
@@ -21,9 +22,9 @@ class WorkOurScreen extends StatelessWidget {
       body: Center(
           child: CustomButtonWidget(
             onPressed: ()async{
-              SharedPrefController().removeUser();
+              sl<SharedPrefController>().removeUser();
               await FirebaseAuth.instance.signOut();
-              AppRouter.goToAndRemove(screenName: ScreenName.loginScreen);
+              sl<AppRouter>().goToAndRemove(screenName: ScreenName.loginScreen);
             },
             title: 'LogOut',
           )

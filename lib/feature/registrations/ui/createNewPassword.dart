@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
@@ -142,7 +143,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
           onPressed: () {
             if (newPasswordFormKey.currentState!.validate()) {
               if (passwordController.text == confirmPasswordController.text) {
-                AppRouter.goToAndRemove(screenName: ScreenName.loginScreen);
+                sl<AppRouter>().goToAndRemove(screenName: ScreenName.loginScreen);
               }
             }
           },

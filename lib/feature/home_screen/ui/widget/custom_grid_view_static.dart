@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/bottomSheetDedailsWidget.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
@@ -94,7 +95,7 @@ class CustomGridViewStatic extends StatelessWidget {
                             builder: (context) =>
                                 const BottomSheetDetailsWidget(),
                           )
-                        : AppRouter.goTo(screenName: rout[index]);
+                        : sl<AppRouter>().goTo(screenName: rout[index]);
                   },
                   textColor: ColorManager.primary,
                   fontSize: FontSize.s14,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
@@ -43,7 +44,7 @@ class BottomSheetDetailsWidget extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  AppRouter.mayBack();
+                  sl<AppRouter>().mayBack();
                 },
                 icon: Container(
                   width: 38,

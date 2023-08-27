@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:provider/provider.dart';
 import 'package:gym_app/feature/registrations/provider/signUpProvider.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -122,7 +123,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   alignment: Alignment.bottomCenter,
                   child: InkWell(
                     onTap: () {
-                      AppRouter.goTo(screenName: ScreenName.loginScreen);
+                      sl<AppRouter>().goTo(screenName: ScreenName.loginScreen);
                     },
                     child: RichText(
                       text: const TextSpan(
