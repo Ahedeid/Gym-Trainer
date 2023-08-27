@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 
-
 class CustomTextField extends StatelessWidget {
   CustomTextField({
-     this.hintText,
+    this.hintText,
     this.obscureText = false,
     required this.keyboardType,
     this.bottomMargin = 0,
@@ -53,7 +52,8 @@ class CustomTextField extends StatelessWidget {
       //enableInteractiveSelection: true,
       maxLines: maxLines,
       minLines: minLines,
-      style: const TextStyle(color: ColorManager.primaryTextColor,fontSize: FontSize.s14),
+      style: const TextStyle(
+          color: ColorManager.primaryTextColor, fontSize: FontSize.s14),
       onChanged: onChange as Function(String?)?,
       //   onSaved: onSaved as Function(String?)?,
       controller: controller,
@@ -67,7 +67,6 @@ class CustomTextField extends StatelessWidget {
         prefixIcon: prefixIcon,
         hintText: hintText,
         fillColor: backGroundColor,
-        // errorStyle: const TextStyle(fontSize: 12, height: 0.9),
         hintStyle: const TextStyle(
           color: ColorManager.secondaryTextColor,
           fontSize: FontSize.s14,

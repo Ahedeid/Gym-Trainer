@@ -134,16 +134,16 @@ class ThemeManager {
           fontSize: FontSize.s14,
         ),
         filled: true,
-        fillColor: ColorManager.white,
+        fillColor: ColorManager.backgroundInputFiled,
         contentPadding:
-            const EdgeInsets.symmetric(vertical: 13, horizontal: 16),
+            const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Colors.transparent)),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(
-              color: Colors.transparent,
+              color: ColorManager.borderColor,
             )),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
@@ -154,7 +154,7 @@ class ThemeManager {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(
-            color: ColorManager.primary,
+            color: ColorManager.borderColor,
             width: 1,
           ),
         ),
