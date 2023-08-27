@@ -57,6 +57,8 @@ class _SplashScreenState extends State<SplashScreen> {
                 CustomSvgAssets(
                   path: AppIcons.logo,
                   color: ColorManager.white,
+                  width: 200,
+                  height: 200,
                 ),
                 const SizedBox(height: 18),
                 const Text(

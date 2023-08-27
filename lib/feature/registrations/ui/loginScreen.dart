@@ -45,32 +45,24 @@ class _LoginScreenState extends State<LoginScreen> {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
-                    CustomSvgAssets(
-                      path: AppIcons.logo,
-                      width: 46,
-                      height: 44,
-                      color: ColorManager.black,
-                    ),
-                    const SizedBox(height: 8),
                     const Text(
-                      AppStrings.logIn,
+                      AppStrings.welcomeToProFitness,
                       style: TextStyle(
-                        fontSize: FontSize.s26,
-                        fontWeight: FontWeight.w700,
+                        fontSize: FontSize.s24,
                         color: ColorManager.primaryTextColor,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 11),
                     const Text(
                       AppStrings.enterYourEmail,
-                      textAlign: TextAlign.center,
+                      textAlign: TextAlign.start,
                       style: TextStyle(
-                        fontSize: FontSize.s14,
-                        fontWeight: FontWeight.w300,
-                        color: ColorManager.secondaryTextColor,
+                        fontSize: FontSize.s16,
+                        fontWeight: FontWeight.w500,
+                        color: ColorManager.primaryTextColor,
                       ),
                     ),
                     const SizedBox(height: 40),

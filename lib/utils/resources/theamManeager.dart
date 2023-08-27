@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
-
 
 import 'colors_manger.dart';
 
@@ -13,7 +13,7 @@ class ThemeManager {
       brightness: Brightness.light,
       primaryColor: ColorManager.primary,
       scaffoldBackgroundColor: ColorManager.scaffoldColor,
-      fontFamily: 'Avenir Arabic',
+      fontFamily: GoogleFonts.poppins().fontFamily,
       buttonTheme: ButtonThemeData(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         buttonColor: ColorManager.primary,
@@ -135,7 +135,8 @@ class ThemeManager {
         ),
         filled: true,
         fillColor: ColorManager.white,
-        contentPadding: const EdgeInsets.symmetric(vertical: 13, horizontal: 16),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 13, horizontal: 16),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Colors.transparent)),

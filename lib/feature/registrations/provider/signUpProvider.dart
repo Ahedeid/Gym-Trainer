@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -40,11 +41,11 @@ class SignUpProvider extends ChangeNotifier {
           password: password,
         );
         final uid = credential.user!.uid;
-        await FirebaseFirestore.instance.collection('user').doc(uid).set({
-          'id': uid,
-          'name': name,
-          'userName': name.toLowerCase(),
-          'phone': phone,
+        await FirebaseFirestore.instance.collection(FirebaseConstant.usersCollection).doc(uid).set({
+          FirebaseConstant.uid: uid,
+          FirebaseConstant.email: email,
+          FirebaseConstant.name: name.toLowerCase(),
+          FirebaseConstant.phone : phone,
         });
         SharedPrefController().setLogedin();
         SharedPrefController().setUId(uid);
@@ -64,3 +65,4 @@ class SignUpProvider extends ChangeNotifier {
     }
   }
 }
+//  service locator , add a instance
