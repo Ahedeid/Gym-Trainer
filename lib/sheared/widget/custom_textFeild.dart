@@ -21,7 +21,7 @@ class CustomTextField extends StatelessWidget {
     this.minLines = 1,
     this.readOnly = false,
     this.textInputAction,
-    this.backGroundColor = ColorManager.white,
+    // this.backGroundColor = ColorManager.white,
     Key? key,
   }) : super(key: key);
 
@@ -42,7 +42,7 @@ class CustomTextField extends StatelessWidget {
   final double width;
   final bool readOnly;
   final TextInputAction? textInputAction;
-  final Color? backGroundColor;
+  // final Color? backGroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +62,43 @@ class CustomTextField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.disabled,
       obscureText: obscureText,
       decoration: InputDecoration(
-        suffixIcon: suffixIcon,
-        suffix: suffix,
-        prefixIcon: prefixIcon,
-        hintText: hintText,
-        fillColor: backGroundColor,
         hintStyle: const TextStyle(
           color: ColorManager.secondaryTextColor,
           fontSize: FontSize.s14,
         ),
+        filled: true,
+        fillColor: ColorManager.backgroundInputFiled,
+        contentPadding:
+        const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(color: Colors.transparent)),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(
+              color: ColorManager.borderColor,
+            )),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: Colors.red,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: const BorderSide(
+            color: ColorManager.borderColor,
+            width: 1,
+          ),
+        ),
+        suffixIcon: suffixIcon,
+        suffix: suffix,
+        prefixIcon: prefixIcon,
+        hintText: hintText,
+        // hintStyle: const TextStyle(
+        //   color: ColorManager.secondaryTextColor,
+        //   fontSize: FontSize.s14,
+        // ),
       ),
       //autofocus: true ,
     );

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:provider/provider.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
-import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/validate_extension.dart';
@@ -88,6 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               )
                             : const Icon(Icons.visibility, size: 18),
                       ),
+                      validator: (val) => val!.validatePassword(),
                       obscureText: value.visibility,
                       text: AppStrings.Password,
                       keyboardType: TextInputType.visiblePassword,
@@ -97,8 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       alignment: Alignment.centerRight,
                       child: TextButton(
                         onPressed: () {
-                          sl<AppRouter>().goTo(
-                              screenName: ScreenName.reSetPasswordScreen);
+                          sl<AppRouter>()
+                              .goTo(screenName: ScreenName.reSetPasswordScreen);
                         },
                         child: const Text(
                           AppStrings.forgetPassword,
@@ -109,62 +109,94 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      height: 48,
+                    const SizedBox(height: 30),
+                    Consumer<LoginProvider>(
+                      builder: (context, value, child) => CustomButtonWidget(
+                        isLoading: value.isLoading,
+                        title: AppStrings.logIn,
+                        fontWeight: FontWeight.w700,
+                        fontSize: FontSize.s20,
+                        onPressed: () {
+                          value.login(
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
+                        },
+                      ),
                     ),
+                    SizedBox(height: 24),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        AppStrings.orLoginWith,
+                        style: StyleManger.bodyText(),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    CustomButtonWidget(
+                      // isLoading: value.isLoading,
+                      title: AppStrings.connectWithGoogle,
+                      fontWeight: FontWeight.w600,
+                      textColor: ColorManager.primaryTextColor,
+                      fontSize: FontSize.s14,
+                      onPressed: () {},
+                      style: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style
+                          ?.copyWith(
+                              backgroundColor: MaterialStatePropertyAll(
+                                  ColorManager.backgroundInputFiled),
+                              side: MaterialStatePropertyAll(BorderSide(
+                                  width: 1.0,
+                                  color: ColorManager.borderColor))),
+                    ),
+                    SizedBox(height: 8),
+                    CustomButtonWidget(
+                      // isLoading: value.isLoading,
+                      title: AppStrings.connectWithFacebook,
+                      fontWeight: FontWeight.w600,
+                      fontSize: FontSize.s14,
+                      onPressed: () {},
+                      style: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style
+                          ?.copyWith(
+                              backgroundColor: MaterialStatePropertyAll(
+                                  ColorManager.buttonFacebookColor)),
+                    ),
+                    SizedBox(height: 42),
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: InkWell(
                         onTap: () {
-                          sl<AppRouter>().goTo(screenName: ScreenName.signUpScreen);
+                          sl<AppRouter>()
+                              .goTo(screenName: ScreenName.signUpScreen);
                         },
                         child: RichText(
-                          text: const TextSpan(
+                          text: TextSpan(
                             children: [
                               TextSpan(
-                                  text: AppStrings.haveAnAccount,
-                                  style: TextStyle(
-                                      color: ColorManager.secondaryTextColor,
-                                      fontSize: FontSize.s16,
-                                      fontWeight: FontWeight.w600)),
+                                text: AppStrings.haveAnAccount,
+                                style: StyleManger.headline2(
+                                  fontSize: FontSize.s16,
+                                  color: ColorManager.secondaryTextColor,
+                                ),
+                              ),
                               TextSpan(
-                                text: " ${AppStrings.signUp}",
-                                style: TextStyle(
-                                    color: ColorManager.primary,
-                                    fontSize: FontSize.s16,
-                                    fontWeight: FontWeight.w600),
+                                text: AppStrings.signUp,
+                                style: StyleManger.headline2(
+                                  color: ColorManager.primary,
+                                  fontSize: FontSize.s16,
+                                ),
                               ),
                             ],
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.1)
                   ],
                 ),
               ),
-            ),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SizedBox(
-        height: 55,
-        child: Consumer<LoginProvider>(
-          builder: (context, value, child) => Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: AppSizes.paddingHorizontal),
-            child: CustomButtonWidget(
-              isLoading: value.isLoading,
-              title: AppStrings.logIn,
-              fontWeight: FontWeight.w700,
-              fontSize: FontSize.s16,
-              onPressed: () {
-                value.login(
-                  email: emailController.text,
-                  password: passwordController.text,
-                );
-              },
             ),
           ),
         ),

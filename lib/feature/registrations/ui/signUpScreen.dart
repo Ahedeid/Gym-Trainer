@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:provider/provider.dart';
 import 'package:gym_app/feature/registrations/provider/signUpProvider.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
-import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/validate_extension.dart';
@@ -48,33 +47,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   horizontal: AppSizes.paddingHorizontal),
               children: [
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
-                CustomSvgAssets(
-                  path: AppIcons.logo,
-                  width: 46,
-                  height: 44,
-                  color: ColorManager.black,
-                ),
                 const SizedBox(height: 8),
                 const Text(
-                  AppStrings.signUp,
-                  textAlign: TextAlign.center,
+                  AppStrings.createAccounts,
                   style: TextStyle(
-                    fontSize: FontSize.s26,
-                    fontWeight: FontWeight.w700,
+                    fontSize: FontSize.s30,
+                    fontWeight: FontWeight.w400,
                     color: ColorManager.primaryTextColor,
                   ),
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  AppStrings.enterYourEmail,
-                  textAlign: TextAlign.center,
+                  AppStrings.pleaseEnterYourCredentials,
                   style: TextStyle(
-                    fontSize: FontSize.s14,
-                    fontWeight: FontWeight.w300,
-                    color: ColorManager.secondaryTextColor,
+                    fontSize: FontSize.s16,
+                    fontWeight: FontWeight.w500,
+                    color: ColorManager.primaryTextColor,
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 32),
                 TextFieldAndAboveText(
                   validator: (val) => val!.validateUserName(),
                   textInputAction: TextInputAction.next,
@@ -118,7 +109,56 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.next,
                 ),
-                const SizedBox(height: 48),
+                const SizedBox(height: 30),
+                Consumer<SignUpProvider>(
+                  builder: (context, value, child) => CustomButtonWidget(
+                    isLoading: value.isLoading,
+                    title: AppStrings.signUp,
+                    fontWeight: FontWeight.w700,
+                    onPressed: () {
+                      value.signUp(
+                        name: nameController.text,
+                        email: emailController.text,
+                        password: passwordController.text,
+                        phone: phoneController.text,
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: 24),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    AppStrings.orLoginWith,
+                    style: StyleManger.bodyText(),
+                  ),
+                ),
+                SizedBox(height: 16),
+                CustomButtonWidget(
+                  // isLoading: value.isLoading,
+                  title: AppStrings.connectWithGoogle,
+                  fontWeight: FontWeight.w600,
+                  textColor: ColorManager.primaryTextColor,
+                  fontSize: FontSize.s14,
+                  onPressed: () {},
+                  style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                      backgroundColor: MaterialStatePropertyAll(
+                          ColorManager.backgroundInputFiled),
+                      side: MaterialStatePropertyAll(BorderSide(
+                          width: 1.0, color: ColorManager.borderColor))),
+                ),
+                SizedBox(height: 8),
+                CustomButtonWidget(
+                  // isLoading: value.isLoading,
+                  title: AppStrings.connectWithFacebook,
+                  fontWeight: FontWeight.w600,
+                  fontSize: FontSize.s14,
+                  onPressed: () {},
+                  style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                      backgroundColor: MaterialStatePropertyAll(
+                          ColorManager.buttonFacebookColor)),
+                ),
+                SizedBox(height: 42),
                 Align(
                   alignment: Alignment.bottomCenter,
                   child: InkWell(
@@ -126,49 +166,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       sl<AppRouter>().goTo(screenName: ScreenName.loginScreen);
                     },
                     child: RichText(
-                      text: const TextSpan(
+                      text: TextSpan(
                         children: [
                           TextSpan(
-                              text: AppStrings.haveAnAccount,
-                              style: TextStyle(
-                                  color: ColorManager.secondaryTextColor,
-                                  fontSize: FontSize.s16,
-                                  fontWeight: FontWeight.w600)),
+                            text: AppStrings.haveAnAccount,
+                            style: StyleManger.headline2(
+                              fontSize: FontSize.s16,
+                              color: ColorManager.secondaryTextColor,
+                            ),
+                          ),
                           TextSpan(
-                            text: " ${AppStrings.logIn}",
-                            style: TextStyle(
-                                color: ColorManager.primary,
-                                fontSize: FontSize.s16,
-                                fontWeight: FontWeight.w600),
+                            text: AppStrings.logIn,
+                            style: StyleManger.headline2(
+                              color: ColorManager.primary,
+                              fontSize: FontSize.s16,
+                            ),
                           ),
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: MediaQuery.sizeOf(context).height * 0.1)
               ],
             ),
-          ),
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: Consumer<SignUpProvider>(
-        builder: (context, value, child) => Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: AppSizes.paddingHorizontal),
-          child: CustomButtonWidget(
-            isLoading: value.isLoading,
-            title: AppStrings.signUp,
-            fontWeight: FontWeight.w700,
-            onPressed: () {
-              value.signUp(
-                name: nameController.text,
-                email: emailController.text,
-                password: passwordController.text,
-                phone: phoneController.text,
-              );
-            },
           ),
         ),
       ),
