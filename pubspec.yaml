@@ -19,7 +19,7 @@ dependencies:
   provider: ^6.0.5
   jiffy: ^5.0.0
   logger: ^1.3.0
-  firebase_core: ^2.14.0
+  firebase_core: ^2.15.1
   firebase_auth:
   lottie: 1.4.2 #Animations
   internet_connection_checker:
