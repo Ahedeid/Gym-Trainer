@@ -36,9 +36,9 @@ class TextFieldAndAboveText extends StatelessWidget {
         Text(
           text,
           style: const TextStyle(
-            fontSize: FontSize.s14,
+            fontSize: FontSize.s16,
             color: ColorManager.primaryTextColor,
-            fontWeight: FontWeight.w300,
+            fontWeight: FontWeight.w500,
           ),
         ),
         const SizedBox(height: 8),

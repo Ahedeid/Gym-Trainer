@@ -2,7 +2,7 @@
 
 class AppSizes{
   static const double paddingVertical = 20;
-  static const double paddingHorizontal = 24;
+  static const double paddingHorizontal = 20;
   static const double paddingContainer = 16;
 }
 

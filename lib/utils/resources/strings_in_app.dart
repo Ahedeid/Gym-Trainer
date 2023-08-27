@@ -1,10 +1,10 @@
 class AppStrings {
   static const technoGym = "TECHNO GYM";
   static const signUp = "SIGNUP";
-  static const email = "Email";
+  static const email = "Email address";
   static const phone = "Phone";
   static const enterYourEmail =
-      "Enter your email address and password to access your account!";
+      "Hello there, sign in to\ncontinue!";
   static const createANewAccount = "Create a new account!";
   static const userName = "Username";
   static const emailOrPhone = "Email or Phone ";
@@ -12,7 +12,8 @@ class AppStrings {
   static const confirmPassword = "Confirm password";
   static const agreeWithTramsAndCondition = "Agree with trams and condition.";
   static const haveAnAccount = "Have an account?";
-  static const logIn = "LOGIN";
+  static const welcomeToProFitness = "Welcome to Pro Fitness!";
+  static const logIn = "LogIn";
   static const phoneVerification = "Phone Verification";
   static const weNeedToRegister =
       "We need to register your phone number before getting srated!";

@@ -11,4 +11,5 @@ class ImageApp {
   static String ahmed = '$imagePath/ahmed.png';
   static String articleImage = '$imagePath/article_image.png';
   static String articleImage2 = '$imagePath/articleImage2.png';
+  static String logo = '$imagePath/logo.jpeg';
 }
