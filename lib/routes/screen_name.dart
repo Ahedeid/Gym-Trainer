@@ -1,0 +1,15 @@
+class ScreenName {
+  static const String splashScreen = '/';
+  static const String pageViewScreens = '/page_view_screens';
+  static const String loginScreen = '/login_screen';
+  static const String homeScreen = '/home_screen';
+  static const String signUpScreen = '/signup_screen';
+  static const String reSetPasswordScreen = '/reSet_password_screen';
+  static const String checkEmailScreen = '/check_email_screen';
+  static const String createNewPasswordScreen = '/create_new_password_screen';
+  static const String BNBUser = '/BNB_user';
+  static const String qrScreen = '/qr_screen';
+  static const String updateProfileScreen = '/update_profile_screen';
+  static const String classScreen = '/class_screen';
+  static const String classDetailsScreen = '/class_details_screen';
+}
