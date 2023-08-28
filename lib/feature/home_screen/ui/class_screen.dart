@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/feature/home_screen/ui/widget/card_class_screen.dart';
+import 'package:gym_app/feature/home_screen/ui/widgets/card_class_screen.dart';
 import 'package:gym_app/sheared/widget/custom_appBar-secondary.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/images_constant.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
-
 
 class ClassScreen extends StatefulWidget {
   const ClassScreen({super.key});
@@ -25,8 +24,8 @@ class _ClassScreenState extends State<ClassScreen> {
           title: AppStrings.classesAppBar,
           subTitle: AppStrings.buildYourBodySmartly,
           bottom: TabBar(
-            padding:
-                const EdgeInsets.symmetric(horizontal: AppSizes.paddingHorizontal),
+            padding: const EdgeInsets.symmetric(
+                horizontal: AppSizes.paddingHorizontal),
             indicatorSize: TabBarIndicatorSize.tab,
             indicatorPadding: const EdgeInsets.symmetric(horizontal: 3),
             dividerColor: ColorManager.white,
