@@ -20,7 +20,7 @@ class StyleManger {
   }) =>
       TextStyle(
         fontSize: fontSize,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w600,
         color: color,
       );
 
@@ -45,12 +45,12 @@ class StyleManger {
       );
 
   static TextStyle bodyText({
-    Color color = ColorManager.black,
+    Color color = ColorManager.primaryTextColor,
     double fontSize = FontSize.s12,
   }) =>
       TextStyle(
         fontSize: fontSize,
-        fontWeight: FontWeight.w700,
+        fontWeight: FontWeight.w500,
         color: color,
       );
   static TextStyle bodyText2({

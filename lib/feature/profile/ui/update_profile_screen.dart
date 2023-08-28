@@ -110,7 +110,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
               child: Column(
                 children: [
                   TextFieldAndAboveText(
-                    backGroundColor: ColorManager.backGroundField,
+                    // backGroundColor: ColorManager.backGroundField,
                     controller: nameController,
                     validator: (val) => val!.validateUserName(),
                     text: AppStrings.displayName,
@@ -119,7 +119,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   ),
                   const SizedBox(height: 10),
                   TextFieldAndAboveText(
-                    backGroundColor: ColorManager.backGroundField,
+                    // backGroundColor: ColorManager.backGroundField,
                     controller: userNameController,
                     validator: (val) => val!.validateUserName(),
                     text: AppStrings.userName,
