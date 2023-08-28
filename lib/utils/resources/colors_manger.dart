@@ -31,5 +31,9 @@ class ColorManager {
   static const Color black = Color(0xFF000000);
   static const Color screenGp = Color(0xFFFBFBFB);
   static const Color backGraoundGreen = Color(0xFFCFDCD4);
+
+  static const Color greyButton = Color(0xFFEDEDED);
+  static const Color subTitleText = Color(0xFF303841);
+
   static const Color buttonFacebookColor = Color(0xFF4267B2);
 }

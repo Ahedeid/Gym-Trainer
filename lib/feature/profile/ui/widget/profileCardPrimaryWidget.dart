@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/service_locator.dart';
-import 'package:provider/provider.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
+import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/images_constant.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
+import 'package:provider/provider.dart';
 
 class ProfileCardPrimaryWidget extends StatefulWidget {
   const ProfileCardPrimaryWidget({
@@ -26,9 +27,7 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      context.read<ProfileProvider>().getADataUser();
-    });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
   }
 
   @override
@@ -52,7 +51,7 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
                 onTap: () {
                   sl<AppRouter>().goTo(
                       screenName: ScreenName.updateProfileScreen,
-                      object: value.userData);
+                      object: sl<SharedPrefController>().getUserData());
                 },
                 tileColor: ColorManager.white,
                 contentPadding: EdgeInsets.all(10),
@@ -73,13 +72,13 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      value.name,
+                      "${sl<SharedPrefController>().getUserData().name}",
                       maxLines: 1,
                       overflow: TextOverflow.visible,
                       style: StyleManger.headline3(),
                     ),
                     Text(
-                      '@${value.userName.toLowerCase()}',
+                      '@${sl<SharedPrefController>().getUserData().email.toLowerCase()}',
                       maxLines: 1,
                       overflow: TextOverflow.visible,
                       style: StyleManger.headline4(

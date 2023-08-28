@@ -1,39 +1,64 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserModel {
-  final String accessToken;
+  final String uid;
   final String name;
-  final String phone;
   final String email;
-  final int id;
   final String image;
-
-
+  final String phone;
+  final String selectedGoal;
 
   UserModel({
-    required this.accessToken,
-    required this.email,
-    required this.id,
+    required this.uid,
     required this.name,
+    required this.email,
     required this.image,
     required this.phone,
+    required this.selectedGoal,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> jsonMap) {
-    // UserInfo userInfo = UserInfo.fromJson(jsonMap["user"]);
+  factory UserModel.fromDocumentSnapshot(DocumentSnapshot snapshot) {
+    final data = snapshot.data() as Map<String, dynamic>;
     return UserModel(
-      accessToken: jsonMap["token"],
-      email: jsonMap['email'],
-      id: jsonMap['id'],
-      image: jsonMap['image'],
-      name: jsonMap['name'],
-      phone: jsonMap['phone'],
+      uid: data['uid'],
+      name: data['name'],
+      email: data['email'],
+      image: data['image'],
+      phone: data['phone'],
+      selectedGoal: data['goal'],
     );
   }
-  Map<String, dynamic> toJson() => {
-    "token": accessToken,
-    'id': id,
-    'email': email,
-    'image': image,
-    'phone': phone,
-    'name': name,
-  };
+
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      uid: json['uid'],
+      name: json['name'],
+      email: json['email'],
+      image: json['image'],
+      phone: json['phone'],
+      selectedGoal: json['goal'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'uid': uid,
+      'name': name,
+      'email': email,
+      'image': image,
+      'phone': phone,
+      'goal': selectedGoal,
+    };
+  }
+
+  UserModel copyWith({String? selectedGoal}) {
+    return UserModel(
+      uid: this.uid,
+      name: this.name,
+      email: this.email,
+      image: this.image,
+      phone: this.phone,
+      selectedGoal: selectedGoal ?? this.selectedGoal,
+    );
+  }
 }

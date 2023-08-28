@@ -3,6 +3,7 @@ class AppStrings {
   static const signUp = "SIGNUP";
   static const email = "Email address";
   static const phone = "Phone";
+  static const enterYourEmail = "Hello there, sign in to\ncontinue!";
   static const enterYourEmail =
       "Hello there, sign in to\ncontinue!";
   static const pleaseEnterYourCredentials=
@@ -16,6 +17,7 @@ class AppStrings {
   static const haveAnAccount = "Have an account?";
   static const welcomeToProFitness = "Welcome to Pro Fitness!";
   static const logIn = "LogIn";
+  static const logout = "Logout";
   static const phoneVerification = "Phone Verification";
   static const weNeedToRegister =
       "We need to register your phone number before getting srated!";
@@ -105,8 +107,17 @@ class AppStrings {
   static const location = "Location";
   static const availableDates = "Available Dates";
   static const bookNow = "Book Now!";
+
+  //----------------------- (GYM) -------------------------------
+  static const selectGoal = "Select your Goal";
+  static const category = "Category";
+  static const popularExercise = "Popular Exercise";
+  static const additionalExercise = "Additional Exercise";
+  static const oClock = "| ⌛";
+
   static const orLoginWith = "Or Login with";
   static const connectWithGoogle = "Connect With Google";
   static const connectWithFacebook = "Connect With Facebook";
   static const createAccounts = "Create Accounts";
+
 }

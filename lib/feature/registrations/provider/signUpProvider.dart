@@ -38,20 +38,22 @@ class SignUpProvider extends ChangeNotifier {
     if (signUpFormKey.currentState!.validate()) {
       try {
         setLoading(true);
-        final credential =
-            await fbAuth.createUserWithEmailAndPassword(
+        final credential = await fbAuth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
         final uid = credential.user!.uid;
-        await fbStore.collection(FirebaseConstant.usersCollection).doc(uid).set({
+        await fbStore
+            .collection(FirebaseConstant.usersCollection)
+            .doc(uid)
+            .set({
           FirebaseConstant.uid: uid,
           FirebaseConstant.email: email,
           FirebaseConstant.name: name.toLowerCase(),
-          FirebaseConstant.phone : phone,
+          FirebaseConstant.phone: phone,
         });
-        sl<SharedPrefController>().setLogedin();
-        sl<SharedPrefController>().setUId(uid);
+        await credential.user!.updateDisplayName("${name.toLowerCase()}");
+        sl<SharedPrefController>().setLoggedIn();
         UtilsConfig.showSnackBarMessage(
           message: 'Account was created Successfully!!',
           status: true,

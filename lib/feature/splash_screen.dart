@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    sl<AppConfig>().onDone();
+    sl<AppConfig>().onBoardingStatue();
   }
 
   @override
@@ -40,8 +40,8 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomSvgAssets(
-                  path: AppIcons.logo,
-                  color: ColorManager.white,
+                  path: AppIcons.message,
+                  // color: ColorManager.white,
                   width: 200,
                   height: 200,
                 ),

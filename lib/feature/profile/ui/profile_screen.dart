@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/profile/ui/widget/cardInProfileWidget.dart';
 import 'package:gym_app/feature/profile/ui/widget/profileCardPrimaryWidget.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -21,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
         body: Consumer<ProfileProvider>(
           builder: (context, value, child) => RefreshIndicator(
             onRefresh: () async {
-              await value.getADataUser();
+              // await value.getADataUser();
             },
             child: ListView(
               padding: const EdgeInsets.symmetric(
@@ -156,6 +157,19 @@ class ProfileScreen extends StatelessWidget {
                       CardInProfileWidget(
                         title: AppStrings.notificationsSettings,
                         onTap: () {
+                          // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
+                        },
+                      ),
+                      const Divider(
+                        thickness: 1,
+                        endIndent: 16,
+                        indent: 16,
+                        color: Color(0xFFEFF0F1),
+                      ),
+                      CardInProfileWidget(
+                        title: AppStrings.logout,
+                        onTap: () async {
+                          await sl<ProfileProvider>().logout();
                           // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
                         },
                       ),

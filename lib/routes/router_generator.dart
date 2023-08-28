@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/BNBUser.dart';
-import 'package:gym_app/feature/home_screen/ui/class_details_screen.dart';
+import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
 import 'package:gym_app/feature/home_screen/ui/class_screen.dart';
+import 'package:gym_app/feature/home_screen/ui/details_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/qr_screen.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
@@ -17,6 +18,7 @@ import 'package:gym_app/feature/registrations/ui/reSetPassword.dart';
 import 'package:gym_app/feature/registrations/ui/signUpScreen.dart';
 import 'package:gym_app/feature/splash_screen.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:provider/provider.dart';
 
 class RouteGenerator {
@@ -55,7 +57,10 @@ class RouteGenerator {
       // --------------------------- HomeScreen --------------------------------
       case ScreenName.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) => ChangeNotifierProvider.value(
+            value: sl<HomeProvider>(),
+            child: HomeScreen(),
+          ),
         );
       // --------------------------- ReSetPasswordScreen -----------------------
       case ScreenName.reSetPasswordScreen:
@@ -72,7 +77,7 @@ class RouteGenerator {
       // --------------------------- CreateNewPassword -------------------------
       case ScreenName.createNewPasswordScreen:
         return MaterialPageRoute(
-          builder: (_) =>  CreateNewPasswordScreen(),
+          builder: (_) => CreateNewPasswordScreen(),
         );
       // ------------------------------ BNBUser --------------------------------
       case ScreenName.BNBUser:

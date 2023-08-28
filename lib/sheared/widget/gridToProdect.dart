@@ -1,6 +1,6 @@
 // import 'package:cached_network_image/cached_network_image.dart';
 // import 'package:flutter/material.dart';
-// import 'package:shop_app/sheared/widget/CustomeSvg.dart';
+// import 'package:shop_app/sheared/widgets/CustomeSvg.dart';
 // import 'package:shop_app/utils/resources/colors_manger.dart';
 // import 'package:shop_app/utils/resources/font_size.dart';
 // import 'package:shop_app/utils/resources/icons_constant.dart';

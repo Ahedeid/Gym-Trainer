@@ -26,6 +26,7 @@ class AppIcons {
   static String back = '$iconsPath/back.svg';
   static String clockSand = '$iconsPath/clockSand.svg';
   static String level = '$iconsPath/level.svg';
+  static String search = '$iconsPath/suche.svg';
   static String facebook = '$iconsPath/facebook.svg';
   static String google = '$iconsPath/google.svg';
 
