@@ -8,7 +8,7 @@ class CustomSvgAssets extends StatelessWidget {
   final double? width;
   final double? height;
 
- const CustomSvgAssets({
+  const CustomSvgAssets({
     Key? key,
     this.path,
     this.color,
@@ -22,6 +22,7 @@ class CustomSvgAssets extends StatelessWidget {
     return SvgPicture.asset(
       path!,
       fit: BoxFit.scaleDown,
+      colorFilter: ColorFilter.linearToSrgbGamma(),
       color: color,
       height: height,
       width: width,
