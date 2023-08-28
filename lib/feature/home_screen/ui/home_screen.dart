@@ -306,9 +306,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               imageUrl:
                                   "https://images.pexels.com/photos/6453530/pexels-photo-6453530.jpeg",
                               progressIndicatorBuilder:
-                                  (context, url, downloadProgress) =>
-                                      CircularProgressIndicator(
-                                          value: downloadProgress.progress),
+                                  (context, url, downloadProgress) => Center(
+                                child: CircularProgressIndicator(
+                                    value: downloadProgress.progress),
+                              ),
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                             ),
