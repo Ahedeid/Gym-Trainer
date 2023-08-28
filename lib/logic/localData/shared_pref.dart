@@ -1,15 +1,13 @@
+import 'dart:convert';
+
+import 'package:gym_app/logic/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum PrefKeys { user, token, logedIn, showOnce }
+enum PrefKeys { user, token, loggedIn, showOnce }
 
 class SharedPrefController {
-    SharedPreferences preferences ;
+  SharedPreferences preferences;
   SharedPrefController({required this.preferences});
-
-
-  Future<void> init() async {
-    preferences = await SharedPreferences.getInstance();
-  }
 
   setShowOnce(bool showOnce) async {
     await preferences.setBool(PrefKeys.showOnce.toString(), showOnce);
@@ -18,55 +16,43 @@ class SharedPrefController {
   bool getShowOnce() =>
       preferences.getBool(PrefKeys.showOnce.toString()) ?? false;
 
-  // save(UserCredential user) async {
-  //    String userEncoded = jsonEncode(user);
-  //   await preferences.setString(
-  //     PrefKeys.user.toString(),
-  //     userEncoded,
-  //   );
-  // }
-
-  setUId(String uid) async {
-    await preferences.setString(PrefKeys.user.toString(), uid);
+  setLoggedIn() async {
+    await preferences.setBool(PrefKeys.loggedIn.toString(), true);
   }
 
-  String getUid() =>
-    preferences.getString(PrefKeys.user.toString()) ?? 'error';
-
-
-  // setLang(String lang ) async{
-  //   await preferences.setString('lang', lang);
-  // }
-  //
-  // getLang() async{
-  //   await preferences.getString('lang');
-  // }
-
-  setLogedin() async {
-    await preferences.setBool(PrefKeys.logedIn.toString(), true);
-  }
-
-  bool getLogedin() =>
-      preferences.getBool(PrefKeys.logedIn.toString()) ?? false;
-
-  // UserCredential getUser() {
-  //   String userJson = preferences.getString(PrefKeys.user.toString()) ?? '';
-  //   print(userJson);
-  //   // String encodedString = jsonEncode(userJson);
-  //   // print(encodedString);
-  //   final userObject = jsonDecode(userJson);
-  //   print(userObject);
-  //   // UserCredential userObject = jsonDecode(userJson);
-  //   return userObject;
-  // }
+  bool getLoggedIn() =>
+      preferences.getBool(PrefKeys.loggedIn.toString()) ?? false;
 
   void removeUser() {
-    preferences.remove(PrefKeys.user.toString());
-    preferences.remove(PrefKeys.logedIn.toString());
+    if (preferences.containsKey(PrefKeys.user.toString())) {
+      preferences.remove(PrefKeys.user.toString());
+    }
+    if (preferences.containsKey(PrefKeys.loggedIn.toString())) {
+      preferences.remove(PrefKeys.loggedIn.toString());
+    }
   }
 
   clear() {
     preferences.clear();
   }
 
+  Future<void> saveUserData(UserModel user) async {
+    preferences.setString(PrefKeys.user.toString(), jsonEncode(user.toJson()));
+  }
+
+  UserModel getUserData() {
+    final userData = preferences.getString(PrefKeys.user.toString());
+
+    if (userData != null) {
+      return UserModel.fromJson(jsonDecode(userData));
+    }
+    return UserModel(
+      uid: '',
+      name: '',
+      email: '',
+      image: '',
+      phone: '',
+      selectedGoal: '',
+    );
+  }
 }
