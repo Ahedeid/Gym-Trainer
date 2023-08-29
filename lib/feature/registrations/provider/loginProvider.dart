@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -145,9 +144,9 @@ class LoginProvider extends ChangeNotifier {
       sl<AppRouter>().goToAndRemove(screenName: ScreenName.BNBUser);
       final credentialSign =
           await FirebaseAuth.instance.signInWithCredential(credential);
-      sl<SharedPrefController>().setLogedin();
+      sl<SharedPrefController>().setLoggedIn();
       final uid = credentialSign.user!.uid;
-      sl<SharedPrefController>().setUId(uid);
+      // sl<SharedPrefController>().setUId(uid);
       // setLoadingSignInWithGoogle(false);
     } on FirebaseException catch (e) {
       // setLoadingSignInWithGoogle(false);
