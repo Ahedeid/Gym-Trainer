@@ -8,6 +8,7 @@ import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/category_List_Widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/custom_grid_view.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/header_section_widget.dart';
+import 'package:gym_app/feature/home_screen/ui/widgets/populer_exercise_widget.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
@@ -282,92 +283,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 trailing: AppStrings.seeAll,
               ),
               10.addVerticalSpace,
-              ListView.separated(
-                itemCount: 2,
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                separatorBuilder: (context, index) => Divider(),
-                itemBuilder: (context, index) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    12.addVerticalSpace,
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Stack(
-                          children: [
-                            CachedNetworkImage(
-                              fit: BoxFit.cover,
-                              height: 155.h,
-                              width: double.infinity,
-                              imageUrl:
-                                  "https://images.pexels.com/photos/6453530/pexels-photo-6453530.jpeg",
-                              progressIndicatorBuilder:
-                                  (context, url, downloadProgress) => Center(
-                                child: CircularProgressIndicator(
-                                    value: downloadProgress.progress),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-                            Positioned(
-                              right: 23,
-                              top: 8,
-                              child: Container(
-                                width: 30.w,
-                                height: 30.h,
-                                decoration: BoxDecoration(
-                                  color: ColorManager.white,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: Icon(
-                                  Icons.favorite,
-                                  size: 15,
-                                  color: Colors.redAccent,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    15.addVerticalSpace,
-                    Text(
-                      "Full Shot Woman Stretching Arm",
-                      style: const TextStyle(
-                        color: ColorManager.subTitleText,
-                        fontWeight: FontWeight.w800,
-                        fontSize: FontSize.s14,
-                      ),
-                    ),
-                    10.addVerticalSpace,
-                    Row(
-                      children: [
-                        Text(
-                          "Beginner",
-                          style: const TextStyle(
-                            color: ColorManager.subTitleText,
-                            fontWeight: FontWeight.normal,
-                            fontSize: FontSize.s14,
-                          ),
-                        ),
-                        7.addHorizontalSpace,
-                        Text(
-                          "${AppStrings.oClock} 30 min",
-                          style: const TextStyle(
-                            color: ColorManager.subTitleText,
-                            fontWeight: FontWeight.normal,
-                            fontSize: FontSize.s14,
-                          ),
-                        ),
-                      ],
-                    ),
-                    12.addVerticalSpace,
-                  ],
-                ),
+              StreamBuilder<QuerySnapshot>(
+                stream: sl<FirebaseFirestore>()
+                    .collection(FirebaseConstant.exercisesCollection)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  final categoryDocs = snapshot.data!.docs;
+                  final resultList = homeProvider.filterExerciseByGoal(
+                      categoryDocs, homeProvider.goalModel!.id);
+
+                  return ListView.separated(
+                      itemCount: resultList.length,
+                      physics: NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      separatorBuilder: (context, index) => Divider(),
+                      itemBuilder: (context, index) {
+                        return PopularExerciseWidget(
+                          exerciseModel: resultList[index],
+                          // exerciseModel:
+                        );
+                      });
+                },
               ),
               const SizedBox(height: 10),
               CustomGridView(

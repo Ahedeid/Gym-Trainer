@@ -22,7 +22,6 @@ class CustomSvgAssets extends StatelessWidget {
     return SvgPicture.asset(
       path!,
       fit: BoxFit.scaleDown,
-      colorFilter: ColorFilter.linearToSrgbGamma(),
       color: color,
       height: height,
       width: width,
