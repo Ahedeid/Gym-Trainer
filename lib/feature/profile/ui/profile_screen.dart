@@ -16,7 +16,6 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
         appBar: CustomAppBar(
           title: 'Your Profile! 🙅🏻‍♂️',
-          subTitle: 'Customize your Information!',
           onTap: () {},
         ),
         body: Consumer<ProfileProvider>(
