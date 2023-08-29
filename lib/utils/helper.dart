@@ -5,6 +5,7 @@ import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
+import 'package:gym_app/utils/resources/strings_in_app.dart';
 
 log(message) {
   if (kDebugMode) {
@@ -141,7 +142,13 @@ class UtilsConfig {
     );
   }
 
-  static void navigateAfterSuccess({required String screenName}) {}
+  static void navigateAfterSuccess({required String screenName}) {
+    UtilsConfig.showSnackBarMessage(
+      message: AppStrings.successAccount,
+      status: true,
+    );
+    sl<AppRouter>().goToAndRemove(screenName: screenName);
+  }
 
   static void showOnException(FirebaseException exception) {
     final message = exception.message.toString();
