@@ -78,60 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
             bottom: Radius.circular(30),
           ),
         ),
-        title: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            Row(
-              children: [
-                CircleAvatar(
-                  radius: 22.r,
-                  child: ClipOval(
-                    child: CachedNetworkImage(
-                      imageUrl: "${sl<FirebaseAuth>().currentUser?.photoURL}",
-                      placeholder: (context, url) => Image.asset(
-                        ImageApp.backgroundImageSecond,
-                        fit: BoxFit.cover,
-                        height: 44,
-                        width: 44,
-                      ), // Placeholder widget while loading
-                      errorWidget: (context, url, error) => Image.asset(ImageApp
-                          .backgroundImageSecond), // Display default image on error
-                    ),
-                  ),
-                  backgroundColor: ColorManager.primary,
-                ),
-                15.addHorizontalSpace,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Hello, $greeting ",
-                        style: StyleManger.headline4().copyWith(
-                            fontSize: 12.sp, color: ColorManager.white)),
-                    Text(
-                      "${sl<SharedPrefController>().getUserData().name} !",
-                      style: TextStyle(
-                          fontSize: FontSize.s20,
-                          fontWeight: FontWeight.w500,
-                          color: ColorManager.white),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            CircleAvatar(
-              radius: 50,
-              backgroundColor: Colors.white.withOpacity(0.10),
-            ),
-            CircleAvatar(
-              radius: 80,
-              backgroundColor: Colors.white.withOpacity(0.1),
-            ),
-            CircleAvatar(
-              radius: 120,
-              backgroundColor: Colors.white.withOpacity(0.1),
-            ),
-          ],
-        ),
+        title: AppBarBody(greeting: greeting),
         actions: [
           GestureDetector(
             onTap: () {},
@@ -275,6 +222,73 @@ class _HomeScreenState extends State<HomeScreen> {
           );
         },
       ),
+    );
+  }
+}
+
+class AppBarBody extends StatelessWidget {
+  const AppBarBody({
+    super.key,
+    required this.greeting,
+  });
+
+  final String greeting;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.centerLeft,
+      children: [
+        Row(
+          children: [
+            CircleAvatar(
+              radius: 22.r,
+              child: ClipOval(
+                child: CachedNetworkImage(
+                  imageUrl: "${sl<FirebaseAuth>().currentUser?.photoURL}",
+                  placeholder: (context, url) => Image.asset(
+                    ImageApp.backgroundImageSecond,
+                    fit: BoxFit.cover,
+                    height: 44,
+                    width: 44,
+                  ), // Placeholder widget while loading
+                  errorWidget: (context, url, error) => Image.asset(ImageApp
+                      .backgroundImageSecond), // Display default image on error
+                ),
+              ),
+              backgroundColor: ColorManager.primary,
+            ),
+            15.addHorizontalSpace,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Hello, $greeting ",
+                    style: StyleManger.headline4()
+                        .copyWith(fontSize: 12.sp, color: ColorManager.white)),
+                Text(
+                  "${sl<SharedPrefController>().getUserData().name} !",
+                  style: TextStyle(
+                      fontSize: FontSize.s20,
+                      fontWeight: FontWeight.w500,
+                      color: ColorManager.white),
+                ),
+              ],
+            ),
+          ],
+        ),
+        CircleAvatar(
+          radius: 50,
+          backgroundColor: Colors.white.withOpacity(0.05),
+        ),
+        CircleAvatar(
+          radius: 80,
+          backgroundColor: Colors.white.withOpacity(0.05),
+        ),
+        CircleAvatar(
+          radius: 120,
+          backgroundColor: Colors.white.withOpacity(0.05),
+        ),
+      ],
     );
   }
 }
