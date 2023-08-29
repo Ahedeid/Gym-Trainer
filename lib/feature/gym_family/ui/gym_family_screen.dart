@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 
-
 class GymFamilyScreen extends StatefulWidget {
   const GymFamilyScreen({super.key});
 
@@ -15,13 +14,13 @@ class _GymFamilyScreenState extends State<GymFamilyScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Gym Family! 🏋🏻‍♀️',
-        subTitle: 'Let’s connect with others!',
-        onTap: (){},
+        onTap: () {},
       ),
-      body:const Center(
+      body: const Center(
         child: Text(
           'GymFamily Screen',
-          style:  TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black),
+          style: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
     );
