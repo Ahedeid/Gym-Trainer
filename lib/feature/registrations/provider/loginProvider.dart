@@ -120,13 +120,10 @@ class LoginProvider extends ChangeNotifier {
           .doc(credentialSign.user!.uid)
           .get();
       final userModel = UserModel.fromDocumentSnapshot(userDoc);
+      UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
       sl<SharedPrefController>().setLoggedIn();
       sl<SharedPrefController>().saveUserData(userModel);
       UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
-      //   sl<SharedPrefController>().setLoggedIn();
-      // final uid = credentialSign.user!.uid;
-      // sl<SharedPrefController>().setUId(uid);
-      // setLoadingSignInWithGoogle(false);
     } on FirebaseException catch (e) {
       UtilsConfig.showOnException(e);
     } finally {

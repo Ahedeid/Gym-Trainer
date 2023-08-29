@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/utils/resources/icons_constant.dart';
-import 'package:gym_app/utils/resources/style_manger.dart';
-import 'package:provider/provider.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
+import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
+import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:gym_app/utils/validate_extension.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

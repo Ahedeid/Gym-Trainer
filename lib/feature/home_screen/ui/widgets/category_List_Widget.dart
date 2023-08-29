@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 
 class CategoryListWidget extends StatelessWidget {
@@ -39,7 +40,7 @@ class CategoryListWidget extends StatelessWidget {
                 child: Text(
                   categoryData.name,
                   style: TextStyle(
-                    fontSize: 14,
+                    fontSize: 14.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
