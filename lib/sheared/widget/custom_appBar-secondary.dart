@@ -8,13 +8,12 @@ import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 
-
 class CustomAppBarSecondary extends StatelessWidget
     implements PreferredSizeWidget {
   const CustomAppBarSecondary({
     super.key,
     required this.title,
-     this.subTitle = '',
+    this.subTitle = '',
     this.iconAction,
     this.onTap,
     this.onTapAnother,
@@ -56,54 +55,24 @@ class CustomAppBarSecondary extends StatelessWidget
           ),
         ),
       ),
-      title: showSubTitle? Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 5),
-          Text(title, style: StyleManger.headline1()),
-          Text(
-            subTitle,
-            style: const TextStyle(
-                fontSize: FontSize.s14,
-                fontWeight: FontWeight.w300,
-                color: ColorManager.primaryTextColor),
-          ),
-          const SizedBox(height: 10),
-        ],
-      ):   Text(title, style: StyleManger.headline1()),
-
+      title: showSubTitle
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 5),
+                Text(title, style: StyleManger.headline1()),
+                Text(
+                  subTitle,
+                  style: const TextStyle(
+                      fontSize: FontSize.s14,
+                      fontWeight: FontWeight.w300,
+                      color: ColorManager.primaryTextColor),
+                ),
+                const SizedBox(height: 10),
+              ],
+            )
+          : Text(title, style: StyleManger.headline1()),
       bottom: bottom,
-      // actions: [
-      //   GestureDetector(
-      //     onTap: onTap,
-      //     child: Container(
-      //       width: 42,
-      //       height: 42,
-      //       decoration: BoxDecoration(
-      //           color: ColorManager.white,
-      //           borderRadius: BorderRadius.circular(8)),
-      //       child: CustomSvgAssets(
-      //         path: AppIcons.message,
-      //         color: Colors.black,
-      //       ),
-      //     ),
-      //   ),
-      //   GestureDetector(
-      //     onTap: onTapAnother,
-      //     child: Container(
-      //       width: 42,
-      //       height: 42,
-      //       margin: const EdgeInsets.only(left: 8, right: 33),
-      //       decoration: BoxDecoration(
-      //           color: ColorManager.white,
-      //           borderRadius: BorderRadius.circular(8)),
-      //       child: CustomSvgAssets(
-      //         path: AppIcons.notification,
-      //         color: Colors.black,
-      //       ),
-      //     ),
-      //   ),
-      // ],
     );
   }
 

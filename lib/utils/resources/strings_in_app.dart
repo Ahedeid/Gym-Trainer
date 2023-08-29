@@ -116,6 +116,7 @@ class AppStrings {
   static const oClock = "| ⌛";
 
   static const orLoginWith = "Or Login with";
+  static const training = "Training";
   static const connectWithGoogle = "Connect With Google";
   static const connectWithFacebook = "Connect With Facebook";
   static const createAccounts = "Create Accounts";
