@@ -7,9 +7,9 @@ import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 
-class PopularExerciseWidget extends StatelessWidget {
+class VerticalExerciseWidget extends StatelessWidget {
   final ExerciseModel? exerciseModel;
-  const PopularExerciseWidget({
+  const VerticalExerciseWidget({
     this.exerciseModel,
     super.key,
   });
