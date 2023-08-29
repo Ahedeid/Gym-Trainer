@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 
-
 class OurShopScreen extends StatelessWidget {
   const OurShopScreen({super.key});
 
@@ -10,13 +9,13 @@ class OurShopScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Our Shop!',
-        subTitle: 'Things might help you!',
-        onTap: (){},
+        onTap: () {},
       ),
-      body:const Center(
+      body: const Center(
         child: Text(
           'OurShop Screen',
-          style:  TextStyle(fontSize: 25,fontWeight: FontWeight.bold,color: Colors.black),
+          style: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black),
         ),
       ),
     );
