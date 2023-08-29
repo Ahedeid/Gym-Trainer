@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'package:gym_app/logic/firebase_constant.dart';
-
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -91,7 +89,10 @@ class LoginProvider extends ChangeNotifier {
     isLoadingSignInWithGoogle = value;
     notifyListeners();
   }
+
+  String? erorrr = "Why";
   Future<void> signInWithGoogle() async {
+    print("clicked");
     try {
       setLoadingGoogle(true);
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -114,23 +115,21 @@ class LoginProvider extends ChangeNotifier {
         FirebaseConstant.name: credentialSign.user!.displayName!.toLowerCase(),
         FirebaseConstant.phone: credentialSign.user!.phoneNumber,
         FirebaseConstant.image: credentialSign.user!.photoURL,
-        FirebaseConstant.goal: 'goal',
+        FirebaseConstant.goal: '',
       });
       final userDoc = await sl<FirebaseFirestore>()
           .collection(FirebaseConstant.usersCollection)
           .doc(credentialSign.user!.uid)
           .get();
+      print("This loing");
       final userModel = UserModel.fromDocumentSnapshot(userDoc);
+      UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
       sl<SharedPrefController>().setLoggedIn();
       sl<SharedPrefController>().saveUserData(userModel);
-      UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
-   //   sl<SharedPrefController>().setLoggedIn();
-     // final uid = credentialSign.user!.uid;
-      // sl<SharedPrefController>().setUId(uid);
-      // setLoadingSignInWithGoogle(false);
     } on FirebaseException catch (e) {
+      notifyListeners();
       UtilsConfig.showOnException(e);
-    }finally{
+    } finally {
       setLoadingGoogle(false);
     }
   }

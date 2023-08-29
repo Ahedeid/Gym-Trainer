@@ -1,9 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
-import 'package:flutter/foundation.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 

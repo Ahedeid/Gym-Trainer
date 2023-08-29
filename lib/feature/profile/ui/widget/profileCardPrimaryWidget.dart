@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
@@ -8,7 +9,6 @@ import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
-import 'package:gym_app/utils/resources/images_constant.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:provider/provider.dart';
 
@@ -62,12 +62,21 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
                     height: 59,
                     width: 59,
                     child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          ImageApp.ahed,
-                          height: 59,
-                          width: 59,
-                        ))),
+                      borderRadius: BorderRadius.circular(8),
+                      child: CachedNetworkImage(
+                        width: 59,
+                        height: 59,
+                        fit: BoxFit.cover,
+                        imageUrl:
+                            sl<SharedPrefController>().getUserData().image,
+                        progressIndicatorBuilder:
+                            (context, url, downloadProgress) => Center(
+                          child: CircularProgressIndicator(
+                              value: downloadProgress.progress),
+                        ),
+                        errorWidget: (context, url, error) => Icon(Icons.error),
+                      ),
+                    )),
                 title: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
