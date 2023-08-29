@@ -9,4 +9,5 @@ class FirebaseConstant {
   static const email = 'email';
   static const phone = 'phone';
   static const goal = 'goal';
+  static const image = 'image';
 }

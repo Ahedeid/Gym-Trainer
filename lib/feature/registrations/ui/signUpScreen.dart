@@ -112,20 +112,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 30),
-                Consumer<SignUpProvider>(
-                  builder: (context, value, child) => CustomButtonWidget(
-                    isLoading: value.isLoading,
-                    title: AppStrings.signUp,
-                    fontWeight: FontWeight.w700,
-                    onPressed: () {
-                      value.signUp(
-                        name: nameController.text,
-                        email: emailController.text,
-                        password: passwordController.text,
-                        phone: phoneController.text,
-                      );
-                    },
-                  ),
+                CustomButtonWidget(
+                  isLoading: value.isLoading,
+                  title: AppStrings.signUp,
+                  fontWeight: FontWeight.w700,
+                  onPressed: () {
+                    value.signUp(
+                      name: nameController.text,
+                      email: emailController.text,
+                      password: passwordController.text,
+                      phone: phoneController.text,
+                    );
+                  },
                 ),
                 SizedBox(height: 24),
                 Align(
@@ -137,7 +135,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 SizedBox(height: 16),
                 CustomButtonWidget(
-                  // isLoading: value.isLoading,
+                  isLoading: login.isLoadingSignInWithGoogle,
                   showIcon: true,
                   icon: AppIcons.google,
                   title: AppStrings.connectWithGoogle,

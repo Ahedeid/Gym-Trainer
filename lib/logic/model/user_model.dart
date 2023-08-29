@@ -23,9 +23,9 @@ class UserModel {
       uid: data['uid'],
       name: data['name'],
       email: data['email'],
-      image: data['image'],
-      phone: data['phone'],
-      selectedGoal: data['goal'],
+      image: data['image']??'',
+      phone: data['phone']?? '',
+      selectedGoal: data['goal']??'',
     );
   }
 
@@ -34,9 +34,9 @@ class UserModel {
       uid: json['uid'],
       name: json['name'],
       email: json['email'],
-      image: json['image'],
-      phone: json['phone'],
-      selectedGoal: json['goal'],
+      image: json['image']??'',
+      phone: json['phone']??'',
+      selectedGoal: json['goal']??'',
     );
   }
 
