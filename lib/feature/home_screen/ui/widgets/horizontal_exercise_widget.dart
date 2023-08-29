@@ -63,7 +63,7 @@ class HorizontalExerciseWidget extends StatelessWidget {
                       ),
                       7.addHorizontalSpace,
                       Text(
-                        "110 Kcal |",
+                        "${exerciseModel!.kal} |",
                         style: TextStyle(
                           color: ColorManager.subTitleText,
                           fontWeight: FontWeight.normal,
@@ -82,7 +82,7 @@ class HorizontalExerciseWidget extends StatelessWidget {
                       ),
                       7.addHorizontalSpace,
                       Text(
-                        "8 min",
+                        "${exerciseModel!.time}",
                         style: TextStyle(
                           color: ColorManager.subTitleText,
                           fontWeight: FontWeight.normal,
@@ -95,7 +95,7 @@ class HorizontalExerciseWidget extends StatelessWidget {
               ),
               2.addVerticalSpace,
               Text(
-                "Beginner",
+                "${exerciseModel!.levelDisplay}",
                 style: TextStyle(
                   color: ColorManager.subTitleText,
                   fontWeight: FontWeight.normal,

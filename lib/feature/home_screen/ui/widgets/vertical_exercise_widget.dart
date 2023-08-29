@@ -43,17 +43,40 @@ class VerticalExerciseWidget extends StatelessWidget {
                 Positioned(
                   right: 23,
                   top: 8,
-                  child: Container(
-                    width: 30.w,
-                    height: 30.h,
-                    decoration: BoxDecoration(
-                      color: ColorManager.white,
-                      borderRadius: BorderRadius.circular(10),
+                  child: Visibility(
+                    visible: exerciseModel!.isFavorite!,
+                    child: Container(
+                      width: 30.width,
+                      height: 30.height,
+                      decoration: BoxDecoration(
+                        color: ColorManager.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        Icons.favorite,
+                        size: 15.sp,
+                        color: Colors.redAccent,
+                      ),
                     ),
-                    child: Icon(
-                      Icons.favorite,
-                      size: 15,
-                      color: Colors.redAccent,
+                  ),
+                ),
+                Positioned(
+                  right: 23,
+                  top: 8,
+                  child: Visibility(
+                    visible: exerciseModel!.isLocked!,
+                    child: Container(
+                      width: 30.width,
+                      height: 30.height,
+                      decoration: BoxDecoration(
+                        color: ColorManager.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(
+                        Icons.lock,
+                        size: 15.sp,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
