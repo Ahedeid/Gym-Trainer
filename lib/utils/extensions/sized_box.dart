@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 
@@ -12,7 +13,7 @@ extension FlutterSizes on num {
 
   SizedBox get addHorizontalSpace {
     return SizedBox(
-      width: screenDeviceWidth * (toDouble() / designHeight),
+      width: this.w,
     );
   }
 

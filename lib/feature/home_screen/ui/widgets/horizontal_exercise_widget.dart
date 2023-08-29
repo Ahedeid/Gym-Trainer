@@ -1,12 +1,15 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
-import 'package:gym_app/utils/resources/images_constant.dart';
 
 class HorizontalExerciseWidget extends StatelessWidget {
+  final ExerciseModel? exerciseModel;
   const HorizontalExerciseWidget({
+    this.exerciseModel,
     super.key,
   });
 
@@ -17,29 +20,38 @@ class HorizontalExerciseWidget extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.asset(
-            ImageApp.articleImage,
-            width: 91.w,
-            height: 91.h,
-            fit: BoxFit.fill,
+          child: CachedNetworkImage(
+            width: 80.w,
+            height: 80.h,
+            fit: BoxFit.cover,
+            imageUrl: exerciseModel!.image!,
+            progressIndicatorBuilder: (context, url, downloadProgress) =>
+                Center(
+              child:
+                  CircularProgressIndicator(value: downloadProgress.progress),
+            ),
+            errorWidget: (context, url, error) => Icon(Icons.error),
           ),
         ),
-        20.addHorizontalSpace,
+        SizedBox(
+          width: 15.width,
+        ),
+        // 20.addHorizontalSpace,
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               2.addVerticalSpace,
               Text(
-                "Exercises with Jumping Rope ddddsdsds",
+                exerciseModel!.title!,
                 overflow: TextOverflow.visible,
                 style: TextStyle(
                   color: ColorManager.subTitleText,
                   fontWeight: FontWeight.w800,
-                  fontSize: FontSize.s12.sp,
+                  fontSize: FontSize.s14.sp,
                 ),
               ),
-              10.addVerticalSpace,
+              6.addVerticalSpace,
               Row(
                 children: [
                   Row(
@@ -55,12 +67,12 @@ class HorizontalExerciseWidget extends StatelessWidget {
                         style: TextStyle(
                           color: ColorManager.subTitleText,
                           fontWeight: FontWeight.normal,
-                          fontSize: FontSize.s10.sp,
+                          fontSize: FontSize.s14.sp,
                         ),
                       ),
                     ],
                   ),
-                  5.addHorizontalSpace,
+                  7.addHorizontalSpace,
                   Row(
                     children: [
                       Icon(
@@ -74,7 +86,7 @@ class HorizontalExerciseWidget extends StatelessWidget {
                         style: TextStyle(
                           color: ColorManager.subTitleText,
                           fontWeight: FontWeight.normal,
-                          fontSize: FontSize.s10.sp,
+                          fontSize: FontSize.s14.sp,
                         ),
                       ),
                     ],
@@ -87,7 +99,7 @@ class HorizontalExerciseWidget extends StatelessWidget {
                 style: TextStyle(
                   color: ColorManager.subTitleText,
                   fontWeight: FontWeight.normal,
-                  fontSize: FontSize.s10.sp,
+                  fontSize: FontSize.s14.sp,
                 ),
               ),
             ],
