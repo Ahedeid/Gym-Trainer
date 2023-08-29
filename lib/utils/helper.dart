@@ -1,9 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:flutter/foundation.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
+import 'package:gym_app/utils/resources/strings_in_app.dart';
 
 log(message) {
   if (kDebugMode) {
@@ -137,6 +139,22 @@ class UtilsConfig {
       builder: (BuildContext context) {
         return alert;
       },
+    );
+  }
+
+  static void navigateAfterSuccess({required String screenName}) {
+    UtilsConfig.showSnackBarMessage(
+      message: AppStrings.successAccount,
+      status: true,
+    );
+    sl<AppRouter>().goToAndRemove(screenName: screenName);
+  }
+
+  static void showOnException(FirebaseException exception) {
+    final message = exception.message.toString();
+    UtilsConfig.showSnackBarMessage(
+      message: message,
+      status: false,
     );
   }
 }

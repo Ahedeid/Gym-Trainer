@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
-import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
-import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/helper.dart';
@@ -14,8 +12,6 @@ class SignUpProvider extends ChangeNotifier {
   UserModel? user;
 
   final GlobalKey<FormState> signUpFormKey = GlobalKey<FormState>();
-  var fbAuth = sl<FirebaseAuth>();
-  var fbStore = sl<FirebaseFirestore>();
 
   bool visibility = true;
 
@@ -38,12 +34,13 @@ class SignUpProvider extends ChangeNotifier {
     if (signUpFormKey.currentState!.validate()) {
       try {
         setLoading(true);
-        final credential = await fbAuth.createUserWithEmailAndPassword(
+        final credential =
+            await sl<FirebaseAuth>().createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
         final uid = credential.user!.uid;
-        await fbStore
+        await sl<FirebaseFirestore>()
             .collection(FirebaseConstant.usersCollection)
             .doc(uid)
             .set({
@@ -51,24 +48,22 @@ class SignUpProvider extends ChangeNotifier {
           FirebaseConstant.email: email,
           FirebaseConstant.name: name.toLowerCase(),
           FirebaseConstant.phone: phone,
+          FirebaseConstant.image: '',
+          FirebaseConstant.goal: 'goal',
         });
         await credential.user!.updateDisplayName("${name.toLowerCase()}");
-        sl<SharedPrefController>().setLoggedIn();
-        UtilsConfig.showSnackBarMessage(
-          message: 'Account was created Successfully!!',
-          status: true,
-        );
-        sl<AppRouter>()
-            .goToAndRemove(screenName: ScreenName.loginScreen, object: 0);
+        UtilsConfig.navigateAfterSuccess(screenName: ScreenName.loginScreen);
+//        sl<SharedPrefController>().setLoggedIn();
+  //      UtilsConfig.showSnackBarMessage(
+   //       message: 'Account was created Successfully!!',
+    //      status: true,
+     //   );
+      //  sl<AppRouter>()
+       //     .goToAndRemove(screenName: ScreenName.loginScreen, object: 0);
       } on FirebaseException catch (e) {
         setLoading(false);
-        final message = e.message.toString();
-        UtilsConfig.showSnackBarMessage(
-          message: message,
-          status: false,
-        );
+        UtilsConfig.showOnException(e);
       }
     }
   }
 }
-//  service locator , add a instance

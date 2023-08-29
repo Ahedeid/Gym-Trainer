@@ -111,19 +111,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 30),
-                    Consumer<LoginProvider>(
-                      builder: (context, value, child) => CustomButtonWidget(
-                        isLoading: value.isLoading,
-                        title: AppStrings.logIn,
-                        fontWeight: FontWeight.w700,
-                        fontSize: FontSize.s20,
-                        onPressed: () {
-                          value.login(
-                            email: emailController.text,
-                            password: passwordController.text,
-                          );
-                        },
-                      ),
+                    CustomButtonWidget(
+                      isLoading: value.isLoading,
+                      title: AppStrings.logIn,
+                      fontWeight: FontWeight.w700,
+                      fontSize: FontSize.s20,
+                      onPressed: () {
+                        value.login(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+                      },
                     ),
                     SizedBox(height: 24),
                     Align(

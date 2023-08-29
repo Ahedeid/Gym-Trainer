@@ -2,7 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
 import 'package:gym_app/logic/firebase_constant.dart';
+
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -17,7 +19,6 @@ class LoginProvider extends ChangeNotifier {
   UserModel? user;
 
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
-  var fbAuth = sl<FirebaseAuth>();
 
   bool visibility = true;
 
@@ -31,47 +32,18 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Future<void> login({
-  //   required String email,
-  //   required String password,
-  // }) async {
-  //   if (loginFormKey.currentState!.validate()) {
-  //     try {
-  //       setLoading(true);
-  //       final credential = await fbAuth.signInWithEmailAndPassword(
-  //           email: email, password: password);
-  //       sl<SharedPrefController>().setLoggedIn();
-  //       final uid = credential.user!.uid;
-  //       print(uid);
-  //       sl<SharedPrefController>().saveUser(credential.user);
-  //       sl<SharedPrefController>().setUId(uid);
-  //       sl<ProfileProvider>().fetchUserData();
-  //
-  //       sl<AppRouter>()
-  //           .goToAndRemove(screenName: ScreenName.BNBUser, object: 0);
-  //       setLoading(false);
-  //     } on FirebaseException catch (e) {
-  //       setLoading(false);
-  //       final message = e.message.toString();
-  //       UtilsConfig.showSnackBarMessage(
-  //         message: message,
-  //         status: false,
-  //       );
-  //     }
-  //   }
-  // }
   Future<void> login({
     required String email,
     required String password,
   }) async {
     try {
       setLoading(true);
-      final credential = await fbAuth.signInWithEmailAndPassword(
+      final credential = await sl<FirebaseAuth>().signInWithEmailAndPassword(
         email: email,
         password: password,
       );
 
-      // Fetch user data from Firestore and update it
+      // Fetch user data from FireStore and update it
       final userDoc = await sl<FirebaseFirestore>()
           .collection(FirebaseConstant.usersCollection)
           .doc(credential.user!.uid)
@@ -81,14 +53,9 @@ class LoginProvider extends ChangeNotifier {
 
       sl<SharedPrefController>().setLoggedIn();
       sl<SharedPrefController>().saveUserData(userModel);
-
-      sl<AppRouter>().goToAndRemove(screenName: ScreenName.BNBUser, object: 0);
+      UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
     } on FirebaseException catch (e) {
-      final message = e.message.toString();
-      UtilsConfig.showSnackBarMessage(
-        message: message,
-        status: false,
-      );
+      UtilsConfig.showOnException(e);
     } finally {
       setLoading(false);
     }
@@ -109,31 +76,24 @@ class LoginProvider extends ChangeNotifier {
     if (reSetPasswordFormKey.currentState!.validate()) {
       try {
         setLoadingReSet(true);
-        await fbAuth.sendPasswordResetEmail(email: email);
-
+        await sl<FirebaseAuth>().sendPasswordResetEmail(email: email);
         sl<AppRouter>().goToAndRemove(screenName: ScreenName.checkEmailScreen);
         setLoadingReSet(false);
       } on FirebaseException catch (e) {
         setLoadingReSet(false);
-        final message = e.message.toString();
-        UtilsConfig.showSnackBarMessage(
-          message: message,
-          status: false,
-        );
+        UtilsConfig.showOnException(e);
       }
     }
   }
 
 //------------------------------ SignIn With Google ----------------------------
-
-  setLoadingSignInWithGoogle(bool value) {
+  setLoadingGoogle(bool value) {
     isLoadingSignInWithGoogle = value;
     notifyListeners();
   }
-
   Future<void> signInWithGoogle() async {
-    // setLoadingSignInWithGoogle(true);
     try {
+      setLoadingGoogle(true);
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
@@ -141,20 +101,51 @@ class LoginProvider extends ChangeNotifier {
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-      sl<AppRouter>().goToAndRemove(screenName: ScreenName.BNBUser);
       final credentialSign =
           await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Fetch user data from FireStore and update it
+      await sl<FirebaseFirestore>()
+          .collection(FirebaseConstant.usersCollection)
+          .doc(credentialSign.user!.uid)
+          .set({
+        FirebaseConstant.uid: credentialSign.user!.uid,
+        FirebaseConstant.email: credentialSign.user!.email,
+        FirebaseConstant.name: credentialSign.user!.displayName!.toLowerCase(),
+        FirebaseConstant.phone: credentialSign.user!.phoneNumber,
+        FirebaseConstant.image: credentialSign.user!.photoURL,
+        FirebaseConstant.goal: 'goal',
+      });
+      final userDoc = await sl<FirebaseFirestore>()
+          .collection(FirebaseConstant.usersCollection)
+          .doc(credentialSign.user!.uid)
+          .get();
+      final userModel = UserModel.fromDocumentSnapshot(userDoc);
       sl<SharedPrefController>().setLoggedIn();
-      final uid = credentialSign.user!.uid;
+      sl<SharedPrefController>().saveUserData(userModel);
+      UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
+   //   sl<SharedPrefController>().setLoggedIn();
+     // final uid = credentialSign.user!.uid;
       // sl<SharedPrefController>().setUId(uid);
       // setLoadingSignInWithGoogle(false);
     } on FirebaseException catch (e) {
-      // setLoadingSignInWithGoogle(false);
-      final message = e.message.toString();
-      UtilsConfig.showSnackBarMessage(
-        message: message,
-        status: false,
-      );
+      UtilsConfig.showOnException(e);
+    }finally{
+      setLoadingGoogle(false);
     }
   }
 }
+
+/*
+   if(await isItems(credentialSign)){
+        print('false');
+      }else{
+        print('true');
+      }
+
+        Future<bool> isItems(UserCredential userCredential) async {
+    final collectionReference =
+    sl<FirebaseFirestore>().collection("users").doc(userCredential.user!.uid).snapshots();
+    return collectionReference.isEmpty;
+  }
+ */
