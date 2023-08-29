@@ -53,6 +53,13 @@ class SignUpProvider extends ChangeNotifier {
         });
         await credential.user!.updateDisplayName("${name.toLowerCase()}");
         UtilsConfig.navigateAfterSuccess(screenName: ScreenName.loginScreen);
+//        sl<SharedPrefController>().setLoggedIn();
+  //      UtilsConfig.showSnackBarMessage(
+   //       message: 'Account was created Successfully!!',
+    //      status: true,
+     //   );
+      //  sl<AppRouter>()
+       //     .goToAndRemove(screenName: ScreenName.loginScreen, object: 0);
       } on FirebaseException catch (e) {
         setLoading(false);
         UtilsConfig.showOnException(e);

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
+import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
 import 'package:gym_app/feature/home_screen/models/goal_model.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
@@ -56,6 +57,17 @@ class HomeProvider extends ChangeNotifier {
       return goalCategoryList.contains(element.id);
     }).toList();
 
+    return resultList;
+  }
+
+  List<ExerciseModel> filterExerciseByGoal(
+      List<DocumentSnapshot> exerciseDocs, id) {
+    final exerciseList =
+        exerciseDocs.map((e) => ExerciseModel.fromDocumentSnapshot(e)).toList();
+
+    final resultList = exerciseList.where((element) {
+      return id == element.goalId;
+    }).toList();
     return resultList;
   }
 
