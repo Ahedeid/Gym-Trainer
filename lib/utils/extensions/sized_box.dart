@@ -26,10 +26,6 @@ extension FlutterSizes on num {
     return toDouble();
   }
 
-  double get sp {
-    return toDouble();
-  }
-
   double get width {
     return screenDeviceWidth * (toDouble() / designWidth);
   }
