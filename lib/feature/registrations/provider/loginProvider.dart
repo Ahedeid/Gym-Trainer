@@ -90,9 +90,7 @@ class LoginProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  String? erorrr = "Why";
   Future<void> signInWithGoogle() async {
-    print("clicked");
     try {
       setLoadingGoogle(true);
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -121,13 +119,12 @@ class LoginProvider extends ChangeNotifier {
           .collection(FirebaseConstant.usersCollection)
           .doc(credentialSign.user!.uid)
           .get();
-      print("This loing");
       final userModel = UserModel.fromDocumentSnapshot(userDoc);
       UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
       sl<SharedPrefController>().setLoggedIn();
       sl<SharedPrefController>().saveUserData(userModel);
+      UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
     } on FirebaseException catch (e) {
-      notifyListeners();
       UtilsConfig.showOnException(e);
     } finally {
       setLoadingGoogle(false);
