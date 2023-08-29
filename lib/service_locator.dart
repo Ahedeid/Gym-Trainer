@@ -4,6 +4,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
+import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
+import 'package:gym_app/feature/registrations/provider/signUpProvider.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/utils/app_config.dart';
@@ -32,7 +34,9 @@ Future init() async {
   sl.registerLazySingleton<FirebaseStorage>(() => firebaseStorage);
   sl.registerLazySingleton<GoogleSignIn>(() => GoogleSignIn());
 
-  // --------------------- Firebase --------------------------------------------
+  // --------------------- Provider --------------------------------------------
   sl.registerLazySingleton<ProfileProvider>(() => ProfileProvider());
   sl.registerLazySingleton<HomeProvider>(() => HomeProvider());
+  sl.registerLazySingleton<LoginProvider>(() => LoginProvider());
+  sl.registerLazySingleton<SignUpProvider>(() => SignUpProvider());
 }

@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'package:gym_app/logic/firebase_constant.dart';
-
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -91,6 +89,7 @@ class LoginProvider extends ChangeNotifier {
     isLoadingSignInWithGoogle = value;
     notifyListeners();
   }
+
   Future<void> signInWithGoogle() async {
     try {
       setLoadingGoogle(true);
@@ -114,7 +113,7 @@ class LoginProvider extends ChangeNotifier {
         FirebaseConstant.name: credentialSign.user!.displayName!.toLowerCase(),
         FirebaseConstant.phone: credentialSign.user!.phoneNumber,
         FirebaseConstant.image: credentialSign.user!.photoURL,
-        FirebaseConstant.goal: 'goal',
+        FirebaseConstant.goal: '',
       });
       final userDoc = await sl<FirebaseFirestore>()
           .collection(FirebaseConstant.usersCollection)
@@ -124,13 +123,13 @@ class LoginProvider extends ChangeNotifier {
       sl<SharedPrefController>().setLoggedIn();
       sl<SharedPrefController>().saveUserData(userModel);
       UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
-   //   sl<SharedPrefController>().setLoggedIn();
-     // final uid = credentialSign.user!.uid;
+      //   sl<SharedPrefController>().setLoggedIn();
+      // final uid = credentialSign.user!.uid;
       // sl<SharedPrefController>().setUId(uid);
       // setLoadingSignInWithGoogle(false);
     } on FirebaseException catch (e) {
       UtilsConfig.showOnException(e);
-    }finally{
+    } finally {
       setLoadingGoogle(false);
     }
   }
