@@ -217,7 +217,25 @@ class _HomeScreenState extends State<HomeScreen> {
                 trailing: AppStrings.seeAll,
               ),
               10.addVerticalSpace,
-              HorizontalExerciseList(),
+              StreamBuilder<QuerySnapshot>(
+                stream: sl<FirebaseFirestore>()
+                    .collection(FirebaseConstant.additionalExerciseCollection)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Text('Error: ${snapshot.error}');
+                  }
+
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  }
+                  final categoryDocs = snapshot.data!.docs;
+                  final resultList = homeProvider.filterExerciseByGoal(
+                      categoryDocs, homeProvider.goalModel?.id);
+
+                  return HorizontalExerciseList(resultList: resultList);
+                },
+              ),
             ],
           );
         },
