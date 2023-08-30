@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
-import 'package:gym_app/logic/localData/shared_pref.dart';
-import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/feature/workOut/providers/training_provider.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
+import 'package:provider/provider.dart';
 
 class TrainingLevelWidget extends StatelessWidget {
   final Level? level;
@@ -13,23 +13,24 @@ class TrainingLevelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: sl<SharedPrefController>().getUserData().level == level?.index
-            ? Colors.black // Highlight selected goal
-            : ColorManager.greyButton,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          "${level?.name}",
-          style: TextStyle(
-              color:
-                  sl<SharedPrefController>().getUserData().level == level?.index
-                      ? ColorManager.white
-                      : ColorManager.black,
-              fontSize: 14),
+    return Consumer<TrainingProvider>(
+      builder: (context, trainingProvider, child) => Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: trainingProvider.selectedLevel == level?.index.toString()
+              ? Colors.black // Highlight selected goal
+              : ColorManager.greyButton,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            "${level?.name}",
+            style: TextStyle(
+                color: trainingProvider.selectedLevel == level?.index.toString()
+                    ? ColorManager.white
+                    : ColorManager.black,
+                fontSize: 14),
+          ),
         ),
       ),
     );

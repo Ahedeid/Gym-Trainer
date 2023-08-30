@@ -52,7 +52,7 @@ class SharedPrefController {
       image: '',
       phone: '',
       selectedGoal: '',
-      level: 0,
+      level: "",
     );
   }
 }
