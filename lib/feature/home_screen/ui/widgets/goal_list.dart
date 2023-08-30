@@ -31,7 +31,7 @@ class GoalList extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             sl<HomeProvider>().updateUserGoal(goal.id);
-            sl<HomeProvider>().setSelectedGoal(goal.id);
+            // sl<HomeProvider>().setSelectedGoal(goal.id);
           },
           child: GoalWidget(goal: goal),
         );
