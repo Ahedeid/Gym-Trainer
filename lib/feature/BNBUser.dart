@@ -3,7 +3,7 @@ import 'package:gym_app/feature/gym_family/ui/gym_family_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/our_shop/ui/our_shop_screen.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
-import 'package:gym_app/feature/workOut/ui/workout_screen.dart';
+import 'package:gym_app/feature/workOut/ui/training_screen.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
@@ -20,7 +20,7 @@ class BNBUser extends StatelessWidget {
     List<Widget> _buildScreens() {
       return [
         const HomeScreen(),
-        const WorkOurScreen(),
+        const TrainingScreen(),
         const GymFamilyScreen(),
         const OurShopScreen(),
         const ProfileScreen(),
