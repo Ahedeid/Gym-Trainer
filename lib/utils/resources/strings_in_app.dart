@@ -116,6 +116,7 @@ class AppStrings {
   static const selectGoal = "Select your Goal";
   static const category = "Category";
   static const popularExercise = "Popular Exercise";
+  static const popularTraining = "Popular Training";
   static const additionalExercise = "Additional Exercise";
   static const oClock = "|";
 
