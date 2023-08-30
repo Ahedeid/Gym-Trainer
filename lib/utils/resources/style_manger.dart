@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 
-
 class StyleManger {
   static TextStyle headline1({
     Color color = ColorManager.primaryTextColor,
@@ -62,4 +61,15 @@ class StyleManger {
         fontWeight: FontWeight.w400,
         color: color,
       );
+
+  static TextStyle headLineBar({
+    Color color = ColorManager.black,
+    double fontSize = FontSize.s26,
+  }) =>
+      TextStyle(
+          fontFamily: "Bebas",
+          fontSize: fontSize,
+          color: color,
+          fontWeight: FontWeight.w400,
+          letterSpacing: 1.5);
 }

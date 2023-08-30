@@ -6,6 +6,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
 import 'package:gym_app/feature/registrations/provider/signUpProvider.dart';
+import 'package:gym_app/feature/workOut/providers/training_provider.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/utils/app_config.dart';
@@ -39,4 +40,5 @@ Future init() async {
   sl.registerLazySingleton<HomeProvider>(() => HomeProvider());
   sl.registerLazySingleton<LoginProvider>(() => LoginProvider());
   sl.registerLazySingleton<SignUpProvider>(() => SignUpProvider());
+  sl.registerLazySingleton<TrainingProvider>(() => TrainingProvider());
 }

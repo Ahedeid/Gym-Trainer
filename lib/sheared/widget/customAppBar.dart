@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
@@ -6,7 +7,7 @@ import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({
+  CustomAppBar({
     super.key,
     required this.title,
     this.iconAction,
@@ -22,27 +23,48 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // backgroundColor: color,
+      // bottom: TabBar(
+      //   isScrollable: true,
+      //   dividerColor: Colors.transparent,
+      //   indicatorColor: Colors.transparent,
+      //   labelColor: Colors.white,
+      //   unselectedLabelColor: Colors.black,
+      //   tabs: Level.values.map((level) {
+      //     return Tab(
+      //       child: Container(
+      //         decoration: BoxDecoration(
+      //           borderRadius: BorderRadius.circular(5),
+      //           color: ColorManager.greyButton,
+      //         ),
+      //         child: Padding(
+      //           padding: const EdgeInsets.all(8.0),
+      //           child: Text(
+      //             "${level.name}",
+      //           ),
+      //         ),
+      //       ),
+      //     );
+      //   }).toList(),
+      // ),
       elevation: 0,
       centerTitle: true,
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // 10.addVerticalSpace,
-          Text(title.toUpperCase(), style: StyleManger.headline1()),
+          Text(title.toUpperCase(), style: StyleManger.headLineBar()),
         ],
       ),
       actions: [
         GestureDetector(
           onTap: onTap,
           child: Container(
-            width: 42,
-            height: 42,
+            width: 42.w,
+            height: 42.h,
             decoration: BoxDecoration(
                 color: ColorManager.white,
                 borderRadius: BorderRadius.circular(8)),
             child: CustomSvgAssets(
-              path: AppIcons.message,
+              path: AppIcons.filter,
               color: Colors.black,
             ),
           ),
