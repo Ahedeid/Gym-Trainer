@@ -6,37 +6,47 @@ import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/service_locator.dart';
 
 class TrainingProvider extends ChangeNotifier {
-  final UserModel _user;
-  String? _selectedLevel;
+  final UserModel user;
 
-  TrainingProvider() : _user = sl<SharedPrefController>().getUserData() {
-    _selectedLevel = _user.level.toString();
-    updateUserLevel(_selectedLevel!); // Initialize the selectedLevel
-  }
+  // var selectedLevel = Level.values[0];
+  String? selectedLevel;
 
-  String? get selectedLevel => _selectedLevel;
-
+  // Level? defaultLevel;
   void setSelectedLevel(String levelIndex) {
-    _selectedLevel = levelIndex;
+    selectedLevel = levelIndex;
     notifyListeners();
   }
 
+  TrainingProvider() : user = sl<SharedPrefController>().getUserData() {
+    selectedLevel = user.level.toString();
+    // updateUserLevel(selectedLevel!);
+  }
+
   Future<void> updateUserLevel(String level) async {
+    print("update");
     try {
-      final userDocRef = FirebaseFirestore.instance
+      // Update the 'goal' field in the user's document
+      await sl<FirebaseFirestore>()
           .collection(FirebaseConstant.usersCollection)
-          .doc(_user.uid);
-
-      // Update the 'level' field in the user's document in Firestore
-      await userDocRef.update({FirebaseConstant.level: level});
-
-      // Update the local user model and selected level
-      final updatedUser = _user.copyWithLevel(level: level);
-      sl<SharedPrefController>().saveUserData(updatedUser);
+          .doc(sl<SharedPrefController>().getUserData().uid)
+          .update({FirebaseConstant.level: level});
+      // If you also want to update the local user model, you can do that here
+      UserModel currentUser = sl<SharedPrefController>().getUserData();
       setSelectedLevel(level);
+      currentUser = currentUser.copyWithLevel(level: level.toString());
+      sl<SharedPrefController>().saveUserData(currentUser);
       notifyListeners();
     } catch (e) {
-      print('Error updating user level: $e');
+      print('Error updating user goal: $e');
     }
   }
+
+// Future getGoalData(newGoalId) async {
+//   DocumentSnapshot d = await sl<FirebaseFirestore>()
+//       .collection(FirebaseConstant.goalsCollection)
+//       .doc(newGoalId)
+//       .get();
+//   goalModel = GoalModel.fromDocumentSnapshot(d);
+//   notifyListeners();
+// }
 }
