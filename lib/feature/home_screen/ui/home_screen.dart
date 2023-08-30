@@ -16,6 +16,7 @@ import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
+import 'package:gym_app/utils/extensions/string_extension.dart';
 import 'package:gym_app/utils/extensions/time_of_day.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
@@ -26,7 +27,6 @@ import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:provider/provider.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -35,32 +35,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List iconsGrid = [
-    AppIcons.today,
-    AppIcons.scan,
-    AppIcons.myWorkOut,
-    AppIcons.classes,
-  ];
-  List titleGrid = [
-    AppStrings.seaToday,
-    AppStrings.dailyAttendance,
-    AppStrings.myWorkouts,
-    AppStrings.classes,
-  ];
-  List subTitleGrid = [
-    AppStrings.shouldersLegs,
-    AppStrings.daysStraight,
-    AppStrings.daysCompleted,
-    AppStrings.activeClasses,
-  ];
-
-  List titleButton = [
-    AppStrings.letsDoIt,
-    AppStrings.attendNow,
-    AppStrings.Continue,
-    AppStrings.discover,
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -140,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     },
                   )),
-              const SizedBox(height: 30),
+              20.addVerticalSpace,
               HeaderSectionWidget(
                 onTap: () {},
                 title: AppStrings.category,
@@ -184,11 +158,14 @@ class _HomeScreenState extends State<HomeScreen> {
                             },
                           ),
                         ),
-              Divider(),
+              Divider(
+                height: 1,
+              ),
               10.addVerticalSpace,
               HeaderSectionWidget(
                 onTap: () {
-                  sl<AppRouter>().goTo(screenName: ScreenName.allCategoryScreen);
+                  sl<AppRouter>()
+                      .goTo(screenName: ScreenName.allCategoryScreen);
                 },
                 title: AppStrings.popularExercise,
                 trailing: AppStrings.seeAll,
@@ -288,7 +265,8 @@ class AppBarBody extends StatelessWidget {
                     style: StyleManger.headline4()
                         .copyWith(fontSize: 12.sp, color: ColorManager.white)),
                 Text(
-                  "${sl<SharedPrefController>().getUserData().name} !",
+                  "${sl<SharedPrefController>().getUserData().name.split(" ")[0]}"
+                      .toCapitalized(),
                   style: TextStyle(
                       fontSize: FontSize.s20,
                       fontWeight: FontWeight.w500,
