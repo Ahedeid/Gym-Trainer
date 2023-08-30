@@ -2,9 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
+import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
+import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 
 class VerticalExerciseWidget extends StatelessWidget {
@@ -52,10 +54,11 @@ class VerticalExerciseWidget extends StatelessWidget {
                         color: ColorManager.white,
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: Icon(
-                        Icons.favorite,
-                        size: 15.sp,
-                        color: Colors.redAccent,
+                      child: CustomSvgAssets(
+                        width: 16.w,
+                        height: 16.h,
+                        color: ColorManager.hearColor,
+                        path: AppIcons.like,
                       ),
                     ),
                   ),
@@ -105,6 +108,12 @@ class VerticalExerciseWidget extends StatelessWidget {
               ),
             ),
             7.addHorizontalSpace,
+            CustomSvgAssets(
+              width: 16.w,
+              height: 16.h,
+              color: ColorManager.iconColor,
+              path: AppIcons.time,
+            ),
             Text(
               "${AppStrings.oClock} ${exerciseModel?.time}",
               style: const TextStyle(
