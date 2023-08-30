@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
 import 'package:gym_app/feature/home_screen/models/goal_model.dart';
+import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
-import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/service_locator.dart';
 
 class HomeProvider extends ChangeNotifier {
