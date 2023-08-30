@@ -2,9 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
+import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
+import 'package:gym_app/utils/resources/icons_constant.dart';
 
 class HorizontalExerciseWidget extends StatelessWidget {
   final ExerciseModel? exerciseModel;
@@ -56,10 +58,12 @@ class HorizontalExerciseWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
-                        Icons.crisis_alert_sharp,
-                        size: 14.sp,
+                      CustomSvgAssets(
+                        // size: 14.sp,
+                        width: 14.w,
+                        height: 14.h,
                         color: ColorManager.iconColor,
+                        path: AppIcons.kal,
                       ),
                       7.addHorizontalSpace,
                       Text(
@@ -75,10 +79,11 @@ class HorizontalExerciseWidget extends StatelessWidget {
                   7.addHorizontalSpace,
                   Row(
                     children: [
-                      Icon(
-                        Icons.access_time,
-                        size: 14.sp,
+                      CustomSvgAssets(
+                        width: 16.w,
+                        height: 16.h,
                         color: ColorManager.iconColor,
+                        path: AppIcons.time,
                       ),
                       7.addHorizontalSpace,
                       Text(
