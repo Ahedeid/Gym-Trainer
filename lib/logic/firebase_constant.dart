@@ -12,4 +12,5 @@ class FirebaseConstant {
   static const phone = 'phone';
   static const goal = 'goal';
   static const image = 'image';
+  static const level = 'level';
 }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/BNBUser.dart';
 import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
+import 'package:gym_app/feature/home_screen/ui/all_categorys_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/class_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/details_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
@@ -40,8 +41,12 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => MultiProvider(
             providers: [
-              ChangeNotifierProvider(  create: (context) => SignUpProvider(),),
-              ChangeNotifierProvider(  create: (context) => LoginProvider(),),
+              ChangeNotifierProvider(
+                create: (context) => SignUpProvider(),
+              ),
+              ChangeNotifierProvider(
+                create: (context) => LoginProvider(),
+              ),
             ],
             child: const SignUpScreen(),
           ),
@@ -109,6 +114,12 @@ class RouteGenerator {
       case ScreenName.classDetailsScreen:
         return MaterialPageRoute(
           builder: (_) => const ClassDetailsScreen(),
+        );
+
+      // ------------------------------ AllCategoryScreen -------------------------------
+      case ScreenName.allCategoryScreen:
+        return MaterialPageRoute(
+          builder: (_) => const AllCategoryScreen(),
         );
 
       default:
