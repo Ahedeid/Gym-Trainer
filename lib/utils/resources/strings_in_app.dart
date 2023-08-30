@@ -117,7 +117,7 @@ class AppStrings {
   static const category = "Category";
   static const popularExercise = "Popular Exercise";
   static const additionalExercise = "Additional Exercise";
-  static const oClock = "| ⌛";
+  static const oClock = "|";
 
   static const orLoginWith = "Or Login with";
   static const training = "Training";
