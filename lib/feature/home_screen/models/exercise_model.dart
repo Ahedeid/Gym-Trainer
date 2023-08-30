@@ -37,7 +37,7 @@ class ExerciseModel {
       isLocked: data?['isLock'] ?? false,
       categoryId: data?['categorie_id'],
       image: data?['image'],
-      level: _parseLevel(data?['level']),
+      level: parseLevel(data?['level']),
       time: data?['time'],
       goalId: data?['goal_id'],
       kal: data?['kal'],
@@ -50,25 +50,25 @@ class ExerciseModel {
 
   String get levelDisplay {
     switch (level) {
-      case Level.beginner:
+      case Level.Beginner:
         return 'Beginner';
-      case Level.medium:
-        return 'Medium';
-      case Level.hard:
-        return 'Hard';
+      case Level.Intermediate:
+        return 'Intermediate';
+      case Level.Advanced:
+        return 'Advanced';
       default:
         return 'Unknown';
     }
   }
 
-  static Level? _parseLevel(String? levelString) {
+  static Level? parseLevel(String? levelString) {
     switch (levelString) {
       case '0':
-        return Level.beginner;
+        return Level.Beginner;
       case '1':
-        return Level.medium;
+        return Level.Intermediate;
       case '2':
-        return Level.hard;
+        return Level.Advanced;
       default:
         return null;
     }
@@ -76,7 +76,7 @@ class ExerciseModel {
 }
 
 enum Level {
-  beginner,
-  medium,
-  hard,
+  Beginner,
+  Intermediate,
+  Advanced,
 }
