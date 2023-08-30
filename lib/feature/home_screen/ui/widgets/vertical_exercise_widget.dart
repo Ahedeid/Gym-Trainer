@@ -7,7 +7,8 @@ import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
-import 'package:gym_app/utils/resources/strings_in_app.dart';
+
+import '../../../../utils/resources/strings_in_app.dart';
 
 class VerticalExerciseWidget extends StatelessWidget {
   final ExerciseModel? exerciseModel;
@@ -100,7 +101,7 @@ class VerticalExerciseWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              "${exerciseModel!.levelDisplay.toString()}",
+              "${exerciseModel!.levelDisplay.toString()}   ${AppStrings.oClock} ",
               style: const TextStyle(
                 color: ColorManager.subTitleText,
                 fontWeight: FontWeight.normal,
@@ -115,7 +116,7 @@ class VerticalExerciseWidget extends StatelessWidget {
               path: AppIcons.time,
             ),
             Text(
-              "${AppStrings.oClock} ${exerciseModel?.time}",
+              "${exerciseModel?.time}",
               style: const TextStyle(
                 color: ColorManager.subTitleText,
                 fontWeight: FontWeight.normal,
