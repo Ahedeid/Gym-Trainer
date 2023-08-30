@@ -21,7 +21,6 @@ class TrainingLevelList extends StatelessWidget {
         return GestureDetector(
             onTap: () {
               sl<TrainingProvider>().updateUserLevel(level.index.toString());
-              sl<TrainingProvider>().setSelectedGoal(level.index.toString());
             },
             child: TrainingLevelWidget(
               level: level,

@@ -7,7 +7,7 @@ class UserModel {
   final String image;
   final String phone;
   final String selectedGoal;
-  final int level;
+  final String level;
 
   UserModel({
     required this.uid,
@@ -28,7 +28,7 @@ class UserModel {
       image: data['image'] ?? '',
       phone: data['phone'] ?? '',
       selectedGoal: data['goal'] ?? '',
-      level: data['level'] ?? 0,
+      level: data['level'] ?? "",
     );
   }
 
@@ -40,7 +40,7 @@ class UserModel {
       image: json['image'] ?? '',
       phone: json['phone'] ?? '',
       selectedGoal: json['goal'] ?? '',
-      level: json['level'] ?? 0,
+      level: json['level'] ?? "",
     );
   }
 

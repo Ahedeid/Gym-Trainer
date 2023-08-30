@@ -114,16 +114,16 @@ class LoginProvider extends ChangeNotifier {
         FirebaseConstant.phone: credentialSign.user!.phoneNumber,
         FirebaseConstant.image: credentialSign.user!.photoURL,
         FirebaseConstant.goal: 'DLlfkpNUXfPdjm8HIYmg',
-        FirebaseConstant.level: 0,
+        FirebaseConstant.level: 0.toString(),
       });
       final UserModel user = UserModel(
-          uid: credentialSign.user!.uid,
-          name: credentialSign.user!.displayName!,
-          email: credentialSign.user!.email!,
-          image: credentialSign.user!.photoURL?? '',
-          phone: credentialSign.user!.phoneNumber ?? '',
-          selectedGoal: '',
-          level: 0,
+        uid: credentialSign.user!.uid,
+        name: credentialSign.user!.displayName!,
+        email: credentialSign.user!.email!,
+        image: credentialSign.user!.photoURL ?? '',
+        phone: credentialSign.user!.phoneNumber ?? '',
+        selectedGoal: '',
+        level: 0.toString(),
       );
       UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
       sl<SharedPrefController>().setLoggedIn();
