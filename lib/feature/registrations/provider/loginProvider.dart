@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
-import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
@@ -110,19 +110,22 @@ class LoginProvider extends ChangeNotifier {
           .set({
         FirebaseConstant.uid: credentialSign.user!.uid,
         FirebaseConstant.email: credentialSign.user!.email,
-        FirebaseConstant.name: credentialSign.user!.displayName!.toLowerCase(),
+        FirebaseConstant.name: credentialSign.user!.displayName,
         FirebaseConstant.phone: credentialSign.user!.phoneNumber,
         FirebaseConstant.image: credentialSign.user!.photoURL,
         FirebaseConstant.goal: '',
       });
-      final userDoc = await sl<FirebaseFirestore>()
-          .collection(FirebaseConstant.usersCollection)
-          .doc(credentialSign.user!.uid)
-          .get();
-      final userModel = UserModel.fromDocumentSnapshot(userDoc);
+      final UserModel user = UserModel(
+          uid: credentialSign.user!.uid,
+          name: credentialSign.user!.displayName!,
+          email: credentialSign.user!.email!,
+          image: credentialSign.user!.photoURL?? '',
+          phone: credentialSign.user!.phoneNumber ?? '',
+          selectedGoal: '',
+      );
       UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
       sl<SharedPrefController>().setLoggedIn();
-      sl<SharedPrefController>().saveUserData(userModel);
+      sl<SharedPrefController>().saveUserData(user);
       UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
     } on FirebaseException catch (e) {
       UtilsConfig.showOnException(e);

@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:gym_app/logic/model/user_model.dart';
+import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 enum PrefKeys { user, token, loggedIn, showOnce }

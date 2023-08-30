@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
-import 'package:gym_app/logic/model/user_model.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/helper.dart';
