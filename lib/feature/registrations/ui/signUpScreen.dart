@@ -136,6 +136,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: 16),
                 CustomButtonWidget(
                   isLoading: login.isLoadingSignInWithGoogle,
+                  loadingColor: ColorManager.primary,
                   showIcon: true,
                   icon: AppIcons.google,
                   title: AppStrings.connectWithGoogle,

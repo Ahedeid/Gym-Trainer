@@ -50,6 +50,7 @@ class SignUpProvider extends ChangeNotifier {
           FirebaseConstant.phone: phone,
           FirebaseConstant.image: '',
           FirebaseConstant.goal: '',
+          FirebaseConstant.level: 0,
         });
         await credential.user!.updateDisplayName("${name}");
         UtilsConfig.navigateAfterSuccess(screenName: ScreenName.loginScreen);

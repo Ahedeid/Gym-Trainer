@@ -134,6 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     SizedBox(height: 16),
                     CustomButtonWidget(
                       isLoading: value.isLoadingSignInWithGoogle,
+                      loadingColor: ColorManager.primary,
                       showIcon: true,
                       icon: AppIcons.google,
                       title: AppStrings.connectWithGoogle,

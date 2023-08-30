@@ -11,10 +11,14 @@ import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list.
 import 'package:gym_app/feature/home_screen/ui/widgets/vertical_exercise_list.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
+import 'package:gym_app/routes/app_router.dart';
+import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/extensions/time_of_day.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
+import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/images_constant.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
@@ -22,8 +26,6 @@ import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:provider/provider.dart';
 
-import '../../../service_locator.dart';
-import '../../../utils/resources/font_size.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -185,7 +187,9 @@ class _HomeScreenState extends State<HomeScreen> {
               Divider(),
               10.addVerticalSpace,
               HeaderSectionWidget(
-                onTap: () {},
+                onTap: () {
+                  sl<AppRouter>().goTo(screenName: ScreenName.allCategoryScreen);
+                },
                 title: AppStrings.popularExercise,
                 trailing: AppStrings.seeAll,
               ),

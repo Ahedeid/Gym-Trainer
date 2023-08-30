@@ -7,6 +7,7 @@ class UserModel {
   final String image;
   final String phone;
   final String selectedGoal;
+  final int level;
 
   UserModel({
     required this.uid,
@@ -15,6 +16,7 @@ class UserModel {
     required this.image,
     required this.phone,
     required this.selectedGoal,
+    required this.level,
   });
 
   factory UserModel.fromDocumentSnapshot(DocumentSnapshot snapshot) {
@@ -26,6 +28,7 @@ class UserModel {
       image: data['image']??'',
       phone: data['phone']?? '',
       selectedGoal: data['goal']??'',
+      level: data['level']??0,
     );
   }
 
@@ -37,6 +40,7 @@ class UserModel {
       image: json['image']??'',
       phone: json['phone']??'',
       selectedGoal: json['goal']??'',
+      level: json['level']?? 0,
     );
   }
 
@@ -59,6 +63,7 @@ class UserModel {
       image: this.image,
       phone: this.phone,
       selectedGoal: selectedGoal ?? this.selectedGoal,
+      level: this.level,
     );
   }
 }
