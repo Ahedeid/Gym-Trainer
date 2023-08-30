@@ -25,10 +25,10 @@ class UserModel {
       uid: data['uid'],
       name: data['name'],
       email: data['email'],
-      image: data['image']??'',
-      phone: data['phone']?? '',
-      selectedGoal: data['goal']??'',
-      level: data['level']??0,
+      image: data['image'] ?? '',
+      phone: data['phone'] ?? '',
+      selectedGoal: data['goal'] ?? '',
+      level: data['level'] ?? 0,
     );
   }
 
@@ -37,10 +37,10 @@ class UserModel {
       uid: json['uid'],
       name: json['name'],
       email: json['email'],
-      image: json['image']??'',
-      phone: json['phone']??'',
-      selectedGoal: json['goal']??'',
-      level: json['level']?? 0,
+      image: json['image'] ?? '',
+      phone: json['phone'] ?? '',
+      selectedGoal: json['goal'] ?? '',
+      level: json['level'] ?? 0,
     );
   }
 
@@ -52,6 +52,7 @@ class UserModel {
       'image': image,
       'phone': phone,
       'goal': selectedGoal,
+      'level': level,
     };
   }
 
@@ -64,6 +65,18 @@ class UserModel {
       phone: this.phone,
       selectedGoal: selectedGoal ?? this.selectedGoal,
       level: this.level,
+    );
+  }
+
+  UserModel copyWithLevel({level}) {
+    return UserModel(
+      uid: this.uid,
+      name: this.name,
+      email: this.email,
+      image: this.image,
+      phone: this.phone,
+      selectedGoal: this.selectedGoal,
+      level: level ?? this.level,
     );
   }
 }
