@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' as utilsSize;
+import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/category_List_Widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/goal_list.dart';
@@ -39,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
   }
+   List<CategoryModel>? resultList;
 
   @override
   Widget build(BuildContext context) {
@@ -147,13 +149,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: CircularProgressIndicator());
                               }
                               final categoryDocs = snapshot.data!.docs;
-                              final resultList =
+                               resultList =
                                   homeProvider.filterCategoriesByGoal(
                                       categoryDocs,
                                       homeProvider.goalModel!.categorieList!);
 
                               return CategoryListWidget(
-                                categoryList: resultList,
+                                categoryList: resultList!,
                               );
                             },
                           ),
@@ -165,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
               HeaderSectionWidget(
                 onTap: () {
                   sl<AppRouter>()
-                      .goTo(screenName: ScreenName.allCategoryScreen);
+                      .goTo(screenName: ScreenName.allCategoryScreen, object: resultList);
                 },
                 title: AppStrings.popularExercise,
                 trailing: AppStrings.seeAll,
