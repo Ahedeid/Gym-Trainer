@@ -102,20 +102,23 @@ class LoginProvider extends ChangeNotifier {
       );
       final credentialSign =
           await FirebaseAuth.instance.signInWithCredential(credential);
-
-      // Fetch user data from FireStore and update it
-      await sl<FirebaseFirestore>()
-          .collection(FirebaseConstant.usersCollection)
-          .doc(credentialSign.user!.uid)
-          .set({
-        FirebaseConstant.uid: credentialSign.user!.uid,
-        FirebaseConstant.email: credentialSign.user!.email,
-        FirebaseConstant.name: credentialSign.user!.displayName,
-        FirebaseConstant.phone: credentialSign.user!.phoneNumber,
-        FirebaseConstant.image: credentialSign.user!.photoURL,
-        FirebaseConstant.goal: 'DLlfkpNUXfPdjm8HIYmg',
-        FirebaseConstant.level: 0.toString(),
-      });
+      if (await checkIfDocExists(credentialSign.user!.uid) == false) {
+        print('false');
+        // Fetch user data from FireStore and update it
+        await sl<FirebaseFirestore>()
+            .collection(FirebaseConstant.usersCollection)
+            .doc(credentialSign.user!.uid)
+            .set({
+          FirebaseConstant.uid: credentialSign.user!.uid,
+          FirebaseConstant.email: credentialSign.user!.email,
+          FirebaseConstant.name: credentialSign.user!.displayName,
+          FirebaseConstant.phone: credentialSign.user!.phoneNumber,
+          FirebaseConstant.image: credentialSign.user!.photoURL,
+          FirebaseConstant.goal: 'DLlfkpNUXfPdjm8HIYmg',
+          FirebaseConstant.level: 0.toString(),
+        });
+      }
+      print('done');
       final UserModel user = UserModel(
         uid: credentialSign.user!.uid,
         name: credentialSign.user!.displayName!,
@@ -135,18 +138,18 @@ class LoginProvider extends ChangeNotifier {
       setLoadingGoogle(false);
     }
   }
-}
 
-/*
-   if(await isItems(credentialSign)){
-        print('false');
-      }else{
-        print('true');
-      }
+  //----------------------------- Check If Document Exists ---------------------
 
-        Future<bool> isItems(UserCredential userCredential) async {
-    final collectionReference =
-    sl<FirebaseFirestore>().collection("users").doc(userCredential.user!.uid).snapshots();
-    return collectionReference.isEmpty;
+  Future<bool> checkIfDocExists(String docId) async {
+    try {
+      // Get reference to Firestore collection
+      var collectionRef = await FirebaseFirestore.instance.collection('users');
+
+      var doc = await collectionRef.doc(docId).get();
+      return doc.exists;
+    } catch (e) {
+      throw e;
+    }
   }
- */
+}
