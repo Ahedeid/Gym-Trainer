@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_app/feature/BNBUser.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
-import 'package:gym_app/feature/home_screen/ui/all_categorys_screen.dart';
+import 'package:gym_app/feature/home_screen/ui/categorys_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/class_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/details_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
@@ -127,7 +127,7 @@ class RouteGenerator {
       case ScreenName.allCategoryScreen:
         var categoryList = settings.arguments as List<CategoryModel>;
         return MaterialPageRoute(
-          builder: (_) =>  AllCategoryScreen(categoryList: categoryList,),
+          builder: (_) =>  CategoryScreen(categoryList: categoryList,),
         );
 
       default:

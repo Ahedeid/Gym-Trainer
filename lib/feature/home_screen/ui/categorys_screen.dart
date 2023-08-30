@@ -6,16 +6,16 @@ import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 
-class AllCategoryScreen extends StatefulWidget {
-  const AllCategoryScreen({super.key, required this.categoryList});
+class CategoryScreen extends StatefulWidget {
+  const CategoryScreen({super.key, required this.categoryList});
 
   final List<CategoryModel> categoryList;
 
   @override
-  State<AllCategoryScreen> createState() => _AllCategoryScreenState();
+  State<CategoryScreen> createState() => _CategoryScreenState();
 }
 
-class _AllCategoryScreenState extends State<AllCategoryScreen> {
+class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
