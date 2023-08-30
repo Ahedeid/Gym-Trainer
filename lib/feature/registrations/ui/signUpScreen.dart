@@ -103,6 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ? const Icon(
                             Icons.visibility_off,
                             size: 18,
+                            color: ColorManager.primary,
                           )
                         : const Icon(Icons.visibility, size: 18),
                   ),

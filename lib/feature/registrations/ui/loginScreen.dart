@@ -82,10 +82,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           value.isVisibility();
                         },
                         child: value.visibility
-                            ? const Icon(
-                                Icons.visibility_off,
-                                size: 18,
-                              )
+                            ? const Icon(Icons.visibility_off,
+                                size: 18, color: ColorManager.primary)
                             : const Icon(Icons.visibility, size: 18),
                       ),
                       validator: (val) => val!.validatePassword(),
