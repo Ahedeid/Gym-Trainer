@@ -118,7 +118,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
               20.addVerticalSpace,
               HeaderSectionWidget(
-                onTap: () {},
+                onTap: () {
+                  sl<AppRouter>()
+                      .goTo(screenName: ScreenName.allCategoryScreen, object: resultList);
+                },
                 title: AppStrings.category,
                 trailing: AppStrings.seeAll,
               ),
@@ -165,10 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               10.addVerticalSpace,
               HeaderSectionWidget(
-                onTap: () {
-                  sl<AppRouter>()
-                      .goTo(screenName: ScreenName.allCategoryScreen, object: resultList);
-                },
+                onTap: () {},
                 title: AppStrings.popularExercise,
                 trailing: AppStrings.seeAll,
               ),
