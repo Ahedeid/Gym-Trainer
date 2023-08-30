@@ -2,6 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
+import 'package:gym_app/routes/app_router.dart';
+import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -33,7 +36,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 16, bottom: 16),
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    sl<AppRouter>()
+                        .goTo(screenName: ScreenName.fullExercisesScreen);
+                  },
                   child: Column(
                     children: [
                       Container(

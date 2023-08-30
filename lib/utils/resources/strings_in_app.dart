@@ -126,4 +126,5 @@ class AppStrings {
   static const connectWithFacebook = "Connect With Facebook";
   static const createAccounts = "Create Accounts";
   static const successAccount = "Account was created Successfully!!";
+  static const fullExercise = "Full Exercise";
 }
