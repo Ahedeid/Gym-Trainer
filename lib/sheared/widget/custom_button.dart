@@ -3,21 +3,24 @@ import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 
 class CustomButtonWidget extends StatelessWidget {
-  const CustomButtonWidget(
-      {required this.title,
-      required this.onPressed,
-      super.key,
-      this.textColor = ColorManager.white,
-      this.isLoading = false,
-      this.showIcon = false,
-      this.fontSize = 16,
-      this.fontWeight,
-      this.style,
-      this.icon});
+  const CustomButtonWidget({
+    required this.title,
+    required this.onPressed,
+    super.key,
+    this.textColor = ColorManager.white,
+    this.isLoading = false,
+    this.showIcon = false,
+    this.fontSize = 16,
+    this.fontWeight,
+    this.style,
+    this.icon,
+    this.loadingColor = Colors.white,
+  });
 
   final void Function() onPressed;
   final String title;
   final Color textColor;
+  final Color loadingColor;
   final bool isLoading;
   final bool showIcon;
   final double fontSize;
@@ -31,11 +34,11 @@ class CustomButtonWidget extends StatelessWidget {
       style: style,
       onPressed: isLoading ? () {} : onPressed,
       child: isLoading == true
-          ? const Center(
+          ? Center(
               child: SizedBox(
                 height: 20,
                 width: 20,
-                child: CircularProgressIndicator(color: Colors.white),
+                child: CircularProgressIndicator(color: loadingColor),
               ),
             )
           : showIcon
