@@ -6,8 +6,10 @@ import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
+import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
+import 'package:gym_app/utils/resources/style_manger.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key, required this.categoryList});
@@ -66,10 +68,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 list.name,
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: StyleManger.bodyText(fontSize: FontSize.s14)
                               ),
                             ),
                           ],

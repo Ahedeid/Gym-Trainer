@@ -10,6 +10,7 @@ import 'package:gym_app/utils/resources/icons_constant.dart';
 
 class HorizontalExerciseWidget extends StatelessWidget {
   final ExerciseModel? exerciseModel;
+
   const HorizontalExerciseWidget({
     this.exerciseModel,
     super.key,
@@ -49,8 +50,8 @@ class HorizontalExerciseWidget extends StatelessWidget {
                 overflow: TextOverflow.visible,
                 style: TextStyle(
                   color: ColorManager.subTitleText,
-                  fontWeight: FontWeight.w800,
-                  fontSize: FontSize.s14.sp,
+                  fontWeight: FontWeight.w600,
+                  fontSize: FontSize.s14,
                 ),
               ),
               6.addVerticalSpace,
@@ -65,18 +66,18 @@ class HorizontalExerciseWidget extends StatelessWidget {
                         color: ColorManager.iconColor,
                         path: AppIcons.kal,
                       ),
-                      7.addHorizontalSpace,
+                      4.addHorizontalSpace,
                       Text(
                         "${exerciseModel!.kal} |",
                         style: TextStyle(
                           color: ColorManager.subTitleText,
                           fontWeight: FontWeight.normal,
-                          fontSize: FontSize.s14.sp,
+                          fontSize: FontSize.s12.sp,
                         ),
                       ),
                     ],
                   ),
-                  7.addHorizontalSpace,
+                  4.addHorizontalSpace,
                   Row(
                     children: [
                       CustomSvgAssets(
@@ -85,13 +86,13 @@ class HorizontalExerciseWidget extends StatelessWidget {
                         color: ColorManager.iconColor,
                         path: AppIcons.time,
                       ),
-                      7.addHorizontalSpace,
+                      4.addHorizontalSpace,
                       Text(
                         "${exerciseModel!.time}",
                         style: TextStyle(
                           color: ColorManager.subTitleText,
                           fontWeight: FontWeight.normal,
-                          fontSize: FontSize.s14.sp,
+                          fontSize: FontSize.s12.sp,
                         ),
                       ),
                     ],
@@ -104,7 +105,7 @@ class HorizontalExerciseWidget extends StatelessWidget {
                 style: TextStyle(
                   color: ColorManager.subTitleText,
                   fontWeight: FontWeight.normal,
-                  fontSize: FontSize.s14.sp,
+                  fontSize: FontSize.s12.sp,
                 ),
               ),
             ],
