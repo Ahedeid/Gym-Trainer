@@ -5,6 +5,8 @@ import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/utils/resources/font_size.dart';
+import 'package:gym_app/utils/resources/style_manger.dart';
 
 class CategoryListWidget extends StatelessWidget {
   final List<CategoryModel> categoryList;
@@ -46,10 +48,7 @@ class CategoryListWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   categoryData.name,
-                  style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
+                    style: StyleManger.bodyText(fontSize: FontSize.s14)
                 ),
               ),
             ],

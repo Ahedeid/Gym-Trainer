@@ -137,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: SizedBox.shrink(),
                         )
                       : SizedBox(
-                          height: 120.h,
+                          height: 100.h,
                           child: StreamBuilder<QuerySnapshot>(
                             stream: sl<FirebaseFirestore>()
                                 .collection(
@@ -167,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Divider(
                 height: 1,
               ),
-              10.addVerticalSpace,
+              16.addVerticalSpace,
               HeaderSectionWidget(
                 onTap: () {},
                 title: AppStrings.popularExercise,
@@ -200,7 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: AppStrings.additionalExercise,
                 trailing: AppStrings.seeAll,
               ),
-              10.addVerticalSpace,
+              16.addVerticalSpace,
               StreamBuilder<QuerySnapshot>(
                 stream: sl<FirebaseFirestore>()
                     .collection(FirebaseConstant.additionalExerciseCollection)
