@@ -31,17 +31,20 @@ class VerticalExerciseWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             child: Stack(
               children: [
-                CachedNetworkImage(
-                  fit: BoxFit.cover,
-                  height: 155.h,
-                  width: double.infinity,
-                  imageUrl: exerciseModel!.image!,
-                  progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      Center(
-                    child: CircularProgressIndicator(
-                        value: downloadProgress.progress),
+                Hero(
+                  tag: exerciseModel!.id!,
+                  child: CachedNetworkImage(
+                    fit: BoxFit.cover,
+                    height: 155.h,
+                    width: double.infinity,
+                    imageUrl: exerciseModel!.image!,
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) => Center(
+                      child: CircularProgressIndicator(
+                          value: downloadProgress.progress),
+                    ),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
                 Positioned(
                   right: 23,
@@ -116,7 +119,7 @@ class VerticalExerciseWidget extends StatelessWidget {
               path: AppIcons.time,
             ),
             Text(
-              "${exerciseModel?.time}",
+              "${exerciseModel?.time} min",
               style: const TextStyle(
                 color: ColorManager.subTitleText,
                 fontWeight: FontWeight.normal,
