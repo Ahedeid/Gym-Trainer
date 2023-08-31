@@ -95,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
               HeaderSectionWidget(
                 onTap: () {},
                 title: AppStrings.selectGoal,
-                trailing: AppStrings.seeAll,
+                trailing: "",
               ),
               13.addVerticalSpace,
               SizedBox(
