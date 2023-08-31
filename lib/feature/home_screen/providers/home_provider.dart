@@ -13,6 +13,7 @@ class HomeProvider extends ChangeNotifier {
   String? selectedGoal = sl<SharedPrefController>().getUserData().selectedGoal;
   List<String>? selectedGoalIdList = [];
   GoalModel? goalModel;
+  // double savedScrollPosition = 0.0;
 
   HomeProvider() : user = sl<SharedPrefController>().getUserData() {
     selectedGoal = user.selectedGoal;
@@ -96,6 +97,26 @@ class HomeProvider extends ChangeNotifier {
   //-------------------- Set the selected goal in the provider -----------------
   void setSelectedGoal(String goalId) {
     selectedGoal = goalId;
+    notifyListeners();
+  }
+
+  // double getSavedScrollPosition() {
+  //   double savedScrollPosition =
+  //       sl<SharedPrefController>().getPosition() ?? 0.0;
+  //   return savedScrollPosition;
+  // }
+
+  saveScrollPosition(double scrollPosition) {
+    print("this postion $scrollPosition");
+    sl<SharedPrefController>().setPosition(scrollPosition);
+
+    // this.savedScrollPosition = scrollPosition;
+  }
+
+  ExerciseModel? trainingExerciseModel;
+  setTrainingExercise(ExerciseModel? exerciseModel) {
+    print("${exerciseModel!.title}");
+    trainingExerciseModel = exerciseModel;
     notifyListeners();
   }
 }

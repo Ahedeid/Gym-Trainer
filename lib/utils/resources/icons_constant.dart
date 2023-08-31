@@ -32,8 +32,14 @@ class AppIcons {
   static String google = '$iconsPath/google.svg';
   static String filter = '$iconsPath/filter.svg';
   static String kal = '$iconsPath/cal.svg';
+  static String kal_m = '$iconsPath/cal_m.svg';
   static String time = '$iconsPath/time.svg';
+  static String time_m = '$iconsPath/time_m.svg';
   static String like = '$iconsPath/like.svg';
+  static String calendar = '$iconsPath/calendar.svg';
+  static String pause = '$iconsPath/pause.svg';
+  static String person_run = '$iconsPath/person_run.svg';
+  static String line = '$iconsPath/line.svg';
 
   // ----------------------- Bottom Nav Selected -------------------------------
   static String familySelected = '$iconsPathBottomNavSelected/family.svg';

@@ -14,4 +14,6 @@ class ScreenName {
   static const String classDetailsScreen = '/class_details_screen';
   static const String allCategoryScreen = '/all_category_screen';
   static const String fullExercisesScreen = '/full_exercises_screen';
+  static const String exercisesDetailsScreen = '/exercisesDetailsScreen';
+  static const String startTraining = '/StartTraining';
 }

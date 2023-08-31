@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
@@ -8,10 +9,10 @@ import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 
-class HorizontalExerciseWidget extends StatelessWidget {
+class HorizontalExerciseWidgetCountdown extends StatelessWidget {
   final ExerciseModel? exerciseModel;
 
-  const HorizontalExerciseWidget({
+  const HorizontalExerciseWidgetCountdown({
     this.exerciseModel,
     super.key,
   });
@@ -110,7 +111,38 @@ class HorizontalExerciseWidget extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
+        Center(
+          child: CircularCountDownTimer(
+            // controller: _countDownController,
+            duration: int.parse(exerciseModel!.time!) * 60,
+            isReverse: true,
+            height: 45,
+            width: 45,
+            strokeWidth: 4,
+            fillColor: ColorManager.black,
+            onComplete: () {
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: Text(
+                  'Finished',
+                ),
+                behavior: SnackBarBehavior.floating,
+                duration: const Duration(seconds: 2),
+                // backgroundColor: kblueColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+              ));
+            },
+            strokeCap: StrokeCap.round,
+            isReverseAnimation: true,
+            ringColor: ColorManager.greyButton,
+            autoStart: false,
+            textStyle: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+                fontSize: 8.sp),
+          ),
+        ),
       ],
     );
   }
