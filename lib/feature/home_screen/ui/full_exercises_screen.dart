@@ -4,6 +4,7 @@ import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/sheared/screens/EmptyDataScreen.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -34,7 +35,7 @@ class _FullExercisesScreenState extends State<FullExercisesScreen> {
           builder: (context, homeProvider, child) =>
               StreamBuilder<QuerySnapshot>(
             stream: sl<FirebaseFirestore>()
-                .collection(FirebaseConstant.additionalExerciseCollection)
+                .collection(FirebaseConstant.exercisesCollection)
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
@@ -50,7 +51,13 @@ class _FullExercisesScreenState extends State<FullExercisesScreen> {
                 goalId: homeProvider.goalModel!.id,
                 categoryId: widget.categoryId,
               );
-              return HorizontalExerciseList(resultList: resultList);
+              // ToDo Add loading state here
+              return resultList.isEmpty
+                  ? ToEmptyDataWidget(
+                      title: 'Exercises is Empty ',
+                      subTitle: 'Add Exercises Please',
+                    )
+                  : HorizontalExerciseList(resultList: resultList);
             },
           ),
         ),

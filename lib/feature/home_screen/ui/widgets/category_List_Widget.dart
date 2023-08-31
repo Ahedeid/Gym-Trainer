@@ -2,6 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
+import 'package:gym_app/routes/app_router.dart';
+import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 
 class CategoryListWidget extends StatelessWidget {
   final List<CategoryModel> categoryList;
@@ -20,7 +23,11 @@ class CategoryListWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final categoryData = categoryList[index];
         return GestureDetector(
-          onTap: () {},
+          onTap: () {
+            sl<AppRouter>().goTo(
+                screenName: ScreenName.fullExercisesScreen,
+                object: categoryList[index].id);
+          },
           child: Column(
             children: [
               Container(
