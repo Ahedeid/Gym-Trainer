@@ -4,6 +4,7 @@ import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/app_config.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
+import 'package:gym_app/utils/resources/images_constant.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -39,9 +40,9 @@ class _SplashScreenState extends State<SplashScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomSvgAssets(
-                  path: AppIcons.message,
-                  // color: ColorManager.white,
+                Image.asset(
+                  ImageApp.logo,
+                  color: Colors.white,
                   width: 200,
                   height: 200,
                 ),
