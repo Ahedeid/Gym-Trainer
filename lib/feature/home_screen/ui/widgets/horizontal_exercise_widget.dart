@@ -88,7 +88,7 @@ class HorizontalExerciseWidget extends StatelessWidget {
                       ),
                       4.addHorizontalSpace,
                       Text(
-                        "${exerciseModel!.time}",
+                        "${exerciseModel!.time} min",
                         style: TextStyle(
                           color: ColorManager.subTitleText,
                           fontWeight: FontWeight.normal,
