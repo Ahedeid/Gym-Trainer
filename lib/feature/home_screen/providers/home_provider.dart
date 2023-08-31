@@ -13,14 +13,14 @@ class HomeProvider extends ChangeNotifier {
   String? selectedGoal = sl<SharedPrefController>().getUserData().selectedGoal;
   List<String>? selectedGoalIdList = [];
   GoalModel? goalModel;
+
   HomeProvider() : user = sl<SharedPrefController>().getUserData() {
     selectedGoal = user.selectedGoal;
     updateUserGoal(user.selectedGoal);
   }
 
-  // Update the user's goal in Firestore
+  // ----------------- Update the user's goal in Firestore ---------------------
   Future<void> updateUserGoal(String newGoalId) async {
-    print("update");
     try {
       // Update the 'goal' field in the user's document
       await sl<FirebaseFirestore>()
@@ -48,6 +48,8 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+// ------------------------ Filter Categories By Goal --------------------------
+
   List<CategoryModel> filterCategoriesByGoal(
       List<DocumentSnapshot> categoryDocs, List<dynamic> goalCategoryList) {
     final categoryList =
@@ -60,6 +62,7 @@ class HomeProvider extends ChangeNotifier {
     return resultList;
   }
 
+// ----------------------------- Filter Exercise By Goal -----------------------
   List<ExerciseModel> filterExerciseByGoal(
       List<DocumentSnapshot> exerciseDocs, id) {
     final exerciseList =
@@ -71,7 +74,26 @@ class HomeProvider extends ChangeNotifier {
     return resultList;
   }
 
-  // Set the selected goal in the provider
+// ------------------------- Filter Exercise By Category -----------------------
+
+  List<ExerciseModel> filterExerciseByGoalAndCategory({
+    required List<DocumentSnapshot> exerciseDocs,
+    required String goalId,
+    required String categoryId,
+  }) {
+    final exerciseList =
+        exerciseDocs.map((e) => ExerciseModel.fromDocumentSnapshot(e)).toList();
+
+    final exerciseByGoalList = exerciseList.where((element) {
+      return goalId == element.goalId;
+    }).toList();
+    final exerciseByCategoryList = exerciseByGoalList.where((element) {
+      return categoryId == element.categoryId;
+    }).toList();
+    return exerciseByCategoryList;
+  }
+
+  //-------------------- Set the selected goal in the provider -----------------
   void setSelectedGoal(String goalId) {
     selectedGoal = goalId;
     notifyListeners();

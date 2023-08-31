@@ -37,8 +37,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 padding: const EdgeInsets.only(left: 16, bottom: 16),
                 child: GestureDetector(
                   onTap: () {
-                    sl<AppRouter>()
-                        .goTo(screenName: ScreenName.fullExercisesScreen);
+                    sl<AppRouter>().goTo(
+                        screenName: ScreenName.fullExercisesScreen,
+                        object: list.id);
                   },
                   child: Column(
                     children: [

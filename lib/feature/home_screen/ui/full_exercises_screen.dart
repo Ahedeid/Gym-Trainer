@@ -10,7 +10,9 @@ import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:provider/provider.dart';
 
 class FullExercisesScreen extends StatefulWidget {
-  const FullExercisesScreen({super.key});
+  FullExercisesScreen({required this.categoryId, super.key});
+
+  final String categoryId;
 
   @override
   State<FullExercisesScreen> createState() => _FullExercisesScreenState();
@@ -43,9 +45,11 @@ class _FullExercisesScreenState extends State<FullExercisesScreen> {
                 return Center(child: CircularProgressIndicator());
               }
               final categoryDocs = snapshot.data!.docs;
-              final resultList = homeProvider.filterExerciseByGoal(
-                  categoryDocs, homeProvider.goalModel?.id);
-
+              final resultList = homeProvider.filterExerciseByGoalAndCategory(
+                exerciseDocs: categoryDocs,
+                goalId: homeProvider.goalModel!.id,
+                categoryId: widget.categoryId,
+              );
               return HorizontalExerciseList(resultList: resultList);
             },
           ),

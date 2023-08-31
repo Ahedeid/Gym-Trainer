@@ -134,9 +134,11 @@ class RouteGenerator {
         );
       // ------------------------------ AllCategoryScreen -------------------------------
       case ScreenName.fullExercisesScreen:
-        // var categoryList = settings.arguments as List<CategoryModel>;
+        var categoryList = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (_) => FullExercisesScreen(),
+          builder: (_) => FullExercisesScreen(
+            categoryId: categoryList,
+          ),
         );
 
       default:
