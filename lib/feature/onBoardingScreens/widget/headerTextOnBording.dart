@@ -4,6 +4,7 @@ import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
+import 'package:gym_app/utils/resources/images_constant.dart';
 
 
 
@@ -21,11 +22,11 @@ class HeaderTxtOnBoarding extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CustomSvgAssets(
-          width: 36,
-          height: 34,
-          path: AppIcons.logo,
+        Image.asset(
+          ImageApp.logo,
           color: Colors.black,
+          width: 45,
+          height: 44,
         ),
         const SizedBox(width: 11),
         Text(

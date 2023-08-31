@@ -6,8 +6,6 @@ String iconsPathBottomNavUnSelected =
 
 //background_image_third
 class AppIcons {
-  static String logo = '$iconsPath/logo.svg';
-  static String logooo = '$iconsPath/svgexport-36.svg';
   static String vectorSplash = '$iconsPath/vector_splash.svg';
   static String lock = '$iconsPath/lock.svg';
   static String password = '$iconsPath/password.svg';

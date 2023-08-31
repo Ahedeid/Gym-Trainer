@@ -99,7 +99,7 @@ class _PageViewScreensState extends State<PageViewScreens> {
                   children: [
                     const SizedBox(height: 40),
                     HeaderTxtOnBoarding(data: _data, index: _index),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 24),
                     BodyTxtOnBoarding(data: _data, index: _index),
                     const SizedBox(height: 32),
                     CustomButtonOnBoarding(
