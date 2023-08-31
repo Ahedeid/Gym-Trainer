@@ -75,7 +75,7 @@ class CardClassScreen extends StatelessWidget {
                       height: 22,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: ColorManager.backGraoundGreen,
+                        color: ColorManager.backGroundGreen,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(

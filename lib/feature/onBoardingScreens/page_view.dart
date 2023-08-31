@@ -40,21 +40,21 @@ class _PageViewScreensState extends State<PageViewScreens> {
   }
 
   List<Color> listOfBackGroundColor = [
-    const Color(0xFFEFE8F9),
-    const Color(0xFFFCF4EA),
-    const Color(0xFFDEEBEB),
+    ColorManager.boardingBackGroundColor1,
+    ColorManager.boardingBackGroundColor2,
+    ColorManager.boardingBackGroundColor3,
   ];
 
   List<Color> listOfColor = [
     ColorManager.primary,
-    const Color(0xFFE29835),
+    ColorManager.buttonBoardingColor,
     ColorManager.secondary
   ];
 
   List<Color> listOfSColor = [
+    ColorManager.secondaryIndecator1,
+    ColorManager.secondaryIndecator2,
     ColorManager.secondPrimary,
-    const Color(0xFFF6E0C2),
-    const Color(0xFFBED9D7),
   ];
 
   @override
