@@ -40,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
   }
-   List<CategoryModel>? resultList;
+
+  List<CategoryModel>? resultList;
 
   @override
   Widget build(BuildContext context) {
@@ -119,8 +120,9 @@ class _HomeScreenState extends State<HomeScreen> {
               20.addVerticalSpace,
               HeaderSectionWidget(
                 onTap: () {
-                  sl<AppRouter>()
-                      .goTo(screenName: ScreenName.allCategoryScreen, object: resultList);
+                  sl<AppRouter>().goTo(
+                      screenName: ScreenName.allCategoryScreen,
+                      object: resultList);
                 },
                 title: AppStrings.category,
                 trailing: AppStrings.seeAll,
@@ -152,10 +154,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: CircularProgressIndicator());
                               }
                               final categoryDocs = snapshot.data!.docs;
-                               resultList =
-                                  homeProvider.filterCategoriesByGoal(
-                                      categoryDocs,
-                                      homeProvider.goalModel!.categorieList!);
+                              resultList = homeProvider.filterCategoriesByGoal(
+                                  categoryDocs,
+                                  homeProvider.goalModel!.categorieList!);
 
                               return CategoryListWidget(
                                 categoryList: resultList!,

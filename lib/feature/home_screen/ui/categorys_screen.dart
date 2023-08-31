@@ -30,49 +30,54 @@ class _CategoryScreenState extends State<CategoryScreen> {
           horizontal: AppSizes.paddingHorizontal,
           vertical: AppSizes.paddingVertical,
         ),
-        child: Wrap(
-          children: [
-            for (var list in widget.categoryList)
-              Padding(
-                padding: const EdgeInsets.only(left: 16, bottom: 16),
-                child: GestureDetector(
-                  onTap: () {
-                    sl<AppRouter>().goTo(
-                        screenName: ScreenName.fullExercisesScreen,
-                        object: list.id);
-                  },
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 100,
-                        height: 100,
-                        child: ClipOval(
-                          child: CachedNetworkImage(
-                            imageUrl: list.image,
-                            placeholder: (context, url) =>
-                                CircularProgressIndicator(),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          list.name,
-                          style: TextStyle(
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+        // TODO Add loading State And Empty State
+        child: widget.categoryList.isEmpty
+            ? Center(
+                child: CircularProgressIndicator(),
               )
-          ],
-        ),
+            : Wrap(
+                children: [
+                  for (var list in widget.categoryList)
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16, bottom: 16),
+                      child: GestureDetector(
+                        onTap: () {
+                          sl<AppRouter>().goTo(
+                              screenName: ScreenName.fullExercisesScreen,
+                              object: list.id);
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 100,
+                              child: ClipOval(
+                                child: CachedNetworkImage(
+                                  imageUrl: list.image,
+                                  placeholder: (context, url) =>
+                                      CircularProgressIndicator(),
+                                  errorWidget: (context, url, error) =>
+                                      Icon(Icons.error),
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                list.name,
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                ],
+              ),
       ),
     );
   }
