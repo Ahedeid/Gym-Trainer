@@ -127,4 +127,8 @@ class AppStrings {
   static const createAccounts = "Create Accounts";
   static const successAccount = "Account was created Successfully!!";
   static const fullExercise = "Full Exercise";
+  static const termsConditionsAppBar = "Terms&Conditions 👮🏻‍";
+  static const termsConditions = "Terms&Conditions";
+  static const fAQsConditionsAppBar = "FAQ’s 💭";
+  static const fAQsConditions = "FAQ’s";
 }

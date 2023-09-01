@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
         body: Consumer<ProfileProvider>(
           builder: (context, value, child) => RefreshIndicator(
             onRefresh: () async {
-               // await value.getADataUser();
+              // await value.getADataUser();
             },
             child: ListView(
               padding: const EdgeInsets.symmetric(
@@ -106,42 +106,6 @@ class ProfileScreen extends StatelessWidget {
                         color: Color(0xFFEFF0F1),
                       ),
                       CardInProfileWidget(
-                        title: AppStrings.changeYourPhoneNumber,
-                        onTap: () {
-                          // AppRouter.goTo(screenName: ScreenName.paymentScreen);
-                        },
-                      ),
-                      const Divider(
-                        thickness: 1,
-                        endIndent: 16,
-                        indent: 16,
-                        color: Color(0xFFEFF0F1),
-                      ),
-                      CardInProfileWidget(
-                        title: AppStrings.changeYourEmail,
-                        onTap: () {
-                          // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
-                        },
-                      ),
-                      const Divider(
-                        thickness: 1,
-                        endIndent: 16,
-                        indent: 16,
-                        color: Color(0xFFEFF0F1),
-                      ),
-                      CardInProfileWidget(
-                        title: AppStrings.changeYourPassword,
-                        onTap: () {
-                          // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
-                        },
-                      ),
-                      const Divider(
-                        thickness: 1,
-                        endIndent: 16,
-                        indent: 16,
-                        color: Color(0xFFEFF0F1),
-                      ),
-                      CardInProfileWidget(
                         title: AppStrings.changeLanguage,
                         onTap: () {
                           // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
@@ -155,6 +119,30 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       CardInProfileWidget(
                         title: AppStrings.notificationsSettings,
+                        onTap: () {
+                          // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
+                        },
+                      ),
+                      const Divider(
+                        thickness: 1,
+                        endIndent: 16,
+                        indent: 16,
+                        color: Color(0xFFEFF0F1),
+                      ),
+                      CardInProfileWidget(
+                        title: AppStrings.termsConditions,
+                        onTap: () {
+                          // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
+                        },
+                      ),
+                      const Divider(
+                        thickness: 1,
+                        endIndent: 16,
+                        indent: 16,
+                        color: Color(0xFFEFF0F1),
+                      ),
+                      CardInProfileWidget(
+                        title: AppStrings.fAQsConditions,
                         onTap: () {
                           // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
                         },
