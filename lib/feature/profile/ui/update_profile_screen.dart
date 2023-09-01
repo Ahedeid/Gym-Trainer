@@ -1,6 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
+import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:gym_app/sheared/widget/custom_appBar-secondary.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({required this.userData, super.key});
 
-  final DocumentSnapshot? userData;
+  final UserModel? userData;
 
   @override
   State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
@@ -23,17 +23,17 @@ class UpdateProfileScreen extends StatefulWidget {
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   TextEditingController nameController = TextEditingController();
-  TextEditingController userNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      var name = widget.userData!['name'];
-      var userName = widget.userData!['userName'];
+      var name = widget.userData?.name ?? '';
+      var email = widget.userData?.email ?? '';
       nameController.text = name;
-      userNameController.text = userName;
+      emailController.text = email;
     });
   }
 
@@ -120,11 +120,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   const SizedBox(height: 10),
                   TextFieldAndAboveText(
                     // backGroundColor: ColorManager.backGroundField,
-                    controller: userNameController,
-                    validator: (val) => val!.validateUserName(),
-                    text: AppStrings.userName,
+                    controller: emailController,
+                    validator: (val) => val!.validateEmail(),
+                    text: AppStrings.email,
                     textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.name,
+                    keyboardType: TextInputType.emailAddress,
                   ),
                 ],
               ),
@@ -143,7 +143,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             isLoading: value.isLoadingEdit,
             onPressed: () {
               value.EditNameProfile(
-                  name: nameController.text, userName: userNameController.text);
+                  name: nameController.text, email: emailController.text);
             },
             title: AppStrings.saveChanges,
             fontWeight: FontWeight.w700,

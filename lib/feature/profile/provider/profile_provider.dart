@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:gym_app/feature/registrations/model/user_model.dart';
+import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -10,13 +12,16 @@ import 'package:gym_app/utils/helper.dart';
 
 class ProfileProvider extends ChangeNotifier {
   var auth = sl<FirebaseAuth>();
-  //----------------------------------------------------------------------------
-  bool isLoading = false;
+  UserModel? user;
+  String? sEmail = sl<SharedPrefController>().getUserData().email;
+  String? sName = sl<SharedPrefController>().getUserData().name;
 
-  setLoading(bool val) {
-    isLoading = val;
-    notifyListeners();
-  }
+  // bool isLoading = false;
+  //
+  // setLoading(bool val) {
+  //   isLoading = val;
+  //   notifyListeners();
+  // }
 
   bool isLoadingEdit = false;
 
@@ -25,35 +30,55 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> EditNameProfile(
-      {required String name, required String userName}) async {
+  //-------------------------- EditNameProfile ----------------------------------
+
+  Future<void> EditNameProfile({
+    required String name,
+    required String email,
+  }) async {
     try {
       setLoadingEdit(true);
       String id = sl<SharedPrefController>().getUserData().uid;
-      await FirebaseFirestore.instance
-          .collection('user')
+      await sl<FirebaseFirestore>()
+          .collection(FirebaseConstant.usersCollection)
           .doc(id)
-          .update({'name': name, 'userName': userName});
+          .update({'name': name, 'email': email});
+      // Fetch user data from FireStore and update it
+      getGoalData(id);
+      UserModel currentUser = sl<SharedPrefController>().getUserData();
+      setUpdateData(name: name, email: email);
+      currentUser = currentUser.copyWithUserProfile(name: name, email: email);
+      sl<SharedPrefController>().saveUserData(currentUser);
       sl<AppRouter>().back();
     } on FirebaseException catch (e) {
-      final message = e.message.toString();
-      UtilsConfig.showSnackBarMessage(
-        message: message,
-        status: false,
-      );
+      UtilsConfig.showOnException(e);
     } finally {
       setLoadingEdit(false);
     }
   }
 
-  void _navigateToLoginPage() {
-    sl<AppRouter>().goToAndRemove(screenName: ScreenName.loginScreen);
+  Future getGoalData(id) async {
+    final userDoc = await sl<FirebaseFirestore>()
+        .collection(FirebaseConstant.usersCollection)
+        .doc(id)
+        .get();
+    user = UserModel.fromDocumentSnapshot(userDoc);
+    notifyListeners();
   }
 
+  void setUpdateData({required String name, required String email}) {
+    sEmail = name;
+    sName = email;
+    notifyListeners();
+  }
+
+  // --------------------------- LOGOUT ----------------------------------------
   Future<void> logout() async {
     try {
       // Clear navigation and any authentication-related data
-      _navigateToLoginPage(); // This should be a function that handles navigation properly
+      UtilsConfig.navigateAfterSuccess(
+          screenName: ScreenName
+              .loginScreen); // This should be a function that handles navigation properly
       sl<SharedPrefController>().removeUser();
 
       // Disconnect and sign out from Google if applicable
@@ -62,8 +87,8 @@ class ProfileProvider extends ChangeNotifier {
 
       // Sign out from Firebase Authentication
       await auth.signOut();
-    } catch (e) {
-      print('Error signing out: $e');
+    } on FirebaseException catch (e) {
+      UtilsConfig.showOnException(e);
     }
   }
 }

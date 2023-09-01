@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
         body: Consumer<ProfileProvider>(
           builder: (context, value, child) => RefreshIndicator(
             onRefresh: () async {
-              // await value.getADataUser();
+               // await value.getADataUser();
             },
             child: ListView(
               padding: const EdgeInsets.symmetric(

@@ -24,13 +24,6 @@ class ProfileCardPrimaryWidget extends StatefulWidget {
 
 class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {});
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Consumer<ProfileProvider>(
       builder: (context, value, child) => Container(
@@ -43,67 +36,68 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
                   blurRadius: 4,
                   offset: Offset(0, 1)),
             ]),
-        child: value.isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : ListTile(
-                onTap: () {
-                  sl<AppRouter>().goTo(
-                      screenName: ScreenName.updateProfileScreen,
-                      object: sl<SharedPrefController>().getUserData());
-                },
-                tileColor: ColorManager.white,
-                contentPadding: EdgeInsets.all(10),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+        child:
+            // value.isLoading
+            //     ? Center(
+            //         child: CircularProgressIndicator(),
+            //       )
+            //     :
+            ListTile(
+          onTap: () {
+            sl<AppRouter>().goTo(
+                screenName: ScreenName.updateProfileScreen,
+                object: sl<SharedPrefController>().getUserData());
+          },
+          tileColor: ColorManager.white,
+          contentPadding: EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          leading: SizedBox(
+              height: 59,
+              width: 59,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: CachedNetworkImage(
+                  width: 59,
+                  height: 59,
+                  fit: BoxFit.cover,
+                  imageUrl: sl<SharedPrefController>().getUserData().image,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      Center(
+                    child: CircularProgressIndicator(
+                        value: downloadProgress.progress),
+                  ),
+                  errorWidget: (context, url, error) => Icon(Icons.error),
                 ),
-                leading: SizedBox(
-                    height: 59,
-                    width: 59,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: CachedNetworkImage(
-                        width: 59,
-                        height: 59,
-                        fit: BoxFit.cover,
-                        imageUrl:
-                            sl<SharedPrefController>().getUserData().image,
-                        progressIndicatorBuilder:
-                            (context, url, downloadProgress) => Center(
-                          child: CircularProgressIndicator(
-                              value: downloadProgress.progress),
-                        ),
-                        errorWidget: (context, url, error) => Icon(Icons.error),
-                      ),
-                    )),
-                title: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${sl<SharedPrefController>().getUserData().name}",
-                      maxLines: 1,
-                      overflow: TextOverflow.visible,
-                      style: StyleManger.headline3(),
-                    ),
-                    Text(
-                      '@${sl<SharedPrefController>().getUserData().email.toLowerCase()}',
-                      maxLines: 1,
-                      overflow: TextOverflow.visible,
-                      style: StyleManger.headline4(
-                          color: ColorManager.secondaryTextColor),
-                    ),
-                  ],
-                ),
-                trailing: MainContainer(
-                    height: 40,
-                    width: 40,
-                    color: ColorManager.backGroundSecondary,
-                    child: CustomSvgAssets(
-                      path: AppIcons.edit,
-                      color: ColorManager.secondary,
-                    )),
+              )),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "${sl<SharedPrefController>().getUserData().name}",
+                maxLines: 1,
+                overflow: TextOverflow.visible,
+                style: StyleManger.headline3(),
               ),
+              Text(
+                sl<SharedPrefController>().getUserData().email.toLowerCase(),
+                maxLines: 1,
+                overflow: TextOverflow.visible,
+                style: StyleManger.headline4(
+                    color: ColorManager.secondaryTextColor),
+              ),
+            ],
+          ),
+          trailing: MainContainer(
+              height: 40,
+              width: 40,
+              color: ColorManager.backGroundSecondary,
+              child: CustomSvgAssets(
+                path: AppIcons.edit,
+                color: ColorManager.secondary,
+              )),
+        ),
       ),
     );
   }
