@@ -35,8 +35,10 @@ class ExerciseDetails extends StatelessWidget {
           builder: (context, value, child) => ElevatedButton(
             onPressed: () {
               value.setTrainingExercise(exerciseModel!);
+
               sl<AppRouter>().goTo(
-                  screenName: ScreenName.startTraining, object: exerciseModel);
+                  screenName: ScreenName.startTraining,
+                  object: value.trainingExerciseModel);
             },
             child: Text(AppStrings.startTraining,
                 style: StyleManger.headLineBar(color: ColorManager.white)),
@@ -235,8 +237,12 @@ class ExerciseDetails extends StatelessWidget {
                         final categoryDocs = snapshot.data!.docs;
                         final resultList = homeProvider.filterExerciseByGoal(
                             categoryDocs, homeProvider.goalModel?.id);
-
-                        return HorizontalExerciseList(resultList: resultList);
+// resultList.remove(exerciseModel);
+                        resultList.removeWhere(
+                            (element) => exerciseModel!.id == element.id);
+                        homeProvider.setExerciseList(resultList);
+                        return HorizontalExerciseList(
+                            resultList: homeProvider.exerciseResult!);
                       },
                     ),
                   ),

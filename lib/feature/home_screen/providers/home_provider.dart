@@ -13,6 +13,7 @@ class HomeProvider extends ChangeNotifier {
   String? selectedGoal = sl<SharedPrefController>().getUserData().selectedGoal;
   List<String>? selectedGoalIdList = [];
   GoalModel? goalModel;
+
   // double savedScrollPosition = 0.0;
 
   HomeProvider() : user = sl<SharedPrefController>().getUserData() {
@@ -100,23 +101,94 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // double getSavedScrollPosition() {
-  //   double savedScrollPosition =
-  //       sl<SharedPrefController>().getPosition() ?? 0.0;
-  //   return savedScrollPosition;
-  // }
-
   saveScrollPosition(double scrollPosition) {
     print("this postion $scrollPosition");
     sl<SharedPrefController>().setPosition(scrollPosition);
-
-    // this.savedScrollPosition = scrollPosition;
   }
 
   ExerciseModel? trainingExerciseModel;
+
   setTrainingExercise(ExerciseModel? exerciseModel) {
     print("${exerciseModel!.title}");
     trainingExerciseModel = exerciseModel;
     notifyListeners();
+  }
+
+  List<ExerciseModel>? exerciseResult;
+
+  setExerciseList(neuList) {
+    exerciseResult = neuList;
+  }
+
+  // nextExercise() {
+  //   print("${exerciseResult!.length}");
+  //   exerciseResult!.add(trainingExerciseModel!);
+  //   trainingExerciseModel = exerciseResult![0];
+  //   print("when add ${exerciseResult!.length}");
+  //   exerciseResult!
+  //       .removeWhere((element) => trainingExerciseModel!.id == element.id);
+  //   // exerciseResult!
+  //   //     .removeWhere((element) => trainingExerciseModel!.id == element.id);
+  //   print("the list ${exerciseResult!.length}");
+  //   notifyListeners(); // Notify listeners to rebuild the UI
+  // }
+  // void nextExercise() {
+  //   if (exerciseResult != null && exerciseResult!.isNotEmpty) {
+  //     print("Current list length: ${exerciseResult!.length}");
+  //
+  //     // Move the current trainingExerciseModel to the end of the list
+  //     exerciseResult!.add(trainingExerciseModel!);
+  //
+  //     // Remove the first item from the list and assign it to trainingExerciseModel
+  //     trainingExerciseModel = exerciseResult!.removeAt(0);
+  //
+  //     print("Updated list length: ${exerciseResult!.length}");
+  //
+  //     notifyListeners(); // Notify listeners to rebuild the UI
+  //   } else {
+  //     // Handle the case where exerciseResult is empty or null
+  //     print("No more exercises in the list.");
+  //   }
+  // }
+  int currentIndex = 0;
+  void selectNextItem() {
+    // setState(() {
+    // Rotate the list to the right to select the next item
+    exerciseResult!
+        .insert(0, exerciseResult!.removeAt(exerciseResult!.length - 1));
+    currentIndex = 0;
+    notifyListeners();
+    // });
+  }
+
+  String currentItem = "Item 1";
+  void nextExercise() {
+    List<String> itemList = ["Item 2", "Item 3", "Item 4"];
+    ListSelector selector = ListSelector(itemList);
+    print("this is Current Item $currentItem");
+
+    itemList.add(currentItem);
+    print("this is the list $itemList");
+    currentItem = itemList[currentIndex];
+    itemList.removeAt(currentIndex + 1);
+    print("this is NEW Current Item $currentItem");
+    // itemList.removeAt(currentIndex);
+  }
+}
+
+class ListSelector {
+  final List<String> items;
+  int currentIndex = 0;
+
+  ListSelector(this.items);
+
+  String selectNextItem() {
+    if (items.isEmpty) {
+      return "List is empty";
+    } else {
+      // Increment the index to select the next item
+      currentIndex = (currentIndex + 1) % items.length;
+      return items[currentIndex];
+    }
   }
 }
