@@ -15,6 +15,7 @@ class ProfileProvider extends ChangeNotifier {
   UserModel? user;
   String? sEmail = sl<SharedPrefController>().getUserData().email;
   String? sName = sl<SharedPrefController>().getUserData().name;
+  String? sPhone = sl<SharedPrefController>().getUserData().phone;
 
   // bool isLoading = false;
   //
@@ -35,6 +36,7 @@ class ProfileProvider extends ChangeNotifier {
   Future<void> EditNameProfile({
     required String name,
     required String email,
+    required String phone,
   }) async {
     try {
       setLoadingEdit(true);
@@ -42,12 +44,20 @@ class ProfileProvider extends ChangeNotifier {
       await sl<FirebaseFirestore>()
           .collection(FirebaseConstant.usersCollection)
           .doc(id)
-          .update({'name': name, 'email': email});
+          .update({
+        FirebaseConstant.name: name,
+        FirebaseConstant.email: email,
+        FirebaseConstant.phone: phone,
+      });
       // Fetch user data from FireStore and update it
       getGoalData(id);
       UserModel currentUser = sl<SharedPrefController>().getUserData();
-      setUpdateData(name: name, email: email);
-      currentUser = currentUser.copyWithUserProfile(name: name, email: email);
+      setUpdateData(name: name, email: email, phone: phone);
+      currentUser = currentUser.copyWithUserProfile(
+        name: name,
+        email: email,
+        phone: phone,
+      );
       sl<SharedPrefController>().saveUserData(currentUser);
       sl<AppRouter>().back();
     } on FirebaseException catch (e) {
@@ -66,9 +76,14 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUpdateData({required String name, required String email}) {
+  void setUpdateData({
+    required String name,
+    required String email,
+    required String phone,
+  }) {
     sEmail = name;
     sName = email;
+    sPhone = phone;
     notifyListeners();
   }
 

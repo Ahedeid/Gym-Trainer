@@ -24,6 +24,7 @@ class UpdateProfileScreen extends StatefulWidget {
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   @override
   void initState() {
@@ -32,8 +33,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       var name = widget.userData?.name ?? '';
       var email = widget.userData?.email ?? '';
+      var phone = widget.userData?.phone ?? '';
       nameController.text = name;
       emailController.text = email;
+      phoneController.text = phone;
     });
   }
 
@@ -126,6 +129,15 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                   ),
+                  const SizedBox(height: 10),
+                  TextFieldAndAboveText(
+                    // backGroundColor: ColorManager.backGroundField,
+                    controller: phoneController,
+                    validator: (val) => val!.validatePhoneNumber(),
+                    text: AppStrings.phone,
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.number,
+                  ),
                 ],
               ),
             ),
@@ -143,7 +155,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             isLoading: value.isLoadingEdit,
             onPressed: () {
               value.EditNameProfile(
-                  name: nameController.text, email: emailController.text);
+                name: nameController.text,
+                email: emailController.text,
+                phone: phoneController.text,
+              );
             },
             title: AppStrings.saveChanges,
             fontWeight: FontWeight.w700,
