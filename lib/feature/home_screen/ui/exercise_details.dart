@@ -237,12 +237,14 @@ class ExerciseDetails extends StatelessWidget {
                         final categoryDocs = snapshot.data!.docs;
                         final resultList = homeProvider.filterExerciseByGoal(
                             categoryDocs, homeProvider.goalModel?.id);
-// resultList.remove(exerciseModel);
+
+                        final passList = homeProvider.filterExerciseByGoal(
+                            categoryDocs, homeProvider.goalModel?.id);
+                        ;
+                        homeProvider.setExerciseList(passList);
                         resultList.removeWhere(
                             (element) => exerciseModel!.id == element.id);
-                        homeProvider.setExerciseList(resultList);
-                        return HorizontalExerciseList(
-                            resultList: homeProvider.exerciseResult!);
+                        return HorizontalExerciseList(resultList: resultList);
                       },
                     ),
                   ),
