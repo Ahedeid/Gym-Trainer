@@ -3,7 +3,6 @@ import 'package:gym_app/feature/profile/ui/profile_screen.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
-import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';

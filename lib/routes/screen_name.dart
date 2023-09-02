@@ -20,5 +20,6 @@ class ScreenName {
   static const String fAQScreen = '/fAQ_screen';
   static const String notificationSettingScreen = '/notification_setting_screen';
   static const String languageScreen = '/language_screen';
+  static const String comingSoonScreen = '/coming_soon_screen';
 
 }

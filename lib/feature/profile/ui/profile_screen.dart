@@ -33,9 +33,7 @@ class ProfileScreen extends StatelessWidget {
               horizontal: AppSizes.paddingHorizontal,
             ),
             children: [
-              const ProfileCardPrimaryWidget(
-                  // icon: Icons.arrow_forward_ios,
-                  ),
+              const ProfileCardPrimaryWidget(),
               const SizedBox(height: 16),
               MainContainer(
                 vertical: 8,
@@ -45,7 +43,7 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.memberShipPlan,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.orderTrackingScreen);
+                       sl<AppRouter>().goTo(screenName: ScreenName.comingSoonScreen);
                       },
                     ),
                     CustomDivider(),
@@ -74,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.myPaymentMethods,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.orderTrackingScreen);
+                        sl<AppRouter>().goTo(screenName: ScreenName.comingSoonScreen);
                       },
                     ),
                     CustomDivider(),
