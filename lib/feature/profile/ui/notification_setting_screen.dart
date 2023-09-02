@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
+import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -28,21 +29,13 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
         title: AppStrings.notificationsAppBar,
         onTap: () {},
       ),
-      body: Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: AppSizes.paddingHorizontal,
-          vertical: AppSizes.paddingVertical,
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        decoration: BoxDecoration(
-            color: Colors.white, // Your desired background color
-            borderRadius: BorderRadius.circular(8),
-            boxShadow: [
-              BoxShadow(
-                  color: Colors.black.withOpacity(0.03),
-                  blurRadius: 4,
-                  offset: const Offset(0, 1)),
-            ]),
+      body: MainContainer(
+        bottom: AppSizes.paddingVertical,
+        top: AppSizes.paddingVertical,
+        right: AppSizes.paddingHorizontal,
+        left: AppSizes.paddingHorizontal,
+        vertical: 8,
+        color: ColorManager.white,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
