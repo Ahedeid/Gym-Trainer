@@ -182,4 +182,5 @@ class AppStrings {
   static const contentNewArticles = "Content - New Articles";
   static const workoutUpdates = "Workout Updates";
   static const storeNewProducts = "Store - New Products";
+  static const changeLanguageApp = "Change Language! 🗣️";
 }
