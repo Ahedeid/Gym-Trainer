@@ -189,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   final categoryDocs = snapshot.data!.docs;
                   final resultList = homeProvider.filterExerciseByGoal(
                       categoryDocs, homeProvider.goalModel?.id);
-
+                  homeProvider.setExerciseDetailsList(resultList);
                   return VerticalExerciseList(resultList: resultList);
                 },
               ),

@@ -63,7 +63,7 @@ class ExerciseDetails extends StatelessWidget {
               child: Stack(
                 children: [
                   Hero(
-                    tag: exerciseModel!.id!,
+                    tag: exerciseModel!,
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
                       height: 380.h,
@@ -186,32 +186,35 @@ class ExerciseDetails extends StatelessWidget {
                         fontSize: 12.sp),
                   ),
                   34.addVerticalSpace,
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "3 ${AppStrings.weeks} - 20 ${AppStrings.exercise}",
-                        style: TextStyle(
-                            color: ColorManager.textBlack,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14.sp),
-                      ),
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 23, vertical: 12),
-                        child: Text(
-                          AppStrings.schedule,
-                          textAlign: TextAlign.center,
+                  Consumer(
+                    builder: (context, HomeProvider value, child) => Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "3 ${AppStrings.weeks} - ${value.ExerciseDetailsList!.length} ${AppStrings.exercise}",
                           style: TextStyle(
-                              fontSize: 12.sp,
+                              color: ColorManager.textBlack,
                               fontWeight: FontWeight.w600,
-                              color: ColorManager.white),
+                              fontSize: 14.sp),
                         ),
-                        decoration: BoxDecoration(
-                            color: ColorManager.black,
-                            borderRadius: BorderRadius.all(Radius.circular(5))),
-                      )
-                    ],
+                        Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 23, vertical: 12),
+                          child: Text(
+                            AppStrings.schedule,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 12.sp,
+                                fontWeight: FontWeight.w600,
+                                color: ColorManager.white),
+                          ),
+                          decoration: BoxDecoration(
+                              color: ColorManager.black,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5))),
+                        )
+                      ],
+                    ),
                   ),
                   32.addVerticalSpace,
                   HeaderSectionWidget(

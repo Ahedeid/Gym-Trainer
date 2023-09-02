@@ -32,7 +32,7 @@ class VerticalExerciseWidget extends StatelessWidget {
             child: Stack(
               children: [
                 Hero(
-                  tag: exerciseModel!.id!,
+                  tag: exerciseModel!,
                   child: CachedNetworkImage(
                     fit: BoxFit.cover,
                     height: 155.h,
