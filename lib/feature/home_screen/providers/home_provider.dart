@@ -1,3 +1,4 @@
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
@@ -120,75 +121,13 @@ class HomeProvider extends ChangeNotifier {
     exerciseResult = neuList;
   }
 
-  // nextExercise() {
-  //   print("${exerciseResult!.length}");
-  //   exerciseResult!.add(trainingExerciseModel!);
-  //   trainingExerciseModel = exerciseResult![0];
-  //   print("when add ${exerciseResult!.length}");
-  //   exerciseResult!
-  //       .removeWhere((element) => trainingExerciseModel!.id == element.id);
-  //   // exerciseResult!
-  //   //     .removeWhere((element) => trainingExerciseModel!.id == element.id);
-  //   print("the list ${exerciseResult!.length}");
-  //   notifyListeners(); // Notify listeners to rebuild the UI
-  // }
-  // void nextExercise() {
-  //   if (exerciseResult != null && exerciseResult!.isNotEmpty) {
-  //     print("Current list length: ${exerciseResult!.length}");
-  //
-  //     // Move the current trainingExerciseModel to the end of the list
-  //     exerciseResult!.add(trainingExerciseModel!);
-  //
-  //     // Remove the first item from the list and assign it to trainingExerciseModel
-  //     trainingExerciseModel = exerciseResult!.removeAt(0);
-  //
-  //     print("Updated list length: ${exerciseResult!.length}");
-  //
-  //     notifyListeners(); // Notify listeners to rebuild the UI
-  //   } else {
-  //     // Handle the case where exerciseResult is empty or null
-  //     print("No more exercises in the list.");
-  //   }
-  // }
   int currentIndex = 0;
-  void selectNextItem() {
-    // setState(() {
-    // Rotate the list to the right to select the next item
-    exerciseResult!
-        .insert(0, exerciseResult!.removeAt(exerciseResult!.length - 1));
-    currentIndex = 0;
+  final countDownController = CountDownController();
+
+  void nextTarget() {
+    currentIndex = (currentIndex + 1) % exerciseResult!.length;
+    countDownController.pause();
+    countDownController.reset();
     notifyListeners();
-    // });
-  }
-
-  String currentItem = "Item 1";
-  void nextExercise() {
-    List<String> itemList = ["Item 2", "Item 3", "Item 4"];
-    ListSelector selector = ListSelector(itemList);
-    print("this is Current Item $currentItem");
-
-    itemList.add(currentItem);
-    print("this is the list $itemList");
-    currentItem = itemList[currentIndex];
-    itemList.removeAt(currentIndex + 1);
-    print("this is NEW Current Item $currentItem");
-    // itemList.removeAt(currentIndex);
-  }
-}
-
-class ListSelector {
-  final List<String> items;
-  int currentIndex = 0;
-
-  ListSelector(this.items);
-
-  String selectNextItem() {
-    if (items.isEmpty) {
-      return "List is empty";
-    } else {
-      // Increment the index to select the next item
-      currentIndex = (currentIndex + 1) % items.length;
-      return items[currentIndex];
-    }
   }
 }
