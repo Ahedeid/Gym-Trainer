@@ -118,16 +118,32 @@ class HomeProvider extends ChangeNotifier {
   List<ExerciseModel>? exerciseResult;
 
   setExerciseList(neuList) {
+    exerciseResult?.clear();
+    upNextList?.clear();
+    currentIndex = 0;
     exerciseResult = neuList;
+    currentIndex = (currentIndex + 1) % exerciseResult!.length;
+    upNextList = List.from(exerciseResult!);
+    upNextList?.removeAt(currentIndex);
   }
 
   int currentIndex = 0;
   final countDownController = CountDownController();
+  void platStop() {
+    countDownController.isPaused
+        ? countDownController.resume()
+        : countDownController.pause();
+    notifyListeners();
+  }
 
+  List<ExerciseModel>? upNextList;
   void nextTarget() {
     currentIndex = (currentIndex + 1) % exerciseResult!.length;
+    countDownController.restart(
+        duration: int.parse(exerciseResult![currentIndex].time!) * 60);
     countDownController.pause();
-    countDownController.reset();
+    upNextList = List.from(exerciseResult!);
+    upNextList?.removeAt(currentIndex);
     notifyListeners();
   }
 }

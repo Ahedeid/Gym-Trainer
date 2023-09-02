@@ -40,9 +40,6 @@ class _StartTrainingState extends State<StartTraining> {
       body: SingleChildScrollView(
         child: Consumer<HomeProvider>(
           builder: (context, value, child) {
-            List<ExerciseModel>? subtargets = List.from(value.exerciseResult!);
-            subtargets.removeAt(value.currentIndex);
-
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -71,7 +68,7 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "Exercise /${value.exerciseResult!.length}",
+                    "Exercise ${value.currentIndex + 1} /${value.exerciseResult!.length}",
                     style: TextStyle(
                         color: ColorManager.subTitleText,
                         fontSize: 10.sp,
@@ -94,6 +91,9 @@ class _StartTrainingState extends State<StartTraining> {
                     isReverse: true,
                     height: 100,
                     width: 100,
+                    initialDuration: int.parse(
+                            value.exerciseResult![value.currentIndex].time!) *
+                        60,
                     strokeWidth: 10,
                     fillColor: ColorManager.black,
                     onComplete: () {
@@ -136,10 +136,7 @@ class _StartTrainingState extends State<StartTraining> {
                             borderRadius: BorderRadius.circular(5)),
                         child: TextButton.icon(
                           onPressed: () {
-                            setState(() {});
-                            value.countDownController.isPaused
-                                ? value.countDownController.resume()
-                                : value.countDownController.pause();
+                            value.platStop();
                           },
                           icon: Icon(
                             value.countDownController.isPaused
@@ -202,7 +199,7 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "Up Next",
+                    "Up Next ${value.upNextList?.length}",
                     style: TextStyle(
                         color: ColorManager.black,
                         fontSize: 14.sp,
@@ -212,8 +209,8 @@ class _StartTrainingState extends State<StartTraining> {
                 16.addVerticalSpace,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child:
-                      HorizontalExerciseListCountdown(resultList: subtargets),
+                  child: HorizontalExerciseListCountdown(
+                      resultList: value.upNextList ?? []),
                 ),
                 20.addVerticalSpace,
               ],
