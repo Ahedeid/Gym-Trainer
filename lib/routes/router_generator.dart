@@ -2,13 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/BNBUser.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
+import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
 import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
 import 'package:gym_app/feature/home_screen/ui/categorys_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/class_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/details_screen.dart';
+import 'package:gym_app/feature/home_screen/ui/exercise_details.dart';
 import 'package:gym_app/feature/home_screen/ui/full_exercises_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/qr_screen.dart';
+import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/profile/ui/update_profile_screen.dart';
@@ -139,6 +142,24 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => FullExercisesScreen(
             categoryId: categoryList,
+          ),
+        );
+
+      // ------------------------------ exercisesDetailsScreen -------------------------------
+      case ScreenName.exercisesDetailsScreen:
+        var exerciseModel = settings.arguments as ExerciseModel;
+        return MaterialPageRoute(
+          builder: (_) => ExerciseDetails(
+            exerciseModel: exerciseModel,
+          ),
+        );
+
+      // ------------------------------ startTraining -------------------------------
+      case ScreenName.startTraining:
+        var exerciseModel = settings.arguments as ExerciseModel;
+        return MaterialPageRoute(
+          builder: (_) => StartTraining(
+            exerciseModel: exerciseModel,
           ),
         );
 

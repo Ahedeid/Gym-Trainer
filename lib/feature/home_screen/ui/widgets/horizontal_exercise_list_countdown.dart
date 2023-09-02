@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
-import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_widget.dart';
+import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_widget_countdown.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 
-class HorizontalExerciseList extends StatelessWidget {
-  const HorizontalExerciseList({
+class HorizontalExerciseListCountdown extends StatelessWidget {
+  const HorizontalExerciseListCountdown({
     super.key,
     required this.resultList,
   });
@@ -26,7 +26,7 @@ class HorizontalExerciseList extends StatelessWidget {
         ],
       ),
       itemBuilder: (context, index) {
-        return HorizontalExerciseWidget(
+        return HorizontalExerciseWidgetCountdown(
           exerciseModel: resultList[index],
         );
       },

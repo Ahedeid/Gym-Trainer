@@ -127,6 +127,14 @@ class AppStrings {
   static const createAccounts = "Create Accounts";
   static const successAccount = "Account was created Successfully!!";
   static const fullExercise = "Full Exercise";
+  static const level = "Level";
+  static const weight = "Weight";
+  static const noAccessExercise = "You can't access this exercise";
+  static const weeks = "Weeks";
+  static const exercise = "Exercise";
+  static const schedule = "Schedule";
+  static const exerciseProgram = "Exercise Program";
+  static const startTraining = "Start Training";
   static const termsConditionsAppBar = "Terms&Conditions 👮🏻‍";
   static const termsConditions = "Terms&Conditions";
   static const fAQsConditionsAppBar = "FAQ’s 💭";

@@ -36,6 +36,8 @@ class ColorManager {
   static const Color subTitleText = Color(0xFF303841);
   static const Color iconColor = Color(0xFF2EBCC1);
   static const Color hearColor = Color(0xFFFF6079);
+  static const Color subTitleDetailsColor = Color(0xFF3A4750);
+  static const Color textBlack = Color(0xFF191919);
 
   static const Color buttonFacebookColor = Color(0xFF4267B2);
 

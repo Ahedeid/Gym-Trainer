@@ -1,8 +1,9 @@
 import 'dart:convert';
+
 import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum PrefKeys { user, token, loggedIn, showOnce }
+enum PrefKeys { user, token, loggedIn, showOnce, scrollPosition }
 
 class SharedPrefController {
   SharedPreferences preferences;
@@ -54,5 +55,13 @@ class SharedPrefController {
       selectedGoal: '',
       level: "",
     );
+  }
+
+  setPosition(value) {
+    preferences.setDouble(PrefKeys.scrollPosition.toString(), value);
+  }
+
+  getPosition() {
+    preferences.getDouble(PrefKeys.scrollPosition.toString());
   }
 }
