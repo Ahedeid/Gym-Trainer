@@ -6,6 +6,7 @@ import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
+import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -36,17 +37,9 @@ class ProfileScreen extends StatelessWidget {
                   // icon: Icons.arrow_forward_ios,
                   ),
               const SizedBox(height: 16),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                decoration: BoxDecoration(
-                    color: Colors.white, // Your desired background color
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.03),
-                          blurRadius: 4,
-                          offset: const Offset(0, 1)),
-                    ]),
+              MainContainer(
+                vertical: 8,
+                color: ColorManager.white,
                 child: Column(
                   children: [
                     CardInProfileWidget(
@@ -73,17 +66,9 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 8),
-                decoration: BoxDecoration(
-                    color: Colors.white, // Your desired background color
-                    borderRadius: BorderRadius.circular(8),
-                    boxShadow: [
-                      BoxShadow(
-                          color: Colors.black.withOpacity(0.03),
-                          blurRadius: 4,
-                          offset: const Offset(0, 1)),
-                    ]),
+              MainContainer(
+                vertical: 8,
+                color: ColorManager.white,
                 child: Column(
                   children: [
                     CardInProfileWidget(
@@ -96,7 +81,8 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.changeLanguage,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
+                        sl<AppRouter>()
+                            .goTo(screenName: ScreenName.languageScreen);
                       },
                     ),
                     CustomDivider(),
