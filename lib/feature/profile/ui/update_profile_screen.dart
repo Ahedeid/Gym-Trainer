@@ -1,11 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
+import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:gym_app/sheared/widget/custom_appBar-secondary.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
-import 'package:gym_app/utils/resources/images_constant.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({required this.userData, super.key});
 
-  final DocumentSnapshot? userData;
+  final UserModel? userData;
 
   @override
   State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
@@ -23,17 +23,20 @@ class UpdateProfileScreen extends StatefulWidget {
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   TextEditingController nameController = TextEditingController();
-  TextEditingController userNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      var name = widget.userData!['name'];
-      var userName = widget.userData!['userName'];
+      var name = widget.userData?.name ?? '';
+      var email = widget.userData?.email ?? '';
+      var phone = widget.userData?.phone ?? '';
       nameController.text = name;
-      userNameController.text = userName;
+      emailController.text = email;
+      phoneController.text = phone;
     });
   }
 
@@ -76,13 +79,24 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: 59,
-                      width: 59,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(ImageApp.ahed),
-                      ),
-                    ),
+                        height: 59,
+                        width: 59,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: CachedNetworkImage(
+                            width: 59,
+                            height: 59,
+                            fit: BoxFit.cover,
+                            imageUrl: widget.userData?.image ?? '',
+                            progressIndicatorBuilder:
+                                (context, url, downloadProgress) => Center(
+                              child: CircularProgressIndicator(
+                                  value: downloadProgress.progress),
+                            ),
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        )),
                     const SizedBox(height: 8),
                     Text(
                       AppStrings.uploadNewPicture,
@@ -120,11 +134,20 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   const SizedBox(height: 10),
                   TextFieldAndAboveText(
                     // backGroundColor: ColorManager.backGroundField,
-                    controller: userNameController,
-                    validator: (val) => val!.validateUserName(),
-                    text: AppStrings.userName,
+                    controller: emailController,
+                    validator: (val) => val!.validateEmail(),
+                    text: AppStrings.email,
                     textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.name,
+                    keyboardType: TextInputType.emailAddress,
+                  ),
+                  const SizedBox(height: 10),
+                  TextFieldAndAboveText(
+                    // backGroundColor: ColorManager.backGroundField,
+                    controller: phoneController,
+                    validator: (val) => val!.validatePhoneNumber(),
+                    text: AppStrings.phone,
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.number,
                   ),
                 ],
               ),
@@ -143,7 +166,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             isLoading: value.isLoadingEdit,
             onPressed: () {
               value.EditNameProfile(
-                  name: nameController.text, userName: userNameController.text);
+                name: nameController.text,
+                email: emailController.text,
+                phone: phoneController.text,
+              );
             },
             title: AppStrings.saveChanges,
             fontWeight: FontWeight.w700,

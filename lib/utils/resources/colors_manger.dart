@@ -30,7 +30,7 @@ class ColorManager {
   static const Color backGroundBlack = Color(0xFF141010);
   static const Color black = Color(0xFF000000);
   static const Color screenGp = Color(0xFFFBFBFB);
-  static const Color backGraoundGreen = Color(0xFFCFDCD4);
+  static const Color backGroundGreen = Color(0xFFCFDCD4);
 
   static const Color greyButton = Color(0xFFEDEDED);
   static const Color subTitleText = Color(0xFF303841);
@@ -40,4 +40,14 @@ class ColorManager {
   static const Color textBlack = Color(0xFF191919);
 
   static const Color buttonFacebookColor = Color(0xFF4267B2);
+
+  static const Color boardingBackGroundColor1 = Color(0xFFDEEBEB);
+  static const Color boardingBackGroundColor2 = Color(0xFFFCF4EA);
+  static const Color boardingBackGroundColor3 = Color(0xFFEFE8F9);
+  static const Color buttonBoardingColor = Color(0xFFE29835);
+  static const Color secondaryIndecator1 = Color(0xFFBED9D7);
+  static const Color secondaryIndecator2 = Color(0xFFF6E0C2);
+  static const Color dividerColor = Color(0xFFEFF0F1);
+
+
 }

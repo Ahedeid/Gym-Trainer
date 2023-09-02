@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
-import 'package:gym_app/utils/resources/icons_constant.dart';
+import 'package:gym_app/utils/resources/images_constant.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
-
-
 
 class ToEmptyDataWidget extends StatelessWidget {
   const ToEmptyDataWidget({
@@ -23,7 +20,12 @@ class ToEmptyDataWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(height: 100, width: 100, child: CustomSvgAssets(path:AppIcons.logo)),
+          Image.asset(
+            ImageApp.logo,
+            color: Colors.white,
+            width: 100,
+            height: 100,
+          ),
           const Text(
             AppStrings.technoGym,
             style:

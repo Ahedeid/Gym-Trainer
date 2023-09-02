@@ -15,6 +15,7 @@ import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/profile/ui/update_profile_screen.dart';
+import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
 import 'package:gym_app/feature/registrations/provider/signUpProvider.dart';
 import 'package:gym_app/feature/registrations/ui/checkEmailScreen.dart';
@@ -108,7 +109,7 @@ class RouteGenerator {
         );
       // ------------------------------ UpdateProfileScreen -------------------------------
       case ScreenName.updateProfileScreen:
-        var userData = settings.arguments as DocumentSnapshot;
+        var userData = settings.arguments as UserModel;
         return MaterialPageRoute(
           builder: (_) => ChangeNotifierProvider(
               create: (context) => ProfileProvider(),

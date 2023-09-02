@@ -135,4 +135,9 @@ class AppStrings {
   static const schedule = "Schedule";
   static const exerciseProgram = "Exercise Program";
   static const startTraining = "Start Training";
+  static const termsConditionsAppBar = "Terms&Conditions 👮🏻‍";
+  static const termsConditions = "Terms&Conditions";
+  static const fAQsConditionsAppBar = "FAQ’s 💭";
+  static const fAQsConditions = "FAQ’s";
+  static const yourProfile = "Your Profile! 🙅🏻‍♂️";
 }
