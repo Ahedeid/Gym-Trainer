@@ -25,8 +25,6 @@ class StartTraining extends StatefulWidget {
 }
 
 class _StartTrainingState extends State<StartTraining> {
-  final _countDownController = CountDownController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,176 +39,186 @@ class _StartTrainingState extends State<StartTraining> {
       ),
       body: SingleChildScrollView(
         child: Consumer<HomeProvider>(
-          builder: (context, value, child) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Hero(
-                tag: value.trainingExerciseModel!.id!,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(15),
-                      bottomLeft: Radius.circular(15)),
-                  child: CachedNetworkImage(
-                    fit: BoxFit.cover,
-                    height: 419.h,
-                    width: double.infinity,
-                    imageUrl: value.exerciseResult![value.currentIndex].image!,
-                    progressIndicatorBuilder:
-                        (context, url, downloadProgress) => Center(
-                      child: CircularProgressIndicator(
-                          value: downloadProgress.progress),
+          builder: (context, value, child) {
+            List<ExerciseModel>? subtargets = List.from(value.exerciseResult!);
+            subtargets.removeAt(value.currentIndex);
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Hero(
+                  tag: value.exerciseResult![value.currentIndex].id!,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(15),
+                        bottomLeft: Radius.circular(15)),
+                    child: CachedNetworkImage(
+                      fit: BoxFit.cover,
+                      height: 419.h,
+                      width: double.infinity,
+                      imageUrl:
+                          value.exerciseResult![value.currentIndex].image!,
+                      progressIndicatorBuilder:
+                          (context, url, downloadProgress) => Center(
+                        child: CircularProgressIndicator(
+                            value: downloadProgress.progress),
+                      ),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                 ),
-              ),
-              16.addVerticalSpace,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  "Exercise /${value.exerciseResult!.length + 1}",
-                  style: TextStyle(
-                      color: ColorManager.subTitleText,
-                      fontSize: 10.sp,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-              5.addVerticalSpace,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(value.trainingExerciseModel!.title!,
-                    style: StyleManger.headLineBar()),
-              ),
-              20.addVerticalSpace,
-              Center(
-                child: CircularCountDownTimer(
-                  controller: _countDownController,
-                  duration: int.parse(value.trainingExerciseModel!.time!) * 60,
-                  isReverse: true,
-                  height: 100,
-                  width: 100,
-                  strokeWidth: 10,
-                  fillColor: ColorManager.black,
-                  onComplete: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(
-                          'Finished',
-                        ),
-                        behavior: SnackBarBehavior.floating,
-                        duration: const Duration(seconds: 2),
-                        backgroundColor: kblueColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                      ),
-                    );
-                  },
-                  strokeCap: StrokeCap.round,
-                  isReverseAnimation: true,
-                  ringColor: ColorManager.greyButton,
-                  autoStart: false,
-                  textStyle: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.w600),
-                ),
-              ),
-              21.addVerticalSpace,
-              Center(
+                16.addVerticalSpace,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                "${int.parse(value.trainingExerciseModel!.time!)} min",
-                style: TextStyle(fontWeight: FontWeight.w700),
-              )),
-              20.addVerticalSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Visibility(
-                    visible: _countDownController.isStarted == true,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: TextButton.icon(
-                        onPressed: () {
-                          setState(() {});
-                          _countDownController.isPaused
-                              ? _countDownController.resume()
-                              : _countDownController.pause();
-                        },
-                        icon: Icon(
-                          _countDownController.isPaused
-                              ? Icons.play_arrow
-                              : Icons.pause,
-                          color: Colors.black,
-                        ),
-                        label: Text(
-                          _countDownController.isPaused ? "Resume" : "Pause",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ),
+                    "Exercise /${value.exerciseResult!.length}",
+                    style: TextStyle(
+                        color: ColorManager.subTitleText,
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w500),
                   ),
-                  Visibility(
-                    visible: !_countDownController.isStarted == true,
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(5)),
-                      child: TextButton.icon(
-                        onPressed: () {
-                          setState(() {});
-                          _countDownController.start();
-                        },
-                        icon: Icon(
-                          Icons.play_arrow,
-                          color: Colors.black,
-                        ),
-                        label: Text(
-                          "Start",
-                          style: TextStyle(color: Colors.black),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: ColorManager.primary,
-                        borderRadius: BorderRadius.circular(5)),
-                    child: TextButton.icon(
-                      onPressed: () {
-                        value.selectNextItem();
-                      },
-                      icon: CustomSvgAssets(
-                        path: AppIcons.person_run,
-                      ),
-                      label: Text(
-                        "Next Training",
-                        style: StyleManger.headLineBar(
-                            color: Colors.white, fontSize: 22.sp),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              18.addVerticalSpace,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Text(
-                  "Up Next",
-                  style: TextStyle(
-                      color: ColorManager.black,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500),
                 ),
-              ),
-              16.addVerticalSpace,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: HorizontalExerciseListCountdown(
-                    resultList: value.exerciseResult!),
-              ),
-              20.addVerticalSpace,
-            ],
-          ),
+                5.addVerticalSpace,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(value.exerciseResult![value.currentIndex].title!,
+                      style: StyleManger.headLineBar()),
+                ),
+                20.addVerticalSpace,
+                Center(
+                  child: CircularCountDownTimer(
+                    controller: value.countDownController,
+                    duration: int.parse(
+                            value.exerciseResult![value.currentIndex].time!) *
+                        60,
+                    isReverse: true,
+                    height: 100,
+                    width: 100,
+                    strokeWidth: 10,
+                    fillColor: ColorManager.black,
+                    onComplete: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Finished',
+                          ),
+                          behavior: SnackBarBehavior.floating,
+                          duration: const Duration(seconds: 2),
+                          backgroundColor: kblueColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                      );
+                    },
+                    strokeCap: StrokeCap.round,
+                    isReverseAnimation: true,
+                    ringColor: ColorManager.greyButton,
+                    autoStart: false,
+                    textStyle: TextStyle(
+                        color: Colors.black, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                21.addVerticalSpace,
+                Center(
+                    child: Text(
+                  "${int.parse(value.exerciseResult![value.currentIndex].time!)} min",
+                  style: TextStyle(fontWeight: FontWeight.w700),
+                )),
+                20.addVerticalSpace,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Visibility(
+                      visible: value.countDownController.isStarted == true,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: TextButton.icon(
+                          onPressed: () {
+                            setState(() {});
+                            value.countDownController.isPaused
+                                ? value.countDownController.resume()
+                                : value.countDownController.pause();
+                          },
+                          icon: Icon(
+                            value.countDownController.isPaused
+                                ? Icons.play_arrow
+                                : Icons.pause,
+                            color: Colors.black,
+                          ),
+                          label: Text(
+                            value.countDownController.isPaused
+                                ? "Resume"
+                                : "Pause",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Visibility(
+                      visible: !value.countDownController.isStarted == true,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: BorderRadius.circular(5)),
+                        child: TextButton.icon(
+                          onPressed: () {
+                            setState(() {});
+                            value.countDownController.start();
+                          },
+                          icon: Icon(
+                            Icons.play_arrow,
+                            color: Colors.black,
+                          ),
+                          label: Text(
+                            "Start",
+                            style: TextStyle(color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: ColorManager.primary,
+                          borderRadius: BorderRadius.circular(5)),
+                      child: TextButton.icon(
+                        onPressed: () {
+                          value.nextTarget();
+                        },
+                        icon: CustomSvgAssets(
+                          path: AppIcons.person_run,
+                        ),
+                        label: Text(
+                          "Next Training",
+                          style: StyleManger.headLineBar(
+                              color: Colors.white, fontSize: 22.sp),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                18.addVerticalSpace,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(
+                    "Up Next",
+                    style: TextStyle(
+                        color: ColorManager.black,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500),
+                  ),
+                ),
+                16.addVerticalSpace,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child:
+                      HorizontalExerciseListCountdown(resultList: subtargets),
+                ),
+                20.addVerticalSpace,
+              ],
+            );
+          },
         ),
       ),
     );
