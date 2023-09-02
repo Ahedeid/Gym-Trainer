@@ -45,6 +45,7 @@ class ColorManager {
   static const Color buttonBoardingColor = Color(0xFFE29835);
   static const Color secondaryIndecator1 = Color(0xFFBED9D7);
   static const Color secondaryIndecator2 = Color(0xFFF6E0C2);
+  static const Color dividerColor = Color(0xFFEFF0F1);
 
 
 }

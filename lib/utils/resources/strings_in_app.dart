@@ -131,4 +131,5 @@ class AppStrings {
   static const termsConditions = "Terms&Conditions";
   static const fAQsConditionsAppBar = "FAQ’s 💭";
   static const fAQsConditions = "FAQ’s";
+  static const yourProfile = "Your Profile! 🙅🏻‍♂️";
 }
