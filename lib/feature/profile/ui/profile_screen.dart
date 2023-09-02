@@ -118,8 +118,8 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.fAQsConditions,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
-                      },
+                        sl<AppRouter>().goTo(
+                            screenName: ScreenName.fAQScreen);                      },
                     ),
                     CustomDivider(),
                     CardInProfileWidget(

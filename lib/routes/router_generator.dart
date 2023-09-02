@@ -14,7 +14,8 @@ import 'package:gym_app/feature/home_screen/ui/qr_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
-import 'package:gym_app/feature/profile/terms_conditions_screen.dart';
+import 'package:gym_app/feature/profile/ui/faq_screen.dart';
+import 'package:gym_app/feature/profile/ui/terms_conditions_screen.dart';
 import 'package:gym_app/feature/profile/ui/update_profile_screen.dart';
 import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
@@ -146,7 +147,7 @@ class RouteGenerator {
           ),
         );
 
-      // ------------------------------ exercisesDetailsScreen -------------------------------
+      // ----------------------- exercisesDetailsScreen ------------------------
       case ScreenName.exercisesDetailsScreen:
         var exerciseModel = settings.arguments as ExerciseModel;
         return MaterialPageRoute(
@@ -155,7 +156,7 @@ class RouteGenerator {
           ),
         );
 
-      // ------------------------------ startTraining -------------------------------
+      // --------------------------- startTraining -----------------------------
       case ScreenName.startTraining:
         var exerciseModel = settings.arguments as ExerciseModel;
         return MaterialPageRoute(
@@ -163,10 +164,15 @@ class RouteGenerator {
             exerciseModel: exerciseModel,
           ),
         );
-      // --------------------- TermsAndConditionsScreen ----------------------
+      // --------------------- TermsAndConditionsScreen ------------------------
       case ScreenName.termsAndConditionsScreen:
         return MaterialPageRoute(
           builder: (_) => TermsAndConditionsScreen(),
+        );
+      // ------------------------- FAQScreen ---------------------------------
+      case ScreenName.fAQScreen:
+        return MaterialPageRoute(
+          builder: (_) => FAQScreen(),
         );
 
       default:
