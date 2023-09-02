@@ -140,4 +140,15 @@ class AppStrings {
   static const fAQsConditionsAppBar = "FAQ’s 💭";
   static const fAQsConditions = "FAQ’s";
   static const yourProfile = "Your Profile! 🙅🏻‍♂️";
+  static const toSendYouMarketing = "To send you marketing communications, offers, and promotions related to our gym mobile application, but only if you have given us explicit consent to do so.";
+  static const toAnalyzeAndMonitor = "To analyze and monitor app usage patterns, diagnose technical issues, and improve our services.";
+  static const toCommunicateWithYou = "To communicate with you regarding your account, notifications, updates, and customer support.";
+  static const toProvideAndImproveOurGymMobile = "To provide and improve our gym mobile application, including personalized fitness recommendations, training plans, and class bookings.";
+  static const howWeUseYourInformation = "2. How We Use Your Information: We use the collected information for the following purposes:️";
+  static const usageInformationIncludingApp = "Usage information including app usage statistics, session duration, and interactions within the application.";
+  static const deviceInformationSuchAsYourDevice = "Device information such as your device type, operating system, unique device identifiers, and IP address.";
+  static const fitnessAndHealthRelated = "Fitness and health-related data such as workout logs, progress tracking, and other activity information you choose to provide.️";
+  static const personalInformationSuchAsYourName = "Personal information such as your name, email address, phone number, and other contact details.";
+  static const informationWeCollect = "1. Information We Collect: We may collect various types of information from you when you use our gym mobile application, including:️";
+  static const weAreCommittedToProtecting = "At AppGym, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your data when you use our gym mobile application. Please read this policy carefully to understand our practices regarding your personal information.";
 }
