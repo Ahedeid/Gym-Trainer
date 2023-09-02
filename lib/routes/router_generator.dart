@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/BNBUser.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
@@ -13,7 +12,10 @@ import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/qr_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
+import 'package:gym_app/feature/profile/notification_setting_screen.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
+import 'package:gym_app/feature/profile/ui/faq_screen.dart';
+import 'package:gym_app/feature/profile/ui/terms_conditions_screen.dart';
 import 'package:gym_app/feature/profile/ui/update_profile_screen.dart';
 import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
@@ -107,7 +109,7 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const ScannerScreen(),
         );
-      // ------------------------------ UpdateProfileScreen -------------------------------
+      // --------------------------- UpdateProfileScreen ------------------------
       case ScreenName.updateProfileScreen:
         var userData = settings.arguments as UserModel;
         return MaterialPageRoute(
@@ -117,18 +119,18 @@ class RouteGenerator {
                 userData: userData,
               )),
         );
-      // ------------------------------ ClassScreen -------------------------------
+      // --------------------------- ClassScreen -------------------------------
       case ScreenName.classScreen:
         return MaterialPageRoute(
           builder: (_) => const ClassScreen(),
         );
-      // ------------------------------ ClassDetailsScreen -------------------------------
+      // ----------------------- ClassDetailsScreen ----------------------------
       case ScreenName.classDetailsScreen:
         return MaterialPageRoute(
           builder: (_) => const ClassDetailsScreen(),
         );
 
-      // ------------------------------ AllCategoryScreen -------------------------------
+      // ---------------------- AllCategoryScreen ------------------------------
       case ScreenName.allCategoryScreen:
         var categoryList = settings.arguments as List<CategoryModel>;
         return MaterialPageRoute(
@@ -136,7 +138,7 @@ class RouteGenerator {
             categoryList: categoryList,
           ),
         );
-      // ------------------------------ AllCategoryScreen -------------------------------
+      // -------------------------- FullExercisesScreen ------------------------
       case ScreenName.fullExercisesScreen:
         var categoryList = settings.arguments as String;
         return MaterialPageRoute(
@@ -145,7 +147,7 @@ class RouteGenerator {
           ),
         );
 
-      // ------------------------------ exercisesDetailsScreen -------------------------------
+      // ----------------------- exercisesDetailsScreen ------------------------
       case ScreenName.exercisesDetailsScreen:
         var exerciseModel = settings.arguments as ExerciseModel;
         return MaterialPageRoute(
@@ -154,13 +156,28 @@ class RouteGenerator {
           ),
         );
 
-      // ------------------------------ startTraining -------------------------------
+      // --------------------------- startTraining -----------------------------
       case ScreenName.startTraining:
         var exerciseModel = settings.arguments as ExerciseModel;
         return MaterialPageRoute(
           builder: (_) => StartTraining(
             exerciseModel: exerciseModel,
           ),
+        );
+      // --------------------- TermsAndConditionsScreen ------------------------
+      case ScreenName.termsAndConditionsScreen:
+        return MaterialPageRoute(
+          builder: (_) => TermsAndConditionsScreen(),
+        );
+      // ------------------------- FAQScreen -----------------------------------
+      case ScreenName.fAQScreen:
+        return MaterialPageRoute(
+          builder: (_) => FAQScreen(),
+        );
+      // ------------------------- NotificationSettingScreen --------------------
+      case ScreenName.notificationSettingScreen:
+        return MaterialPageRoute(
+          builder: (_) => NotificationSettingScreen(),
         );
 
       default:

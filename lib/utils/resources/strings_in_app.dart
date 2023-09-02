@@ -4,6 +4,7 @@ class AppStrings {
   static const email = "Email address";
   static const phone = "Phone";
   static const enterYourEmail = "Hello there, sign in to\ncontinue!";
+
 // <<<<<<< Ahed
 //   static const pleaseEnterYourCredentials=
 // =======
@@ -140,4 +141,45 @@ class AppStrings {
   static const fAQsConditionsAppBar = "FAQ’s 💭";
   static const fAQsConditions = "FAQ’s";
   static const yourProfile = "Your Profile! 🙅🏻‍♂️";
+  static const canITrackMyFitness =
+      "6. Can I track my fitness progress using the gym mobile application?";
+  static const doesTheGymMobile =
+      "5. Does the gym mobile application provide personal training options?";
+  static const canIBookFitnessClasses =
+      "4. Can I book fitness classes through the gym mobile application?";
+  static const isTheGymMobile = "3. Is the gym mobile application free to use?";
+  static const howCanIDownload =
+      "2. How can I download the gym mobile application?";
+  static const theGymMobile =
+      "The gym mobile application is designed to provide convenient access to a range of fitness-related services, including classes, trainings, and other features. It allows users to book classes, track their progress, receive personalized workout plans, and more.";
+  static const whatIsThePurpose =
+      "1. What is the purpose of the gym mobile application?";
+  static const toSendYouMarketing =
+      "To send you marketing communications, offers, and promotions related to our gym mobile application, but only if you have given us explicit consent to do so.";
+  static const toAnalyzeAndMonitor =
+      "To analyze and monitor app usage patterns, diagnose technical issues, and improve our services.";
+  static const toCommunicateWithYou =
+      "To communicate with you regarding your account, notifications, updates, and customer support.";
+  static const toProvideAndImproveOurGymMobile =
+      "To provide and improve our gym mobile application, including personalized fitness recommendations, training plans, and class bookings.";
+  static const howWeUseYourInformation =
+      "2. How We Use Your Information: We use the collected information for the following purposes:️";
+  static const usageInformationIncludingApp =
+      "Usage information including app usage statistics, session duration, and interactions within the application.";
+  static const deviceInformationSuchAsYourDevice =
+      "Device information such as your device type, operating system, unique device identifiers, and IP address.";
+  static const fitnessAndHealthRelated =
+      "Fitness and health-related data such as workout logs, progress tracking, and other activity information you choose to provide.️";
+  static const personalInformationSuchAsYourName =
+      "Personal information such as your name, email address, phone number, and other contact details.";
+  static const informationWeCollect =
+      "1. Information We Collect: We may collect various types of information from you when you use our gym mobile application, including:️";
+  static const weAreCommittedToProtecting =
+      "At AppGym, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your data when you use our gym mobile application. Please read this policy carefully to understand our practices regarding your personal information.";
+  static const notificationsAppBar = "Notifications Pref.! 🔔";
+  static const membershipStatusAndOffers = "Membership - Status and Offers";
+  static const classesNewUpdates = "Classes - New Updates";
+  static const contentNewArticles = "Content - New Articles";
+  static const workoutUpdates = "Workout Updates";
+  static const storeNewProducts = "Store - New Products";
 }

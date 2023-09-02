@@ -38,6 +38,7 @@ class AppIcons {
   static String pause = '$iconsPath/pause.svg';
   static String person_run = '$iconsPath/person_run.svg';
   static String line = '$iconsPath/line.svg';
+  static String arrowDown = '$iconsPath/arrow_downe.svg';
 
   // ----------------------- Bottom Nav Selected -------------------------------
   static String familySelected = '$iconsPathBottomNavSelected/family.svg';

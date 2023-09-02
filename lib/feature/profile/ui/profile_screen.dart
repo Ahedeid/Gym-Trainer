@@ -52,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.memberShipPlan,
                       onTap: () {
-                        // AppRouteouter.goTo(screenName: ScreenName.orderTrackingScreen);
+                        // AppRouter.goTo(screenName: ScreenName.orderTrackingScreen);
                       },
                     ),
                     CustomDivider(),
@@ -89,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.myPaymentMethods,
                       onTap: () {
-                        // AppRouteouter.goTo(screenName: ScreenName.orderTrackingScreen);
+                        // AppRouter.goTo(screenName: ScreenName.orderTrackingScreen);
                       },
                     ),
                     CustomDivider(),
@@ -103,7 +103,8 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.notificationsSettings,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
+                        sl<AppRouter>().goTo(
+                            screenName: ScreenName.notificationSettingScreen);
                       },
                     ),
                     CustomDivider(),
@@ -118,7 +119,7 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.fAQsConditions,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
+                        sl<AppRouter>().goTo(screenName: ScreenName.fAQScreen);
                       },
                     ),
                     CustomDivider(),
@@ -126,7 +127,6 @@ class ProfileScreen extends StatelessWidget {
                       title: AppStrings.logout,
                       onTap: () async {
                         await sl<ProfileProvider>().logout();
-                        // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
                       },
                     ),
                   ],
