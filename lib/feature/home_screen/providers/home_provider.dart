@@ -77,6 +77,12 @@ class HomeProvider extends ChangeNotifier {
     return resultList;
   }
 
+  List<ExerciseModel>? ExerciseDetailsList;
+  setExerciseDetailsList(newList) {
+    ExerciseDetailsList?.clear();
+    ExerciseDetailsList = newList;
+    // notifyListeners();
+  }
 // ------------------------- Filter Exercise By Category -----------------------
 
   List<ExerciseModel> filterExerciseByGoalAndCategory({

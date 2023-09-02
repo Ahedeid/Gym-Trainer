@@ -44,7 +44,7 @@ class _StartTrainingState extends State<StartTraining> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Hero(
-                  tag: value.exerciseResult![value.currentIndex].id!,
+                  tag: value.exerciseResult![value.currentIndex],
                   child: ClipRRect(
                     borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(15),
