@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
+import 'package:gym_app/logic/localData/shared_pref.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
@@ -15,10 +17,15 @@ class LanguageScreen extends StatefulWidget {
   State<LanguageScreen> createState() => _LanguageScreenState();
 }
 
-enum Language { English, Arabic }
-
 class _LanguageScreenState extends State<LanguageScreen> {
-  Language language = Language.English;
+  String selectedLanguage = 'en';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    selectedLanguage = sl<SharedPrefController>().getLanguage;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +50,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 'English',
                 style: StyleManger.bodyText2(),
               ),
-              value: Language.English,
-              groupValue: language,
+              value: 'en',
+              groupValue: selectedLanguage,
               onChanged: (val) {
                 setState(() {
-                  language = val!;
+                  selectedLanguage = val!;
                 });
               },
             ),
@@ -58,11 +65,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 'Arabic',
                 style: StyleManger.bodyText2(),
               ),
-              value: Language.Arabic,
-              groupValue: language,
+              value: 'ar',
+              groupValue: selectedLanguage,
               onChanged: (val) {
                 setState(() {
-                  language = val!;
+                  selectedLanguage = val!;
                 });
               },
             ),
@@ -75,8 +82,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
           horizontal: AppSizes.paddingHorizontal,
           vertical: AppSizes.paddingVertical,
         ),
-        child:
-            CustomButtonWidget(title: AppStrings.saveChanges, onPressed: () {}),
+        child: CustomButtonWidget(
+            title: AppStrings.saveChanges,
+            onPressed: () {
+              sl<SharedPrefController>().setLanguage(selectedLanguage);
+            }),
       ),
     );
   }
