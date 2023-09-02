@@ -1,3 +1,4 @@
+import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
@@ -13,6 +14,7 @@ class HomeProvider extends ChangeNotifier {
   String? selectedGoal = sl<SharedPrefController>().getUserData().selectedGoal;
   List<String>? selectedGoalIdList = [];
   GoalModel? goalModel;
+
   // double savedScrollPosition = 0.0;
 
   HomeProvider() : user = sl<SharedPrefController>().getUserData() {
@@ -100,23 +102,48 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // double getSavedScrollPosition() {
-  //   double savedScrollPosition =
-  //       sl<SharedPrefController>().getPosition() ?? 0.0;
-  //   return savedScrollPosition;
-  // }
-
   saveScrollPosition(double scrollPosition) {
     print("this postion $scrollPosition");
     sl<SharedPrefController>().setPosition(scrollPosition);
-
-    // this.savedScrollPosition = scrollPosition;
   }
 
   ExerciseModel? trainingExerciseModel;
+
   setTrainingExercise(ExerciseModel? exerciseModel) {
     print("${exerciseModel!.title}");
     trainingExerciseModel = exerciseModel;
+    notifyListeners();
+  }
+
+  List<ExerciseModel>? exerciseResult;
+
+  setExerciseList(neuList) {
+    exerciseResult?.clear();
+    upNextList?.clear();
+    currentIndex = 0;
+    exerciseResult = neuList;
+    currentIndex = (currentIndex + 1) % exerciseResult!.length;
+    upNextList = List.from(exerciseResult!);
+    upNextList?.removeAt(currentIndex);
+  }
+
+  int currentIndex = 0;
+  final countDownController = CountDownController();
+  void platStop() {
+    countDownController.isPaused
+        ? countDownController.resume()
+        : countDownController.pause();
+    notifyListeners();
+  }
+
+  List<ExerciseModel>? upNextList;
+  void nextTarget() {
+    currentIndex = (currentIndex + 1) % exerciseResult!.length;
+    countDownController.restart(
+        duration: int.parse(exerciseResult![currentIndex].time!) * 60);
+    countDownController.pause();
+    upNextList = List.from(exerciseResult!);
+    upNextList?.removeAt(currentIndex);
     notifyListeners();
   }
 }
