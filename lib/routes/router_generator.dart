@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/BNBUser.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
@@ -13,6 +12,7 @@ import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/qr_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
+import 'package:gym_app/feature/profile/notification_setting_screen.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/profile/ui/faq_screen.dart';
 import 'package:gym_app/feature/profile/ui/terms_conditions_screen.dart';
@@ -169,10 +169,15 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => TermsAndConditionsScreen(),
         );
-      // ------------------------- FAQScreen ---------------------------------
+      // ------------------------- FAQScreen -----------------------------------
       case ScreenName.fAQScreen:
         return MaterialPageRoute(
           builder: (_) => FAQScreen(),
+        );
+      // ------------------------- NotificationSettingScreen --------------------
+      case ScreenName.notificationSettingScreen:
+        return MaterialPageRoute(
+          builder: (_) => NotificationSettingScreen(),
         );
 
       default:
