@@ -66,7 +66,7 @@ class ExerciseDetails extends StatelessWidget {
                     tag: exerciseModel!,
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      height: 380.h,
+                      height: 380,
                       width: double.infinity,
                       imageUrl: exerciseModel!.image!,
                       progressIndicatorBuilder:
@@ -142,28 +142,30 @@ class ExerciseDetails extends StatelessWidget {
             10.addVerticalSpace,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Details(
-                      title: AppStrings.level,
-                      body: exerciseModel?.levelDisplay,
+              child: Consumer<HomeProvider>(
+                builder: (context, value, child) => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Details(
+                        title: AppStrings.level,
+                        body: exerciseModel?.levelDisplay,
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Details(
-                      title: AppStrings.category,
-                      body: "Body",
+                    Expanded(
+                      child: Details(
+                        title: AppStrings.category,
+                        body: "${value.categoryModel?.name ?? "Not Specified"}",
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Details(
-                      title: AppStrings.weight,
-                      body: "Body",
+                    Expanded(
+                      child: Details(
+                        title: AppStrings.weight,
+                        body: "${value.goalModel?.name}",
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Padding(
