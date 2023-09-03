@@ -12,6 +12,7 @@ import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
+import 'package:gym_app/utils/helper.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -199,21 +200,28 @@ class ExerciseDetails extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp),
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 23, vertical: 12),
-                          child: Text(
-                            AppStrings.schedule,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                                color: ColorManager.white),
+                        GestureDetector(
+                          onTap: () {
+                            UtilsConfig.showSnackBarMessage(
+                                message: AppStrings.upgradeNeeded,
+                                status: false);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 23, vertical: 12),
+                            child: Text(
+                              AppStrings.schedule,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorManager.white),
+                            ),
+                            decoration: BoxDecoration(
+                                color: ColorManager.black,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5))),
                           ),
-                          decoration: BoxDecoration(
-                              color: ColorManager.black,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
                         )
                       ],
                     ),

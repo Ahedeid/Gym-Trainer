@@ -137,6 +137,7 @@ class AppStrings {
   static const level = "Level";
   static const weight = "Weight";
   static const noAccessExercise = "You can't access this exercise";
+  static const upgradeNeeded = "Upgrade to access this feature";
   static const weeks = "Weeks";
   static const exercise = "Exercise";
   static const schedule = "Schedule";
