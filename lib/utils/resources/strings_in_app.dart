@@ -4,14 +4,7 @@ class AppStrings {
   static const email = "Email address";
   static const phone = "Phone";
   static const enterYourEmail = "Hello there, sign in to\ncontinue!";
-
-// <<<<<<< Ahed
-//   static const pleaseEnterYourCredentials=
-// =======
-  // static const enterYourEmail =
-  //     "Hello there, sign in to\ncontinue!";
   static const pleaseEnterYourCredentials =
-// >>>>>>> master
       "Please enter your credentials to proceed ";
   static const createANewAccount = "Create a new account!";
   static const userName = "Username";
@@ -183,4 +176,6 @@ class AppStrings {
   static const workoutUpdates = "Workout Updates";
   static const storeNewProducts = "Store - New Products";
   static const changeLanguageApp = "Change Language! 🗣️";
+  static const english = 'English';
+  static const arabic = 'Arabic';
 }

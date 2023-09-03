@@ -47,7 +47,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             RadioListTile(
               activeColor: ColorManager.secondary,
               title: Text(
-                'English',
+                AppStrings.english,
                 style: StyleManger.bodyText2(),
               ),
               value: 'en',
@@ -62,7 +62,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             RadioListTile(
               activeColor: ColorManager.secondary,
               title: Text(
-                'Arabic',
+                AppStrings.arabic,
                 style: StyleManger.bodyText2(),
               ),
               value: 'ar',
