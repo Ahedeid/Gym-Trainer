@@ -125,6 +125,7 @@ class AppStrings {
   static const start = "Start";
   static const resume = "Resume";
   static const pause = "Pause";
+  static const noItems = "No Exercise Found";
 
   static const orLoginWith = "Or Login with";
   static const training = "Training";
