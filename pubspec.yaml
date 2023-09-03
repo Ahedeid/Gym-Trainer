@@ -36,6 +36,8 @@ dependencies:
   google_sign_in: ^6.1.4
   equatable: ^2.0.5
   circular_countdown_timer: ^0.2.3
+  image_picker: ^1.0.4
+
 
 dev_dependencies:
   flutter_test:

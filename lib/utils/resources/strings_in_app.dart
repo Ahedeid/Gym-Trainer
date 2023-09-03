@@ -178,4 +178,6 @@ class AppStrings {
   static const changeLanguageApp = "Change Language! 🗣️";
   static const english = 'English';
   static const arabic = 'Arabic';
+  static const comingSoon = 'Coming Soon';
+  static const thisFeatureIsPlan = 'This feature is plan to next update';
 }
