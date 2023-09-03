@@ -12,6 +12,7 @@ import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
+import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:provider/provider.dart';
 
@@ -68,7 +69,7 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "Exercise ${value.currentIndex + 1} /${value.exerciseResult!.length}",
+                    "${AppStrings.exercise} ${value.currentIndex + 1} /${value.exerciseResult!.length}",
                     style: TextStyle(
                         color: ColorManager.subTitleText,
                         fontSize: 10.sp,
@@ -146,8 +147,8 @@ class _StartTrainingState extends State<StartTraining> {
                           ),
                           label: Text(
                             value.countDownController.isPaused
-                                ? "Resume"
-                                : "Pause",
+                                ? "${AppStrings.resume}"
+                                : "${AppStrings.pause}",
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
@@ -169,7 +170,7 @@ class _StartTrainingState extends State<StartTraining> {
                             color: Colors.black,
                           ),
                           label: Text(
-                            "Start",
+                            "${AppStrings.start}",
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
@@ -187,7 +188,7 @@ class _StartTrainingState extends State<StartTraining> {
                           path: AppIcons.person_run,
                         ),
                         label: Text(
-                          "Next Training",
+                          "${AppStrings.nextTraining}",
                           style: StyleManger.headLineBar(
                               color: Colors.white, fontSize: 22.sp),
                         ),
@@ -199,7 +200,7 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "Up Next ${value.upNextList?.length}",
+                    "${AppStrings.upNext} ${value.upNextList?.length}",
                     style: TextStyle(
                         color: ColorManager.black,
                         fontSize: 14.sp,
