@@ -12,6 +12,7 @@ import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/qr_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
+import 'package:gym_app/feature/profile/ui/coming_soon_screen.dart';
 import 'package:gym_app/feature/profile/ui/language_screen.dart';
 import 'package:gym_app/feature/profile/ui/notification_setting_screen.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
@@ -184,6 +185,11 @@ class RouteGenerator {
       case ScreenName.languageScreen:
         return MaterialPageRoute(
           builder: (_) => LanguageScreen(),
+        );
+      // ------------------------- ComingSoonScreen ------------------------------
+      case ScreenName.comingSoonScreen:
+        return MaterialPageRoute(
+          builder: (_) => ComingSoonScreen(),
         );
 
       default:
