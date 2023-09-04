@@ -36,44 +36,53 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : Wrap(
-                children: [
-                  for (var list in widget.categoryList)
-                    Padding(
-                      padding: const EdgeInsets.only(left: 16, bottom: 16),
-                      child: GestureDetector(
-                        onTap: () {
-                          sl<AppRouter>().goTo(
-                              screenName: ScreenName.fullExercisesScreen,
-                              object: list.id);
-                        },
-                        child: Column(
-                          children: [
-                            Container(
-                              width: 100,
-                              height: 100,
-                              child: ClipOval(
-                                child: CachedNetworkImage(
-                                  imageUrl: list.image,
-                                  placeholder: (context, url) =>
-                                      CircularProgressIndicator(),
-                                  errorWidget: (context, url, error) =>
-                                      Icon(Icons.error),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+            : GridView.builder(
+                shrinkWrap: true,
+                itemCount: 4,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent: 120,
+                    mainAxisExtent: 155,
+                    childAspectRatio: 3 / 2,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10),
+                itemBuilder: (context, index) => Padding(
+                  padding: const EdgeInsets.only(left: 16, bottom: 16),
+                  child: GestureDetector(
+                    onTap: () {
+                      sl<AppRouter>().goTo(
+                          screenName: ScreenName.fullExercisesScreen,
+                          object: widget.categoryList[index].id);
+                    },
+                    child: Column(
+                      children: [
+                        Container(
+                          width: 100,
+                          height: 100,
+                          child: ClipOval(
+                            child: CachedNetworkImage(
+                              imageUrl: widget.categoryList[index].image,
+                              placeholder: (context, url) =>
+                                  CircularProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                              fit: BoxFit.cover,
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(list.name,
-                                  style: StyleManger.bodyText(
-                                      fontSize: FontSize.s14)),
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                    )
-                ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            widget.categoryList[index].name,
+                            style: StyleManger.bodyText(
+                              fontSize: FontSize.s14,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
       ),
     );
