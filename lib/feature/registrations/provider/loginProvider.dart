@@ -142,7 +142,6 @@ class LoginProvider extends ChangeNotifier {
     try {
       // Get reference to Firestore collection
       var collectionRef = await FirebaseFirestore.instance.collection('users');
-
       var doc = await collectionRef.doc(docId).get();
       return doc.exists;
     } catch (e) {
