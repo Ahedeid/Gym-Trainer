@@ -103,7 +103,6 @@ class LoginProvider extends ChangeNotifier {
       final credentialSign =
           await FirebaseAuth.instance.signInWithCredential(credential);
       if (await checkIfDocExists(credentialSign.user!.uid) == false) {
-        print('false');
         // Fetch user data from FireStore and update it
         await sl<FirebaseFirestore>()
             .collection(FirebaseConstant.usersCollection)
@@ -117,20 +116,18 @@ class LoginProvider extends ChangeNotifier {
           FirebaseConstant.goal: 'DLlfkpNUXfPdjm8HIYmg',
           FirebaseConstant.level: 0.toString(),
         });
+        final UserModel user = UserModel(
+          uid: credentialSign.user!.uid,
+          name: credentialSign.user!.displayName!,
+          email: credentialSign.user!.email!,
+          image: credentialSign.user!.photoURL ?? '',
+          phone: credentialSign.user!.phoneNumber ?? '',
+          selectedGoal: '',
+          level: 0.toString(),
+        );
+        sl<SharedPrefController>().saveUserData(user);
       }
-      print('done');
-      final UserModel user = UserModel(
-        uid: credentialSign.user!.uid,
-        name: credentialSign.user!.displayName!,
-        email: credentialSign.user!.email!,
-        image: credentialSign.user!.photoURL ?? '',
-        phone: credentialSign.user!.phoneNumber ?? '',
-        selectedGoal: '',
-        level: 0.toString(),
-      );
-      UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
       sl<SharedPrefController>().setLoggedIn();
-      sl<SharedPrefController>().saveUserData(user);
       UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
     } on FirebaseException catch (e) {
       UtilsConfig.showOnException(e);
