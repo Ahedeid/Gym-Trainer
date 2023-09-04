@@ -38,6 +38,7 @@ dependencies:
   circular_countdown_timer: ^0.2.3
   image_picker: ^0.8.4+3
   path: ^1.8.0
+  intl: ^0.17.0
 
 
 

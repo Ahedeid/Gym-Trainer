@@ -86,6 +86,22 @@ class ProfileProvider extends ChangeNotifier {
     sPhone = phone;
     notifyListeners();
   }
+  // --------------------------- get data user ------------------------------------
+
+  Future getUserData()async{
+    String id = sl<SharedPrefController>().getUserData().uid;
+    // Fetch user data from FireStore and update it
+    final userDoc = await sl<FirebaseFirestore>()
+        .collection(FirebaseConstant.usersCollection)
+        .doc(id)
+        .get();
+
+    final userModel = UserModel.fromDocumentSnapshot(userDoc);
+    user = userModel;
+    notifyListeners();
+  }
+
+
 
   // --------------------------- Edit Image ------------------------------------
 
@@ -104,6 +120,7 @@ class ProfileProvider extends ChangeNotifier {
     if (pickedFile != null) {
       _photo = File(pickedFile.path);
       uploadFile();
+      sl<AppRouter>().back();
       notifyListeners();
     } else {
       print('No image selected.');
@@ -115,6 +132,7 @@ class ProfileProvider extends ChangeNotifier {
     if (pickedFile != null) {
       _photo = File(pickedFile.path);
       uploadFile();
+      sl<AppRouter>().back();
       notifyListeners();
     } else {
       print('No image selected.');

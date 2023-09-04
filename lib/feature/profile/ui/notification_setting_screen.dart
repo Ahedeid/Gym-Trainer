@@ -26,7 +26,7 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.notificationsAppBar,
+        title: AppStrings.notificationsSettingAppBar,
         onTap: () {},
       ),
       body: MainContainer(

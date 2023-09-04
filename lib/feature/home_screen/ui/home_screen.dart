@@ -71,7 +71,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              sl<AppRouter>()
+                  .goTo(screenName: ScreenName.notificationScreen);
+            },
             child: Container(
               width: 42,
               height: 42,

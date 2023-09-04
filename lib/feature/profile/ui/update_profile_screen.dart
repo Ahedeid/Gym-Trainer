@@ -6,6 +6,7 @@ import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/custom_appBar-secondary.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
+import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
@@ -74,11 +75,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     context: context,
                     onTapGallery: () {
                       value.imgFromGallery();
-                      Navigator.of(context).pop();
                     },
                     onTapCamera: () {
                       value.imgFromCamera();
-                      Navigator.of(context).pop();
                     },
                   );
                 },
@@ -207,10 +206,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       required void Function() onTapGallery,
       required void Function() onTapCamera}) {
     showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         context: context,
         builder: (BuildContext bc) {
           return SafeArea(
-            child: Container(
+            child: MainContainer(
+              color: ColorManager.scaffoldColor,
               child: new Wrap(
                 children: <Widget>[
                   new ListTile(
