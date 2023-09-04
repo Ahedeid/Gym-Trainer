@@ -12,20 +12,35 @@ import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<ProfileProvider>().getUserData();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.yourProfile,
-        onTap: () {},
+        onTap: () {
+
+        },
       ),
       body: Consumer<ProfileProvider>(
         builder: (context, value, child) => RefreshIndicator(
           onRefresh: () async {
-            // await value.getADataUser();
+             await value.getUserData();
+            // var a = await FirebaseAuth.instance.currentUser;
+            // print(object)
           },
           child: ListView(
             padding: const EdgeInsets.symmetric(
