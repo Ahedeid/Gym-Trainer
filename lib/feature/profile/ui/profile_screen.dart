@@ -57,8 +57,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     CardInProfileWidget(
                       title: AppStrings.memberShipPlan,
                       onTap: () {
-                        sl<AppRouter>()
-                            .goTo(screenName: ScreenName.comingSoonScreen);
+                        sl<AppRouter>().goTo(
+                            screenName: ScreenName.comingSoonScreen,
+                            object: true);
                       },
                     ),
                     CustomDivider(),
@@ -66,8 +67,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       title: AppStrings.unitsOfMeasure,
                       onTap: () {
                         showModalBottomSheet(
-                          useSafeArea: true,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            useSafeArea: true,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                             context: context,
                             builder: (context) => BottomSheetDetailsWidget());
                       },
@@ -78,7 +80,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       onTap: () {
                         showModalBottomSheet(
                             useSafeArea: true,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8)),
                             context: context,
                             builder: (context) => BottomSheetDetailsWidget());
                       },
@@ -95,8 +98,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     CardInProfileWidget(
                       title: AppStrings.myPaymentMethods,
                       onTap: () {
-                        sl<AppRouter>()
-                            .goTo(screenName: ScreenName.comingSoonScreen);
+                        sl<AppRouter>().goTo(
+                          screenName: ScreenName.comingSoonScreen,
+                          object: false,
+                        );
                       },
                     ),
                     CustomDivider(),
