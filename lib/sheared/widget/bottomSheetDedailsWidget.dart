@@ -19,7 +19,6 @@ class BottomSheetDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingHorizontal),
-      // color: ColorManager.white,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         // shrinkWrap: true,
@@ -68,10 +67,15 @@ class BottomSheetDetailsWidget extends StatelessWidget {
             title: AppStrings.subscribeNow,
             onPressed: () {},
             style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                  maximumSize:
-                      const MaterialStatePropertyAll(Size(double.infinity, 50)),
-                  backgroundColor:
-                      const MaterialStatePropertyAll(ColorManager.secondary),
+                  maximumSize: const MaterialStatePropertyAll(
+                    Size(
+                      double.infinity,
+                      50,
+                    ),
+                  ),
+                  backgroundColor: const MaterialStatePropertyAll(
+                    ColorManager.secondary,
+                  ),
                 ),
           ),
           const SizedBox(height: 20),

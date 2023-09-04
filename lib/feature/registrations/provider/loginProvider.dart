@@ -102,7 +102,10 @@ class LoginProvider extends ChangeNotifier {
       );
       final credentialSign =
           await FirebaseAuth.instance.signInWithCredential(credential);
+
       if (await checkIfDocExists(credentialSign.user!.uid) == false) {
+        debugPrint('get data from credentialSign and update shared pref ');
+
         // Fetch user data from FireStore and update it
         await sl<FirebaseFirestore>()
             .collection(FirebaseConstant.usersCollection)
@@ -126,6 +129,16 @@ class LoginProvider extends ChangeNotifier {
           level: 0.toString(),
         );
         sl<SharedPrefController>().saveUserData(user);
+      } else {
+        debugPrint('get data from fireStore and update shared pref ');
+        final userDoc = await sl<FirebaseFirestore>()
+            .collection(FirebaseConstant.usersCollection)
+            .doc(credentialSign.user!.uid)
+            .get();
+
+        final userModel = UserModel.fromDocumentSnapshot(userDoc);
+        sl<SharedPrefController>().saveUserData(userModel);
+        notifyListeners();
       }
       sl<SharedPrefController>().setLoggedIn();
       UtilsConfig.navigateAfterSuccess(screenName: ScreenName.BNBUser);
@@ -141,7 +154,8 @@ class LoginProvider extends ChangeNotifier {
   Future<bool> checkIfDocExists(String docId) async {
     try {
       // Get reference to Firestore collection
-      var collectionRef = await FirebaseFirestore.instance.collection('users');
+      var collectionRef = await FirebaseFirestore.instance
+          .collection(FirebaseConstant.usersCollection);
       var doc = await collectionRef.doc(docId).get();
       return doc.exists;
     } catch (e) {
