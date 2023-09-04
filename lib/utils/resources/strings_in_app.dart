@@ -186,4 +186,6 @@ class AppStrings {
   static const comingSoon = 'Coming Soon';
   static const thisFeatureIsPlan = 'This feature is plan to next update';
   static const notificationsAppBar = 'Notifications! 🔔';
+  static const gallery = 'Gallery';
+  static const camera = 'Camera';
 }

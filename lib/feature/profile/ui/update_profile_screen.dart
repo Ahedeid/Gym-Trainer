@@ -201,10 +201,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     );
   }
 
-  void _showPicker(
-      {required BuildContext context,
-      required void Function() onTapGallery,
-      required void Function() onTapCamera}) {
+  void _showPicker({
+    required BuildContext context,
+    required void Function() onTapGallery,
+    required void Function() onTapCamera,
+  }) {
     showModalBottomSheet(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         context: context,
@@ -216,11 +217,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 children: <Widget>[
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
-                      title: new Text('Gallery'),
+                      title: new Text(AppStrings.gallery),
                       onTap: onTapGallery),
                   new ListTile(
                       leading: new Icon(Icons.photo_camera),
-                      title: new Text('Camera'),
+                      title: new Text(AppStrings.camera),
                       onTap: onTapCamera),
                 ],
               ),
