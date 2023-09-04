@@ -18,9 +18,10 @@ class ScreenName {
   static const String startTraining = '/StartTraining';
   static const String termsAndConditionsScreen = '/terms_and_conditions_screen';
   static const String fAQScreen = '/fAQ_screen';
-  static const String notificationSettingScreen = '/notification_setting_screen';
+  static const String notificationSettingScreen =
+      '/notification_setting_screen';
   static const String languageScreen = '/language_screen';
   static const String comingSoonScreen = '/coming_soon_screen';
   static const String notificationScreen = '/notification_screen';
-
+  static const String seeAllScreen = '/seeAllScreen';
 }

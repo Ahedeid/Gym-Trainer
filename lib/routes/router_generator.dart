@@ -10,14 +10,15 @@ import 'package:gym_app/feature/home_screen/ui/exercise_details.dart';
 import 'package:gym_app/feature/home_screen/ui/full_exercises_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/qr_screen.dart';
+import 'package:gym_app/feature/home_screen/ui/see_all_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/notification/ui/notification_screen.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
+import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/profile/ui/coming_soon_screen.dart';
+import 'package:gym_app/feature/profile/ui/faq_screen.dart';
 import 'package:gym_app/feature/profile/ui/language_screen.dart';
 import 'package:gym_app/feature/profile/ui/notification_setting_screen.dart';
-import 'package:gym_app/feature/profile/provider/profile_provider.dart';
-import 'package:gym_app/feature/profile/ui/faq_screen.dart';
 import 'package:gym_app/feature/profile/ui/terms_conditions_screen.dart';
 import 'package:gym_app/feature/profile/ui/update_profile_screen.dart';
 import 'package:gym_app/feature/registrations/model/user_model.dart';
@@ -196,6 +197,13 @@ class RouteGenerator {
       case ScreenName.notificationScreen:
         return MaterialPageRoute(
           builder: (_) => NotificationScreen(),
+        );
+      // ------------------------- See All  ------------------------------
+      case ScreenName.seeAllScreen:
+        var id = settings.arguments as String;
+
+        return MaterialPageRoute(
+          builder: (_) => SeeAllExercisesScreen(goalId: id),
         );
 
       default:
