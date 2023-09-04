@@ -174,7 +174,7 @@ class AppStrings {
       "1. Information We Collect: We may collect various types of information from you when you use our gym mobile application, including:️";
   static const weAreCommittedToProtecting =
       "At AppGym, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your data when you use our gym mobile application. Please read this policy carefully to understand our practices regarding your personal information.";
-  static const notificationsAppBar = "Notifications Pref.! 🔔";
+  static const notificationsSettingAppBar = "Notifications Pref.! 🔔";
   static const membershipStatusAndOffers = "Membership - Status and Offers";
   static const classesNewUpdates = "Classes - New Updates";
   static const contentNewArticles = "Content - New Articles";
@@ -185,4 +185,5 @@ class AppStrings {
   static const arabic = 'Arabic';
   static const comingSoon = 'Coming Soon';
   static const thisFeatureIsPlan = 'This feature is plan to next update';
+  static const notificationsAppBar = 'Notifications! 🔔';
 }

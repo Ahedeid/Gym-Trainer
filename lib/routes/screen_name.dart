@@ -21,5 +21,6 @@ class ScreenName {
   static const String notificationSettingScreen = '/notification_setting_screen';
   static const String languageScreen = '/language_screen';
   static const String comingSoonScreen = '/coming_soon_screen';
+  static const String notificationScreen = '/notification_screen';
 
 }
