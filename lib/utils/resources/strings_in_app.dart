@@ -113,6 +113,11 @@ class AppStrings {
   static const popularTraining = "Popular Training";
   static const additionalExercise = "Additional Exercise";
   static const oClock = "|";
+  static const upNext = "Up Next";
+  static const nextTraining = "Next Training";
+  static const start = "Start";
+  static const resume = "Resume";
+  static const pause = "Pause";
 
   static const orLoginWith = "Or Login with";
   static const training = "Training";
