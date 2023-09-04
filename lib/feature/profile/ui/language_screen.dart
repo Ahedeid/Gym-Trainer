@@ -32,6 +32,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.changeLanguageApp,
+        visible: true,
       ),
       body: MainContainer(
         bottom: AppSizes.paddingVertical,

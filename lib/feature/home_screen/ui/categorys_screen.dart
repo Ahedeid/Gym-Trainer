@@ -25,6 +25,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.category,
+        visible: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(

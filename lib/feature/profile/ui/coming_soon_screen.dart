@@ -16,6 +16,7 @@ class ComingSoonScreen extends StatelessWidget {
     return Scaffold(
       appBar:  CustomAppBar(
         title: isMemberShipScreen? AppStrings.memberShipPlan:AppStrings.myPaymentMethods,
+        visible: true,
       ),
       body: Center(
         child: Column(

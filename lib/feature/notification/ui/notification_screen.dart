@@ -24,6 +24,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.notificationsAppBar,
+        visible: true,
       ),
       body: ListView.builder(
         padding: EdgeInsets.symmetric(

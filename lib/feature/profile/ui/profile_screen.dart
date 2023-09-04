@@ -47,7 +47,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               horizontal: AppSizes.paddingHorizontal,
             ),
             children: [
-              const ProfileCardPrimaryWidget(),
+               ProfileCardPrimaryWidget(),
               const SizedBox(height: 16),
               MainContainer(
                 vertical: 8,

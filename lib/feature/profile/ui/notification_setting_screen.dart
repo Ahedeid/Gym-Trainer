@@ -27,7 +27,7 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.notificationsSettingAppBar,
-        onTap: () {},
+        visible: true,
       ),
       body: MainContainer(
         bottom: AppSizes.paddingVertical,

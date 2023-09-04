@@ -13,9 +13,7 @@ import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:provider/provider.dart';
 
 class ProfileCardPrimaryWidget extends StatefulWidget {
-  const ProfileCardPrimaryWidget({
-    super.key,
-  });
+ const ProfileCardPrimaryWidget({super.key});
 
   @override
   State<ProfileCardPrimaryWidget> createState() =>
@@ -26,7 +24,8 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ProfileProvider>(
-      builder: (context, value, child) => Container(
+        builder: (context, value, child) {
+      return Container(
         decoration: BoxDecoration(
             color: Colors.white, // Your desired background color
             borderRadius: BorderRadius.circular(8),
@@ -36,17 +35,14 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
                   blurRadius: 4,
                   offset: Offset(0, 1)),
             ]),
-        child:
-            // value.isLoading
-            //     ? Center(
-            //         child: CircularProgressIndicator(),
-            //       )
-            //     :
-            ListTile(
-          onTap: () {
-            sl<AppRouter>().goTo(
+        child: ListTile(
+          onTap: () async {
+            bool returnedValue = await sl<AppRouter>().goTo(
                 screenName: ScreenName.updateProfileScreen,
                 object: sl<SharedPrefController>().getUserData());
+            if (returnedValue == true) {
+              context.read<ProfileProvider>().getUserData();
+            }
           },
           tileColor: ColorManager.white,
           contentPadding: EdgeInsets.all(10),
@@ -62,7 +58,7 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
                   width: 59,
                   height: 59,
                   fit: BoxFit.cover,
-                  imageUrl: value.user?.image ?? '',
+                  imageUrl: value.user!.image,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
                       Center(
                     child: CircularProgressIndicator(
@@ -75,13 +71,13 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                value.user?.name ?? '',
+                value.user!.name,
                 maxLines: 1,
                 overflow: TextOverflow.visible,
                 style: StyleManger.headline3(),
               ),
               Text(
-                value.user?.email.toLowerCase() ?? '',
+                value.user!.email.toLowerCase(),
                 maxLines: 1,
                 overflow: TextOverflow.visible,
                 style: StyleManger.headline4(
@@ -98,7 +94,7 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
                 color: ColorManager.secondary,
               )),
         ),
-      ),
-    );
+      );
+    });
   }
 }
