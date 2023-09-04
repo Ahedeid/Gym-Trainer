@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' as utilsSize;
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
@@ -80,8 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           GestureDetector(
             onTap: () {
-              sl<AppRouter>()
-                  .goTo(screenName: ScreenName.notificationScreen);
+              sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
             },
             child: Container(
               width: 42,
@@ -273,7 +271,7 @@ class AppBarBody extends StatelessWidget {
               radius: 22.r,
               child: ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl: "${sl<FirebaseAuth>().currentUser?.photoURL}",
+                  imageUrl: "${sl<SharedPrefController>().getUserData().image}",
                   placeholder: (context, url) => Image.asset(
                     ImageApp.backgroundImageSecond,
                     fit: BoxFit.cover,
