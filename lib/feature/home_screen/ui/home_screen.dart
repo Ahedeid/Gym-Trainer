@@ -15,7 +15,7 @@ import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/sheared/widget/custom_textFeild.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/extensions/string_extension.dart';
@@ -193,7 +193,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               16.addVerticalSpace,
               HeaderSectionWidget(
-                onTap: () {},
+                onTap: () {
+                  homeProvider.changeAdditional(false);
+                  sl<AppRouter>().goTo(
+                      screenName: ScreenName.seeAllScreen,
+                      object: homeProvider.goalModel!.id);
+                },
                 title: AppStrings.popularExercise,
                 trailing: AppStrings.seeAll,
               ),
@@ -220,7 +225,12 @@ class _HomeScreenState extends State<HomeScreen> {
               Divider(),
               10.addVerticalSpace,
               HeaderSectionWidget(
-                onTap: () {},
+                onTap: () {
+                  homeProvider.changeAdditional(true);
+                  sl<AppRouter>().goTo(
+                      screenName: ScreenName.seeAllScreen,
+                      object: homeProvider.goalModel!.id);
+                },
                 title: AppStrings.additionalExercise,
                 trailing: AppStrings.seeAll,
               ),

@@ -15,8 +15,7 @@ class HomeProvider extends ChangeNotifier {
   List<String>? selectedGoalIdList = [];
   GoalModel? goalModel;
   CategoryModel? categoryModel;
-
-  // double savedScrollPosition = 0.0;
+  bool isAdditional = false;
 
   HomeProvider() : user = sl<SharedPrefController>().getUserData() {
     selectedGoal = user.selectedGoal;
@@ -171,6 +170,11 @@ class HomeProvider extends ChangeNotifier {
   String searchData = "";
   void showSearchResult(search) {
     searchData = search;
+    notifyListeners();
+  }
+
+  void changeAdditional(bool nValue) {
+    isAdditional = nValue;
     notifyListeners();
   }
 }

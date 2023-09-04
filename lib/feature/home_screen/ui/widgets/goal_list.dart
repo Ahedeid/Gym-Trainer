@@ -22,7 +22,6 @@ class _GoalListState extends State<GoalList> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      // controller: _scrollController,
       separatorBuilder: (context, index) => SizedBox(
         width: 13.w,
       ),
