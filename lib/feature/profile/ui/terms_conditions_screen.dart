@@ -14,6 +14,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
+        visible: true,
         title: AppStrings.termsConditionsAppBar,
         onTap: () {},
       ),
