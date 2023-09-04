@@ -14,6 +14,7 @@ class HomeProvider extends ChangeNotifier {
   String? selectedGoal = sl<SharedPrefController>().getUserData().selectedGoal;
   List<String>? selectedGoalIdList = [];
   GoalModel? goalModel;
+  CategoryModel? categoryModel;
 
   // double savedScrollPosition = 0.0;
 
@@ -51,6 +52,14 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future getCategoryName(catId) async {
+    DocumentSnapshot d = await sl<FirebaseFirestore>()
+        .collection(FirebaseConstant.categoriesCollection)
+        .doc(catId)
+        .get();
+    categoryModel = CategoryModel.fromDocumentSnapshot(d);
+    notifyListeners();
+  }
 // ------------------------ Filter Categories By Goal --------------------------
 
   List<CategoryModel> filterCategoriesByGoal(
@@ -150,6 +159,18 @@ class HomeProvider extends ChangeNotifier {
     countDownController.pause();
     upNextList = List.from(exerciseResult!);
     upNextList?.removeAt(currentIndex);
+    notifyListeners();
+  }
+
+  bool isShow = false;
+  void showSearch() {
+    isShow = !isShow;
+    notifyListeners();
+  }
+
+  String searchData = "";
+  void showSearchResult(search) {
+    searchData = search;
     notifyListeners();
   }
 }

@@ -12,6 +12,7 @@ import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
+import 'package:gym_app/utils/helper.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -66,7 +67,7 @@ class ExerciseDetails extends StatelessWidget {
                     tag: exerciseModel!,
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      height: 380.h,
+                      height: 380,
                       width: double.infinity,
                       imageUrl: exerciseModel!.image!,
                       progressIndicatorBuilder:
@@ -142,28 +143,30 @@ class ExerciseDetails extends StatelessWidget {
             10.addVerticalSpace,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Details(
-                      title: AppStrings.level,
-                      body: exerciseModel?.levelDisplay,
+              child: Consumer<HomeProvider>(
+                builder: (context, value, child) => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: Details(
+                        title: AppStrings.level,
+                        body: exerciseModel?.levelDisplay,
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Details(
-                      title: AppStrings.category,
-                      body: "Body",
+                    Expanded(
+                      child: Details(
+                        title: AppStrings.category,
+                        body: "${value.categoryModel?.name ?? "Not Specified"}",
+                      ),
                     ),
-                  ),
-                  Expanded(
-                    child: Details(
-                      title: AppStrings.weight,
-                      body: "Body",
+                    Expanded(
+                      child: Details(
+                        title: AppStrings.weight,
+                        body: "${value.goalModel?.name}",
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -197,21 +200,28 @@ class ExerciseDetails extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                               fontSize: 14.sp),
                         ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 23, vertical: 12),
-                          child: Text(
-                            AppStrings.schedule,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 12.sp,
-                                fontWeight: FontWeight.w600,
-                                color: ColorManager.white),
+                        GestureDetector(
+                          onTap: () {
+                            UtilsConfig.showSnackBarMessage(
+                                message: AppStrings.upgradeNeeded,
+                                status: false);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 23, vertical: 12),
+                            child: Text(
+                              AppStrings.schedule,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 12.sp,
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorManager.white),
+                            ),
+                            decoration: BoxDecoration(
+                                color: ColorManager.black,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5))),
                           ),
-                          decoration: BoxDecoration(
-                              color: ColorManager.black,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5))),
                         )
                       ],
                     ),

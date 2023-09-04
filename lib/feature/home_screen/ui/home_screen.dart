@@ -9,6 +9,7 @@ import 'package:gym_app/feature/home_screen/ui/widgets/category_List_Widget.dart
 import 'package:gym_app/feature/home_screen/ui/widgets/goal_list.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/header_section_widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list.dart';
+import 'package:gym_app/feature/home_screen/ui/widgets/search_result_widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/vertical_exercise_list.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
@@ -16,6 +17,7 @@ import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/sheared/widget/custom_textFeild.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/extensions/string_extension.dart';
 import 'package:gym_app/utils/extensions/time_of_day.dart';
@@ -59,15 +61,21 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         title: AppBarBody(greeting: greeting),
         actions: [
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              width: 42,
-              height: 42,
-              child: CustomSvgAssets(
-                path: AppIcons.search,
-                color: Colors.white,
-              ),
+          Consumer<HomeProvider>(
+            builder: (context, value, child) => GestureDetector(
+              onTap: () {},
+              child: Container(
+                  width: 42,
+                  height: 42,
+                  child: IconButton(
+                    onPressed: () {
+                      value.showSearch();
+                    },
+                    icon: Icon(
+                      value.isShow ? Icons.search_off : Icons.search,
+                      color: Colors.white,
+                    ),
+                  )),
             ),
           ),
           GestureDetector(
@@ -95,6 +103,21 @@ class _HomeScreenState extends State<HomeScreen> {
               vertical: AppSizes.paddingVertical,
             ),
             children: [
+              Visibility(
+                visible: homeProvider.isShow,
+                child: CustomTextField(
+                  hintText: "Search",
+                  prefixIcon: CustomSvgAssets(
+                    path: AppIcons.search,
+                  ),
+                  keyboardType: TextInputType.text,
+                  onChange: (val) {
+                    homeProvider.showSearchResult(val);
+                  },
+                ),
+              ),
+              13.addVerticalSpace,
+              SearchResultWidget(),
               HeaderSectionWidget(
                 onTap: () {},
                 title: AppStrings.selectGoal,

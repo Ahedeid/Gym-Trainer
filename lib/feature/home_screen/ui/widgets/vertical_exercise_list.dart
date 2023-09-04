@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
+import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/vertical_exercise_widget.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -30,6 +31,8 @@ class VerticalExerciseList extends StatelessWidget {
                 UtilsConfig.showSnackBarMessage(
                     message: AppStrings.noAccessExercise, status: false);
               } else {
+                sl<HomeProvider>()
+                    .getCategoryName(resultList[index].categoryId);
                 sl<AppRouter>().goTo(
                     screenName: ScreenName.exercisesDetailsScreen,
                     object: resultList[index]);

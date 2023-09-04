@@ -118,6 +118,7 @@ class AppStrings {
   static const start = "Start";
   static const resume = "Resume";
   static const pause = "Pause";
+  static const noItems = "No Exercise Found";
 
   static const orLoginWith = "Or Login with";
   static const training = "Training";
@@ -129,6 +130,7 @@ class AppStrings {
   static const level = "Level";
   static const weight = "Weight";
   static const noAccessExercise = "You can't access this exercise";
+  static const upgradeNeeded = "Upgrade to access this feature";
   static const weeks = "Weeks";
   static const exercise = "Exercise";
   static const schedule = "Schedule";

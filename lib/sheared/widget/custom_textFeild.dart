@@ -52,6 +52,7 @@ class CustomTextField extends StatelessWidget {
       //enableInteractiveSelection: true,
       maxLines: maxLines,
       minLines: minLines,
+
       style: const TextStyle(
           color: ColorManager.primaryTextColor, fontSize: FontSize.s14),
       onChanged: onChange as Function(String?)?,
@@ -69,7 +70,7 @@ class CustomTextField extends StatelessWidget {
         filled: true,
         fillColor: ColorManager.backgroundInputFiled,
         contentPadding:
-        const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: Colors.transparent)),
