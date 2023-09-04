@@ -42,8 +42,8 @@ class BNBUser extends StatelessWidget {
           iconNonActive: AppIcons.familyUnSelected,
         ),
         buildPersistentBottomNavBarItem(
-          iconActive: AppIcons.shopSelected,
-          iconNonActive: AppIcons.shopUnSelected,
+          iconActive: AppIcons.meals,
+          iconNonActive: AppIcons.meals,
         ),
         buildPersistentBottomNavBarItem(
           iconActive: AppIcons.profileSelected,
