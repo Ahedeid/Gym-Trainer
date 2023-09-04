@@ -1,13 +1,15 @@
 import 'dart:convert';
-
 import 'package:gym_app/feature/registrations/model/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum PrefKeys { user, token, loggedIn, showOnce, scrollPosition }
+enum PrefKeys { user, token, loggedIn, showOnce, scrollPosition, langCode, langIndex }
 
 class SharedPrefController {
   SharedPreferences preferences;
+
   SharedPrefController({required this.preferences});
+
+  // -----------------------  Show OnBoarding  ---------------------------------
 
   setShowOnce(bool showOnce) async {
     await preferences.setBool(PrefKeys.showOnce.toString(), showOnce);
@@ -16,12 +18,16 @@ class SharedPrefController {
   bool getShowOnce() =>
       preferences.getBool(PrefKeys.showOnce.toString()) ?? false;
 
+  // ---------------------------  User Logged in  ------------------------------
+
   setLoggedIn() async {
     await preferences.setBool(PrefKeys.loggedIn.toString(), true);
   }
 
   bool getLoggedIn() =>
       preferences.getBool(PrefKeys.loggedIn.toString()) ?? false;
+
+  // ---------------------------  User Data  -----------------------------------
 
   void removeUser() {
     if (preferences.containsKey(PrefKeys.user.toString())) {
@@ -63,5 +69,19 @@ class SharedPrefController {
 
   getPosition() {
     preferences.getDouble(PrefKeys.scrollPosition.toString());
+  }
+
+  // ---------------------------  Language  ------------------------------------
+  String get getLanguage =>
+      preferences.getString(PrefKeys.langCode.toString()) ?? "en";
+
+   setLanguage(String langCode) {
+    preferences.setString(PrefKeys.langCode.toString(), langCode);
+  }
+  int get getIndexLang =>
+      preferences.getInt(PrefKeys.langIndex.toString()) ?? 0;
+
+  set setLanguageIndex(int langIndex) {
+    preferences.setInt(PrefKeys.langIndex.toString(), langIndex);
   }
 }

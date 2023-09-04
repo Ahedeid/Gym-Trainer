@@ -4,14 +4,7 @@ class AppStrings {
   static const email = "Email address";
   static const phone = "Phone";
   static const enterYourEmail = "Hello there, sign in to\ncontinue!";
-
-// <<<<<<< Ahed
-//   static const pleaseEnterYourCredentials=
-// =======
-  // static const enterYourEmail =
-  //     "Hello there, sign in to\ncontinue!";
   static const pleaseEnterYourCredentials =
-// >>>>>>> master
       "Please enter your credentials to proceed ";
   static const createANewAccount = "Create a new account!";
   static const userName = "Username";
@@ -76,7 +69,7 @@ class AppStrings {
   static const attendNow = "Attend Now!";
   static const discover = "Discover!";
   static const Continue = "Continue!";
-  static const manualAttend = "Manual Attend";
+  static const subscribeNow = "SUBSCRIBE NOW";
   static const scanBarcode = "Scan Barcode by Mobile Camera";
   static const scanAppBarcode = "Scan App Barcode";
   static const memberShipPlan = "Membership Plan";
@@ -183,11 +176,20 @@ class AppStrings {
       "1. Information We Collect: We may collect various types of information from you when you use our gym mobile application, including:️";
   static const weAreCommittedToProtecting =
       "At AppGym, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your data when you use our gym mobile application. Please read this policy carefully to understand our practices regarding your personal information.";
-  static const notificationsAppBar = "Notifications Pref.! 🔔";
+  static const notificationsSettingAppBar = "Notifications Pref.! 🔔";
   static const membershipStatusAndOffers = "Membership - Status and Offers";
   static const classesNewUpdates = "Classes - New Updates";
   static const contentNewArticles = "Content - New Articles";
   static const workoutUpdates = "Workout Updates";
   static const storeNewProducts = "Store - New Products";
   static const changeLanguageApp = "Change Language! 🗣️";
+  static const english = 'English';
+  static const arabic = 'Arabic';
+  static const comingSoon = 'Coming Soon';
+  static const thisFeatureIsPlan = 'This feature is plan to next update';
+  static const notificationsAppBar = 'Notifications! 🔔';
+  static const gallery = 'Gallery';
+  static const camera = 'Camera';
+  static const limitReached = 'Limit Reached';
+  static const youMustSubscribeToPaid = 'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services';
 }

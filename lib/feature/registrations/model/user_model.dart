@@ -68,12 +68,12 @@ class UserModel {
     );
   }
 
-  UserModel copyWithUserProfile({String? name,String? email,String? phone}) {
+  UserModel copyWithUserProfile({String? name,String? email,String? phone,String? image}) {
     return UserModel(
       uid: this.uid,
       name: name ?? this.name,
       email: email ?? this.email,
-      image: this.image,
+      image: image ??this.image,
       phone: phone ?? this.phone,
       selectedGoal: this.selectedGoal,
       level: this.level,

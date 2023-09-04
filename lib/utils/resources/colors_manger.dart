@@ -5,6 +5,7 @@ class ColorManager {
   static const Color secondPrimary = const Color(0xFFBEA4E8);
   static const Color secondary = const Color(0xFF8f2354);
   static const Color secondary200 = const Color(0xFFe8d3dc);
+  static const Color secondary400 = const Color(0xFFbb7b98);
   static const Color backGroundButtonSecondary = const Color(0xFFFFFFFF);
   static const Color backGroundField = const Color(0xFFF6F6F6);
   static const Color backGroundSecondary = const Color(0xFFf3e9ed);

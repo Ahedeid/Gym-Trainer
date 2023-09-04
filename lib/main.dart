@@ -13,7 +13,6 @@ import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/theamManeager.dart';
 import 'package:provider/provider.dart';
 
-// pr
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(

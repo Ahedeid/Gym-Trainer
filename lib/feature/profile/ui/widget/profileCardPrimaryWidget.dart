@@ -62,7 +62,7 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
                   width: 59,
                   height: 59,
                   fit: BoxFit.cover,
-                  imageUrl: sl<SharedPrefController>().getUserData().image,
+                  imageUrl: value.user?.image ?? '',
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
                       Center(
                     child: CircularProgressIndicator(
@@ -75,13 +75,13 @@ class _ProfileCardPrimaryWidgetState extends State<ProfileCardPrimaryWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "${sl<SharedPrefController>().getUserData().name}",
+                value.user?.name ?? '',
                 maxLines: 1,
                 overflow: TextOverflow.visible,
                 style: StyleManger.headline3(),
               ),
               Text(
-                sl<SharedPrefController>().getUserData().email.toLowerCase(),
+                value.user?.email.toLowerCase() ?? '',
                 maxLines: 1,
                 overflow: TextOverflow.visible,
                 style: StyleManger.headline4(

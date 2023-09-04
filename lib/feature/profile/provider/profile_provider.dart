@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:gym_app/feature/registrations/model/user_model.dart';
@@ -9,6 +11,8 @@ import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/utils/helper.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:path/path.dart';
 
 class ProfileProvider extends ChangeNotifier {
   var auth = sl<FirebaseAuth>();
@@ -17,13 +21,6 @@ class ProfileProvider extends ChangeNotifier {
   String? sName = sl<SharedPrefController>().getUserData().name;
   String? sPhone = sl<SharedPrefController>().getUserData().phone;
 
-  // bool isLoading = false;
-  //
-  // setLoading(bool val) {
-  //   isLoading = val;
-  //   notifyListeners();
-  // }
-
   bool isLoadingEdit = false;
 
   setLoadingEdit(bool val) {
@@ -31,9 +28,9 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //-------------------------- EditNameProfile ----------------------------------
+  //-------------------------- EditUserProfile ----------------------------------
 
-  Future<void> EditNameProfile({
+  Future<void> EditUserProfile({
     required String name,
     required String email,
     required String phone,
@@ -48,6 +45,7 @@ class ProfileProvider extends ChangeNotifier {
         FirebaseConstant.name: name,
         FirebaseConstant.email: email,
         FirebaseConstant.phone: phone,
+        FirebaseConstant.image: imageURL,
       });
       // Fetch user data from FireStore and update it
       getGoalData(id);
@@ -57,9 +55,11 @@ class ProfileProvider extends ChangeNotifier {
         name: name,
         email: email,
         phone: phone,
+        image: imageURL,
       );
       sl<SharedPrefController>().saveUserData(currentUser);
       sl<AppRouter>().back();
+      notifyListeners();
     } on FirebaseException catch (e) {
       UtilsConfig.showOnException(e);
     } finally {
@@ -85,6 +85,75 @@ class ProfileProvider extends ChangeNotifier {
     sName = email;
     sPhone = phone;
     notifyListeners();
+  }
+  // --------------------------- get data user ------------------------------------
+
+  Future getUserData()async{
+    String id = sl<SharedPrefController>().getUserData().uid;
+    // Fetch user data from FireStore and update it
+    final userDoc = await sl<FirebaseFirestore>()
+        .collection(FirebaseConstant.usersCollection)
+        .doc(id)
+        .get();
+
+    final userModel = UserModel.fromDocumentSnapshot(userDoc);
+    user = userModel;
+    notifyListeners();
+  }
+
+
+
+  // --------------------------- Edit Image ------------------------------------
+
+  String? imageURL;
+  File? _photo;
+  final ImagePicker _picker = ImagePicker();
+  bool isLoadingImage = false;
+
+  setLoadingImage(bool val) {
+    isLoadingImage = val;
+    notifyListeners();
+  }
+
+  Future imgFromGallery() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      _photo = File(pickedFile.path);
+      uploadFile();
+      sl<AppRouter>().back();
+      notifyListeners();
+    } else {
+      print('No image selected.');
+    }
+  }
+
+  Future imgFromCamera() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.camera);
+    if (pickedFile != null) {
+      _photo = File(pickedFile.path);
+      uploadFile();
+      sl<AppRouter>().back();
+      notifyListeners();
+    } else {
+      print('No image selected.');
+    }
+  }
+
+  Future uploadFile() async {
+    if (_photo == null) return;
+    final fileName = basename(_photo!.path);
+    final destination = 'UsersImages/$fileName';
+    try {
+      setLoadingImage(true);
+      final ref = sl<FirebaseStorage>().ref(destination).child('file/');
+      await ref.putFile(_photo!);
+      String downloadUrl = await ref.getDownloadURL();
+      imageURL = downloadUrl;
+      setLoadingImage(false);
+    } on FirebaseException catch (e) {
+      UtilsConfig.showOnException(e);
+      setLoadingImage(false);
+    }
   }
 
   // --------------------------- LOGOUT ----------------------------------------

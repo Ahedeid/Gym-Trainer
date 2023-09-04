@@ -5,6 +5,7 @@ import 'package:gym_app/feature/profile/ui/widget/profileCardPrimaryWidget.dart'
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/sheared/widget/bottomSheetDedailsWidget.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
@@ -12,20 +13,33 @@ import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:provider/provider.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    context.read<ProfileProvider>().getUserData();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.yourProfile,
-        onTap: () {},
       ),
       body: Consumer<ProfileProvider>(
         builder: (context, value, child) => RefreshIndicator(
           onRefresh: () async {
-            // await value.getADataUser();
+            await value.getUserData();
+            // var a = await FirebaseAuth.instance.currentUser;
+            // print(object)
           },
           child: ListView(
             padding: const EdgeInsets.symmetric(
@@ -33,9 +47,7 @@ class ProfileScreen extends StatelessWidget {
               horizontal: AppSizes.paddingHorizontal,
             ),
             children: [
-              const ProfileCardPrimaryWidget(
-                  // icon: Icons.arrow_forward_ios,
-                  ),
+              const ProfileCardPrimaryWidget(),
               const SizedBox(height: 16),
               MainContainer(
                 vertical: 8,
@@ -45,21 +57,30 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.memberShipPlan,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.orderTrackingScreen);
+                        sl<AppRouter>()
+                            .goTo(screenName: ScreenName.comingSoonScreen);
                       },
                     ),
                     CustomDivider(),
                     CardInProfileWidget(
                       title: AppStrings.unitsOfMeasure,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.paymentScreen);
+                        showModalBottomSheet(
+                          useSafeArea: true,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            context: context,
+                            builder: (context) => BottomSheetDetailsWidget());
                       },
                     ),
                     CustomDivider(),
                     CardInProfileWidget(
                       title: AppStrings.attendanceHistory,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
+                        showModalBottomSheet(
+                            useSafeArea: true,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            context: context,
+                            builder: (context) => BottomSheetDetailsWidget());
                       },
                     ),
                   ],
@@ -74,7 +95,8 @@ class ProfileScreen extends StatelessWidget {
                     CardInProfileWidget(
                       title: AppStrings.myPaymentMethods,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.orderTrackingScreen);
+                        sl<AppRouter>()
+                            .goTo(screenName: ScreenName.comingSoonScreen);
                       },
                     ),
                     CustomDivider(),

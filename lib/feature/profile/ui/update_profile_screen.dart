@@ -2,8 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/registrations/model/user_model.dart';
+import 'package:gym_app/logic/localData/shared_pref.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/custom_appBar-secondary.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
+import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
@@ -30,14 +33,18 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      var name = widget.userData?.name ?? '';
-      var email = widget.userData?.email ?? '';
-      var phone = widget.userData?.phone ?? '';
-      nameController.text = name;
-      emailController.text = email;
-      phoneController.text = phone;
-    });
+    context.read<ProfileProvider>().imageURL =
+        sl<SharedPrefController>().getUserData().image;
+    WidgetsBinding.instance.addPostFrameCallback(
+      (timeStamp) {
+        var name = widget.userData?.name ?? '';
+        var email = widget.userData?.email ?? '';
+        var phone = widget.userData?.phone ?? '';
+        nameController.text = name;
+        emailController.text = email;
+        phoneController.text = phone;
+      },
+    );
   }
 
   @override
@@ -61,12 +68,23 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             vertical: AppSizes.paddingVertical,
           ),
           children: [
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
+            Consumer<ProfileProvider>(
+              builder: (context, value, child) => GestureDetector(
+                onTap: () {
+                  _showPicker(
+                    context: context,
+                    onTapGallery: () {
+                      value.imgFromGallery();
+                    },
+                    onTapCamera: () {
+                      value.imgFromCamera();
+                    },
+                  );
+                },
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
                     color: Colors.white, // Your desired background color
                     borderRadius: BorderRadius.circular(8),
                     boxShadow: [
@@ -75,36 +93,40 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                         blurRadius: 4,
                         offset: const Offset(0, 1),
                       ),
-                    ]),
-                child: Column(
-                  children: [
-                    SizedBox(
-                        height: 59,
-                        width: 59,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: CachedNetworkImage(
-                            width: 59,
-                            height: 59,
-                            fit: BoxFit.cover,
-                            imageUrl: widget.userData?.image ?? '',
-                            progressIndicatorBuilder:
-                                (context, url, downloadProgress) => Center(
-                              child: CircularProgressIndicator(
-                                  value: downloadProgress.progress),
-                            ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
-                          ),
-                        )),
-                    const SizedBox(height: 8),
-                    Text(
-                      AppStrings.uploadNewPicture,
-                      style: StyleManger.headline4(
-                        color: ColorManager.primary,
-                      ),
-                    )
-                  ],
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                          height: 59,
+                          width: 59,
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: value.imageURL != null
+                                  ? CachedNetworkImage(
+                                      width: 59,
+                                      height: 59,
+                                      fit: BoxFit.cover,
+                                      imageUrl: value.imageURL!,
+                                      progressIndicatorBuilder:
+                                          (context, url, downloadProgress) =>
+                                              Center(
+                                        child: CircularProgressIndicator(
+                                            value: downloadProgress.progress),
+                                      ),
+                                      errorWidget: (context, url, error) =>
+                                          Icon(Icons.error),
+                                    )
+                                  : Placeholder())),
+                      const SizedBox(height: 8),
+                      Text(
+                        AppStrings.uploadNewPicture,
+                        style: StyleManger.headline4(
+                          color: ColorManager.primary,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -163,9 +185,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         ),
         child: Consumer<ProfileProvider>(
           builder: (context, value, child) => CustomButtonWidget(
-            isLoading: value.isLoadingEdit,
+            isLoading: value.isLoadingEdit || value.isLoadingImage,
             onPressed: () {
-              value.EditNameProfile(
+              value.EditUserProfile(
                 name: nameController.text,
                 email: emailController.text,
                 phone: phoneController.text,
@@ -177,5 +199,34 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         ),
       ),
     );
+  }
+
+  void _showPicker({
+    required BuildContext context,
+    required void Function() onTapGallery,
+    required void Function() onTapCamera,
+  }) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+            child: MainContainer(
+              color: ColorManager.scaffoldColor,
+              child: new Wrap(
+                children: <Widget>[
+                  new ListTile(
+                      leading: new Icon(Icons.photo_library),
+                      title: new Text(AppStrings.gallery),
+                      onTap: onTapGallery),
+                  new ListTile(
+                      leading: new Icon(Icons.photo_camera),
+                      title: new Text(AppStrings.camera),
+                      onTap: onTapCamera),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }
