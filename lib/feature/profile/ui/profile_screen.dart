@@ -5,6 +5,7 @@ import 'package:gym_app/feature/profile/ui/widget/profileCardPrimaryWidget.dart'
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/sheared/widget/bottomSheetDedailsWidget.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
@@ -26,19 +27,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     super.initState();
     context.read<ProfileProvider>().getUserData();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.yourProfile,
-        onTap: () {
-
-        },
       ),
       body: Consumer<ProfileProvider>(
         builder: (context, value, child) => RefreshIndicator(
           onRefresh: () async {
-             await value.getUserData();
+            await value.getUserData();
             // var a = await FirebaseAuth.instance.currentUser;
             // print(object)
           },
@@ -58,21 +57,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     CardInProfileWidget(
                       title: AppStrings.memberShipPlan,
                       onTap: () {
-                       sl<AppRouter>().goTo(screenName: ScreenName.comingSoonScreen);
+                        sl<AppRouter>()
+                            .goTo(screenName: ScreenName.comingSoonScreen);
                       },
                     ),
                     CustomDivider(),
                     CardInProfileWidget(
                       title: AppStrings.unitsOfMeasure,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.paymentScreen);
+                        showModalBottomSheet(
+                          useSafeArea: true,
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            context: context,
+                            builder: (context) => BottomSheetDetailsWidget());
                       },
                     ),
                     CustomDivider(),
                     CardInProfileWidget(
                       title: AppStrings.attendanceHistory,
                       onTap: () {
-                        // AppRouter.goTo(screenName: ScreenName.myPurchessScreen);
+                        showModalBottomSheet(
+                            useSafeArea: true,
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            context: context,
+                            builder: (context) => BottomSheetDetailsWidget());
                       },
                     ),
                   ],
@@ -87,7 +95,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     CardInProfileWidget(
                       title: AppStrings.myPaymentMethods,
                       onTap: () {
-                        sl<AppRouter>().goTo(screenName: ScreenName.comingSoonScreen);
+                        sl<AppRouter>()
+                            .goTo(screenName: ScreenName.comingSoonScreen);
                       },
                     ),
                     CustomDivider(),

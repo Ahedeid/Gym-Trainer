@@ -69,7 +69,7 @@ class AppStrings {
   static const attendNow = "Attend Now!";
   static const discover = "Discover!";
   static const Continue = "Continue!";
-  static const manualAttend = "Manual Attend";
+  static const subscribeNow = "SUBSCRIBE NOW";
   static const scanBarcode = "Scan Barcode by Mobile Camera";
   static const scanAppBarcode = "Scan App Barcode";
   static const memberShipPlan = "Membership Plan";
@@ -186,4 +186,8 @@ class AppStrings {
   static const comingSoon = 'Coming Soon';
   static const thisFeatureIsPlan = 'This feature is plan to next update';
   static const notificationsAppBar = 'Notifications! 🔔';
+  static const gallery = 'Gallery';
+  static const camera = 'Camera';
+  static const limitReached = 'Limit Reached';
+  static const youMustSubscribeToPaid = 'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services';
 }
