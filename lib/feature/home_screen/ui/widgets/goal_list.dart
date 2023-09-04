@@ -19,31 +19,6 @@ class GoalList extends StatefulWidget {
 }
 
 class _GoalListState extends State<GoalList> {
-  // final ScrollController _scrollController = ScrollController();
-  // double _savedScrollPosition = 0.0;
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _savedScrollPosition = sl<SharedPrefController>().getPosition() ?? 0.0;
-  //   _scrollController
-  //       .addListener(_saveScrollPosition); // Attach scroll listener
-  //   WidgetsBinding.instance.addPostFrameCallback((_) {
-  //     _scrollController.jumpTo(_savedScrollPosition);
-  //   });
-  // }
-
-  // void _saveScrollPosition() {
-  //   sl<HomeProvider>().saveScrollPosition(_scrollController.position.pixels);
-  // }
-
-  // @override
-  // void dispose() {
-  //   _scrollController.removeListener(_saveScrollPosition); // Remove listener
-  //   _scrollController.dispose();
-  //   super.dispose();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
