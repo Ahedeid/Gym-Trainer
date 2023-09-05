@@ -24,4 +24,5 @@ class ScreenName {
   static const String comingSoonScreen = '/coming_soon_screen';
   static const String notificationScreen = '/notification_screen';
   static const String seeAllScreen = '/seeAllScreen';
+  static const String mealPlanDetails = '/mealPlanDetails';
 }
