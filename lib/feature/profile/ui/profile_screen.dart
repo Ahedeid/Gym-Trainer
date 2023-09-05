@@ -25,7 +25,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<ProfileProvider>().getUserData();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<ProfileProvider>().getUserData();
+    });
   }
 
   @override
@@ -34,9 +36,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: CustomAppBar(
         title: AppStrings.yourProfile,
       ),
-      body:  RefreshIndicator(
-        onRefresh: () async {
-        },
+      body: RefreshIndicator(
+        onRefresh: () async {},
         child: ListView(
           padding: const EdgeInsets.symmetric(
             vertical: AppSizes.paddingVertical,
