@@ -22,7 +22,7 @@ class BNBUser extends StatelessWidget {
         const HomeScreen(),
         const TrainingScreen(),
         const GymFamilyScreen(),
-        const OurShopScreen(),
+        const MealsPlan(),
         const ProfileScreen(),
       ];
     }
@@ -91,6 +91,7 @@ class BNBUser extends StatelessWidget {
         color: ColorManager.primary,
       ),
       inactiveIcon: CustomSvgAssets(
+        color: Colors.grey,
         path: iconNonActive,
       ),
       activeColorPrimary: ColorManager.primary,
