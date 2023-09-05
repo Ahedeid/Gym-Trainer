@@ -101,7 +101,7 @@ class MealPlanDetails extends StatelessWidget {
                       child: Details(
                         iconColor: ColorManager.customYellowDark,
                         circleColors: ColorManager.customYellowLight,
-                        iconPath: AppIcons.time,
+                        iconPath: AppIcons.star,
                         body: "${mealPlan!.rating}",
                       ),
                     ),
@@ -143,9 +143,15 @@ class Details extends StatelessWidget {
   final String? body;
   final Color? circleColors;
   final Color? iconColor;
+  final bool isSmall;
 
   const Details(
-      {Key? key, this.iconPath, this.body, this.circleColors, this.iconColor})
+      {Key? key,
+      this.iconPath,
+      this.body,
+      this.circleColors,
+      this.iconColor,
+      this.isSmall = true})
       : super(key: key);
 
   @override
@@ -166,8 +172,8 @@ class Details extends StatelessWidget {
                 radius: 30,
                 backgroundColor: circleColors!,
                 child: CustomSvgAssets(
-                  width: 50,
-                  height: 50,
+                  width: isSmall ? 25 : 50,
+                  height: isSmall ? 25 : 50,
                   path: iconPath,
                   color: iconColor,
                 ),

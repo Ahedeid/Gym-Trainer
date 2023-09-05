@@ -40,6 +40,7 @@ class AppIcons {
   static String line = '$iconsPath/line.svg';
   static String arrowDown = '$iconsPath/arrow_downe.svg';
   static String subscribe = '$iconsPath/subscribe.svg';
+  static String star = '$iconsPath/star.svg';
 
   // ----------------------- Bottom Nav Selected -------------------------------
   static String familySelected = '$iconsPathBottomNavSelected/family.svg';
