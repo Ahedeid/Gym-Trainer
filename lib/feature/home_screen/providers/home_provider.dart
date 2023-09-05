@@ -136,13 +136,18 @@ class HomeProvider extends ChangeNotifier {
     upNextList?.clear();
     currentIndex = 0;
     exerciseResult = neuList;
-    currentIndex = (currentIndex + 1) % exerciseResult!.length;
-    upNextList = List.from(exerciseResult!);
-    upNextList?.removeAt(currentIndex);
+
+    if (exerciseResult!.isNotEmpty) {
+      currentIndex = (currentIndex + 1) % exerciseResult!.length;
+      upNextList = List.from(exerciseResult!);
+      upNextList?.removeAt(currentIndex);
+    }
   }
 
   int currentIndex = 0;
   final countDownController = CountDownController();
+  List<ExerciseModel>? upNextList;
+
   void platStop() {
     countDownController.isPaused
         ? countDownController.resume()
@@ -150,14 +155,22 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  List<ExerciseModel>? upNextList;
-  void nextTarget() {
-    currentIndex = (currentIndex + 1) % exerciseResult!.length;
-    countDownController.restart(
-        duration: int.parse(exerciseResult![currentIndex].time!) * 60);
+  void nextTarget(List<ExerciseModel> exerciseResult) {
+    if (exerciseResult.isEmpty) {
+      return;
+    }
+
+    currentIndex = (currentIndex + 1) % exerciseResult.length;
+    final nextExercise = exerciseResult[currentIndex];
+    final exerciseTime = int.parse(nextExercise.time!) * 60;
+
+    countDownController.restart(duration: exerciseTime);
     countDownController.pause();
-    upNextList = List.from(exerciseResult!);
-    upNextList?.removeAt(currentIndex);
+
+    // Create a copy of exerciseResult excluding the current exercise
+    upNextList = List<ExerciseModel>.from(exerciseResult)
+      ..removeAt(currentIndex);
+
     notifyListeners();
   }
 
