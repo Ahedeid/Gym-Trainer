@@ -36,7 +36,6 @@ class ExerciseDetails extends StatelessWidget {
           builder: (context, value, child) => ElevatedButton(
             onPressed: () {
               value.setTrainingExercise(exerciseModel!);
-
               sl<AppRouter>().goTo(
                   screenName: ScreenName.startTraining,
                   object: value.trainingExerciseModel);
