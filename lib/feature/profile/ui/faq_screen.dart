@@ -13,7 +13,7 @@ class FAQScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.fAQsConditionsAppBar,
-        onTap: () {},
+        visible: true,
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(

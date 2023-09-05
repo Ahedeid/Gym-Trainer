@@ -6,11 +6,13 @@ class CustomSwitchListTile extends StatefulWidget {
   CustomSwitchListTile({
     required this.title,
     required this.value,
+    required this.setValue,
     super.key,
   });
 
   late bool value;
   final String title;
+  dynamic Function(dynamic)? setValue;
 
   @override
   State<CustomSwitchListTile> createState() => _CustomSwitchListTileState();
@@ -23,6 +25,7 @@ class _CustomSwitchListTileState extends State<CustomSwitchListTile> {
       onTap: () {
         setState(() {
           widget.value = !widget.value;
+          widget.setValue;
         });
       },
       title: Text(widget.title),
@@ -31,8 +34,10 @@ class _CustomSwitchListTileState extends State<CustomSwitchListTile> {
         trackColor: ColorManager.boardingBackGroundColor1,
         value: widget.value,
         onChanged: (val) {
-          setState(() {
+          setState((){
             widget.value = val;
+             widget.setValue!(val);
+            print('done');
           });
         },
       ),

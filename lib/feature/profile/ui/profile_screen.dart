@@ -25,7 +25,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    context.read<ProfileProvider>().getUserData();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      context.read<ProfileProvider>().getUserData();
+    });
   }
 
   @override
@@ -34,114 +36,113 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: CustomAppBar(
         title: AppStrings.yourProfile,
       ),
-      body: Consumer<ProfileProvider>(
-        builder: (context, value, child) => RefreshIndicator(
-          onRefresh: () async {
-            await value.getUserData();
-            // var a = await FirebaseAuth.instance.currentUser;
-            // print(object)
-          },
-          child: ListView(
-            padding: const EdgeInsets.symmetric(
-              vertical: AppSizes.paddingVertical,
-              horizontal: AppSizes.paddingHorizontal,
-            ),
-            children: [
-              const ProfileCardPrimaryWidget(),
-              const SizedBox(height: 16),
-              MainContainer(
-                vertical: 8,
-                color: ColorManager.white,
-                child: Column(
-                  children: [
-                    CardInProfileWidget(
-                      title: AppStrings.memberShipPlan,
-                      onTap: () {
-                        sl<AppRouter>()
-                            .goTo(screenName: ScreenName.comingSoonScreen);
-                      },
-                    ),
-                    CustomDivider(),
-                    CardInProfileWidget(
-                      title: AppStrings.unitsOfMeasure,
-                      onTap: () {
-                        showModalBottomSheet(
-                          useSafeArea: true,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                            context: context,
-                            builder: (context) => BottomSheetDetailsWidget());
-                      },
-                    ),
-                    CustomDivider(),
-                    CardInProfileWidget(
-                      title: AppStrings.attendanceHistory,
-                      onTap: () {
-                        showModalBottomSheet(
-                            useSafeArea: true,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                            context: context,
-                            builder: (context) => BottomSheetDetailsWidget());
-                      },
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 16),
-              MainContainer(
-                vertical: 8,
-                color: ColorManager.white,
-                child: Column(
-                  children: [
-                    CardInProfileWidget(
-                      title: AppStrings.myPaymentMethods,
-                      onTap: () {
-                        sl<AppRouter>()
-                            .goTo(screenName: ScreenName.comingSoonScreen);
-                      },
-                    ),
-                    CustomDivider(),
-                    CardInProfileWidget(
-                      title: AppStrings.changeLanguage,
-                      onTap: () {
-                        sl<AppRouter>()
-                            .goTo(screenName: ScreenName.languageScreen);
-                      },
-                    ),
-                    CustomDivider(),
-                    CardInProfileWidget(
-                      title: AppStrings.notificationsSettings,
-                      onTap: () {
-                        sl<AppRouter>().goTo(
-                            screenName: ScreenName.notificationSettingScreen);
-                      },
-                    ),
-                    CustomDivider(),
-                    CardInProfileWidget(
-                      title: AppStrings.termsConditions,
-                      onTap: () {
-                        sl<AppRouter>().goTo(
-                            screenName: ScreenName.termsAndConditionsScreen);
-                      },
-                    ),
-                    CustomDivider(),
-                    CardInProfileWidget(
-                      title: AppStrings.fAQsConditions,
-                      onTap: () {
-                        sl<AppRouter>().goTo(screenName: ScreenName.fAQScreen);
-                      },
-                    ),
-                    CustomDivider(),
-                    CardInProfileWidget(
-                      title: AppStrings.logout,
-                      onTap: () async {
-                        await sl<ProfileProvider>().logout();
-                      },
-                    ),
-                  ],
-                ),
-              ),
-            ],
+      body: RefreshIndicator(
+        onRefresh: () async {},
+        child: ListView(
+          padding: const EdgeInsets.symmetric(
+            vertical: AppSizes.paddingVertical,
+            horizontal: AppSizes.paddingHorizontal,
           ),
+          children: [
+            ProfileCardPrimaryWidget(),
+            const SizedBox(height: 16),
+            MainContainer(
+              vertical: 8,
+              color: ColorManager.white,
+              child: Column(
+                children: [
+                  CardInProfileWidget(
+                    title: AppStrings.memberShipPlan,
+                    onTap: () {
+                      sl<AppRouter>().goTo(
+                          screenName: ScreenName.comingSoonScreen,
+                          object: true);
+                    },
+                  ),
+                  CustomDivider(),
+                  CardInProfileWidget(
+                    title: AppStrings.unitsOfMeasure,
+                    onTap: () {
+                      showModalBottomSheet(
+                          useSafeArea: true,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                          context: context,
+                          builder: (context) => BottomSheetDetailsWidget());
+                    },
+                  ),
+                  CustomDivider(),
+                  CardInProfileWidget(
+                    title: AppStrings.attendanceHistory,
+                    onTap: () {
+                      showModalBottomSheet(
+                          useSafeArea: true,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                          context: context,
+                          builder: (context) => BottomSheetDetailsWidget());
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            MainContainer(
+              vertical: 8,
+              color: ColorManager.white,
+              child: Column(
+                children: [
+                  CardInProfileWidget(
+                    title: AppStrings.myPaymentMethods,
+                    onTap: () {
+                      sl<AppRouter>().goTo(
+                        screenName: ScreenName.comingSoonScreen,
+                        object: false,
+                      );
+                    },
+                  ),
+                  CustomDivider(),
+                  CardInProfileWidget(
+                    title: AppStrings.changeLanguage,
+                    onTap: () {
+                      sl<AppRouter>()
+                          .goTo(screenName: ScreenName.languageScreen);
+                    },
+                  ),
+                  CustomDivider(),
+                  CardInProfileWidget(
+                    title: AppStrings.notificationsSettings,
+                    onTap: () {
+                      sl<AppRouter>().goTo(
+                          screenName: ScreenName.notificationSettingScreen);
+                    },
+                  ),
+                  CustomDivider(),
+                  CardInProfileWidget(
+                    title: AppStrings.termsConditions,
+                    onTap: () {
+                      sl<AppRouter>().goTo(
+                          screenName: ScreenName.termsAndConditionsScreen);
+                    },
+                  ),
+                  CustomDivider(),
+                  CardInProfileWidget(
+                    title: AppStrings.fAQsConditions,
+                    onTap: () {
+                      sl<AppRouter>().goTo(screenName: ScreenName.fAQScreen);
+                    },
+                  ),
+                  CustomDivider(),
+                  CardInProfileWidget(
+                    title: AppStrings.logout,
+                    onTap: () async {
+                      await sl<ProfileProvider>().logout();
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

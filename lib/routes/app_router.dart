@@ -8,12 +8,12 @@ class AppRouter {
         .pushReplacementNamed(screenName, arguments: object);
   }
 
-  goTo({required String screenName, Object? object}) {
-    navigatorKey.currentState!.pushNamed(screenName, arguments: object);
+  goTo({required String screenName, Object? object}) async{
+  return await navigatorKey.currentState!.pushNamed(screenName, arguments: object);
   }
 
-  back() {
-    navigatorKey.currentState!.pop();
+  back([dynamic result]) {
+    navigatorKey.currentState!.pop(result);
   }
 
   mayBack() {

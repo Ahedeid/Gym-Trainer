@@ -17,9 +17,6 @@ import 'package:path/path.dart';
 class ProfileProvider extends ChangeNotifier {
   var auth = sl<FirebaseAuth>();
   UserModel? user;
-  String? sEmail = sl<SharedPrefController>().getUserData().email;
-  String? sName = sl<SharedPrefController>().getUserData().name;
-  String? sPhone = sl<SharedPrefController>().getUserData().phone;
 
   bool isLoadingEdit = false;
 
@@ -50,15 +47,15 @@ class ProfileProvider extends ChangeNotifier {
       // Fetch user data from FireStore and update it
       getGoalData(id);
       UserModel currentUser = sl<SharedPrefController>().getUserData();
-      setUpdateData(name: name, email: email, phone: phone);
       currentUser = currentUser.copyWithUserProfile(
         name: name,
         email: email,
         phone: phone,
         image: imageURL,
       );
+      user = currentUser;
       sl<SharedPrefController>().saveUserData(currentUser);
-      sl<AppRouter>().back();
+      sl<AppRouter>().back(true);
       notifyListeners();
     } on FirebaseException catch (e) {
       UtilsConfig.showOnException(e);
@@ -76,32 +73,31 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUpdateData({
-    required String name,
-    required String email,
-    required String phone,
-  }) {
-    sEmail = name;
-    sName = email;
-    sPhone = phone;
-    notifyListeners();
-  }
   // --------------------------- get data user ------------------------------------
+  bool isLoadingGetData = false;
 
-  Future getUserData()async{
-    String id = sl<SharedPrefController>().getUserData().uid;
-    // Fetch user data from FireStore and update it
-    final userDoc = await sl<FirebaseFirestore>()
-        .collection(FirebaseConstant.usersCollection)
-        .doc(id)
-        .get();
-
-    final userModel = UserModel.fromDocumentSnapshot(userDoc);
-    user = userModel;
+  setLoadingGetData(bool val) {
+    isLoadingGetData = val;
     notifyListeners();
   }
 
+  Future getUserData() async {
+    try {
+      setLoadingGetData(true);
+      String id = sl<SharedPrefController>().getUserData().uid;
+      // Fetch user data from FireStore and update it
+      final userDoc = await sl<FirebaseFirestore>()
+          .collection(FirebaseConstant.usersCollection)
+          .doc(id)
+          .get();
 
+      final userModel = UserModel.fromDocumentSnapshot(userDoc);
+      user = userModel;
+      setLoadingGetData(false);
+    } on FirebaseException catch (e) {
+      setLoadingGetData(false);
+    }
+  }
 
   // --------------------------- Edit Image ------------------------------------
 

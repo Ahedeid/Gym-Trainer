@@ -190,8 +190,11 @@ class RouteGenerator {
         );
       // ------------------------- ComingSoonScreen ------------------------------
       case ScreenName.comingSoonScreen:
+        var title = settings.arguments as bool;
         return MaterialPageRoute(
-          builder: (_) => ComingSoonScreen(),
+          builder: (_) => ComingSoonScreen(
+            isMemberShipScreen: title,
+          ),
         );
       // ------------------------- NotificationScreen ------------------------------
       case ScreenName.notificationScreen:

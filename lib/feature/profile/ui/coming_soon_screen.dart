@@ -8,13 +8,15 @@ import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 
 class ComingSoonScreen extends StatelessWidget {
-  const ComingSoonScreen({super.key});
+   ComingSoonScreen({required this.isMemberShipScreen,super.key});
+   bool isMemberShipScreen = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
-        title: '',
+      appBar:  CustomAppBar(
+        title: isMemberShipScreen? AppStrings.memberShipPlan:AppStrings.myPaymentMethods,
+        visible: true,
       ),
       body: Center(
         child: Column(

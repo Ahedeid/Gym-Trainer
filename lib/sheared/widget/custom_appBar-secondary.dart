@@ -20,7 +20,6 @@ class CustomAppBarSecondary extends StatelessWidget
     this.color = Colors.transparent,
     this.bottom,
     this.showSubTitle = true,
-    // this.visible = false,
   });
 
   final String title;
@@ -32,8 +31,6 @@ class CustomAppBarSecondary extends StatelessWidget
   final PreferredSizeWidget? bottom;
   final bool showSubTitle;
 
-  // final bool visible;
-
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -41,7 +38,7 @@ class CustomAppBarSecondary extends StatelessWidget
       elevation: 0,
       leading: GestureDetector(
         onTap: () {
-          sl<AppRouter>().mayBack();
+          sl<AppRouter>().back(true);
         },
         child: MainContainer(
           left: 6,

@@ -25,6 +25,7 @@ class _FullExercisesScreenState extends State<FullExercisesScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.fullExercise,
+        visible: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
