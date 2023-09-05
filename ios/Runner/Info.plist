@@ -18,6 +18,11 @@
    	</dict>
    </array>
    <!-- End of the Google Sign-in Section -->
+   <key>CFBundleLocalizations</key>
+   <array>
+   	<string>en</string>
+   	<string>ar</string>
+   </array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

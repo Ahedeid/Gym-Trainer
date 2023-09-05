@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -36,20 +35,22 @@ class CategoryListWidget extends StatelessWidget {
                 width: 61,
                 height: 61,
                 child: ClipOval(
-                  child: CachedNetworkImage(
-                    imageUrl: categoryData.image,
-                    placeholder: (context, url) => CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: categoryData,
+                    child: CachedNetworkImage(
+                      imageUrl: categoryData.image,
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  categoryData.name,
-                    style: StyleManger.bodyText(fontSize: FontSize.s14)
-                ),
+                child: Text(categoryData.name,
+                    style: StyleManger.bodyText(fontSize: FontSize.s14)),
               ),
             ],
           ),

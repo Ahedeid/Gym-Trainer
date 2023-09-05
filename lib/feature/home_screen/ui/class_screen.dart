@@ -35,7 +35,7 @@ class _ClassScreenState extends State<ClassScreen> {
               color: ColorManager.secondary,
               borderRadius: BorderRadius.circular(8),
             ),
-            tabs: const [
+            tabs: [
               Tab(height: 54, text: AppStrings.all),
               Tab(height: 54, text: AppStrings.active),
               Tab(height: 54, text: AppStrings.history),

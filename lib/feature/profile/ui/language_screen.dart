@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
+import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
@@ -55,6 +57,16 @@ class _LanguageScreenState extends State<LanguageScreen> {
               groupValue: selectedLanguage,
               onChanged: (val) {
                 setState(() {
+                  sl<AppRouter>()
+                      .navigatorKey
+                      .currentContext!
+                      .setLocale(const Locale("en", "EN"));
+                  print(sl<AppRouter>()
+                      .navigatorKey
+                      .currentContext!
+                      .locale
+                      .toString());
+
                   selectedLanguage = val!;
                 });
               },
@@ -70,6 +82,16 @@ class _LanguageScreenState extends State<LanguageScreen> {
               groupValue: selectedLanguage,
               onChanged: (val) {
                 setState(() {
+                  sl<AppRouter>()
+                      .navigatorKey
+                      .currentContext!
+                      .setLocale(const Locale("ar", "AR"));
+                  print(sl<AppRouter>()
+                      .navigatorKey
+                      .currentContext!
+                      .locale
+                      .toString());
+
                   selectedLanguage = val!;
                 });
               },

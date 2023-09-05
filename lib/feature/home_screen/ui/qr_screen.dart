@@ -49,7 +49,7 @@ class _ScannerScreenState extends State<ScannerScreen> {
   Widget build(BuildContext context) {
     var media = MediaQuery.sizeOf(context);
     return Scaffold(
-      appBar: const CustomAppBarSecondary(
+      appBar: CustomAppBarSecondary(
         title: AppStrings.dailyAttendance,
         subTitle: AppStrings.scanBarcode,
         color: Color.fromRGBO(0, 0, 0, 100),

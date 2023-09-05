@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 200,
                 ),
                 const SizedBox(height: 18),
-                const Text(
+                Text(
                   AppStrings.technoGym,
                   style: TextStyle(
                       fontSize: 20,
