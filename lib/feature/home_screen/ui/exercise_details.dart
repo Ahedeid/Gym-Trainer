@@ -11,6 +11,7 @@ import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/sheared/widget/bottomSheetDedailsWidget.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/helper.dart';
@@ -200,9 +201,12 @@ class ExerciseDetails extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: () {
-                            UtilsConfig.showSnackBarMessage(
-                                message: AppStrings.upgradeNeeded,
-                                status: false);
+                            showModalBottomSheet(
+                                useSafeArea: true,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8)),
+                                context: context,
+                                builder: (context) => BottomSheetDetailsWidget());
                           },
                           child: Container(
                             padding: EdgeInsets.symmetric(

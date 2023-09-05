@@ -82,7 +82,7 @@ class BottomSheetDetailsWidget extends StatelessWidget {
                   ),
                 ),
           ),
-          const SizedBox(height: 20),
+          32.addVerticalSpace,
         ],
       ),
     );
