@@ -5,8 +5,7 @@ import 'package:gym_app/feature/home_screen/ui/widgets/vertical_exercise_widget.
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/utils/helper.dart';
-import 'package:gym_app/utils/resources/strings_in_app.dart';
+import 'package:gym_app/sheared/widget/bottomSheetDedailsWidget.dart';
 
 class VerticalExerciseList extends StatelessWidget {
   const VerticalExerciseList({
@@ -28,8 +27,12 @@ class VerticalExerciseList extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               if (isLock == true) {
-                UtilsConfig.showSnackBarMessage(
-                    message: AppStrings.noAccessExercise, status: false);
+                showModalBottomSheet(
+                    useSafeArea: true,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    context: context,
+                    builder: (context) => BottomSheetDetailsWidget());
               } else {
                 sl<HomeProvider>()
                     .getCategoryName(resultList[index].categoryId);

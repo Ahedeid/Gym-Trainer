@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
+import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
@@ -65,7 +66,10 @@ class BottomSheetDetailsWidget extends StatelessWidget {
           32.addVerticalSpace,
           CustomButtonWidget(
             title: AppStrings.subscribeNow,
-            onPressed: () {},
+            onPressed: () {
+              sl<AppRouter>()
+                  .goTo(screenName: ScreenName.comingSoonScreen, object: true);
+            },
             style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
                   maximumSize: const MaterialStatePropertyAll(
                     Size(
