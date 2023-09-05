@@ -74,18 +74,29 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   // --------------------------- get data user ------------------------------------
+  bool isLoadingGetData = false;
+
+  setLoadingGetData(bool val) {
+    isLoadingGetData = val;
+    notifyListeners();
+  }
 
   Future getUserData() async {
-    String id = sl<SharedPrefController>().getUserData().uid;
-    // Fetch user data from FireStore and update it
-    final userDoc = await sl<FirebaseFirestore>()
-        .collection(FirebaseConstant.usersCollection)
-        .doc(id)
-        .get();
+    try {
+      setLoadingGetData(true);
+      String id = sl<SharedPrefController>().getUserData().uid;
+      // Fetch user data from FireStore and update it
+      final userDoc = await sl<FirebaseFirestore>()
+          .collection(FirebaseConstant.usersCollection)
+          .doc(id)
+          .get();
 
-    final userModel = UserModel.fromDocumentSnapshot(userDoc);
-    user = userModel;
-    notifyListeners();
+      final userModel = UserModel.fromDocumentSnapshot(userDoc);
+      user = userModel;
+      setLoadingGetData(false);
+    } on FirebaseException catch (e) {
+      setLoadingGetData(false);
+    }
   }
 
   // --------------------------- Edit Image ------------------------------------
