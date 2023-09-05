@@ -72,7 +72,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                   color: ColorManager.black,
                 ),
                 const SizedBox(height: 11),
-                const Text(
+                Text(
                   AppStrings.createNewPassword,
                   style: TextStyle(
                     fontSize: FontSize.s22,

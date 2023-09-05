@@ -59,7 +59,7 @@ class CheckEmailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 11),
-            const Text(
+            Text(
               AppStrings.checkYourMail,
               style: TextStyle(
                 fontSize: FontSize.s22,

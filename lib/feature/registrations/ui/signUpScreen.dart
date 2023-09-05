@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
-import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/utils/resources/icons_constant.dart';
-import 'package:gym_app/utils/resources/style_manger.dart';
-import 'package:provider/provider.dart';
 import 'package:gym_app/feature/registrations/provider/signUpProvider.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
+import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
+import 'package:gym_app/utils/resources/style_manger.dart';
 import 'package:gym_app/utils/validate_extension.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -50,7 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.08),
                 const SizedBox(height: 8),
-                const Text(
+                Text(
                   AppStrings.createAccounts,
                   style: TextStyle(
                     fontSize: FontSize.s30,
@@ -59,7 +59,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const Text(
+                Text(
                   AppStrings.pleaseEnterYourCredentials,
                   style: TextStyle(
                     fontSize: FontSize.s16,

@@ -49,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
-                    const Text(
+                    Text(
                       AppStrings.welcomeToProFitness,
                       style: TextStyle(
                         fontSize: FontSize.s24,
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 11),
-                    const Text(
+                    Text(
                       AppStrings.enterYourEmail,
                       textAlign: TextAlign.start,
                       style: TextStyle(
@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           sl<AppRouter>()
                               .goTo(screenName: ScreenName.reSetPasswordScreen);
                         },
-                        child: const Text(
+                        child: Text(
                           AppStrings.forgetPassword,
                           style: TextStyle(
                             fontSize: FontSize.s14,

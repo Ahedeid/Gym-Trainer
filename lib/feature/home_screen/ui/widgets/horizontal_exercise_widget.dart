@@ -23,17 +23,20 @@ class HorizontalExerciseWidget extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: CachedNetworkImage(
-            width: 80.w,
-            height: 80.h,
-            fit: BoxFit.cover,
-            imageUrl: exerciseModel!.image!,
-            progressIndicatorBuilder: (context, url, downloadProgress) =>
-                Center(
-              child:
-                  CircularProgressIndicator(value: downloadProgress.progress),
+          child: Hero(
+            tag: exerciseModel!,
+            child: CachedNetworkImage(
+              width: 80.w,
+              height: 80.h,
+              fit: BoxFit.cover,
+              imageUrl: exerciseModel!.image!,
+              progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  Center(
+                child:
+                    CircularProgressIndicator(value: downloadProgress.progress),
+              ),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
-            errorWidget: (context, url, error) => Icon(Icons.error),
           ),
         ),
         SizedBox(

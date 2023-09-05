@@ -24,7 +24,7 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarSecondary(
+      appBar: CustomAppBarSecondary(
         title: AppStrings.bodyBalance,
         showSubTitle: false,
       ),

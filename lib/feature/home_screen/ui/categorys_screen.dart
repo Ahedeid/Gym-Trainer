@@ -75,6 +75,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             widget.categoryList[index].name,
+                            overflow: TextOverflow.ellipsis,
                             style: StyleManger.bodyText(
                               fontSize: FontSize.s14,
                             ),
