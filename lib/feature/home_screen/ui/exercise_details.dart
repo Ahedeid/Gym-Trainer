@@ -10,8 +10,7 @@ import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
-import 'package:gym_app/sheared/widget/customAppBar.dart';
+import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/helper.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
@@ -37,7 +36,6 @@ class ExerciseDetails extends StatelessWidget {
           builder: (context, value, child) => ElevatedButton(
             onPressed: () {
               value.setTrainingExercise(exerciseModel!);
-
               sl<AppRouter>().goTo(
                   screenName: ScreenName.startTraining,
                   object: value.trainingExerciseModel);
@@ -49,9 +47,12 @@ class ExerciseDetails extends StatelessWidget {
           ),
         ),
       ),
-      appBar: CustomAppBar(
-        title: '',
-        visible: true,
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              sl<AppRouter>().back();
+            },
+            icon: Icon(Icons.arrow_back_ios_new)),
       ),
       body: SingleChildScrollView(
         child: Column(

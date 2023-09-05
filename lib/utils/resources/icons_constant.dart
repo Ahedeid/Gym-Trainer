@@ -47,6 +47,7 @@ class AppIcons {
   static String profileSelected = '$iconsPathBottomNavSelected/profile.svg';
   static String shopSelected = '$iconsPathBottomNavSelected/shop.svg';
   static String workOutSelected = '$iconsPathBottomNavSelected/workOut.svg';
+  static String meals = '$iconsPathBottomNavSelected/meals.svg';
 
   // ----------------------- Bottom Nav UNSelected -------------------------------
   static String familyUnSelected =

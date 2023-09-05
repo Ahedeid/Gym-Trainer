@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
@@ -26,22 +26,24 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       // backgroundColor: color,
       elevation: 0,
       centerTitle: true,
-      leading: visible? GestureDetector(
-        onTap: () {
-          sl<AppRouter>().back(true);
-        },
-        child: MainContainer(
-          left: 6,
-          right: 6,
-          top: 13,
-          bottom: 13,
-          color: Colors.grey.shade300,
-          alignment: Alignment.center,
-          child: CustomSvgAssets(
-            path: AppIcons.back,
-          ),
-        ),
-      ):SizedBox(),
+      leading: visible
+          ? GestureDetector(
+              onTap: () {
+                sl<AppRouter>().back(true);
+              },
+              child: MainContainer(
+                left: 6,
+                right: 6,
+                top: 13,
+                bottom: 13,
+                color: Colors.grey.shade300,
+                alignment: Alignment.center,
+                child: CustomSvgAssets(
+                  path: AppIcons.back,
+                ),
+              ),
+            )
+          : SizedBox(),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

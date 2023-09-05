@@ -8,7 +8,7 @@ import 'package:gym_app/feature/home_screen/ui/widgets/countdown.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list_countdown.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
@@ -33,29 +33,34 @@ class _StartTrainingState extends State<StartTraining> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: IconButton(
-            onPressed: () {
-              sl<AppRouter>().back();
-            },
-            icon: Icon(Icons.arrow_back_ios_new)),
+          onPressed: () {
+            sl<AppRouter>().back();
+          },
+          icon: Icon(Icons.arrow_back_ios_new),
+        ),
       ),
       body: SingleChildScrollView(
         child: Consumer<HomeProvider>(
           builder: (context, value, child) {
+            final currentIndex = value.currentIndex;
+            final exerciseResult = value.exerciseResult;
+            final upNextList = value.upNextList;
+
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Hero(
-                  tag: value.exerciseResult![value.currentIndex],
+                  tag: exerciseResult![currentIndex],
                   child: ClipRRect(
                     borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(15),
-                        bottomLeft: Radius.circular(15)),
+                      bottomRight: Radius.circular(15),
+                      bottomLeft: Radius.circular(15),
+                    ),
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
                       height: 419.h,
                       width: double.infinity,
-                      imageUrl:
-                          value.exerciseResult![value.currentIndex].image!,
+                      imageUrl: exerciseResult[currentIndex].image!,
                       progressIndicatorBuilder:
                           (context, url, downloadProgress) => Center(
                         child: CircularProgressIndicator(
@@ -69,45 +74,45 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "${AppStrings.exercise} ${value.currentIndex + 1} /${value.exerciseResult!.length}",
+                    "${AppStrings.exercise} ${currentIndex + 1} / ${exerciseResult!.length}",
                     style: TextStyle(
-                        color: ColorManager.subTitleText,
-                        fontSize: 10.sp,
-                        fontWeight: FontWeight.w500),
+                      color: ColorManager.subTitleText,
+                      fontSize: 10.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 5.addVerticalSpace,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(value.exerciseResult![value.currentIndex].title!,
-                      style: StyleManger.headLineBar()),
+                  child: Text(
+                    exerciseResult[currentIndex].title!,
+                    style: StyleManger.headLineBar(),
+                  ),
                 ),
                 20.addVerticalSpace,
                 Center(
                   child: CircularCountDownTimer(
                     controller: value.countDownController,
-                    duration: int.parse(
-                            value.exerciseResult![value.currentIndex].time!) *
-                        60,
+                    duration:
+                        int.parse(exerciseResult[currentIndex].time!) * 60,
                     isReverse: true,
                     height: 100,
                     width: 100,
-                    initialDuration: int.parse(
-                            value.exerciseResult![value.currentIndex].time!) *
-                        60,
+                    initialDuration:
+                        int.parse(exerciseResult[currentIndex].time!) * 60,
                     strokeWidth: 10,
                     fillColor: ColorManager.black,
                     onComplete: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text(
-                            'Finished',
-                          ),
+                          content: Text('Finished'),
                           behavior: SnackBarBehavior.floating,
                           duration: const Duration(seconds: 2),
                           backgroundColor: kblueColor,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       );
                     },
@@ -116,53 +121,54 @@ class _StartTrainingState extends State<StartTraining> {
                     ringColor: ColorManager.greyButton,
                     autoStart: false,
                     textStyle: TextStyle(
-                        color: Colors.black, fontWeight: FontWeight.w600),
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 21.addVerticalSpace,
                 Center(
-                    child: Text(
-                  "${int.parse(value.exerciseResult![value.currentIndex].time!)} min",
-                  style: TextStyle(fontWeight: FontWeight.w700),
-                )),
+                  child: Text(
+                    "${int.parse(exerciseResult[currentIndex].time!)} min",
+                    style: TextStyle(fontWeight: FontWeight.w700),
+                  ),
+                ),
                 20.addVerticalSpace,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Visibility(
-                      visible: value.countDownController.isStarted == true,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(5)),
-                        child: TextButton.icon(
-                          onPressed: () {
-                            value.platStop();
-                          },
-                          icon: Icon(
-                            value.countDownController.isPaused
-                                ? Icons.play_arrow
-                                : Icons.pause,
-                            color: Colors.black,
-                          ),
-                          label: Text(
-                            value.countDownController.isPaused
-                                ? "${AppStrings.resume}"
-                                : "${AppStrings.pause}",
-                            style: TextStyle(color: Colors.black),
-                          ),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: TextButton.icon(
+                        onPressed: () {
+                          value.platStop();
+                        },
+                        icon: Icon(
+                          value.countDownController.isPaused
+                              ? Icons.play_arrow
+                              : Icons.pause,
+                          color: Colors.black,
+                        ),
+                        label: Text(
+                          value.countDownController.isPaused
+                              ? "${AppStrings.resume}"
+                              : "${AppStrings.pause}",
+                          style: TextStyle(color: Colors.black),
                         ),
                       ),
                     ),
                     Visibility(
-                      visible: !value.countDownController.isStarted == true,
+                      visible: value.countDownController.isPaused,
                       child: Container(
                         decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(5)),
+                          border: Border.all(color: Colors.black),
+                          borderRadius: BorderRadius.circular(5),
+                        ),
                         child: TextButton.icon(
                           onPressed: () {
-                            setState(() {});
                             value.countDownController.start();
                           },
                           icon: Icon(
@@ -178,11 +184,12 @@ class _StartTrainingState extends State<StartTraining> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                          color: ColorManager.primary,
-                          borderRadius: BorderRadius.circular(5)),
+                        color: ColorManager.primary,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
                       child: TextButton.icon(
                         onPressed: () {
-                          value.nextTarget();
+                          value.nextTarget(exerciseResult);
                         },
                         icon: CustomSvgAssets(
                           path: AppIcons.person_run,
@@ -190,7 +197,9 @@ class _StartTrainingState extends State<StartTraining> {
                         label: Text(
                           "${AppStrings.nextTraining}",
                           style: StyleManger.headLineBar(
-                              color: Colors.white, fontSize: 22.sp),
+                            color: Colors.white,
+                            fontSize: 22.sp,
+                          ),
                         ),
                       ),
                     ),
@@ -200,18 +209,20 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "${AppStrings.upNext} ${value.upNextList?.length}",
+                    "${AppStrings.upNext} ${upNextList?.length}",
                     style: TextStyle(
-                        color: ColorManager.black,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500),
+                      color: ColorManager.black,
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 16.addVerticalSpace,
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: HorizontalExerciseListCountdown(
-                      resultList: value.upNextList ?? []),
+                    resultList: upNextList ?? [],
+                  ),
                 ),
                 20.addVerticalSpace,
               ],

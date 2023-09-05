@@ -119,6 +119,8 @@ class AppStrings {
   static const resume = "Resume";
   static const pause = "Pause";
   static const noItems = "No Exercise Found";
+  static const mealsPlan = "Meals Plan";
+  static const dailyInspiration = "Daily Inspiration";
 
   static const orLoginWith = "Or Login with";
   static const training = "Training";
@@ -191,5 +193,7 @@ class AppStrings {
   static const gallery = 'Gallery';
   static const camera = 'Camera';
   static const limitReached = 'Limit Reached';
-  static const youMustSubscribeToPaid = 'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services';
+  static const description = 'Description';
+  static const youMustSubscribeToPaid =
+      'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services';
 }
