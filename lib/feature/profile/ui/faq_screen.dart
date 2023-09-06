@@ -21,17 +21,35 @@ class FAQScreen extends StatelessWidget {
           vertical: AppSizes.paddingVertical,
         ),
         children: [
-          ExpansionTileWidget(title: AppStrings.whatIsThePurpose,text: AppStrings.theGymMobile,),
+          ExpansionTileWidget(
+            title: AppStrings.whatIsThePurpose,
+            text: AppStrings.theGymMobile,
+          ),
           8.verticalSpace,
-          ExpansionTileWidget(title: AppStrings.howCanIDownload,text: AppStrings.theGymMobile,),
+          ExpansionTileWidget(
+            title: AppStrings.howCanIDownload,
+            text: AppStrings.theGymMobile,
+          ),
           8.verticalSpace,
-          ExpansionTileWidget(title: AppStrings.isTheGymMobile,text: AppStrings.theGymMobile,),
+          ExpansionTileWidget(
+            title: AppStrings.isTheGymMobile,
+            text: AppStrings.theGymMobile,
+          ),
           8.verticalSpace,
-          ExpansionTileWidget(title: AppStrings.canIBookFitnessClasses,text: AppStrings.theGymMobile,),
+          ExpansionTileWidget(
+            title: AppStrings.canIBookFitnessClasses,
+            text: AppStrings.theGymMobile,
+          ),
           8.verticalSpace,
-          ExpansionTileWidget(title: AppStrings.doesTheGymMobile,text: AppStrings.theGymMobile,),
+          ExpansionTileWidget(
+            title: AppStrings.doesTheGymMobile,
+            text: AppStrings.theGymMobile,
+          ),
           8.verticalSpace,
-          ExpansionTileWidget(title: AppStrings.canITrackMyFitness,text: AppStrings.theGymMobile,),
+          ExpansionTileWidget(
+            title: AppStrings.canITrackMyFitness,
+            text: AppStrings.theGymMobile,
+          ),
           8.verticalSpace,
         ],
       ),

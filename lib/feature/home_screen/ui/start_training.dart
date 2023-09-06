@@ -95,12 +95,12 @@ class _StartTrainingState extends State<StartTraining> {
                   child: CircularCountDownTimer(
                     controller: value.countDownController,
                     duration:
-                        int.parse(exerciseResult[currentIndex].time!) * 60,
+                    int.parse(exerciseResult[currentIndex].time!) * 60,
                     isReverse: true,
                     height: 100,
                     width: 100,
                     initialDuration:
-                        int.parse(exerciseResult[currentIndex].time!) * 60,
+                    int.parse(exerciseResult[currentIndex].time!) * 60,
                     strokeWidth: 10,
                     fillColor: ColorManager.black,
                     onComplete: () {

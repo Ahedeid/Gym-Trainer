@@ -97,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Consumer<HomeProvider>(
         builder: (context, homeProvider, child) {
           return ListView(
+            // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: const EdgeInsets.symmetric(
               horizontal: AppSizes.paddingHorizontal,
               vertical: AppSizes.paddingVertical,
