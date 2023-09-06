@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/service_locator.dart';
-import 'package:open_mail_app/open_mail_app.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/service_locator.dart';
+import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
+import 'package:open_mail_app/open_mail_app.dart';
 
 class CheckEmailScreen extends StatelessWidget {
   const CheckEmailScreen({Key? key}) : super(key: key);
@@ -59,7 +59,7 @@ class CheckEmailScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 11),
-            const Text(
+            Text(
               AppStrings.checkYourMail,
               style: TextStyle(
                 fontSize: FontSize.s22,
@@ -105,7 +105,8 @@ class CheckEmailScreen extends StatelessWidget {
               textColor: ColorManager.gray,
               fontSize: 14,
               onPressed: () {
-                sl<AppRouter>().goToAndRemove(screenName: ScreenName.loginScreen);
+                sl<AppRouter>()
+                    .goToAndRemove(screenName: ScreenName.loginScreen);
               },
             )
           ],

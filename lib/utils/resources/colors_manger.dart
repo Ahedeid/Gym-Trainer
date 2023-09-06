@@ -50,5 +50,10 @@ class ColorManager {
   static const Color secondaryIndecator2 = Color(0xFFF6E0C2);
   static const Color dividerColor = Color(0xFFEFF0F1);
 
-
+  static const Color customGreenDark = Color(0xFF9ABE6C);
+  static const Color customGreenLight = Color(0xFFF4FFE5);
+  static const Color customOrangeDark = Color(0xFFEC9456);
+  static const Color customOrangeLight = Color(0xFFFDF5EF);
+  static const Color customYellowDark = Color(0xFFF5C242);
+  static const Color customYellowLight = Color(0xFFFEF9E8);
 }

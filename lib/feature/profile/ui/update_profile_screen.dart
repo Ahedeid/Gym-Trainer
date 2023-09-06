@@ -50,7 +50,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarSecondary(
+      appBar: CustomAppBarSecondary(
         title: AppStrings.updateYourInfo,
         subTitle: AppStrings.updateYourBasic,
       ),

@@ -26,7 +26,7 @@ class ToEmptyDataWidget extends StatelessWidget {
             width: 100,
             height: 100,
           ),
-          const Text(
+          Text(
             AppStrings.technoGym,
             style:
                 TextStyle(fontSize: FontSize.s26, fontWeight: FontWeight.w600),

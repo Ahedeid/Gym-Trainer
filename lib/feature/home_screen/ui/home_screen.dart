@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' as utilsSize;
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
@@ -16,7 +16,7 @@ import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/sheared/widget/custom_textFeild.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/extensions/string_extension.dart';
@@ -80,8 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           GestureDetector(
             onTap: () {
-              sl<AppRouter>()
-                  .goTo(screenName: ScreenName.notificationScreen);
+              sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
             },
             child: Container(
               width: 42,
@@ -121,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
               SearchResultWidget(),
               HeaderSectionWidget(
                 onTap: () {},
-                title: AppStrings.selectGoal,
+                title: AppStrings.selectGoal.tr(),
                 trailing: "",
               ),
               13.addVerticalSpace,
@@ -196,7 +195,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               16.addVerticalSpace,
               HeaderSectionWidget(
-                onTap: () {},
+                onTap: () {
+                  homeProvider.changeAdditional(false);
+                  sl<AppRouter>().goTo(
+                      screenName: ScreenName.seeAllScreen,
+                      object: homeProvider.goalModel!.id);
+                },
                 title: AppStrings.popularExercise,
                 trailing: AppStrings.seeAll,
               ),
@@ -223,7 +227,12 @@ class _HomeScreenState extends State<HomeScreen> {
               Divider(),
               10.addVerticalSpace,
               HeaderSectionWidget(
-                onTap: () {},
+                onTap: () {
+                  homeProvider.changeAdditional(true);
+                  sl<AppRouter>().goTo(
+                      screenName: ScreenName.seeAllScreen,
+                      object: homeProvider.goalModel!.id);
+                },
                 title: AppStrings.additionalExercise,
                 trailing: AppStrings.seeAll,
               ),
@@ -274,7 +283,7 @@ class AppBarBody extends StatelessWidget {
               radius: 22.r,
               child: ClipOval(
                 child: CachedNetworkImage(
-                  imageUrl: "${sl<FirebaseAuth>().currentUser?.photoURL}",
+                  imageUrl: "${sl<SharedPrefController>().getUserData().image}",
                   placeholder: (context, url) => Image.asset(
                     ImageApp.backgroundImageSecond,
                     fit: BoxFit.cover,

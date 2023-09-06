@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/sheared/widget/custom_appBar-secondary.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
@@ -24,7 +24,7 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBarSecondary(
+      appBar: CustomAppBarSecondary(
         title: AppStrings.bodyBalance,
         showSubTitle: false,
       ),

@@ -9,7 +9,6 @@ import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list_
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomeSvg.dart';
-import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
@@ -32,9 +31,12 @@ class _StartTrainingState extends State<StartTraining> {
     return Scaffold(
       backgroundColor: ColorManager.scaffoldColor,
       extendBodyBehindAppBar: true,
-      appBar: CustomAppBar(
-        title: '',
-        visible: true,
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              sl<AppRouter>().back();
+            },
+            icon: Icon(Icons.arrow_back_ios_new)),
       ),
       body: SingleChildScrollView(
         child: Consumer<HomeProvider>(

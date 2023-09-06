@@ -1,0 +1,148 @@
+{
+  "TECHNO GYM": "جيم تكنو",
+  "SIGNUP": "التسجيل",
+  "Phone": "رقم الهاتف",
+  "Hello there, sign in to\ncontinue!": "مرحبًا، قم بتسجيل الدخول للمتابعة!",
+  "Please enter your credentials to proceed ": "الرجاء إدخال بيانات الاعتماد الخاصة بك للمتابعة",
+  "Create a new account!": "إنشاء حساب جديد!",
+  "Username": "اسم المستخدم",
+  "Email or Phone ": "البريد الإلكتروني أو رقم الهاتف",
+  "Password": "كلمة المرور",
+  "Confirm password": "تأكيد كلمة المرور",
+  "Agree with terms and conditions.": "موافق على الشروط والأحكام",
+  "Have an account?": "لديك حساب؟",
+  "Welcome to Pro Fitness!": "مرحبًا بك في برو فتنس!",
+  "LogIn": "تسجيل الدخول",
+  "Logout": "تسجيل الخروج",
+  "Phone Verification": "تحقق من الهاتف",
+  "We need to register your phone number before getting started!": "نحتاج إلى تسجيل رقم هاتفك قبل البدء!",
+  "Phone number": "رقم الهاتف",
+  "Send OTP": "إرسال رمز التحقق",
+  "Verify phone number": "تحقق من رقم الهاتف",
+  "Edit phone number?": "تعديل رقم الهاتف؟",
+  "Send again": "إعادة الإرسال",
+  "Welcome back!": "مرحبًا مرة أخرى!",
+  "example@gmail.com": "example@gmail.com",
+  "Forget password?": "نسيت كلمة المرور؟",
+  "Haven't an account? ": "ليس لديك حساب؟",
+  "Reset password": "إعادة تعيين كلمة المرور",
+  "Enter the email associated with your account and we'll send an email with instructions to reset your password!": "أدخل البريد الإلكتروني المرتبط بحسابك وسنرسل لك بريدًا إلكترونيًا يحتوي على تعليمات لإعادة تعيين كلمة المرور!",
+  "Email address": "عنوان البريد الإلكتروني",
+  "Next": "التالي",
+  "Check your mail": "تحقق من بريدك",
+  "We have sent a password recovery instructions to your email.": "لقد أرسلنا تعليمات استعادة كلمة المرور إلى بريدك الإلكتروني.",
+  "Open email": "فتح البريد الإلكتروني",
+  "I'll confirm later": "سأقوم بتأكيد ذلك لاحقًا",
+  "Create new password": "إنشاء كلمة مرور جديدة",
+  "Your new password must be different from previously used passwords.": "يجب أن تكون كلمة المرور الجديدة مختلفة عن كلمات المرور المستخدمة سابقًا.",
+  "Confirm": "تأكيد",
+  "Home": "الرئيسية",
+  "Search": "بحث",
+  "Popular Item": "عنصر مشهور",
+  "See All": "عرض الكل",
+  "First ..": "الأول ..",
+  "Second ..": "الثاني ..",
+  "Third ..": "الثالث ..",
+  "Today's Workout": "تمرين اليوم",
+  "Daily Attendance": "الحضور اليومي",
+  "My Workouts": "تماريني",
+  "Classes": "الفصول",
+  "Shoulders & Legs": "الكتفين والأرجل",
+  "7 Days Straight!": "7 أيام متواصلة!",
+  "3 Days Completed!": "3 أيام مكتملة!",
+  "2 Active Classes!": "2 فصل نشط!",
+  "Daily Workout": "تمرين يومي",
+  "Discover New Workouts": "اكتشاف تمارين جديدة",
+  "More Details!": "المزيد من التفاصيل!",
+  "3 Months": "3 أشهر",
+  "Active | Most Popular": "نشط | الأكثر شهرة",
+  "Let's do it!": "لنقم بذلك!",
+  "Attend Now!": "الحضور الآن!",
+  "Discover!": "اكتشاف!",
+  "Continue!": "متابعة!",
+  "SUBSCRIBE NOW": "اشترك الآن",
+  "Scan Barcode by Mobile Camera": "مسح الباركود باستخدام الكاميرا المحمولة",
+  "Scan App Barcode": "مسح باركود التطبيق",
+  "Membership Plan": "خطة العضوية",
+  "Units of Measure": "وحدات القياس",
+  "Attendance History": "سجل الحضور",
+  "My Payment Methods": "طرق الدفع الخاصة بي",
+  "Change Your Phone Number": "تغيير رقم الهاتف الخاص بك",
+  "Change Your Email": "تغيير عنوان بريدك الإلكتروني",
+  "Change Your Password": "تغيير كلمة المرور الخاصة بك",
+  "Change Language": "تغيير اللغة",
+  "Notifications Settings": "إعدادات الإشعارات",
+  "Update your Info! ℹ️": "قم بتحديث معلوماتك! ℹ️",
+  "Update your basic information!": "قم بتحديث معلوماتك الأساسية!",
+  "Upload New Picture": "تحميل صورة جديدة",
+  "Display Name": "اسم العرض",
+  "Classes 🏋🏻‍♀️": "الفصول 🏋🏻‍♀️",
+  "Build your body smartly!️": "قم ببناء جسمك بذكاء!️",
+  "Save Changes": "حفظ التغييرات",
+  "Active": "نشط",
+  "All": "الكل",
+  "History": "التاريخ",
+  "🧘🏻 Mind & Body": "🧘🏻 العقل والجسم",
+  "Free ✅": "مجانًا ✅",
+  "Body Balance": "توازن الجسم",
+  "Mountain Climbers": "تسلق الجبال",
+  "Read More": "اقرأ المزيد",
+  "Intensity": "الكثافة",
+  "Duration": "المدة",
+  "Hard": "صعب",
+  "🏋🏻‍♀️ Circuits": "🏋🏻‍♀️ دوائر",
+  "Adult Self Defence": "دفاع الكبار عن النفس",
+  "Trainer": "مدرب",
+  "Location": "الموقع",
+  "Available Dates": "التواريخ المتاحة",
+  "Book Now!": "احجز الآن!",
+  "Select your Goal": "اختر هدفك",
+  "Category": "الفئة",
+  "Popular Exercise": "تمرين شهير",
+  "Popular Training": "تدريب شهير",
+  "Additional Exercise": "تمرين إضافي",
+  "|": "|",
+  "Up Next": "القادم",
+  "Next Training": "التدريب القادم",
+  "Start": "بدء",
+  "Resume": "استئناف",
+  "Pause": "إيقاف مؤقت",
+  "No Exercise Found": "لم يتم العثور على تمرين",
+  "Meals Plan": "خطة الوجبات",
+  "Daily Inspiration": "الإلهام اليومي",
+  "Or Login with": "أو تسجيل الدخول باستخدام",
+  "Training": "التدريب",
+  "Connect With Google": "الاتصال بجوجل",
+  "Connect With Facebook": "الاتصال بفيسبوك",
+  "Create Accounts": "إنشاء حسابات",
+  "Account was created Successfully!!": "تم إنشاء الحساب بنجاح!!",
+  "Full Exercise": "تمرين كامل",
+  "Level": "المستوى",
+  "Weight": "الوزن",
+  "You can't access this exercise": "لا يمكنك الوصول إلى هذا التمرين",
+  "Upgrade to access this feature": "الترقية للوصول إلى هذه الميزة",
+  "Weeks": "أسابيع",
+  "Exercise": "تمرين",
+  "Schedule": "الجدول",
+  "Exercise Program": "برنامج التمرين",
+  "Start Training": "بدء التدريب",
+  "Terms&Conditions 👮🏻‍": "الشروط والأحكام 👮🏻‍",
+  "Terms&Conditions": "الشروط والأحكام",
+  "FAQ’s 💭": "أسئلة شائعة 💭",
+  "FAQ’s": "أسئلة شائعة",
+  "Your Profile! 🙅🏻‍♂️": "ملفك الشخصي! 🙅🏻‍♂️",
+  "6. Can I track my fitness progress using the gym mobile application?": "6. هل يمكنني تتبع تقدم لياقتي باستخدام تطبيق الجيم المحمول؟",
+  "5. Does the gym mobile application provide personal training options?": "5. هل يقدم تطبيق الجيم المحمول خيارات التدريب الشخصي؟",
+  "4. Can I book fitness classes through the gym mobile application?": "4. هل يمكنني حجز فصول اللياقة البدنية من خلال تطبيق الجيم المحمول؟",
+  "3. Is the gym mobile application free to use?": "3. هل تطبيق الجيم المحمول مجاني للاستخدام؟",
+  "2. How can I download the gym mobile application?": "2. كيف يمكنني تنزيل تطبيق الجيم المحمول؟",
+  "The gym mobile application is designed to provide convenient access to a range of fitness-related services, including classes, trainings, and other features. It allows users to book classes, track their progress, receive personalized workout plans, and more.": "تم تصميم تطبيق الجيم المحمول لتوفير وصول مريح إلى مجموعة من الخدمات المتعلقة باللياقة البدنية، بما في ذلك الفصول والتدريبات وميزات أخرى. يتيح للمستخدمين حجز الفصول، وتتبع تقدمهم، واستقبال خطط التمارين الشخصية، والمزيد.",
+  "1. What is the purpose of the gym mobile application?": "1. ما هو هدف تطبيق الجيم المحمول؟",
+  "To send you marketing communications, offers, and promotions related to our gym mobile application, but only if you have given us explicit consent to do so.": "لإرسال لك اتصالات تسويقية وعروض وترويجات تتعلق بتطبيق الجيم المحمول لدينا، ولكن فقط إذا كنت قد منحتنا موافقة صريحة لفعل ذلك.",
+  "To analyze and monitor app usage patterns, diagnose technical issues, and improve our services.": "لتحليل ومراقبة أنماط استخدام التطبيق، وتشخيص المشكلات التقنية، وتحسين خدماتنا.",
+  "To communicate with you regarding your account, notifications, updates, and customer support.": "للتواصل معك بشأن حسابك، والإشعارات، والتحديثات، ودعم العملاء.",
+  "To provide and improve our gym mobile application, including personalized fitness recommendations, training plans, and class bookings.": "لتقديم وتحسين تطبيق الجيم المحمول لدينا، بما في ذلك توصيات اللياقة البدنية الشخصية، وخطط التدريب، وحجز الفصول.",
+  "2. How We Use Your Information: We use the collected information for the following purposes:": "2. كيفية استخدام معلوماتك: نستخ,"
+
+
+}

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
-import 'package:gym_app/sheared/widget/CustomeSvg.dart';
+import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
 import 'package:gym_app/sheared/widget/textField_and_above_text.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
@@ -72,7 +72,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                   color: ColorManager.black,
                 ),
                 const SizedBox(height: 11),
-                const Text(
+                Text(
                   AppStrings.createNewPassword,
                   style: TextStyle(
                     fontSize: FontSize.s22,
@@ -143,7 +143,8 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
           onPressed: () {
             if (newPasswordFormKey.currentState!.validate()) {
               if (passwordController.text == confirmPasswordController.text) {
-                sl<AppRouter>().goToAndRemove(screenName: ScreenName.loginScreen);
+                sl<AppRouter>()
+                    .goToAndRemove(screenName: ScreenName.loginScreen);
               }
             }
           },

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,10 +16,17 @@ import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
   await ScreenUtil.ensureScreenSize();
+  await EasyLocalization.ensureInitialized();
+
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    print('Firebase initialization error: $e');
+  }
 
   await init();
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -27,7 +35,11 @@ void main() async {
     statusBarIconBrightness: Brightness.dark,
     systemNavigationBarIconBrightness: Brightness.dark,
   ));
-  runApp(const GymApp());
+  runApp(EasyLocalization(
+      supportedLocales: [Locale('en', 'US'), Locale('ar', 'AR')],
+      path: 'assets/translations',
+      fallbackLocale: Locale('en', 'US'),
+      child: GymApp()));
 }
 
 ThemeManagerT _themeManagerT = ThemeManagerT();
@@ -56,12 +68,16 @@ class GymApp extends StatelessWidget {
             initialRoute: ScreenName.splashScreen,
             navigatorKey: sl<AppRouter>().navigatorKey,
             scaffoldMessengerKey: UtilsConfig.scaffoldKey,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
           ),
         );
       },
     );
   }
 }
+
 //PR
 /*
 
