@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gym_app/feature/notification/model/notification_model.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
+import 'package:gym_app/logic/firebase_constant.dart';
+import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
@@ -26,35 +30,81 @@ class _NotificationScreenState extends State<NotificationScreen> {
         title: AppStrings.notificationsAppBar,
         visible: true,
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.symmetric(
-          horizontal: AppSizes.paddingHorizontal,
-          vertical: AppSizes.paddingVertical,
-        ),
-        itemCount: 10,
-        itemBuilder: (BuildContext context, int index)=>Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              leading: MainContainer(
-                height: 44,
-                width: 44,
-                color: ColorManager.secondPrimary,
-                alignment: Alignment.center,
-                child: Text('👏🏻',style: StyleManger.headline2(),),
-              ),
-              title: Text('Your membership has expired!',style: StyleManger.headline3(),),
-              trailing: Text(timeFormat,style: StyleManger.bodyText2(),),
-            ),
-            8.addVerticalSpace,
-            Text('Please renew to continue enjoying our services.',style: StyleManger.headline4(),),
-            16.addVerticalSpace,
-            CustomDivider(),
-          ],
-        ),
-       
-      ),
+      body: StreamBuilder<QuerySnapshot>(
+          stream: sl<FirebaseFirestore>()
+              .collection(FirebaseConstant.notifications)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}');
+            }
+
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            }
+            return ListView.builder(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSizes.paddingHorizontal,
+                  vertical: AppSizes.paddingVertical,
+                ),
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final notificationData =
+                      NotificationsModel.fromJson(snapshot.data!.docs[index]);
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: MainContainer(
+                          height: 44,
+                          width: 44,
+                          color: ColorManager.secondPrimary,
+                          alignment: Alignment.center,
+                          child: Text(
+                            '👏🏻',
+                            style: StyleManger.headline2(),
+                          ),
+                        ),
+                        title: Text(
+                          notificationData.title,
+                          style: StyleManger.headline3(),
+                        ),
+                        trailing: Text(
+                          timeFormat,
+                          style: StyleManger.bodyText2(),
+                        ),
+                      ),
+                      8.addVerticalSpace,
+                      Text(
+                        notificationData.body,
+                        style: StyleManger.headline4(),
+                      ),
+                      16.addVerticalSpace,
+                      CustomDivider(),
+                    ],
+                  );
+                });
+          }),
     );
   }
 }
+/*
+StreamBuilder<QuerySnapshot>(
+                    stream: sl<FirebaseFirestore>()
+                        .collection(FirebaseConstant.goalsCollection)
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      }
+
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(child: CircularProgressIndicator());
+                      }
+                      return GoalList(
+                        snapshot: snapshot,
+                      );
+                    },
+                  ),
+ */
