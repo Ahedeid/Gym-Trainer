@@ -22,7 +22,6 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   String timeFormat = DateFormat("hh:mm a").format(DateTime.now());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,16 +70,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
                           style: StyleManger.headline3(),
                         ),
                         trailing: Text(
-                          timeFormat,
+                          notificationData.time,
+                          //  timeFormat,
                           style: StyleManger.bodyText2(),
                         ),
                       ),
-                      8.addVerticalSpace,
+                      4.addVerticalSpace,
                       Text(
                         notificationData.body,
                         style: StyleManger.headline4(),
                       ),
-                      16.addVerticalSpace,
+                      8.addVerticalSpace,
                       CustomDivider(),
                     ],
                   );

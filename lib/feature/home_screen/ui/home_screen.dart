@@ -11,7 +11,6 @@ import 'package:gym_app/feature/home_screen/ui/widgets/header_section_widget.dar
 import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/search_result_widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/vertical_exercise_list.dart';
-import 'package:gym_app/feature/notification/notification_setup/local_notification_service.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -82,9 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
           GestureDetector(
             onTap: () {
                sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
-              createLocalNotification(
-                  title: 'Ahed test local Notification', body: 'test notification in local and show this ');
-            },
+                },
             child: Container(
               width: 42,
               height: 42,
