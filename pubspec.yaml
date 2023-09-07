@@ -42,6 +42,9 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   easy_localization: ^3.0.0-nullsafety  # Use a version compatible with shared_preferences
   shared_preferences: ^2.0.18
+  onesignal_flutter: ^3.5.1
+  awesome_notifications: ^0.6.19
+
 
 
 
@@ -71,6 +74,7 @@ flutter:
     - assets/icons/bottomNavIcons/
     - assets/icons/bottomNavIcons/bottomNavSelected/
     - assets/icons/bottomNavIcons/bottomNavUnSelected/
+    - assets/translations/
 
   fonts:
     - family: Avenir Arabic

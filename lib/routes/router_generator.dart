@@ -14,6 +14,7 @@ import 'package:gym_app/feature/home_screen/ui/see_all_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/meals_plan/models/meal_plan_model.dart';
 import 'package:gym_app/feature/meals_plan/ui/plan_details.dart';
+import 'package:gym_app/feature/notification/notification_setup/notification_setup.dart';
 import 'package:gym_app/feature/notification/ui/notification_screen.dart';
 import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
@@ -213,10 +214,14 @@ class RouteGenerator {
       // ------------------------- See All  ------------------------------
       case ScreenName.mealPlanDetails:
         var mealPlan = settings.arguments as MealPlan;
-
         return MaterialPageRoute(
           builder: (_) => MealPlanDetails(mealPlan: mealPlan),
         );
+      //   // ------------------------- NotificationTest ------------------------------
+      // case ScreenName.notificationTest:
+      //   return MaterialPageRoute(
+      //     builder: (_) => NotificationTest(),
+      //   );
 
       default:
         result = const Scaffold(
