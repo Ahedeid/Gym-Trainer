@@ -1,5 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/notification/notification_setup/local_notification_service.dart';
+import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -18,7 +21,6 @@ class OneSignalService {
     _instance!.setExternalUserId(userId ?? " ");
     debugPrint("This is userId ======>>>>>> $userId \n \n \n \n");
 
-// The promptForPushNotificationsWithUserResponse function will show the iOS push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
     _instance!.promptUserForPushNotificationPermission().then((accepted) {
       debugPrint("Accepted permission: $accepted");
     });
@@ -28,10 +30,19 @@ class OneSignalService {
       debugPrint("This is in Notification Foreground  =====>>>>>>>>> \n");
       createLocalNotification(
           title: event.notification.title!, body: event.notification.body!);
-// Will be called whenever a notification is received in foreground
-// Display Notification, pass null param for not displaying the notification
+      String timeFormat = DateFormat("hh:mm a").format(DateTime.now());
+      int createUniqueId() {
+        return DateTime.now().millisecondsSinceEpoch.remainder(100000);
+      }
+      sl<FirebaseFirestore>().collection(FirebaseConstant.notifications).doc(createUniqueId().toString()).set({
+        'uId':'id',
+        'title': event.notification.title,
+        'body': event.notification.body,
+        'time': timeFormat,
+      });
       event.complete(event.notification);
     });
+    OneSignal.shared.setLaunchURLsInApp(false);
 
     _instance!
         .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
