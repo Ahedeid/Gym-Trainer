@@ -190,7 +190,7 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => LanguageScreen(),
         );
-      // ------------------------- ComingSoonScreen ------------------------------
+      // ------------------------- ComingSoonScreen ----------------------------
       case ScreenName.comingSoonScreen:
         var title = settings.arguments as bool;
         return MaterialPageRoute(
@@ -198,22 +198,20 @@ class RouteGenerator {
             isMemberShipScreen: title,
           ),
         );
-      // ------------------------- NotificationScreen ------------------------------
+      // ------------------------- NotificationScreen ---------------------------
       case ScreenName.notificationScreen:
         return MaterialPageRoute(
           builder: (_) => NotificationScreen(),
         );
-      // ------------------------- See All  ------------------------------
+      // ---------------------------- See All  ---------------------------------
       case ScreenName.seeAllScreen:
         var id = settings.arguments as String;
-
         return MaterialPageRoute(
           builder: (_) => SeeAllExercisesScreen(goalId: id),
         );
-      // ------------------------- See All  ------------------------------
+      // ------------------------- MealPlanDetails -----------------------------
       case ScreenName.mealPlanDetails:
         var mealPlan = settings.arguments as MealPlan;
-
         return MaterialPageRoute(
           builder: (_) => MealPlanDetails(mealPlan: mealPlan),
         );

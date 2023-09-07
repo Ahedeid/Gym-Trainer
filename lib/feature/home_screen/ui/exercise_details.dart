@@ -219,7 +219,7 @@ class ExerciseDetails extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: ColorManager.black,
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(5))),
+                                BorderRadius.all(Radius.circular(5))),
                           ),
                         )
                       ],
@@ -234,31 +234,31 @@ class ExerciseDetails extends StatelessWidget {
                   Consumer<HomeProvider>(
                     builder: (context, homeProvider, child) =>
                         StreamBuilder<QuerySnapshot>(
-                      stream: sl<FirebaseFirestore>()
-                          .collection(FirebaseConstant.exercisesCollection)
-                          .snapshots(),
-                      builder: (context, snapshot) {
-                        if (snapshot.hasError) {
-                          return Text('Error: ${snapshot.error}');
-                        }
+                          stream: sl<FirebaseFirestore>()
+                              .collection(FirebaseConstant.exercisesCollection)
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            }
 
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return Center(child: CircularProgressIndicator());
-                        }
-                        final categoryDocs = snapshot.data!.docs;
-                        final resultList = homeProvider.filterExerciseByGoal(
-                            categoryDocs, homeProvider.goalModel?.id);
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return Center(child: CircularProgressIndicator());
+                            }
+                            final categoryDocs = snapshot.data!.docs;
+                            final resultList = homeProvider.filterExerciseByGoal(
+                                categoryDocs, homeProvider.goalModel?.id);
 
-                        final passList = homeProvider.filterExerciseByGoal(
-                            categoryDocs, homeProvider.goalModel?.id);
-                        ;
-                        homeProvider.setExerciseList(passList);
-                        resultList.removeWhere(
-                            (element) => exerciseModel!.id == element.id);
-                        return HorizontalExerciseList(resultList: resultList);
-                      },
-                    ),
+                            final passList = homeProvider.filterExerciseByGoal(
+                                categoryDocs, homeProvider.goalModel?.id);
+                            ;
+                            homeProvider.setExerciseList(passList);
+                            resultList.removeWhere(
+                                    (element) => exerciseModel!.id == element.id);
+                            return HorizontalExerciseList(resultList: resultList);
+                          },
+                        ),
                   ),
                   100.addVerticalSpace,
                 ],

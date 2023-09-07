@@ -62,26 +62,23 @@ class _HomeScreenState extends State<HomeScreen> {
         title: AppBarBody(greeting: greeting),
         actions: [
           Consumer<HomeProvider>(
-            builder: (context, value, child) => GestureDetector(
-              onTap: () {},
-              child: Container(
-                  width: 42,
-                  height: 42,
-                  child: IconButton(
-                    onPressed: () {
-                      value.showSearch();
-                    },
-                    icon: Icon(
-                      value.isShow ? Icons.search_off : Icons.search,
-                      color: Colors.white,
-                    ),
-                  )),
-            ),
+            builder: (context, value, child) => Container(
+                width: 42,
+                height: 42,
+                child: IconButton(
+                  onPressed: () {
+                    value.showSearch();
+                  },
+                  icon: Icon(
+                    value.isShow ? Icons.search_off : Icons.search,
+                    color: Colors.white,
+                  ),
+                )),
           ),
           GestureDetector(
             onTap: () {
-              sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
-            },
+               sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
+                },
             child: Container(
               width: 42,
               height: 42,
@@ -97,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Consumer<HomeProvider>(
         builder: (context, homeProvider, child) {
           return ListView(
+            // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: const EdgeInsets.symmetric(
               horizontal: AppSizes.paddingHorizontal,
               vertical: AppSizes.paddingVertical,
@@ -141,7 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         snapshot: snapshot,
                       );
                     },
-                  )),
+                  ),
+              ),
               20.addVerticalSpace,
               HeaderSectionWidget(
                 onTap: () {
