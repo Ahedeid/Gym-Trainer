@@ -62,21 +62,18 @@ class _HomeScreenState extends State<HomeScreen> {
         title: AppBarBody(greeting: greeting),
         actions: [
           Consumer<HomeProvider>(
-            builder: (context, value, child) => GestureDetector(
-              onTap: () {},
-              child: Container(
-                  width: 42,
-                  height: 42,
-                  child: IconButton(
-                    onPressed: () {
-                      value.showSearch();
-                    },
-                    icon: Icon(
-                      value.isShow ? Icons.search_off : Icons.search,
-                      color: Colors.white,
-                    ),
-                  )),
-            ),
+            builder: (context, value, child) => Container(
+                width: 42,
+                height: 42,
+                child: IconButton(
+                  onPressed: () {
+                    value.showSearch();
+                  },
+                  icon: Icon(
+                    value.isShow ? Icons.search_off : Icons.search,
+                    color: Colors.white,
+                  ),
+                )),
           ),
           GestureDetector(
             onTap: () {
