@@ -22,6 +22,7 @@ class NotificationScreen extends StatefulWidget {
 
 class _NotificationScreenState extends State<NotificationScreen> {
   String timeFormat = DateFormat("hh:mm a").format(DateTime.now());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +51,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   final notificationData =
                       NotificationsModel.fromJson(snapshot.data!.docs[index]);
+                  print('in list view');
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -89,22 +91,3 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
   }
 }
-/*
-StreamBuilder<QuerySnapshot>(
-                    stream: sl<FirebaseFirestore>()
-                        .collection(FirebaseConstant.goalsCollection)
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasError) {
-                        return Text('Error: ${snapshot.error}');
-                      }
-
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(child: CircularProgressIndicator());
-                      }
-                      return GoalList(
-                        snapshot: snapshot,
-                      );
-                    },
-                  ),
- */
