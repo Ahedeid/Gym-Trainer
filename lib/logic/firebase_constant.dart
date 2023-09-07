@@ -15,4 +15,5 @@ class FirebaseConstant {
   static const level = 'level';
   static const title = 'title';
   static const plans = 'plans';
+  static const notifications = 'notifications';
 }

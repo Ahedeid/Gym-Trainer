@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           GestureDetector(
             onTap: () {
-               // sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
+               sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
               createLocalNotification(
                   title: 'Ahed test local Notification', body: 'test notification in local and show this ');
             },
@@ -145,7 +145,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         snapshot: snapshot,
                       );
                     },
-                  )),
+                  ),
+              ),
               20.addVerticalSpace,
               HeaderSectionWidget(
                 onTap: () {
