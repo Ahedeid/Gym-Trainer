@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
@@ -28,15 +29,15 @@ class _CustomSwitchListTileState extends State<CustomSwitchListTile> {
           widget.setValue;
         });
       },
-      title: Text(widget.title),
+      title: Text(widget.title.tr()),
       trailing: CupertinoSwitch(
         activeColor: ColorManager.primary,
         trackColor: ColorManager.boardingBackGroundColor1,
         value: widget.value,
         onChanged: (val) {
-          setState((){
+          setState(() {
             widget.value = val;
-             widget.setValue!(val);
+            widget.setValue!(val);
             print('done');
           });
         },

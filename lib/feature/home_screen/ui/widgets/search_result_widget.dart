@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
@@ -31,7 +32,7 @@ class SearchResultWidget extends StatelessWidget {
           }
           if (!snapshot.hasData || snapshot.data?.docs.isEmpty == true) {
             return Center(
-              child: Text('${AppStrings.noItems}( ${value.searchData} )'),
+              child: Text('${AppStrings.noItems.tr()}( ${value.searchData} )'),
             ); // Display a message if no data is available
           }
 

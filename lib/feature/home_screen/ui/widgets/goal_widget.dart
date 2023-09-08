@@ -17,12 +17,9 @@ class GoalWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
-        color:
-            // sl<SharedPrefController>().getUserData().selectedGoal == goal.id
-            //     ?
-            // Colors.black // Highlight selected goal
-            //     :
-            ColorManager.greyButton,
+        color: sl<SharedPrefController>().getUserData().selectedGoal == goal.id
+            ? Colors.black // Highlight selected goal
+            : ColorManager.greyButton,
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

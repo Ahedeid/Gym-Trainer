@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/header_section_widget.dart';
 import 'package:gym_app/feature/meals_plan/models/meal_plan_model.dart';
@@ -17,7 +18,7 @@ class MealsPlan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.mealsPlan,
+        title: AppStrings.mealsPlan.tr(),
         onTap: () {},
       ),
       body: SingleChildScrollView(
@@ -30,8 +31,8 @@ class MealsPlan extends StatelessWidget {
                   child: Image.asset(ImageApp.cover)),
               20.addVerticalSpace,
               HeaderSectionWidget(
-                title: AppStrings.dailyInspiration,
-                trailing: AppStrings.seeAll,
+                title: AppStrings.dailyInspiration.tr(),
+                trailing: AppStrings.seeAll.tr(),
               ),
               10.addVerticalSpace,
               StreamBuilder<QuerySnapshot>(
