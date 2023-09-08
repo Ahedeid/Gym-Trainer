@@ -184,22 +184,23 @@ class AppStrings {
       "1. Information We Collect: We may collect various types of information from you when you use our gym mobile application, including:️";
   static String weAreCommittedToProtecting =
       "At AppGym, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your data when you use our gym mobile application. Please read this policy carefully to understand our practices regarding your personal information.";
-  static String notificationsSettingAppBar = "Notifications Pref.! 🔔";
+  static String notificationsSettingAppBar = "Notifications Pref.! 🔔".tr();
   static String membershipStatusAndOffers = "Membership - Status and Offers";
   static String classesNewUpdates = "Classes - New Updates";
-  static String contentNewArticles = "Content - New Articles";
-  static String workoutUpdates = "Workout Updates";
-  static String storeNewProducts = "Store - New Products";
-  static String changeLanguageApp = "Change Language! 🗣️";
-  static String english = 'English';
-  static String arabic = 'Arabic';
-  static String comingSoon = 'Coming Soon';
-  static String thisFeatureIsPlan = 'This feature is plan to next update';
+  static String contentNewArticles = "Content - New Articles".tr();
+  static String workoutUpdates = "Workout Updates".tr();
+  static String storeNewProducts = "Store - New Products".tr();
+  static String changeLanguageApp = "Change Language! 🗣️".tr();
+  static String english = 'English'.tr();
+  static String arabic = 'Arabic'.tr();
+  static String comingSoon = 'Coming Soon'.tr();
+  static String thisFeatureIsPlan = 'This feature is plan to next update'.tr();
   static String notificationsAppBar = 'Notifications! 🔔'.tr();
-  static String gallery = 'Gallery';
-  static String camera = 'Camera';
-  static String limitReached = 'Limit Reached';
-  static String description = 'Description';
+  static String gallery = 'Gallery'.tr();
+  static String camera = 'Camera'.tr();
+  static String limitReached = 'Limit Reached'.tr();
+  static String description = 'Description'.tr();
   static String youMustSubscribeToPaid =
-      'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services';
+      'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services'
+          .tr();
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
@@ -25,50 +26,50 @@ class TermsAndConditionsScreen extends StatelessWidget {
         ),
         children: [
           Text(
-            AppStrings.weAreCommittedToProtecting,
+            AppStrings.weAreCommittedToProtecting.tr(),
             style: StyleManger.headline4(color: Colors.grey.shade600),
           ),
           16.addVerticalSpace,
           Text(
-            AppStrings.informationWeCollect,
+            AppStrings.informationWeCollect.tr(),
             style: StyleManger.bodyText(fontSize: FontSize.s14),
           ),
           8.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.personalInformationSuchAsYourName,
+            text: AppStrings.personalInformationSuchAsYourName.tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.fitnessAndHealthRelated,
+            text: AppStrings.fitnessAndHealthRelated.tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.deviceInformationSuchAsYourDevice,
+            text: AppStrings.deviceInformationSuchAsYourDevice.tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.usageInformationIncludingApp,
+            text: AppStrings.usageInformationIncludingApp.tr(),
           ),
           16.addVerticalSpace,
           Text(
-            AppStrings.howWeUseYourInformation,
+            AppStrings.howWeUseYourInformation.tr(),
             style: StyleManger.bodyText(fontSize: FontSize.s14),
           ),
           8.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.toProvideAndImproveOurGymMobile,
+            text: AppStrings.toProvideAndImproveOurGymMobile.tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.toCommunicateWithYou,
+            text: AppStrings.toCommunicateWithYou.tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.toAnalyzeAndMonitor,
+            text: AppStrings.toAnalyzeAndMonitor.tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.toSendYouMarketing,
+            text: AppStrings.toSendYouMarketing.tr(),
           ),
         ],
       ),

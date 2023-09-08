@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ExerciseModel {
   final String? id;
@@ -51,11 +52,11 @@ class ExerciseModel {
   String get levelDisplay {
     switch (level) {
       case Level.Beginner:
-        return 'Beginner';
+        return 'Beginner'.tr();
       case Level.Intermediate:
-        return 'Intermediate';
+        return 'Intermediate'.tr();
       case Level.Advanced:
-        return 'Advanced';
+        return 'Advanced'.tr();
       default:
         return 'Unknown';
     }

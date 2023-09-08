@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
 import 'package:gym_app/feature/profile/ui/widget/custom_switch_listtile.dart';
@@ -55,31 +56,31 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setMembershipStatus,
               value: memberShip,
-              title: AppStrings.membershipStatusAndOffers,
+              title: AppStrings.membershipStatusAndOffers.tr(),
             ),
             CustomDivider(),
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setClassesNewUpdates,
               value: classesNewUpdates,
-              title: AppStrings.classesNewUpdates,
+              title: AppStrings.classesNewUpdates.tr(),
             ),
             CustomDivider(),
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setContentNewArticles,
               value: contentNewArticles,
-              title: AppStrings.contentNewArticles,
+              title: AppStrings.contentNewArticles.tr(),
             ),
             CustomDivider(),
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setWorkoutUpdates,
               value: workoutUpdates,
-              title: AppStrings.workoutUpdates,
+              title: AppStrings.workoutUpdates.tr(),
             ),
             CustomDivider(),
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setStoreNewProducts,
               value: storeNewProducts,
-              title: AppStrings.storeNewProducts,
+              title: AppStrings.storeNewProducts.tr(),
             ),
           ],
         ),

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/registrations/model/user_model.dart';
@@ -51,8 +52,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBarSecondary(
-        title: AppStrings.updateYourInfo,
-        subTitle: AppStrings.updateYourBasic,
+        title: AppStrings.updateYourInfo.tr(),
+        subTitle: AppStrings.updateYourBasic.tr(),
       ),
       body: GestureDetector(
         onTap: () {
@@ -120,7 +121,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   : Placeholder())),
                       const SizedBox(height: 8),
                       Text(
-                        AppStrings.uploadNewPicture,
+                        AppStrings.uploadNewPicture.tr(),
                         style: StyleManger.headline4(
                           color: ColorManager.primary,
                         ),
@@ -149,7 +150,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     // backGroundColor: ColorManager.backGroundField,
                     controller: nameController,
                     validator: (val) => val!.validateUserName(),
-                    text: AppStrings.displayName,
+                    text: AppStrings.displayName.tr(),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.name,
                   ),
@@ -158,7 +159,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     // backGroundColor: ColorManager.backGroundField,
                     controller: emailController,
                     validator: (val) => val!.validateEmail(),
-                    text: AppStrings.email,
+                    text: AppStrings.email.tr(),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                   ),
@@ -167,7 +168,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     // backGroundColor: ColorManager.backGroundField,
                     controller: phoneController,
                     validator: (val) => val!.validatePhoneNumber(),
-                    text: AppStrings.phone,
+                    text: AppStrings.phone.tr(),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.number,
                   ),
@@ -217,11 +218,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 children: <Widget>[
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
-                      title: new Text(AppStrings.gallery),
+                      title: new Text(AppStrings.gallery.tr()),
                       onTap: onTapGallery),
                   new ListTile(
                       leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppStrings.camera),
+                      title: new Text(AppStrings.camera.tr()),
                       onTap: onTapCamera),
                 ],
               ),

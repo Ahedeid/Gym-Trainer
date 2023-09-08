@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 
@@ -29,7 +30,7 @@ class _BottomSheetLanguageState extends State<BottomSheetLanguage> {
         mainAxisSize: MainAxisSize.min,
         children: [
           RadioListTile(
-              title: const Text('English'),
+              title: Text('English'.tr()),
               value: lang.en,
               groupValue: _lang,
               onChanged: (lang? val) {
@@ -38,7 +39,7 @@ class _BottomSheetLanguageState extends State<BottomSheetLanguage> {
                 });
               }),
           RadioListTile(
-              title: const Text('Arabic'),
+              title: Text('Arabic'.tr()),
               value: lang.ar,
               groupValue: _lang,
               onChanged: (lang? val) {

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
@@ -72,9 +73,9 @@ class _StartTrainingState extends State<StartTraining> {
                 ),
                 16.addVerticalSpace,
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "${AppStrings.exercise} ${currentIndex + 1} / ${exerciseResult!.length}",
+                    "${AppStrings.exercise.tr()} ${currentIndex + 1} / ${exerciseResult.length}",
                     style: TextStyle(
                       color: ColorManager.subTitleText,
                       fontSize: 10.sp,
@@ -95,12 +96,12 @@ class _StartTrainingState extends State<StartTraining> {
                   child: CircularCountDownTimer(
                     controller: value.countDownController,
                     duration:
-                    int.parse(exerciseResult[currentIndex].time!) * 60,
+                        int.parse(exerciseResult[currentIndex].time!) * 60,
                     isReverse: true,
                     height: 100,
                     width: 100,
                     initialDuration:
-                    int.parse(exerciseResult[currentIndex].time!) * 60,
+                        int.parse(exerciseResult[currentIndex].time!) * 60,
                     strokeWidth: 10,
                     fillColor: ColorManager.black,
                     onComplete: () {
@@ -176,7 +177,7 @@ class _StartTrainingState extends State<StartTraining> {
                             color: Colors.black,
                           ),
                           label: Text(
-                            "${AppStrings.start}",
+                            "${AppStrings.start.tr()}",
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
@@ -195,7 +196,7 @@ class _StartTrainingState extends State<StartTraining> {
                           path: AppIcons.person_run,
                         ),
                         label: Text(
-                          "${AppStrings.nextTraining}",
+                          "${AppStrings.nextTraining.tr()}",
                           style: StyleManger.headLineBar(
                             color: Colors.white,
                             fontSize: 22.sp,
@@ -209,7 +210,7 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "${AppStrings.upNext} ${upNextList?.length}",
+                    "${AppStrings.upNext.tr()} ${upNextList?.length}",
                     style: TextStyle(
                       color: ColorManager.black,
                       fontSize: 14.sp,

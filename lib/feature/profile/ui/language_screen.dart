@@ -13,7 +13,7 @@ import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 
 class LanguageScreen extends StatefulWidget {
-  const LanguageScreen({super.key});
+  const LanguageScreen({Key? key}) : super(key: key);
 
   @override
   State<LanguageScreen> createState() => _LanguageScreenState();
@@ -24,8 +24,8 @@ class _LanguageScreenState extends State<LanguageScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    // Load the selected language from shared preferences when the screen initializes.
     selectedLanguage = sl<SharedPrefController>().getLanguage;
   }
 
@@ -33,7 +33,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.changeLanguageApp,
+        title: AppStrings.changeLanguageApp.tr(), // Translate the title.
         visible: true,
       ),
       body: MainContainer(
@@ -50,23 +50,13 @@ class _LanguageScreenState extends State<LanguageScreen> {
             RadioListTile(
               activeColor: ColorManager.secondary,
               title: Text(
-                AppStrings.english,
+                AppStrings.english.tr(), // Translate the language names.
                 style: StyleManger.bodyText2(),
               ),
               value: 'en',
               groupValue: selectedLanguage,
               onChanged: (val) {
                 setState(() {
-                  sl<AppRouter>()
-                      .navigatorKey
-                      .currentContext!
-                      .setLocale(const Locale("en", "EN"));
-                  print(sl<AppRouter>()
-                      .navigatorKey
-                      .currentContext!
-                      .locale
-                      .toString());
-
                   selectedLanguage = val!;
                 });
               },
@@ -75,23 +65,13 @@ class _LanguageScreenState extends State<LanguageScreen> {
             RadioListTile(
               activeColor: ColorManager.secondary,
               title: Text(
-                AppStrings.arabic,
+                AppStrings.arabic.tr(), // Translate the language names.
                 style: StyleManger.bodyText2(),
               ),
               value: 'ar',
               groupValue: selectedLanguage,
               onChanged: (val) {
                 setState(() {
-                  sl<AppRouter>()
-                      .navigatorKey
-                      .currentContext!
-                      .setLocale(const Locale("ar", "AR"));
-                  print(sl<AppRouter>()
-                      .navigatorKey
-                      .currentContext!
-                      .locale
-                      .toString());
-
                   selectedLanguage = val!;
                 });
               },
@@ -106,10 +86,18 @@ class _LanguageScreenState extends State<LanguageScreen> {
           vertical: AppSizes.paddingVertical,
         ),
         child: CustomButtonWidget(
-            title: AppStrings.saveChanges,
-            onPressed: () {
-              sl<SharedPrefController>().setLanguage(selectedLanguage);
-            }),
+          title: AppStrings.saveChanges.tr(), // Translate the button text.
+          onPressed: () {
+            // Update the app's locale based on the selected language.
+            final newLocale = selectedLanguage == "en"
+                ? const Locale("en", "US")
+                : const Locale("ar", "AR");
+            sl<AppRouter>().navigatorKey.currentContext!.setLocale(newLocale);
+
+            // Save the selected language to shared preferences.
+            sl<SharedPrefController>().setLanguage(selectedLanguage);
+          },
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list.dart';
@@ -55,8 +56,8 @@ class _FullExercisesScreenState extends State<FullExercisesScreen> {
               // ToDo Add loading state here
               return resultList.isEmpty
                   ? ToEmptyDataWidget(
-                      title: 'Exercises is Empty ',
-                      subTitle: 'Add Exercises Please',
+                      title: 'Exercises is Empty '.tr(),
+                      subTitle: 'Add Exercises Please'.tr(),
                     )
                   : HorizontalExerciseList(resultList: resultList);
             },

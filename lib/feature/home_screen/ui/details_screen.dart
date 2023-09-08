@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/sheared/widget/custom_appBar-secondary.dart';
@@ -25,7 +26,7 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBarSecondary(
-        title: AppStrings.bodyBalance,
+        title: AppStrings.bodyBalance.tr(),
         showSubTitle: false,
       ),
       body: ListView(
@@ -54,7 +55,7 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      AppStrings.mindBody,
+                      AppStrings.mindBody.tr(),
                       style: StyleManger.headline4(
                         fontSize: FontSize.s12,
                         color: ColorManager.secondary,
@@ -73,7 +74,7 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Text(
-                      AppStrings.free,
+                      AppStrings.free.tr(),
                       style: StyleManger.headline3(
                         fontSize: FontSize.s12,
                         color: ColorManager.greenText,
@@ -101,7 +102,7 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
                             color: ColorManager.primaryTextColor,
                           )),
                       const SizedBox(height: 7),
-                      Text(AppStrings.trainer,
+                      Text(AppStrings.trainer.tr(),
                           style: StyleManger.headline4(
                               fontSize: 12,
                               color: ColorManager.secondaryTextColor)),
@@ -119,13 +120,13 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(AppStrings.hard,
+                      Text(AppStrings.hard.tr(),
                           style: StyleManger.headline4(
                             fontSize: 12,
                             color: ColorManager.secondary,
                           )),
                       const SizedBox(height: 7),
-                      Text(AppStrings.intensity,
+                      Text(AppStrings.intensity.tr(),
                           style: StyleManger.headline4(
                               fontSize: 12,
                               color: ColorManager.secondaryTextColor)),
@@ -150,7 +151,7 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
                             color: const Color(0xFF0062A0),
                           )),
                       const SizedBox(height: 7),
-                      Text(AppStrings.duration,
+                      Text(AppStrings.duration.tr(),
                           style: StyleManger.headline4(
                               fontSize: 12,
                               color: ColorManager.secondaryTextColor)),
@@ -161,14 +162,15 @@ class _ClassDetailsScreenState extends State<ClassDetailsScreen> {
             ],
           ),
           const SizedBox(height: 16),
-          Text(AppStrings.location,
+          Text(AppStrings.location.tr(),
               style: StyleManger.headline2(fontSize: FontSize.s18)),
           const SizedBox(height: 8),
           Text(
-              'Shahid street - Next to Arjan signs Carrefour complex, 4th floor Amman,Jordan',
+              'Shahid street - Next to Arjan signs Carrefour complex, 4th floor Amman,Jordan'
+                  .tr(),
               style: StyleManger.bodyText2()),
           const SizedBox(height: 16),
-          Text(AppStrings.availableDates,
+          Text(AppStrings.availableDates.tr(),
               style: StyleManger.headline2(fontSize: FontSize.s18)),
           const SizedBox(height: 12),
           MainContainer(

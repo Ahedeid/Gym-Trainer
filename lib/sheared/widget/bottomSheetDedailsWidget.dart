@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -22,8 +23,6 @@ class BottomSheetDetailsWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingHorizontal),
       child: Column(
         mainAxisSize: MainAxisSize.min,
-        // shrinkWrap: true,
-        // physics: BouncingScrollPhysics(),
         children: [
           const SizedBox(height: 10),
           Container(
@@ -33,12 +32,12 @@ class BottomSheetDetailsWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 color: const Color(0xFFAAABAE)),
           ),
-          const SizedBox(height: 10),
+          // const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppStrings.limitReached,
+                AppStrings.limitReached.tr(),
                 style: StyleManger.headline3(),
               ),
               IconButton(
@@ -57,15 +56,17 @@ class BottomSheetDetailsWidget extends StatelessWidget {
             path: AppIcons.subscribe,
             color: ColorManager.secondary400,
           ),
-          24.addVerticalSpace,
+          Spacer(),
+          // 24.addVerticalSpace,
           Text(
-            AppStrings.youMustSubscribeToPaid,
+            AppStrings.youMustSubscribeToPaid.tr(),
             textAlign: TextAlign.center,
             style: StyleManger.headline4(),
           ),
-          32.addVerticalSpace,
+          Spacer(),
+          // 32.addVerticalSpace,
           CustomButtonWidget(
-            title: AppStrings.subscribeNow,
+            title: AppStrings.subscribeNow.tr(),
             onPressed: () {
               sl<AppRouter>()
                   .goTo(screenName: ScreenName.comingSoonScreen, object: true);

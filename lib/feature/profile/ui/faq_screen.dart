@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
@@ -22,33 +23,33 @@ class FAQScreen extends StatelessWidget {
         ),
         children: [
           ExpansionTileWidget(
-            title: AppStrings.whatIsThePurpose,
-            text: AppStrings.theGymMobile,
+            title: AppStrings.whatIsThePurpose.tr(),
+            text: AppStrings.theGymMobile.tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.howCanIDownload,
-            text: AppStrings.theGymMobile,
+            title: AppStrings.howCanIDownload.tr(),
+            text: AppStrings.theGymMobile.tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.isTheGymMobile,
-            text: AppStrings.theGymMobile,
+            title: AppStrings.isTheGymMobile.tr(),
+            text: AppStrings.theGymMobile.tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.canIBookFitnessClasses,
-            text: AppStrings.theGymMobile,
+            title: AppStrings.canIBookFitnessClasses.tr(),
+            text: AppStrings.theGymMobile.tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.doesTheGymMobile,
-            text: AppStrings.theGymMobile,
+            title: AppStrings.doesTheGymMobile.tr(),
+            text: AppStrings.theGymMobile.tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.canITrackMyFitness,
-            text: AppStrings.theGymMobile,
+            title: AppStrings.canITrackMyFitness.tr(),
+            text: AppStrings.theGymMobile.tr(),
           ),
           8.verticalSpace,
         ],

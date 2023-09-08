@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
@@ -8,14 +9,16 @@ import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 
 class ComingSoonScreen extends StatelessWidget {
-   ComingSoonScreen({required this.isMemberShipScreen,super.key});
-   bool isMemberShipScreen = true;
+  ComingSoonScreen({required this.isMemberShipScreen, super.key});
+  bool isMemberShipScreen = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  CustomAppBar(
-        title: isMemberShipScreen? AppStrings.memberShipPlan:AppStrings.myPaymentMethods,
+      appBar: CustomAppBar(
+        title: isMemberShipScreen
+            ? AppStrings.memberShipPlan.tr()
+            : AppStrings.myPaymentMethods.tr(),
         visible: true,
       ),
       body: Center(
@@ -31,12 +34,12 @@ class ComingSoonScreen extends StatelessWidget {
             ),
             16.addVerticalSpace,
             Text(
-              AppStrings.comingSoon,
+              AppStrings.comingSoon.tr(),
               style: StyleManger.headline1(fontSize: FontSize.s30),
             ),
             8.addVerticalSpace,
             Text(
-              AppStrings.thisFeatureIsPlan,
+              AppStrings.thisFeatureIsPlan.tr(),
               style: StyleManger.bodyText2(),
             ),
           ],

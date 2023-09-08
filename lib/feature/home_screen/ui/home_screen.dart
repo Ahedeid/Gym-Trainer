@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
             bottom: Radius.circular(30),
           ),
         ),
-        title: AppBarBody(greeting: greeting),
+        title: AppBarBody(greeting: greeting.tr()),
         actions: [
           Consumer<HomeProvider>(
             builder: (context, value, child) => Container(
@@ -77,8 +77,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           GestureDetector(
             onTap: () {
-               sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
-                },
+              sl<AppRouter>().goTo(screenName: ScreenName.notificationScreen);
+            },
             child: Container(
               width: 42,
               height: 42,
@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Visibility(
                 visible: homeProvider.isShow,
                 child: CustomTextField(
-                  hintText: "Search",
+                  hintText: "Search".tr(),
                   prefixIcon: CustomSvgAssets(
                     path: AppIcons.search,
                   ),
@@ -122,24 +122,24 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               13.addVerticalSpace,
               SizedBox(
-                  height: 35,
-                  child: StreamBuilder<QuerySnapshot>(
-                    stream: sl<FirebaseFirestore>()
-                        .collection(FirebaseConstant.goalsCollection)
-                        .snapshots(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasError) {
-                        return Text('Error: ${snapshot.error}');
-                      }
+                height: 35,
+                child: StreamBuilder<QuerySnapshot>(
+                  stream: sl<FirebaseFirestore>()
+                      .collection(FirebaseConstant.goalsCollection)
+                      .snapshots(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Text('Error: ${snapshot.error}');
+                    }
 
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Center(child: CircularProgressIndicator());
-                      }
-                      return GoalList(
-                        snapshot: snapshot,
-                      );
-                    },
-                  ),
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+                    return GoalList(
+                      snapshot: snapshot,
+                    );
+                  },
+                ),
               ),
               20.addVerticalSpace,
               HeaderSectionWidget(
@@ -148,8 +148,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       screenName: ScreenName.allCategoryScreen,
                       object: resultList);
                 },
-                title: AppStrings.category,
-                trailing: AppStrings.seeAll,
+                title: AppStrings.category.tr(),
+                trailing: AppStrings.seeAll.tr(),
               ),
               15.addVerticalSpace,
               homeProvider.selectedGoalIdList == null

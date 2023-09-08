@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/card_class_screen.dart';
 import 'package:gym_app/sheared/widget/custom_appBar-secondary.dart';
@@ -36,9 +37,9 @@ class _ClassScreenState extends State<ClassScreen> {
               borderRadius: BorderRadius.circular(8),
             ),
             tabs: [
-              Tab(height: 54, text: AppStrings.all),
-              Tab(height: 54, text: AppStrings.active),
-              Tab(height: 54, text: AppStrings.history),
+              Tab(height: 54, text: AppStrings.all.tr()),
+              Tab(height: 54, text: AppStrings.active.tr()),
+              Tab(height: 54, text: AppStrings.history.tr()),
             ],
           ),
         ),
@@ -74,14 +75,14 @@ class _TabBarAllState extends State<TabBarAll> {
           image: ImageApp.articleImage,
           typeTraining: AppStrings.mindBody,
           praise: AppStrings.free,
-          title: AppStrings.bodyBalance,
+          title: AppStrings.bodyBalance.tr(),
           iconLevel: AppIcons.level,
           level: AppStrings.hard,
           clock: '15 mins',
         ),
         CardClassScreen(
           image: ImageApp.articleImage2,
-          title: AppStrings.adultSelfDefence,
+          title: AppStrings.adultSelfDefence.tr(),
           typeTraining: AppStrings.circuits,
           praise: '\$30',
           iconLevel: AppIcons.level,
