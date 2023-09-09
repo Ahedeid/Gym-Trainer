@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/header_section_widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/vertical_exercise_list.dart';
-import 'package:gym_app/feature/workOut/providers/training_provider.dart';
-import 'package:gym_app/feature/workOut/widgets/training_level_list.dart';
+import 'package:gym_app/feature/Training/providers/training_provider.dart';
+import 'package:gym_app/feature/Training/widgets/training_level_list.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
@@ -19,7 +18,7 @@ class TrainingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar(
-          title: AppStrings.training.tr(),
+          title: AppStrings.training,
           onTap: () {},
         ),
         body: SingleChildScrollView(
@@ -35,7 +34,7 @@ class TrainingScreen extends StatelessWidget {
                   25.addVerticalSpace,
                   HeaderSectionWidget(
                     trailing: "",
-                    title: AppStrings.popularTraining.tr(),
+                    title: AppStrings.popularTraining,
                   ),
                   10.addVerticalSpace,
                   StreamBuilder<QuerySnapshot>(

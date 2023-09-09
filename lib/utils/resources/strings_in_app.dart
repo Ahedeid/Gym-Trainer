@@ -203,4 +203,5 @@ class AppStrings {
   static String youMustSubscribeToPaid =
       'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services'
           .tr();
+  static String articles = 'Articles 📖';
 }
