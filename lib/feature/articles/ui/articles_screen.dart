@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/articles/models/articles_model.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
+import 'package:gym_app/routes/app_router.dart';
+import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
@@ -57,48 +59,71 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
                   color: ColorManager.white,
                   horizontal: 12,
                   child: GestureDetector(
-                    onTap: () {},
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        12.addVerticalSpace,
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: CachedNetworkImage(
-                              fit: BoxFit.cover,
-                              height: 155.h,
-                              width: double.infinity,
-                              imageUrl: data.image,
-                              progressIndicatorBuilder:
-                                  (context, url, downloadProgress) => Center(
-                                child: CircularProgressIndicator(
-                                    value: downloadProgress.progress),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-                          ),
-                        ),
-                        16.addVerticalSpace,
-                        Text(data.title,
-                            style:
-                                StyleManger.headline3(fontSize: FontSize.s14)),
-                        8.addVerticalSpace,
-                        Text(data.subTitle,
-                            style: StyleManger.bodyText(
-                                color: ColorManager.secondaryTextColor)),
-                        12.addVerticalSpace,
-                      ],
-                    ),
+                    onTap: () {
+                      sl<AppRouter>().goTo(
+                          screenName: ScreenName.articlesDetailsScreen,
+                          object: data);
+                    },
+                    child: CustomShowArticles(data: data),
                   ),
                 );
               });
         },
       ),
+    );
+  }
+}
+
+class CustomShowArticles extends StatelessWidget {
+  const CustomShowArticles({
+    super.key,
+    required this.data,
+  });
+
+  final ArticlesModel data;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        12.addVerticalSpace,
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+              fit: BoxFit.cover,
+              height: 155.h,
+              width: double.infinity,
+              imageUrl: data.image,
+              progressIndicatorBuilder: (context, url, downloadProgress) =>
+                  Center(
+                child:
+                    CircularProgressIndicator(value: downloadProgress.progress),
+              ),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ),
+          ),
+        ),
+        16.addVerticalSpace,
+        Text(
+          data.title,
+          style: StyleManger.headline3(
+            fontSize: FontSize.s14,
+          ),
+        ),
+        8.addVerticalSpace,
+        Text(
+          data.subTitle,
+          style: StyleManger.bodyText(
+            color: ColorManager.secondaryTextColor,
+          ),
+        ),
+        12.addVerticalSpace,
+      ],
     );
   }
 }

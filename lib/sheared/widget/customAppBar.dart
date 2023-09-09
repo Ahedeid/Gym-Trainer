@@ -44,15 +44,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
             )
           : SizedBox(),
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // 10.addVerticalSpace,
-          Text(
-            title.toUpperCase(),
-            style: StyleManger.headLineBar(),
-          ),
-        ],
+      title: Text(
+        title.toUpperCase(),
+        maxLines: 2,
+        style: StyleManger.headLineBar(),
       ),
     );
   }
