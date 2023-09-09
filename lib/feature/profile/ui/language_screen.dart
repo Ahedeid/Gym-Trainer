@@ -50,7 +50,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             RadioListTile(
               activeColor: ColorManager.secondary,
               title: Text(
-                "english".tr(), // Translate the language names.
+                english.tr(), // Translate the language names.
                 style: StyleManger.bodyText2(),
               ),
               value: 'en',
@@ -65,7 +65,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
             RadioListTile(
               activeColor: ColorManager.secondary,
               title: Text(
-                "arabic".tr(), // Translate the language names.
+                arabic.tr(), // Translate the language names.
                 style: StyleManger.bodyText2(),
               ),
               value: 'ar',
@@ -86,7 +86,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
           vertical: AppSizes.paddingVertical,
         ),
         child: CustomButtonWidget(
-          title: "saveChanges".tr(), // Translate the button text.
+          title: saveChanges.tr(), // Translate the button text.
           onPressed: () {
             // Update the app's locale based on the selected language.
             final newLocale = selectedLanguage == "en"
