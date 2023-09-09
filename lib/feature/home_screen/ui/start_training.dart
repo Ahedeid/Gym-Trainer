@@ -110,8 +110,8 @@ class _StartTrainingState extends State<StartTraining> {
                     isReverse: true,
                     height: 100,
                     width: 100,
-                    initialDuration:
-                        int.parse(exerciseResult[currentIndex].time!) * 60,
+                    // initialDuration:
+                    //     int.parse(exerciseResult[currentIndex].time!) * 60,
                     strokeWidth: 10,
                     fillColor: ColorManager.black,
                     onComplete: () {
@@ -130,7 +130,7 @@ class _StartTrainingState extends State<StartTraining> {
                     strokeCap: StrokeCap.round,
                     isReverseAnimation: true,
                     ringColor: ColorManager.greyButton,
-                    autoStart: false,
+                    autoStart: true,
                     textStyle: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w600,
@@ -171,28 +171,6 @@ class _StartTrainingState extends State<StartTraining> {
                         ),
                       ),
                     ),
-                    Visibility(
-                      visible: value.countDownController.isPaused,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          borderRadius: BorderRadius.circular(5),
-                        ),
-                        child: TextButton.icon(
-                          onPressed: () {
-                            value.countDownController.start();
-                          },
-                          icon: Icon(
-                            Icons.play_arrow,
-                            color: Colors.black,
-                          ),
-                          label: Text(
-                            "${start.tr()}",
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                      ),
-                    ),
                     Container(
                       decoration: BoxDecoration(
                         color: ColorManager.primary,
@@ -200,7 +178,8 @@ class _StartTrainingState extends State<StartTraining> {
                       ),
                       child: TextButton.icon(
                         onPressed: () {
-                          value.nextTarget(exerciseResult);
+                          Provider.of<HomeProvider>(context, listen: false)
+                              .nextTarget(exerciseResult);
                         },
                         icon: CustomSvgAssets(
                           path: AppIcons.person_run,

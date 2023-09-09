@@ -264,10 +264,10 @@ class ExerciseDetails extends StatelessWidget {
                         }
                         final categoryDocs = snapshot.data!.docs;
                         final resultList = homeProvider.filterExerciseByGoal(
-                            categoryDocs, homeProvider.goalModel?.id);
+                            categoryDocs, homeProvider.selectedGoal);
 
                         final passList = homeProvider.filterExerciseByGoal(
-                            categoryDocs, homeProvider.goalModel?.id);
+                            categoryDocs, homeProvider.selectedGoal);
                         ;
                         homeProvider.setExerciseList(passList);
                         resultList.removeWhere(

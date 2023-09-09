@@ -204,9 +204,11 @@ class HomeProvider extends ChangeNotifier {
     }
 
     currentIndex = (currentIndex + 1) % exerciseResult.length;
+    notifyListeners();
     final nextExercise = exerciseResult[currentIndex];
     final exerciseTime = int.parse(nextExercise.time!) * 60;
 
+    // Update the countdown timer with the new exercise time
     countDownController.restart(duration: exerciseTime);
     countDownController.pause();
 
