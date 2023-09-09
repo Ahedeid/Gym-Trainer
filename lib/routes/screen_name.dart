@@ -26,4 +26,5 @@ class ScreenName {
   static const String seeAllScreen = '/seeAllScreen';
   static const String mealPlanDetails = '/mealPlanDetails';
   static const String notificationTest = '/notificationTest';
+  static const String articlesDetailsScreen = '/articlesDetailsScreen';
 }

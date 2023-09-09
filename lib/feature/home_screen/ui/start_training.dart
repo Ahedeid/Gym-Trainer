@@ -10,6 +10,7 @@ import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list_
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomSvg.dart';
+import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
@@ -33,13 +34,22 @@ class _StartTrainingState extends State<StartTraining> {
       backgroundColor: ColorManager.scaffoldColor,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            sl<AppRouter>().back();
-          },
-          icon: Icon(Icons.arrow_back_ios_new),
-        ),
-      ),
+          leading: GestureDetector(
+            onTap: () {
+              sl<AppRouter>().back(true);
+            },
+            child: MainContainer(
+              left: 6,
+              right: 6,
+              top: 25,
+              bottom: 25,
+              color: Colors.grey.shade300,
+              alignment: Alignment.center,
+              child: CustomSvgAssets(
+                path: AppIcons.back,
+              ),
+            ),
+          )),
       body: SingleChildScrollView(
         child: Consumer<HomeProvider>(
           builder: (context, value, child) {

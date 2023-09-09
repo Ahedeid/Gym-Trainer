@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/BNBUser.dart';
+import 'package:gym_app/feature/articles/models/articles_model.dart';
+import 'package:gym_app/feature/articles/ui/articles_details_screen.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
 import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
@@ -214,6 +216,12 @@ class RouteGenerator {
         var mealPlan = settings.arguments as MealPlan;
         return MaterialPageRoute(
           builder: (_) => MealPlanDetails(mealPlan: mealPlan),
+        );
+        // ------------------------- ArticlesDetailsScreen -----------------------------
+      case ScreenName.articlesDetailsScreen:
+        var articlesObject = settings.arguments as ArticlesModel;
+        return MaterialPageRoute(
+          builder: (_) => ArticlesDetailsScreen(articles: articlesObject,),
         );
 
       default:

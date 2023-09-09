@@ -8,6 +8,7 @@ import 'package:gym_app/feature/meals_plan/models/meal_plan_model.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomSvg.dart';
+import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
@@ -25,13 +26,23 @@ class MealPlanDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorManager.scaffoldColor,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              sl<AppRouter>().back();
+      appBar:AppBar(
+          leading: GestureDetector(
+            onTap: () {
+              sl<AppRouter>().back(true);
             },
-            icon: Icon(Icons.arrow_back_ios_new)),
-      ),
+            child: MainContainer(
+              left: 6,
+              right: 6,
+              top: 25,
+              bottom: 25,
+              color: Colors.grey.shade300,
+              alignment: Alignment.center,
+              child: CustomSvgAssets(
+                path: AppIcons.back,
+              ),
+            ),
+          )),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
