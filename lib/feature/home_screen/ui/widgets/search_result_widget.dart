@@ -32,7 +32,7 @@ class SearchResultWidget extends StatelessWidget {
           }
           if (!snapshot.hasData || snapshot.data?.docs.isEmpty == true) {
             return Center(
-              child: Text('${AppStrings.noItems.tr()}( ${value.searchData} )'),
+              child: Text('${noItems.tr()}( ${value.searchData} )'),
             ); // Display a message if no data is available
           }
 

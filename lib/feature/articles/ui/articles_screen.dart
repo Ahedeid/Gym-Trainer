@@ -14,7 +14,6 @@ import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
-import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 
 class ArticlesScreen extends StatefulWidget {
@@ -29,7 +28,7 @@ class _ArticlesScreenState extends State<ArticlesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.articles.tr(),
+        title: "articles".tr(),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: sl<FirebaseFirestore>()

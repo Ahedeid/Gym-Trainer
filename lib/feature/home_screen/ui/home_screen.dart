@@ -94,7 +94,6 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Consumer<HomeProvider>(
         builder: (context, homeProvider, child) {
           return ListView(
-            // keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             padding: const EdgeInsets.symmetric(
               horizontal: AppSizes.paddingHorizontal,
               vertical: AppSizes.paddingVertical,
@@ -114,10 +113,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               13.addVerticalSpace,
+              Text("${sl<SharedPrefController>().getUserData().selectedGoal}"),
               SearchResultWidget(),
               HeaderSectionWidget(
                 onTap: () {},
-                title: AppStrings.selectGoal.tr(),
+                title: selectGoal.tr(),
                 trailing: "",
               ),
               13.addVerticalSpace,
@@ -148,8 +148,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       screenName: ScreenName.allCategoryScreen,
                       object: resultList);
                 },
-                title: AppStrings.category.tr(),
-                trailing: AppStrings.seeAll.tr(),
+                title: category.tr(),
+                trailing: seeAll.tr(),
               ),
               15.addVerticalSpace,
               homeProvider.selectedGoalIdList == null
@@ -161,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: SizedBox.shrink(),
                         )
                       : SizedBox(
-                          height: 100.h,
+                          height: 120.height,
                           child: StreamBuilder<QuerySnapshot>(
                             stream: sl<FirebaseFirestore>()
                                 .collection(
@@ -178,6 +178,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: CircularProgressIndicator());
                               }
                               final categoryDocs = snapshot.data!.docs;
+                              if (categoryDocs.isEmpty) {
+                                return Center(child: Text("Empty"));
+                              }
                               resultList = homeProvider.filterCategoriesByGoal(
                                   categoryDocs,
                                   homeProvider.goalModel!.categorieList!);
@@ -199,8 +202,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       screenName: ScreenName.seeAllScreen,
                       object: homeProvider.goalModel!.id);
                 },
-                title: AppStrings.popularExercise,
-                trailing: AppStrings.seeAll,
+                title: popularExercise.tr(),
+                trailing: seeAll.tr(),
               ),
               10.addVerticalSpace,
               StreamBuilder<QuerySnapshot>(
@@ -231,8 +234,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       screenName: ScreenName.seeAllScreen,
                       object: homeProvider.goalModel!.id);
                 },
-                title: AppStrings.additionalExercise,
-                trailing: AppStrings.seeAll,
+                title: additionalExercise.tr(),
+                trailing: seeAll.tr(),
               ),
               16.addVerticalSpace,
               StreamBuilder<QuerySnapshot>(

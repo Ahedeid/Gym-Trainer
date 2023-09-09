@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -156,9 +157,7 @@ class ProfileProvider extends ChangeNotifier {
   Future<void> logout() async {
     try {
       // Clear navigation and any authentication-related data
-      UtilsConfig.navigateAfterSuccess(
-          screenName: ScreenName
-              .loginScreen); // This should be a function that handles navigation properly
+      sl<AppRouter>().goToAndRemove(screenName: ScreenName.loginScreen);
       sl<SharedPrefController>().removeUser();
 
       // Disconnect and sign out from Google if applicable

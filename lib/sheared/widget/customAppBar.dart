@@ -26,7 +26,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       // backgroundColor: color,
       elevation: 0,
       centerTitle: true,
-      leading: visible
+      leading: visible == true
           ? GestureDetector(
               onTap: () {
                 sl<AppRouter>().back(true);

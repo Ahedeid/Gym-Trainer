@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/notification/model/notification_model.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
@@ -9,9 +10,7 @@ import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
-import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
-import 'package:intl/intl.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
@@ -27,7 +26,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.notificationsAppBar,
+        title: "notificationsAppBar".tr(),
         visible: true,
       ),
       body: StreamBuilder<QuerySnapshot>(

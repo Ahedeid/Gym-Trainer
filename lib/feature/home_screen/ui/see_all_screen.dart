@@ -26,7 +26,7 @@ class _SeeAllExercisesScreenState extends State<SeeAllExercisesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.fullExercise,
+        title: fullExercise.tr(),
         visible: true,
       ),
       body: Padding(

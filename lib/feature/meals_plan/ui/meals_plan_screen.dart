@@ -18,7 +18,7 @@ class MealsPlan extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.mealsPlan.tr(),
+        title: mealsPlan.tr(),
         onTap: () {},
       ),
       body: SingleChildScrollView(
@@ -31,8 +31,8 @@ class MealsPlan extends StatelessWidget {
                   child: Image.asset(ImageApp.cover)),
               20.addVerticalSpace,
               HeaderSectionWidget(
-                title: AppStrings.dailyInspiration.tr(),
-                trailing: AppStrings.seeAll.tr(),
+                title: dailyInspiration.tr(),
+                trailing: seeAll.tr(),
               ),
               10.addVerticalSpace,
               StreamBuilder<QuerySnapshot>(

@@ -35,21 +35,21 @@ class _StartTrainingState extends State<StartTraining> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
           leading: GestureDetector(
-            onTap: () {
-              sl<AppRouter>().back(true);
-            },
-            child: MainContainer(
-              left: 6,
-              right: 6,
-              top: 25,
-              bottom: 25,
-              color: Colors.grey.shade300,
-              alignment: Alignment.center,
-              child: CustomSvgAssets(
-                path: AppIcons.back,
-              ),
-            ),
-          )),
+        onTap: () {
+          sl<AppRouter>().back(true);
+        },
+        child: MainContainer(
+          left: 6,
+          right: 6,
+          top: 25,
+          bottom: 25,
+          color: Colors.grey.shade300,
+          alignment: Alignment.center,
+          child: CustomSvgAssets(
+            path: AppIcons.back,
+          ),
+        ),
+      )),
       body: SingleChildScrollView(
         child: Consumer<HomeProvider>(
           builder: (context, value, child) {
@@ -85,7 +85,7 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "${AppStrings.exercise.tr()} ${currentIndex + 1} / ${exerciseResult.length}",
+                    "${exercise.tr()} ${currentIndex + 1} / ${exerciseResult.length}",
                     style: TextStyle(
                       color: ColorManager.subTitleText,
                       fontSize: 10.sp,
@@ -165,8 +165,8 @@ class _StartTrainingState extends State<StartTraining> {
                         ),
                         label: Text(
                           value.countDownController.isPaused
-                              ? "${AppStrings.resume}"
-                              : "${AppStrings.pause}",
+                              ? "${resume.tr()}"
+                              : "${pause.tr()}",
                           style: TextStyle(color: Colors.black),
                         ),
                       ),
@@ -187,7 +187,7 @@ class _StartTrainingState extends State<StartTraining> {
                             color: Colors.black,
                           ),
                           label: Text(
-                            "${AppStrings.start.tr()}",
+                            "${start.tr()}",
                             style: TextStyle(color: Colors.black),
                           ),
                         ),
@@ -206,7 +206,7 @@ class _StartTrainingState extends State<StartTraining> {
                           path: AppIcons.person_run,
                         ),
                         label: Text(
-                          "${AppStrings.nextTraining.tr()}",
+                          "${nextTraining.tr()}",
                           style: StyleManger.headLineBar(
                             color: Colors.white,
                             fontSize: 22.sp,
@@ -220,7 +220,7 @@ class _StartTrainingState extends State<StartTraining> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    "${AppStrings.upNext.tr()} ${upNextList?.length}",
+                    "${upNext.tr()} ${upNextList?.length}",
                     style: TextStyle(
                       color: ColorManager.black,
                       fontSize: 14.sp,
