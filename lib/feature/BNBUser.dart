@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/feature/gym_family/ui/gym_family_screen.dart';
+import 'package:gym_app/feature/articles/ui/articles_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/meals_plan/ui/meals_plan_screen.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
@@ -21,7 +21,7 @@ class BNBUser extends StatelessWidget {
       return [
         const HomeScreen(),
         const TrainingScreen(),
-        const GymFamilyScreen(),
+        const ArticlesScreen(),
         const MealsPlan(),
         const ProfileScreen(),
       ];
@@ -38,8 +38,8 @@ class BNBUser extends StatelessWidget {
           iconNonActive: AppIcons.workOutUnSelected,
         ),
         buildPersistentBottomNavBarItem(
-          iconActive: AppIcons.familySelected,
-          iconNonActive: AppIcons.familyUnSelected,
+          iconActive: AppIcons.articles,
+          iconNonActive: AppIcons.articles,
         ),
         buildPersistentBottomNavBarItem(
           iconActive: AppIcons.meals,
@@ -83,8 +83,10 @@ class BNBUser extends StatelessWidget {
     );
   }
 
-  PersistentBottomNavBarItem buildPersistentBottomNavBarItem(
-      {required String iconActive, required String iconNonActive}) {
+  PersistentBottomNavBarItem buildPersistentBottomNavBarItem({
+    required String iconActive,
+    required String iconNonActive,
+  }) {
     return PersistentBottomNavBarItem(
       icon: CustomSvgAssets(
         path: iconActive,

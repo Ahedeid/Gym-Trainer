@@ -1,20 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
+import 'package:gym_app/utils/resources/strings_in_app.dart';
 
-class GymFamilyScreen extends StatefulWidget {
-  const GymFamilyScreen({super.key});
+class ArticlesScreen extends StatefulWidget {
+  const ArticlesScreen({super.key});
 
   @override
-  State<GymFamilyScreen> createState() => _GymFamilyScreenState();
+  State<ArticlesScreen> createState() => _ArticlesScreenState();
 }
 
-class _GymFamilyScreenState extends State<GymFamilyScreen> {
+class _ArticlesScreenState extends State<ArticlesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: 'Gym Family! 🏋🏻‍♀️'.tr(),
+        title: AppStrings.articles.tr(),
         onTap: () {},
       ),
       body: Center(
