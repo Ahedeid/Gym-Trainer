@@ -27,6 +27,7 @@ class _SeeAllExercisesScreenState extends State<SeeAllExercisesScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: AppStrings.fullExercise,
+        visible: true,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
