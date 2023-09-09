@@ -11,6 +11,7 @@ import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
+import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "yourProfile".tr(),
+        title: yourProfile.tr(),
       ),
       body: RefreshIndicator(
         onRefresh: () async {},
@@ -52,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   CardInProfileWidget(
-                    title: "memberShipPlan".tr(),
+                    title: memberShipPlan.tr(),
                     onTap: () {
                       sl<AppRouter>().goTo(
                           screenName: ScreenName.comingSoonScreen,
@@ -61,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomDivider(),
                   CardInProfileWidget(
-                    title: "unitsOfMeasure".tr(),
+                    title: unitsOfMeasure.tr(),
                     onTap: () {
                       showModalBottomSheet(
                           useSafeArea: true,
@@ -73,7 +74,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomDivider(),
                   CardInProfileWidget(
-                    title: "attendanceHistory".tr(),
+                    title: attendanceHistory.tr(),
                     onTap: () {
                       showModalBottomSheet(
                           useSafeArea: true,
@@ -93,7 +94,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   CardInProfileWidget(
-                    title: "myPaymentMethods".tr(),
+                    title: myPaymentMethods.tr(),
                     onTap: () {
                       sl<AppRouter>().goTo(
                         screenName: ScreenName.comingSoonScreen,
@@ -103,7 +104,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomDivider(),
                   CardInProfileWidget(
-                    title: "changeLanguage".tr(),
+                    title: changeLanguage.tr(),
                     onTap: () {
                       sl<AppRouter>()
                           .goTo(screenName: ScreenName.languageScreen);
@@ -111,7 +112,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomDivider(),
                   CardInProfileWidget(
-                    title: "notificationsSettings".tr(),
+                    title: notificationsSettings.tr(),
                     onTap: () {
                       sl<AppRouter>().goTo(
                           screenName: ScreenName.notificationSettingScreen);
@@ -119,7 +120,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomDivider(),
                   CardInProfileWidget(
-                    title: "termsConditions".tr(),
+                    title: termsConditions.tr(),
                     onTap: () {
                       sl<AppRouter>().goTo(
                           screenName: ScreenName.termsAndConditionsScreen);
@@ -127,14 +128,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   CustomDivider(),
                   CardInProfileWidget(
-                    title: "fAQsConditions".tr(),
+                    title: fAQsConditions.tr(),
                     onTap: () {
                       sl<AppRouter>().goTo(screenName: ScreenName.fAQScreen);
                     },
                   ),
                   CustomDivider(),
                   CardInProfileWidget(
-                    title: "logout".tr(),
+                    title: logout.tr(),
                     onTap: () async {
                       await sl<ProfileProvider>().logout();
                     },

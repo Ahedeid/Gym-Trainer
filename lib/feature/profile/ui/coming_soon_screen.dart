@@ -9,8 +9,8 @@ import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 
 class ComingSoonScreen extends StatelessWidget {
-  ComingSoonScreen({required this.isMemberShipScreen, super.key});
-  bool isMemberShipScreen = true;
+  final bool isMemberShipScreen;
+  ComingSoonScreen({this.isMemberShipScreen = true, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +32,12 @@ class ComingSoonScreen extends StatelessWidget {
             ),
             16.addVerticalSpace,
             Text(
-              "comingSoon".tr(),
+              comingSoon.tr(),
               style: StyleManger.headline1(fontSize: FontSize.s30),
             ),
             8.addVerticalSpace,
             Text(
-              "thisFeatureIsPlan".tr(),
+              thisFeatureIsPlan.tr(),
               style: StyleManger.bodyText2(),
             ),
           ],

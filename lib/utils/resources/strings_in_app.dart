@@ -1,210 +1,212 @@
 // class AppStrings {
-//   static String technoGym = "TECHNO GYM".tr();
-//   static String signUp = "SIGNUP".tr();
-//   static String email = "Email address".tr();
-//   static String phone = "Phone".tr();
-//   static String enterYourEmail = "Hello there, sign in to\ncontinue!".tr();
-//   static String pleaseEnterYourCredentials =
+//   const String technoGym = "TECHNO GYM".tr();
+//   const String signUp = "SIGNUP".tr();
+//   const String email = "Email address".tr();
+//   const String phone = "Phone".tr();
+//   const String enterYourEmail = "Hello there, sign in to\ncontinue!".tr();
+//   const String pleaseEnterYourCredentials =
 //       "Please enter your credentials to proceed ".tr();
-//   static String createANewAccount = "Create a new account!".tr();
-//   static String userName = "Username".tr();
-//   static String emailOrPhone = "Email or Phone ".tr();
-//   static String Password = "Password".tr();
-//   static String confirmPassword = "Confirm password".tr();
-//   static String agreeWithTramsAndCondition =
+//   const String createANewAccount = "Create a new account!".tr();
+//   const String userName = "Username".tr();
+//   const String emailOrPhone = "Email or Phone ".tr();
+//   const String Password = "Password".tr();
+//   const String confirmPassword = "Confirm password".tr();
+//   const String agreeWithTramsAndCondition =
 //       "Agree with terms and conditions.".tr();
-//   static String haveAnAccount = "Have an account?".tr();
-//   static String welcomeToProFitness = "Welcome to Pro Fitness!".tr();
-//   static String logIn = "LogIn".tr();
-//   static String logout = "Logout".tr();
-//   static String phoneVerification = "Phone Verification".tr();
-//   static String weNeedToRegister =
+//   const String haveAnAccount = "Have an account?".tr();
+//   const String welcomeToProFitness = "Welcome to Pro Fitness!".tr();
+//   const String logIn = "LogIn".tr();
+//   const String logout = "Logout".tr();
+//   const String phoneVerification = "Phone Verification".tr();
+//   const String weNeedToRegister =
 //       "We need to register your phone number before getting started!".tr();
-//   static String phoneNumber = "Phone number".tr();
-//   static String sendOTP = "Send OTP".tr();
-//   static String verifyPhoneNumber = "Verify phone number".tr();
-//   static String editPhoneNumber = "Edit phone number?".tr();
-//   static String sendAgain = "Send again".tr();
-//   static String welcomeBack = "Welcome back!".tr();
-//   static String emailExample = "example@gmail.com".tr();
-//   static String forgetPassword = "Forget password?".tr();
-//   static String havenAnAccount = "Haven’t an account? ".tr();
-//   static String resetPassword = "Reset password".tr();
-//   static String enterTheEmail =
+//   const String phoneNumber = "Phone number".tr();
+//   const String sendOTP = "Send OTP".tr();
+//   const String verifyPhoneNumber = "Verify phone number".tr();
+//   const String editPhoneNumber = "Edit phone number?".tr();
+//   const String sendAgain = "Send again".tr();
+//   const String welcomeBack = "Welcome back!".tr();
+//   const String emailExample = "example@gmail.com".tr();
+//   const String forgetPassword = "Forget password?".tr();
+//   const String havenAnAccount = "Haven’t an account? ".tr();
+//   const String resetPassword = "Reset password".tr();
+//   const String enterTheEmail =
 //       "Enter the email associated with your account and we’ll send an email with instructions to reset your password!"
 //           .tr();
-//   static String emailAddress = "Email address".tr();
-//   static String next = "Next".tr();
-//   static String checkYourMail = "Check your mail".tr();
-//   static String sentAPasswordRecover =
+//   const String emailAddress = "Email address".tr();
+//   const String next = "Next".tr();
+//   const String checkYourMail = "Check your mail".tr();
+//   const String sentAPasswordRecover =
 //       "We have sent a password recovery instructions to your email.".tr();
-//   static String openEmail = "Open email".tr();
-//   static String iConfirmLatter = "i’ll confirm later".tr();
-//   static String createNewPassword = "Create new password".tr();
-//   static String passwordMustBeDifferent =
+//   const String openEmail = "Open email".tr();
+//   const String iConfirmLatter = "i’ll confirm later".tr();
+//   const String createNewPassword = "Create new password".tr();
+//   const String passwordMustBeDifferent =
 //       "Your new password must be different from previously used passwords."
 //           .tr();
-//   static String confirm = "Confirm".tr();
-//   static String home = "Home".tr();
-//   static String search = "Search".tr();
-//   static String popularItem = "Popular Item".tr();
-//   static String seeAll = "See All".tr();
-//   static dynamic headerToOnBoarding = ["First ..", 'Second ..', 'Third ..'];
-//   static dynamic bodyToOnBoarding = [
+//   const String confirm = "Confirm".tr();
+//   const String home = "Home".tr();
+//   const String search = "Search".tr();
+//   const String popularItem = "Popular Item".tr();
+//   const String seeAll = "See All".tr();
+//   const dynamic headerToOnBoarding = ["First ..", 'Second ..', 'Third ..'];
+//   const dynamic bodyToOnBoarding = [
 //     "Lorem Ipsum is simply dummy text of the printing and typesetting..",
 //     'Lorem Ipsum is simply dummy text of the printing and typesetting..',
 //     'Lorem Ipsum is simply dummy text of the printing and typesetting..'
 //   ];
-//   static String seaToday = "Today’s Workout".tr();
-//   static String dailyAttendance = "Daily Attendance".tr();
-//   static String myWorkouts = "My Workouts".tr();
-//   static String classes = "Classes".tr();
-//   static String shouldersLegs = "Shoulders & Legs".tr();
-//   static String daysStraight = "7 Days Straight!".tr();
-//   static String daysCompleted = "3 Days Completed!".tr();
-//   static String activeClasses = "2 Active Classes!".tr();
-//   static String dalyWorkOut = "Daly WorkOut".tr();
-//   static String discoverNewWorkouts = "Discover New Workouts".tr();
-//   static String moreDetails = "More Details!".tr();
-//   static String months = "3 Months".tr();
-//   static String activeMostPopular = "Active | Most Popular".tr();
-//   static String letsDoIt = "Let’s do it!r".tr();
-//   static String attendNow = "Attend Now!".tr();
-//   static String discover = "Discover!".tr();
-//   static String Continue = "Continue!".tr();
-//   static String subscribeNow = "SUBSCRIBE NOW".tr();
-//   static String scanBarcode = "Scan Barcode by Mobile Camera".tr();
-//   static String scanAppBarcode = "Scan App Barcode".tr();
-//   static String memberShipPlan = "Membership Plan".tr();
-//   static String unitsOfMeasure = "Units of Measure".tr();
-//   static String attendanceHistory = "Attendance History".tr();
-//   static String myPaymentMethods = "My Payment Methods".tr();
-//   static String changeYourPhoneNumber = "Change Your Phone Number".tr();
-//   static String changeYourEmail = "Change Your Email".tr();
-//   static String changeYourPassword = "Change Your Password".tr();
-//   static String changeLanguage = "Change Language".tr();
-//   static String notificationsSettings = "Notifications Settings".tr();
-//   static String updateYourInfo = "Update your Info! ℹ️".tr();
-//   static String updateYourBasic = "Update your basic information!".tr();
-//   static String uploadNewPicture = "Upload New Picture".tr();
-//   static String displayName = "Display Name".tr();
-//   static String classesAppBar = "Classes 🏋🏻‍♀️".tr();
-//   static String buildYourBodySmartly = "Build your body smartly!️".tr();
-//   static String saveChanges = "Save Changes".tr();
-//   static String active = "Active".tr();
-//   static String all = "All".tr();
-//   static String history = "History".tr();
-//   static String mindBody = "🧘🏻 Mind & Body".tr();
-//   static String free = "Free ✅".tr();
-//   static String bodyBalance = "Body Balance".tr();
-//   static String mountainClimbers = "Mountain climbers".tr();
-//   static String readMore = "Read More".tr();
-//   static String intensity = "Intensity".tr();
-//   static String duration = "Duration".tr();
-//   static String hard = "Hard".tr();
-//   static String circuits = "🏋🏻‍♀️ Circuits".tr();
-//   static String adultSelfDefence = "Adult Self Defence".tr();
-//   static String trainer = "Trainer".tr();
-//   static String location = "Location".tr();
-//   static String availableDates = "Available Dates".tr();
-//   static String bookNow = "Book Now!".tr();
+//   const String seaToday = "Today’s Workout".tr();
+//   const String dailyAttendance = "Daily Attendance".tr();
+//   const String myWorkouts = "My Workouts".tr();
+//   const String classes = "Classes".tr();
+//   const String shouldersLegs = "Shoulders & Legs".tr();
+//   const String daysStraight = "7 Days Straight!".tr();
+//   const String daysCompleted = "3 Days Completed!".tr();
+//   const String activeClasses = "2 Active Classes!".tr();
+//   const String dalyWorkOut = "Daly WorkOut".tr();
+//   const String discoverNewWorkouts = "Discover New Workouts".tr();
+//   const String moreDetails = "More Details!".tr();
+//   const String months = "3 Months".tr();
+//   const String activeMostPopular = "Active | Most Popular".tr();
+//   const String letsDoIt = "Let’s do it!r".tr();
+//   const String attendNow = "Attend Now!".tr();
+//   const String discover = "Discover!".tr();
+//   const String Continue = "Continue!".tr();
+//   const String subscribeNow = "SUBSCRIBE NOW".tr();
+//   const String scanBarcode = "Scan Barcode by Mobile Camera".tr();
+//   const String scanAppBarcode = "Scan App Barcode".tr();
+//   const String memberShipPlan = "Membership Plan".tr();
+//   const String unitsOfMeasure = "Units of Measure".tr();
+//   const String attendanceHistory = "Attendance History".tr();
+//   const String myPaymentMethods = "My Payment Methods".tr();
+//   const String changeYourPhoneNumber = "Change Your Phone Number".tr();
+//   const String changeYourEmail = "Change Your Email".tr();
+//   const String changeYourPassword = "Change Your Password".tr();
+//   const String changeLanguage = "Change Language".tr();
+//   const String notificationsSettings = "Notifications Settings".tr();
+//   const String updateYourInfo = "Update your Info! ℹ️".tr();
+//   const String updateYourBasic = "Update your basic information!".tr();
+//   const String uploadNewPicture = "Upload New Picture".tr();
+//   const String displayName = "Display Name".tr();
+//   const String classesAppBar = "Classes 🏋🏻‍♀️".tr();
+//   const String buildYourBodySmartly = "Build your body smartly!️".tr();
+//   const String saveChanges = "Save Changes".tr();
+//   const String active = "Active".tr();
+//   const String all = "All".tr();
+//   const String history = "History".tr();
+//   const String mindBody = "🧘🏻 Mind & Body".tr();
+//   const String free = "Free ✅".tr();
+//   const String bodyBalance = "Body Balance".tr();
+//   const String mountainClimbers = "Mountain climbers".tr();
+//   const String readMore = "Read More".tr();
+//   const String intensity = "Intensity".tr();
+//   const String duration = "Duration".tr();
+//   const String hard = "Hard".tr();
+//   const String circuits = "🏋🏻‍♀️ Circuits".tr();
+//   const String adultSelfDefence = "Adult Self Defence".tr();
+//   const String trainer = "Trainer".tr();
+//   const String location = "Location".tr();
+//   const String availableDates = "Available Dates".tr();
+//   const String bookNow = "Book Now!".tr();
 //   //----------------------- (GYM) -------------------------------
-//   static String selectGoal = "Select your Goal".tr();
-//   static String category = "Category".tr();
-//   static String popularExercise = "Popular Exercise".tr();
-//   static String popularTraining = "Popular Training".tr();
-//   static String additionalExercise = "Additional Exercise".tr();
-//   static String oClock = "|".tr();
-//   static String upNext = "Up Next".tr();
-//   static String nextTraining = "Next Training".tr();
-//   static String start = "Start".tr();
-//   static String resume = "Resume".tr();
-//   static String pause = "Pause".tr();
-//   static String noItems = "No Exercise Found".tr();
-//   static String mealsPlan = "Meals Plan".tr();
-//   static String dailyInspiration = "Daily Inspiration".tr();
-//   static String orLoginWith = "Or Login with".tr();
-//   static String training = "Training".tr();
-//   static String connectWithGoogle = "Connect With Google".tr();
-//   static String connectWithFacebook = "Connect With Facebook".tr();
-//   static String createAccounts = "Create Accounts".tr();
-//   static String successAccount = "Account was created Successfully!!".tr();
-//   static String fullExercise = "Full Exercise".tr();
-//   static String level = "Level".tr();
-//   static String weight = "Weight".tr();
-//   static String noAccessExercise = "You can't access this exercise".tr();
-//   static String upgradeNeeded = "Upgrade to access this feature".tr();
-//   static String weeks = "Weeks".tr();
-//   static String exercise = "Exercise".tr();
-//   static String schedule = "Schedule".tr();
-//   static String exerciseProgram = "Exercise Program".tr();
-//   static String startTraining = "Start Training".tr();
+//   const String selectGoal = "Select your Goal".tr();
+//   const String category = "Category".tr();
+//   const String popularExercise = "Popular Exercise".tr();
+//   const String popularTraining = "Popular Training".tr();
+//   const String additionalExercise = "Additional Exercise".tr();
+//   const String oClock = "|".tr();
+//   const String upNext = "Up Next".tr();
+//   const String nextTraining = "Next Training".tr();
+//   const String start = "Start".tr();
+//   const String resume = "Resume".tr();
+//   const String pause = "Pause".tr();
+//   const String noItems = "No Exercise Found".tr();
+//   const String mealsPlan = "Meals Plan".tr();
+//   const String dailyInspiration = "Daily Inspiration".tr();
+//   const String orLoginWith = "Or Login with".tr();
+//   const String training = "Training".tr();
+//   const String connectWithGoogle = "Connect With Google".tr();
+//   const String connectWithFacebook = "Connect With Facebook".tr();
+//   const String createAccounts = "Create Accounts".tr();
+//   const String successAccount = "Account was created Successfully!!".tr();
+//   const String fullExercise = "Full Exercise".tr();
+//   const String level = "Level".tr();
+//   const String weight = "Weight".tr();
+//   const String noAccessExercise = "You can't access this exercise".tr();
+//   const String upgradeNeeded = "Upgrade to access this feature".tr();
+//   const String weeks = "Weeks".tr();
+//   const String exercise = "Exercise".tr();
+//   const String schedule = "Schedule".tr();
+//   const String exerciseProgram = "Exercise Program".tr();
+//   const String startTraining = "Start Training".tr();
 // // ... (continue with the remaining strings)
 //
-//   static String termsConditionsAppBar = "Terms&Conditions 👮🏻‍";
-//   static String termsConditions = "Terms&Conditions";
-//   static String fAQsConditionsAppBar = "FAQ’s 💭";
-//   static String fAQsConditions = "FAQ’s";
-//   static String yourProfile = "Your Profile! 🙅🏻‍♂️";
-//   static String canITrackMyFitness =
+//   const String termsConditionsAppBar = "Terms&Conditions 👮🏻‍";
+//   const String termsConditions = "Terms&Conditions";
+//   const String fAQsConditionsAppBar = "FAQ’s 💭";
+//   const String fAQsConditions = "FAQ’s";
+//   const String yourProfile = "Your Profile! 🙅🏻‍♂️";
+//   const String canITrackMyFitness =
 //       "6. Can I track my fitness progress using the gym mobile application?";
-//   static String doesTheGymMobile =
+//   const String doesTheGymMobile =
 //       "5. Does the gym mobile application provide personal training options?";
-//   static String canIBookFitnessClasses =
+//   const String canIBookFitnessClasses =
 //       "4. Can I book fitness classes through the gym mobile application?";
-//   static String isTheGymMobile =
+//   const String isTheGymMobile =
 //       "3. Is the gym mobile application free to use?";
-//   static String howCanIDownload =
+//   const String howCanIDownload =
 //       "2. How can I download the gym mobile application?";
-//   static String theGymMobile =
+//   const String theGymMobile =
 //       "The gym mobile application is designed to provide convenient access to a range of fitness-related services, including classes, trainings, and other features. It allows users to book classes, track their progress, receive personalized workout plans, and more.";
-//   static String whatIsThePurpose =
+//   const String whatIsThePurpose =
 //       "1. What is the purpose of the gym mobile application?";
-//   static String toSendYouMarketing =
+//   const String toSendYouMarketing =
 //       "To send you marketing communications, offers, and promotions related to our gym mobile application, but only if you have given us explicit consent to do so.";
-//   static String toAnalyzeAndMonitor =
+//   const String toAnalyzeAndMonitor =
 //       "To analyze and monitor app usage patterns, diagnose technical issues, and improve our services.";
-//   static String toCommunicateWithYou =
+//   const String toCommunicateWithYou =
 //       "To communicate with you regarding your account, notifications, updates, and customer support.";
-//   static String toProvideAndImproveOurGymMobile =
+//   const String toProvideAndImproveOurGymMobile =
 //       "To provide and improve our gym mobile application, including personalized fitness recommendations, training plans, and class bookings.";
-//   static String howWeUseYourInformation =
+//   const String howWeUseYourInformation =
 //       "2. How We Use Your Information: We use the collected information for the following purposes:️";
-//   static String usageInformationIncludingApp =
+//   const String usageInformationIncludingApp =
 //       "Usage information including app usage statistics, session duration, and interactions within the application.";
-//   static String deviceInformationSuchAsYourDevice =
+//   const String deviceInformationSuchAsYourDevice =
 //       "Device information such as your device type, operating system, unique device identifiers, and IP address.";
-//   static String fitnessAndHealthRelated =
+//   const String fitnessAndHealthRelated =
 //       "Fitness and health-related data such as workout logs, progress tracking, and other activity information you choose to provide.️";
-//   static String personalInformationSuchAsYourName =
+//   const String personalInformationSuchAsYourName =
 //       "Personal information such as your name, email address, phone number, and other contact details.";
-//   static String informationWeCollect =
+//   const String informationWeCollect =
 //       "1. Information We Collect: We may collect various types of information from you when you use our gym mobile application, including:️";
-//   static String weAreCommittedToProtecting =
+//   const String weAreCommittedToProtecting =
 //       "At AppGym, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your data when you use our gym mobile application. Please read this policy carefully to understand our practices regarding your personal information.";
-//   static String notificationsSettingAppBar = "Notifications Pref.! 🔔".tr();
-//   static String membershipStatusAndOffers = "Membership - Status and Offers";
-//   static String classesNewUpdates = "Classes - New Updates";
-//   static String contentNewArticles = "Content - New Articles".tr();
-//   static String workoutUpdates = "Workout Updates".tr();
-//   static String storeNewProducts = "Store - New Products".tr();
-//   static String changeLanguageApp = "Change Language! 🗣️".tr();
-//   static String english = 'English'.tr();
-//   static String arabic = 'Arabic'.tr();
-//   static String comingSoon = 'Coming Soon'.tr();
-//   static String thisFeatureIsPlan = 'This feature is plan to next update'.tr();
-//   static String notificationsAppBar = 'Notifications! 🔔'.tr();
-//   static String gallery = 'Gallery'.tr();
-//   static String camera = 'Camera'.tr();
-//   static String limitReached = 'Limit Reached'.tr();
-//   static String description = 'Description'.tr();
-//   static String youMustSubscribeToPaid =
+//   const String notificationsSettingAppBar = "Notifications Pref.! 🔔".tr();
+//   const String membershipStatusAndOffers = "Membership - Status and Offers";
+//   const String classesNewUpdates = "Classes - New Updates";
+//   const String contentNewArticles = "Content - New Articles".tr();
+//   const String workoutUpdates = "Workout Updates".tr();
+//   const String storeNewProducts = "Store - New Products".tr();
+//   const String changeLanguageApp = "Change Language! 🗣️".tr();
+//   const String english = 'English'.tr();
+//   const String arabic = 'Arabic'.tr();
+//   const String comingSoon = 'Coming Soon'.tr();
+//   const String thisFeatureIsPlan = 'This feature is plan to next update'.tr();
+//   const String notificationsAppBar = 'Notifications! 🔔'.tr();
+//   const String gallery = 'Gallery'.tr();
+//   const String camera = 'Camera'.tr();
+//   const String limitReached = 'Limit Reached'.tr();
+//   const String description = 'Description'.tr();
+//   const String youMustSubscribeToPaid =
 //       'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services'
 //           .tr();
 // }
 
+const String comingSoon = 'Coming Soon';
+const String thisFeatureIsPlan = 'This feature is plan to next update';
 const String ch1 = 'Change Language!';
-// Change 'static' to 'const' for each string
+// Change 'const' to 'const' for each string
 const String technoGym = "TECHNO GYM";
 const String signUp = "SIGNUP";
 const String email = "Email address";
@@ -288,6 +290,8 @@ const String displayName = "Display Name";
 const String classesAppBar = "Classes 🏋🏻‍♀️";
 const String buildYourBodySmartly = "Build your body smartly!️";
 const String saveChanges = "Save Changes";
+const String english = "English";
+const String arabic = "Arabic";
 const String active = "Active";
 const String all = "All";
 const String history = "History";
@@ -341,3 +345,204 @@ const String startTraining = "Start Training";
 
 const String termsConditionsAppBar = "Terms&Conditions 👮🏻‍";
 const String termsConditions = "Terms&Conditions";
+// const String technoGym = "TECHNO GYM".tr();
+// const String signUp = "SIGNUP".tr();
+// const String email = "Email address".tr();
+// const String phone = "Phone".tr();
+// const String enterYourEmail = "Hello there, sign in to\ncontinue!".tr();
+// const String pleaseEnterYourCredentials =
+//     "Please enter your credentials to proceed ".tr();
+// const String createANewAccount = "Create a new account!".tr();
+// const String userName = "Username".tr();
+// const String emailOrPhone = "Email or Phone ".tr();
+// const String Password = "Password".tr();
+// const String confirmPassword = "Confirm password".tr();
+// const String agreeWithTramsAndCondition =
+//     "Agree with terms and conditions.".tr();
+// const String haveAnAccount = "Have an account?".tr();
+// const String welcomeToProFitness = "Welcome to Pro Fitness!".tr();
+// const String logIn = "LogIn".tr();
+// const String logout = "Logout".tr();
+// const String phoneVerification = "Phone Verification".tr();
+// const String weNeedToRegister =
+//     "We need to register your phone number before getting started!".tr();
+// const String phoneNumber = "Phone number".tr();
+// const String sendOTP = "Send OTP".tr();
+// const String verifyPhoneNumber = "Verify phone number".tr();
+// const String editPhoneNumber = "Edit phone number?".tr();
+// const String sendAgain = "Send again".tr();
+// const String welcomeBack = "Welcome back!".tr();
+// const String emailExample = "example@gmail.com".tr();
+// const String forgetPassword = "Forget password?".tr();
+// const String havenAnAccount = "Haven’t an account? ".tr();
+// const String resetPassword = "Reset password".tr();
+// const String enterTheEmail =
+//     "Enter the email associated with your account and we’ll send an email with instructions to reset your password!"
+//         .tr();
+// const String emailAddress = "Email address".tr();
+// const String next = "Next".tr();
+// const String checkYourMail = "Check your mail".tr();
+// const String sentAPasswordRecover =
+//     "We have sent a password recovery instructions to your email.".tr();
+// const String openEmail = "Open email".tr();
+// const String iConfirmLatter = "i’ll confirm later".tr();
+// const String createNewPassword = "Create new password".tr();
+// const String passwordMustBeDifferent =
+//     "Your new password must be different from previously used passwords."
+//         .tr();
+// const String confirm = "Confirm".tr();
+// const String home = "Home".tr();
+// const String search = "Search".tr();
+// const String popularItem = "Popular Item".tr();
+// const String seeAll = "See All".tr();
+const dynamic headerToOnBoarding = ["First ..", 'Second ..', 'Third ..'];
+const dynamic bodyToOnBoarding = [
+  "Lorem Ipsum is simply dummy text of the printing and typesetting..",
+  'Lorem Ipsum is simply dummy text of the printing and typesetting..',
+  'Lorem Ipsum is simply dummy text of the printing and typesetting..'
+];
+// const String seaToday = "Today’s Workout".tr();
+// const String dailyAttendance = "Daily Attendance".tr();
+// const String myWorkouts = "My Workouts".tr();
+// const String classes = "Classes".tr();
+// const String shouldersLegs = "Shoulders & Legs".tr();
+// const String daysStraight = "7 Days Straight!".tr();
+// const String daysCompleted = "3 Days Completed!".tr();
+// const String activeClasses = "2 Active Classes!".tr();
+// const String dalyWorkOut = "Daly WorkOut".tr();
+// const String discoverNewWorkouts = "Discover New Workouts".tr();
+// const String moreDetails = "More Details!".tr();
+// const String months = "3 Months".tr();
+// const String activeMostPopular = "Active | Most Popular".tr();
+// const String letsDoIt = "Let’s do it!r".tr();
+// const String attendNow = "Attend Now!".tr();
+// const String discover = "Discover!".tr();
+// const String Continue = "Continue!".tr();
+// const String subscribeNow = "SUBSCRIBE NOW".tr();
+// const String scanBarcode = "Scan Barcode by Mobile Camera".tr();
+// const String scanAppBarcode = "Scan App Barcode".tr();
+// const String memberShipPlan = "Membership Plan".tr();
+// const String unitsOfMeasure = "Units of Measure".tr();
+// const String attendanceHistory = "Attendance History".tr();
+// const String myPaymentMethods = "My Payment Methods".tr();
+// const String changeYourPhoneNumber = "Change Your Phone Number".tr();
+// const String changeYourEmail = "Change Your Email".tr();
+// const String changeYourPassword = "Change Your Password".tr();
+// const String changeLanguage = "Change Language".tr();
+// const String notificationsSettings = "Notifications Settings".tr();
+// const String updateYourInfo = "Update your Info! ℹ️".tr();
+// const String updateYourBasic = "Update your basic information!".tr();
+// const String uploadNewPicture = "Upload New Picture".tr();
+// const String displayName = "Display Name".tr();
+// const String classesAppBar = "Classes 🏋🏻‍♀️".tr();
+// const String buildYourBodySmartly = "Build your body smartly!️".tr();
+// const String saveChanges = "Save Changes".tr();
+// const String active = "Active".tr();
+// const String all = "All".tr();
+// const String history = "History".tr();
+// const String mindBody = "🧘🏻 Mind & Body".tr();
+// const String free = "Free ✅".tr();
+// const String bodyBalance = "Body Balance".tr();
+// const String mountainClimbers = "Mountain climbers".tr();
+// const String readMore = "Read More".tr();
+// const String intensity = "Intensity".tr();
+// const String duration = "Duration".tr();
+// const String hard = "Hard".tr();
+// const String circuits = "🏋🏻‍♀️ Circuits".tr();
+// const String adultSelfDefence = "Adult Self Defence".tr();
+// const String trainer = "Trainer".tr();
+// const String location = "Location".tr();
+// const String availableDates = "Available Dates".tr();
+// const String bookNow = "Book Now!".tr();
+//----------------------- (GYM) -------------------------------
+// const String selectGoal = "Select your Goal".tr();
+// const String category = "Category".tr();
+// const String popularExercise = "Popular Exercise".tr();
+// const String popularTraining = "Popular Training".tr();
+// const String additionalExercise = "Additional Exercise".tr();
+// const String oClock = "|".tr();
+// const String upNext = "Up Next".tr();
+// const String nextTraining = "Next Training".tr();
+// const String start = "Start".tr();
+// const String resume = "Resume".tr();
+// const String pause = "Pause".tr();
+// const String noItems = "No Exercise Found".tr();
+// const String mealsPlan = "Meals Plan".tr();
+// const String dailyInspiration = "Daily Inspiration".tr();
+// const String orLoginWith = "Or Login with".tr();
+// const String training = "Training".tr();
+// const String connectWithGoogle = "Connect With Google".tr();
+// const String connectWithFacebook = "Connect With Facebook".tr();
+// const String createAccounts = "Create Accounts".tr();
+// const String successAccount = "Account was created Successfully!!".tr();
+// const String fullExercise = "Full Exercise".tr();
+// const String level = "Level".tr();
+// const String weight = "Weight".tr();
+// const String noAccessExercise = "You can't access this exercise".tr();
+// const String upgradeNeeded = "Upgrade to access this feature".tr();
+// const String weeks = "Weeks".tr();
+// const String exercise = "Exercise".tr();
+// const String schedule = "Schedule".tr();
+// const String exerciseProgram = "Exercise Program".tr();
+// const String startTraining = "Start Training".tr();
+// ... (continue with the remaining strings)
+
+// const String termsConditionsAppBar = "Terms&Conditions 👮🏻‍";
+// const String termsConditions = "Terms&Conditions";
+const String fAQsConditionsAppBar = "FAQ’s 💭";
+const String fAQsConditions = "FAQ’s";
+const String yourProfile = "Your Profile! 🙅🏻‍♂️";
+const String canITrackMyFitness =
+    "6. Can I track my fitness progress using the gym mobile application?";
+const String doesTheGymMobile =
+    "5. Does the gym mobile application provide personal training options?";
+const String canIBookFitnessClasses =
+    "4. Can I book fitness classes through the gym mobile application?";
+const String isTheGymMobile = "3. Is the gym mobile application free to use?";
+const String howCanIDownload =
+    "2. How can I download the gym mobile application?";
+const String theGymMobile =
+    "The gym mobile application is designed to provide convenient access to a range of fitness-related services, including classes, trainings, and other features. It allows users to book classes, track their progress, receive personalized workout plans, and more.";
+const String whatIsThePurpose =
+    "1. What is the purpose of the gym mobile application?";
+const String toSendYouMarketing =
+    "To send you marketing communications, offers, and promotions related to our gym mobile application, but only if you have given us explicit consent to do so.";
+const String toAnalyzeAndMonitor =
+    "To analyze and monitor app usage patterns, diagnose technical issues, and improve our services.";
+const String toCommunicateWithYou =
+    "To communicate with you regarding your account, notifications, updates, and customer support.";
+const String toProvideAndImproveOurGymMobile =
+    "To provide and improve our gym mobile application, including personalized fitness recommendations, training plans, and class bookings.";
+const String howWeUseYourInformation =
+    "2. How We Use Your Information: We use the collected information for the following purposes:️";
+const String usageInformationIncludingApp =
+    "Usage information including app usage statistics, session duration, and interactions within the application.";
+const String deviceInformationSuchAsYourDevice =
+    "Device information such as your device type, operating system, unique device identifiers, and IP address.";
+const String fitnessAndHealthRelated =
+    "Fitness and health-related data such as workout logs, progress tracking, and other activity information you choose to provide.️";
+const String personalInformationSuchAsYourName =
+    "Personal information such as your name, email address, phone number, and other contact details.";
+const String informationWeCollect =
+    "1. Information We Collect: We may collect various types of information from you when you use our gym mobile application, including:️";
+const String weAreCommittedToProtecting =
+    "At AppGym, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and protect your data when you use our gym mobile application. Please read this policy carefully to understand our practices regarding your personal information.";
+// const String notificationsSettingAppBar = "Notifications Pref.! 🔔".tr();
+// const String membershipStatusAndOffers = "Membership - Status and Offers";
+// const String classesNewUpdates = "Classes - New Updates";
+// const String contentNewArticles = "Content - New Articles".tr();
+// const String workoutUpdates = "Workout Updates".tr();
+// const String storeNewProducts = "Store - New Products".tr();
+// const String changeLanguageApp = "Change Language! 🗣️".tr();
+// const String english = 'English'.tr();
+// const String arabic = 'Arabic'.tr();
+// const String comingSoon = 'Coming Soon'.tr();
+// const String thisFeatureIsPlan = 'This feature is plan to next update'.tr();
+// const String notificationsAppBar = 'Notifications! 🔔'.tr();
+// const String gallery = 'Gallery'.tr();
+// const String camera = 'Camera'.tr();
+// const String limitReached = 'Limit Reached'.tr();
+// const String description = 'Description'.tr();
+// const String youMustSubscribeToPaid =
+//     'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services'
+//         .tr();
