@@ -32,7 +32,7 @@ import 'package:gym_app/feature/registrations/ui/loginScreen.dart';
 import 'package:gym_app/feature/registrations/ui/reSetPassword.dart';
 import 'package:gym_app/feature/registrations/ui/signUpScreen.dart';
 import 'package:gym_app/feature/splash_screen.dart';
-import 'package:gym_app/feature/workOut/providers/training_provider.dart';
+import 'package:gym_app/feature/Training/providers/training_provider.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:provider/provider.dart';

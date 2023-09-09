@@ -3,7 +3,7 @@ import 'package:gym_app/feature/gym_family/ui/gym_family_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
 import 'package:gym_app/feature/meals_plan/ui/meals_plan_screen.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
-import 'package:gym_app/feature/workOut/ui/training_screen.dart';
+import 'package:gym_app/feature/Training/ui/training_screen.dart';
 import 'package:gym_app/sheared/widget/CustomSvg.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/icons_constant.dart';
