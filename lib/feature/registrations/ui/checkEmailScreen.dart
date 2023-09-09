@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -60,7 +61,7 @@ class CheckEmailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 11),
             Text(
-              AppStrings.checkYourMail,
+              checkYourMail.tr(),
               style: TextStyle(
                 fontSize: FontSize.s22,
                 fontWeight: FontWeight.w700,
@@ -78,7 +79,7 @@ class CheckEmailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             CustomButtonWidget(
-              title: AppStrings.openEmail,
+              title: openEmail.tr(),
               onPressed: () async {
                 OpenMailApp.getMailApps();
                 var result = await OpenMailApp.openMailApp(
@@ -101,7 +102,7 @@ class CheckEmailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             CustomButtonWidget(
-              title: AppStrings.iConfirmLatter,
+              title: iConfirmLatter.tr(),
               textColor: ColorManager.gray,
               fontSize: 14,
               onPressed: () {

@@ -37,7 +37,7 @@ class BottomSheetDetailsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                AppStrings.limitReached.tr(),
+                "limitReached".tr(),
                 style: StyleManger.headline3(),
               ),
               IconButton(
@@ -59,14 +59,14 @@ class BottomSheetDetailsWidget extends StatelessWidget {
           // Spacer(),
           24.addVerticalSpace,
           Text(
-            AppStrings.youMustSubscribeToPaid.tr(),
+            "youMustSubscribeToPaid".tr(),
             textAlign: TextAlign.center,
             style: StyleManger.headline4(),
           ),
           // Spacer(),
           32.addVerticalSpace,
           CustomButtonWidget(
-            title: AppStrings.subscribeNow.tr(),
+            title: subscribeNow.tr(),
             onPressed: () {
               sl<AppRouter>()
                   .goTo(screenName: ScreenName.comingSoonScreen, object: true);

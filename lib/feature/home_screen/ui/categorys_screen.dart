@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -24,7 +25,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.category,
+        title: category.tr(),
         visible: true,
       ),
       body: Padding(

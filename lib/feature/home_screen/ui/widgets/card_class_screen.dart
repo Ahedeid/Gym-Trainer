@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -108,7 +109,7 @@ class CardClassScreen extends StatelessWidget {
                               color: ColorManager.secondary,
                             )),
                         const SizedBox(height: 7),
-                        Text(AppStrings.intensity,
+                        Text(intensity.tr(),
                             style: StyleManger.headline4(
                                 fontSize: 12,
                                 color: ColorManager.secondaryTextColor)),
@@ -133,7 +134,7 @@ class CardClassScreen extends StatelessWidget {
                               color: const Color(0xFF0062A0),
                             )),
                         const SizedBox(height: 7),
-                        Text(AppStrings.duration,
+                        Text(duration.tr(),
                             style: StyleManger.headline4(
                                 fontSize: 12,
                                 color: ColorManager.secondaryTextColor)),
@@ -156,7 +157,7 @@ class CardClassScreen extends StatelessWidget {
                 const Spacer(),
                 Expanded(
                   child: CustomButtonWidget(
-                    title: AppStrings.readMore,
+                    title: readMore.tr(),
                     textColor: ColorManager.primary,
                     showIcon: true,
                     onPressed: () {

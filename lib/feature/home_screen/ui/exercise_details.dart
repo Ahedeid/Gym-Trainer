@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
@@ -41,7 +42,7 @@ class ExerciseDetails extends StatelessWidget {
                   screenName: ScreenName.startTraining,
                   object: value.trainingExerciseModel);
             },
-            child: Text(AppStrings.startTraining,
+            child: Text(startTraining.tr(),
                 style: StyleManger.headLineBar(color: ColorManager.white)),
             style: ElevatedButton.styleFrom(
                 textStyle: StyleManger.headLineBar(color: ColorManager.white)),
@@ -159,19 +160,19 @@ class ExerciseDetails extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Details(
-                        title: AppStrings.level,
+                        title: level.tr(),
                         body: exerciseModel?.levelDisplay,
                       ),
                     ),
                     Expanded(
                       child: Details(
-                        title: AppStrings.category,
+                        title: category.tr(),
                         body: "${value.categoryModel?.name ?? "Not Specified"}",
                       ),
                     ),
                     Expanded(
                       child: Details(
-                        title: AppStrings.weight,
+                        title: weight.tr(),
                         body: "${value.goalModel?.name}",
                       ),
                     ),
@@ -204,7 +205,7 @@ class ExerciseDetails extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "3 ${AppStrings.weeks} - ${value.ExerciseDetailsList!.length} ${AppStrings.exercise}",
+                          "3 ${weeks.tr()} - ${value.ExerciseDetailsList!.length} ${exercise.tr()}",
                           style: TextStyle(
                               color: ColorManager.textBlack,
                               fontWeight: FontWeight.w600,
@@ -224,7 +225,7 @@ class ExerciseDetails extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 23, vertical: 12),
                             child: Text(
-                              AppStrings.schedule,
+                              schedule.tr(),
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: 12.sp,
@@ -242,7 +243,7 @@ class ExerciseDetails extends StatelessWidget {
                   ),
                   32.addVerticalSpace,
                   HeaderSectionWidget(
-                    title: AppStrings.exerciseProgram,
+                    title: exerciseProgram.tr(),
                     trailing: "",
                   ),
                   20.addVerticalSpace,

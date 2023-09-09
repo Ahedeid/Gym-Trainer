@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/CustomSvg.dart';
@@ -48,7 +49,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
                 const SizedBox(height: 18),
                 Text(
-                  AppStrings.technoGym,
+                  technoGym.tr(),
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

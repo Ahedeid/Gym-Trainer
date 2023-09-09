@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
@@ -27,7 +28,7 @@ class ToEmptyDataWidget extends StatelessWidget {
             height: 100,
           ),
           Text(
-            AppStrings.technoGym,
+            technoGym.tr(),
             style:
                 TextStyle(fontSize: FontSize.s26, fontWeight: FontWeight.w600),
           ),

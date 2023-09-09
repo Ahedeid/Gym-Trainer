@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
@@ -104,7 +105,7 @@ class VerticalExerciseWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              "${exerciseModel!.levelDisplay.toString()}   ${AppStrings.oClock} ",
+              "${exerciseModel!.levelDisplay.toString()}   ${oClock.tr()} ",
               style: const TextStyle(
                 color: ColorManager.subTitleText,
                 fontWeight: FontWeight.normal,

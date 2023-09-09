@@ -27,7 +27,7 @@ class UserModel {
       email: data['email'],
       image: data['image'] ?? '',
       phone: data['phone'] ?? '',
-      selectedGoal: data['goal'] ?? '',
+      selectedGoal: data['goal'] ?? "DLlfkpNUXfPdjm8HIYmg",
       level: data['level'] ?? "",
     );
   }
@@ -39,7 +39,7 @@ class UserModel {
       email: json['email'],
       image: json['image'] ?? '',
       phone: json['phone'] ?? '',
-      selectedGoal: json['goal'] ?? '',
+      selectedGoal: json['goal'] ?? "DLlfkpNUXfPdjm8HIYmg",
       level: json['level'] ?? "",
     );
   }
@@ -51,7 +51,7 @@ class UserModel {
       'email': email,
       'image': image,
       'phone': phone,
-      'goal': selectedGoal,
+      'goal': selectedGoal.trim() == "" ? "DLlfkpNUXfPdjm8HIYmg" : selectedGoal,
       'level': level,
     };
   }
@@ -68,12 +68,13 @@ class UserModel {
     );
   }
 
-  UserModel copyWithUserProfile({String? name,String? email,String? phone,String? image}) {
+  UserModel copyWithUserProfile(
+      {String? name, String? email, String? phone, String? image}) {
     return UserModel(
       uid: this.uid,
       name: name ?? this.name,
       email: email ?? this.email,
-      image: image ??this.image,
+      image: image ?? this.image,
       phone: phone ?? this.phone,
       selectedGoal: this.selectedGoal,
       level: this.level,

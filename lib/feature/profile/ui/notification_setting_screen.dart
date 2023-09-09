@@ -8,7 +8,6 @@ import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
-import 'package:gym_app/utils/resources/strings_in_app.dart';
 
 class NotificationSettingScreen extends StatefulWidget {
   const NotificationSettingScreen({super.key});
@@ -40,7 +39,7 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.notificationsSettingAppBar,
+        title: "notificationsSettingAppBar".tr(),
         visible: true,
       ),
       body: MainContainer(
@@ -56,31 +55,31 @@ class _NotificationSettingScreenState extends State<NotificationSettingScreen> {
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setMembershipStatus,
               value: memberShip,
-              title: AppStrings.membershipStatusAndOffers.tr(),
+              title: "membershipStatusAndOffers".tr(),
             ),
             CustomDivider(),
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setClassesNewUpdates,
               value: classesNewUpdates,
-              title: AppStrings.classesNewUpdates.tr(),
+              title: "classesNewUpdates".tr(),
             ),
             CustomDivider(),
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setContentNewArticles,
               value: contentNewArticles,
-              title: AppStrings.contentNewArticles.tr(),
+              title: "contentNewArticles".tr(),
             ),
             CustomDivider(),
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setWorkoutUpdates,
               value: workoutUpdates,
-              title: AppStrings.workoutUpdates.tr(),
+              title: "workoutUpdates".tr(),
             ),
             CustomDivider(),
             CustomSwitchListTile(
               setValue: sl<SharedPrefController>().setStoreNewProducts,
               value: storeNewProducts,
-              title: AppStrings.storeNewProducts.tr(),
+              title: "storeNewProducts".tr(),
             ),
           ],
         ),

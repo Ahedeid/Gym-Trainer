@@ -52,8 +52,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBarSecondary(
-        title: AppStrings.updateYourInfo.tr(),
-        subTitle: AppStrings.updateYourBasic.tr(),
+        title: updateYourInfo.tr(),
+        subTitle: updateYourBasic.tr(),
       ),
       body: GestureDetector(
         onTap: () {
@@ -121,7 +121,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                                   : Placeholder())),
                       const SizedBox(height: 8),
                       Text(
-                        AppStrings.uploadNewPicture.tr(),
+                        uploadNewPicture.tr(),
                         style: StyleManger.headline4(
                           color: ColorManager.primary,
                         ),
@@ -150,7 +150,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     // backGroundColor: ColorManager.backGroundField,
                     controller: nameController,
                     validator: (val) => val!.validateUserName(),
-                    text: AppStrings.displayName.tr(),
+                    text: displayName.tr(),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.name,
                   ),
@@ -159,7 +159,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     // backGroundColor: ColorManager.backGroundField,
                     controller: emailController,
                     validator: (val) => val!.validateEmail(),
-                    text: AppStrings.email.tr(),
+                    text: email.tr(),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.emailAddress,
                   ),
@@ -168,7 +168,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     // backGroundColor: ColorManager.backGroundField,
                     controller: phoneController,
                     validator: (val) => val!.validatePhoneNumber(),
-                    text: AppStrings.phone.tr(),
+                    text: phone.tr(),
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.number,
                   ),
@@ -194,7 +194,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 phone: phoneController.text,
               );
             },
-            title: AppStrings.saveChanges,
+            title: saveChanges,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -218,11 +218,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 children: <Widget>[
                   new ListTile(
                       leading: new Icon(Icons.photo_library),
-                      title: new Text(AppStrings.gallery.tr()),
+                      title: new Text("gallery".tr()),
                       onTap: onTapGallery),
                   new ListTile(
                       leading: new Icon(Icons.photo_camera),
-                      title: new Text(AppStrings.camera.tr()),
+                      title: new Text("camera".tr()),
                       onTap: onTapCamera),
                 ],
               ),

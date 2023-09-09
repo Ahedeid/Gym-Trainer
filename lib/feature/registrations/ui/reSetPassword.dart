@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
 import 'package:gym_app/sheared/widget/CustomSvg.dart';
@@ -67,7 +68,7 @@ class ReSetPasswordScreen extends StatelessWidget {
                     TextFieldAndAboveText(
                       controller: emailController,
                       validator: (val) => val!.validateEmail(),
-                      text: AppStrings.email,
+                      text: email.tr(),
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.emailAddress,
                     ),
@@ -87,7 +88,7 @@ class ReSetPasswordScreen extends StatelessWidget {
                 horizontal: AppSizes.paddingHorizontal),
             child: CustomButtonWidget(
               isLoading: value.isLoadingReSet,
-              title: AppStrings.sendOTP,
+              title: sendOTP.tr(),
               onPressed: () {
                 value.reSetPassword(email: emailController.text.trim());
               },

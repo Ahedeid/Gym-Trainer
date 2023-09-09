@@ -5,7 +5,6 @@ import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
-import 'package:gym_app/utils/resources/strings_in_app.dart';
 import 'package:gym_app/utils/resources/style_manger.dart';
 
 class TermsAndConditionsScreen extends StatelessWidget {
@@ -16,7 +15,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(
         visible: true,
-        title: AppStrings.termsConditionsAppBar,
+        title: "termsConditionsAppBar".tr(),
         onTap: () {},
       ),
       body: ListView(
@@ -26,50 +25,50 @@ class TermsAndConditionsScreen extends StatelessWidget {
         ),
         children: [
           Text(
-            AppStrings.weAreCommittedToProtecting.tr(),
+            "weAreCommittedToProtecting".tr(),
             style: StyleManger.headline4(color: Colors.grey.shade600),
           ),
           16.addVerticalSpace,
           Text(
-            AppStrings.informationWeCollect.tr(),
+            "informationWeCollect".tr(),
             style: StyleManger.bodyText(fontSize: FontSize.s14),
           ),
           8.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.personalInformationSuchAsYourName.tr(),
+            text: "personalInformationSuchAsYourName".tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.fitnessAndHealthRelated.tr(),
+            text: "fitnessAndHealthRelated".tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.deviceInformationSuchAsYourDevice.tr(),
+            text: "deviceInformationSuchAsYourDevice".tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.usageInformationIncludingApp.tr(),
+            text: "usageInformationIncludingApp".tr(),
           ),
           16.addVerticalSpace,
           Text(
-            AppStrings.howWeUseYourInformation.tr(),
+            "howWeUseYourInformation".tr(),
             style: StyleManger.bodyText(fontSize: FontSize.s14),
           ),
           8.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.toProvideAndImproveOurGymMobile.tr(),
+            text: "toProvideAndImproveOurGymMobile".tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.toCommunicateWithYou.tr(),
+            text: "toCommunicateWithYou".tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.toAnalyzeAndMonitor.tr(),
+            text: "toAnalyzeAndMonitor".tr(),
           ),
           4.addVerticalSpace,
           CustomDetailsText(
-            text: AppStrings.toSendYouMarketing.tr(),
+            text: "toSendYouMarketing".tr(),
           ),
         ],
       ),

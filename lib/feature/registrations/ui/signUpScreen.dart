@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
 import 'package:gym_app/feature/registrations/provider/signUpProvider.dart';
@@ -51,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.08),
                 const SizedBox(height: 8),
                 Text(
-                  AppStrings.createAccounts,
+                  createAccounts.tr(),
                   style: TextStyle(
                     fontSize: FontSize.s30,
                     fontWeight: FontWeight.w400,
@@ -60,7 +61,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  AppStrings.pleaseEnterYourCredentials,
+                  pleaseEnterYourCredentials.tr(),
                   style: TextStyle(
                     fontSize: FontSize.s16,
                     fontWeight: FontWeight.w500,
@@ -72,14 +73,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   validator: (val) => val!.validateUserName(),
                   textInputAction: TextInputAction.next,
                   controller: nameController,
-                  text: AppStrings.userName,
+                  text: userName.tr(),
                   keyboardType: TextInputType.name,
                 ),
                 const SizedBox(height: 14),
                 TextFieldAndAboveText(
                   controller: emailController,
                   validator: (val) => val!.validateEmail(),
-                  text: AppStrings.email,
+                  text: email.tr(),
                   textInputAction: TextInputAction.next,
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -87,7 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 TextFieldAndAboveText(
                   controller: phoneController,
                   validator: (val) => val!.validatePhoneNumber(),
-                  text: AppStrings.phone,
+                  text: phone.tr(),
                   keyboardType: TextInputType.number,
                   textInputAction: TextInputAction.next,
                 ),
@@ -108,14 +109,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         : const Icon(Icons.visibility, size: 18),
                   ),
                   obscureText: value.visibility,
-                  text: AppStrings.Password,
+                  text: Password.tr(),
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 30),
                 CustomButtonWidget(
                   isLoading: value.isLoading,
-                  title: AppStrings.signUp,
+                  title: signUp.tr(),
                   fontWeight: FontWeight.w700,
                   onPressed: () {
                     value.signUp(
@@ -130,7 +131,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    AppStrings.orLoginWith,
+                    orLoginWith.tr(),
                     style: StyleManger.bodyText(),
                   ),
                 ),
@@ -140,7 +141,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   loadingColor: ColorManager.primary,
                   showIcon: true,
                   icon: AppIcons.google,
-                  title: AppStrings.connectWithGoogle,
+                  title: connectWithGoogle.tr(),
                   fontWeight: FontWeight.w600,
                   textColor: ColorManager.primaryTextColor,
                   fontSize: FontSize.s14,
@@ -161,7 +162,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   // isLoading: value.isLoading,
                   showIcon: true,
                   icon: AppIcons.facebook,
-                  title: AppStrings.connectWithFacebook,
+                  title: connectWithFacebook.tr(),
                   fontWeight: FontWeight.w600,
                   fontSize: FontSize.s14,
                   onPressed: () {},
@@ -180,14 +181,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: AppStrings.haveAnAccount,
+                            text: haveAnAccount.tr(),
                             style: StyleManger.headline2(
                               fontSize: FontSize.s16,
                               color: ColorManager.secondaryTextColor,
                             ),
                           ),
                           TextSpan(
-                            text: AppStrings.logIn,
+                            text: logIn.tr(),
                             style: StyleManger.headline2(
                               color: ColorManager.primary,
                               fontSize: FontSize.s16,

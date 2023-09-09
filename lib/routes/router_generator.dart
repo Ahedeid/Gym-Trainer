@@ -6,12 +6,9 @@ import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/feature/home_screen/models/exercise_model.dart';
 import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
 import 'package:gym_app/feature/home_screen/ui/categorys_screen.dart';
-import 'package:gym_app/feature/home_screen/ui/class_screen.dart';
-import 'package:gym_app/feature/home_screen/ui/details_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/exercise_details.dart';
 import 'package:gym_app/feature/home_screen/ui/full_exercises_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/home_screen.dart';
-import 'package:gym_app/feature/home_screen/ui/qr_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/see_all_screen.dart';
 import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/meals_plan/models/meal_plan_model.dart';
@@ -113,10 +110,10 @@ class RouteGenerator {
           ),
         );
       // ------------------------------ QrScreen -------------------------------
-      case ScreenName.qrScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ScannerScreen(),
-        );
+      // case ScreenName.qrScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const ScannerScreen(),
+      //   );
       // --------------------------- UpdateProfileScreen ------------------------
       case ScreenName.updateProfileScreen:
         var userData = settings.arguments as UserModel;
@@ -128,15 +125,15 @@ class RouteGenerator {
               )),
         );
       // --------------------------- ClassScreen -------------------------------
-      case ScreenName.classScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ClassScreen(),
-        );
+      // case ScreenName.classScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const ClassScreen(),
+      //   );
       // ----------------------- ClassDetailsScreen ----------------------------
-      case ScreenName.classDetailsScreen:
-        return MaterialPageRoute(
-          builder: (_) => const ClassDetailsScreen(),
-        );
+      // case ScreenName.classDetailsScreen:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const ClassDetailsScreen(),
+      //   );
 
       // ---------------------- AllCategoryScreen ------------------------------
       case ScreenName.allCategoryScreen:

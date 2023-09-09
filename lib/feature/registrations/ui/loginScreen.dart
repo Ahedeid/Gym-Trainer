@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/registrations/provider/loginProvider.dart';
 import 'package:gym_app/routes/app_router.dart';
@@ -50,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
                     Text(
-                      AppStrings.welcomeToProFitness,
+                      welcomeToProFitness.tr(),
                       style: TextStyle(
                         fontSize: FontSize.s24,
                         color: ColorManager.primaryTextColor,
@@ -58,7 +59,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 11),
                     Text(
-                      AppStrings.enterYourEmail,
+                      enterYourEmail.tr(),
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: FontSize.s16,
@@ -70,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextFieldAndAboveText(
                       controller: emailController,
                       validator: (val) => val!.validateEmail(),
-                      text: AppStrings.email,
+                      text: email.tr(),
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.emailAddress,
                     ),
@@ -88,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       validator: (val) => val!.validatePassword(),
                       obscureText: value.visibility,
-                      text: AppStrings.Password,
+                      text: Password.tr(),
                       keyboardType: TextInputType.visiblePassword,
                       textInputAction: TextInputAction.next,
                     ),
@@ -100,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               .goTo(screenName: ScreenName.reSetPasswordScreen);
                         },
                         child: Text(
-                          AppStrings.forgetPassword,
+                          forgetPassword.tr(),
                           style: TextStyle(
                             fontSize: FontSize.s14,
                             color: ColorManager.primaryTextColor,
@@ -111,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 30),
                     CustomButtonWidget(
                       isLoading: value.isLoading,
-                      title: AppStrings.logIn,
+                      title: logIn.tr(),
                       fontWeight: FontWeight.w700,
                       fontSize: FontSize.s20,
                       onPressed: () {
@@ -125,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Align(
                       alignment: Alignment.center,
                       child: Text(
-                        AppStrings.orLoginWith,
+                        orLoginWith.tr(),
                         style: StyleManger.bodyText(),
                       ),
                     ),
@@ -135,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       loadingColor: ColorManager.primary,
                       showIcon: true,
                       icon: AppIcons.google,
-                      title: AppStrings.connectWithGoogle,
+                      title: connectWithGoogle.tr(),
                       fontWeight: FontWeight.w600,
                       textColor: ColorManager.primaryTextColor,
                       fontSize: FontSize.s14,
@@ -158,7 +159,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       // isLoading: value.isLoading,
                       showIcon: true,
                       icon: AppIcons.facebook,
-                      title: AppStrings.connectWithFacebook,
+                      title: connectWithFacebook.tr(),
                       fontWeight: FontWeight.w600,
                       fontSize: FontSize.s14,
                       onPressed: () {},
@@ -181,14 +182,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: AppStrings.haveAnAccount,
+                                text: haveAnAccount.tr(),
                                 style: StyleManger.headline2(
                                   fontSize: FontSize.s16,
                                   color: ColorManager.secondaryTextColor,
                                 ),
                               ),
                               TextSpan(
-                                text: AppStrings.signUp,
+                                text: signUp.tr(),
                                 style: StyleManger.headline2(
                                   color: ColorManager.primary,
                                   fontSize: FontSize.s16,

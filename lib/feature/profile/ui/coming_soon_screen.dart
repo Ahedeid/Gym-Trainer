@@ -16,9 +16,7 @@ class ComingSoonScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: isMemberShipScreen
-            ? AppStrings.memberShipPlan.tr()
-            : AppStrings.myPaymentMethods.tr(),
+        title: isMemberShipScreen ? memberShipPlan.tr() : myPaymentMethods.tr(),
         visible: true,
       ),
       body: Center(
@@ -34,12 +32,12 @@ class ComingSoonScreen extends StatelessWidget {
             ),
             16.addVerticalSpace,
             Text(
-              AppStrings.comingSoon.tr(),
+              "comingSoon".tr(),
               style: StyleManger.headline1(fontSize: FontSize.s30),
             ),
             8.addVerticalSpace,
             Text(
-              AppStrings.thisFeatureIsPlan.tr(),
+              "thisFeatureIsPlan".tr(),
               style: StyleManger.bodyText2(),
             ),
           ],

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/routes/screen_name.dart';
@@ -73,7 +74,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                 ),
                 const SizedBox(height: 11),
                 Text(
-                  AppStrings.createNewPassword,
+                  createNewPassword.tr(),
                   style: TextStyle(
                     fontSize: FontSize.s22,
                     fontWeight: FontWeight.w700,
@@ -105,7 +106,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                         : const Icon(Icons.visibility, size: 18),
                   ),
                   obscureText: true,
-                  text: AppStrings.Password,
+                  text: Password.tr(),
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.next,
                 ),
@@ -125,7 +126,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
                         : const Icon(Icons.visibility, size: 18),
                   ),
                   obscureText: true,
-                  text: AppStrings.confirmPassword,
+                  text: confirmPassword.tr(),
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.next,
                 ),
@@ -139,7 +140,7 @@ class _CreateNewPasswordScreenState extends State<CreateNewPasswordScreen> {
         padding:
             const EdgeInsets.symmetric(horizontal: AppSizes.paddingHorizontal),
         child: CustomButtonWidget(
-          title: AppStrings.confirm,
+          title: confirm.tr(),
           onPressed: () {
             if (newPasswordFormKey.currentState!.validate()) {
               if (passwordController.text == confirmPasswordController.text) {

@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/expanionTileWidget.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
-import 'package:gym_app/utils/resources/strings_in_app.dart';
 
 class FAQScreen extends StatelessWidget {
   const FAQScreen({super.key});
@@ -13,7 +12,7 @@ class FAQScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: AppStrings.fAQsConditionsAppBar,
+        title: "fAQsConditionsAppBar".tr(),
         visible: true,
       ),
       body: ListView(
@@ -23,33 +22,33 @@ class FAQScreen extends StatelessWidget {
         ),
         children: [
           ExpansionTileWidget(
-            title: AppStrings.whatIsThePurpose.tr(),
-            text: AppStrings.theGymMobile.tr(),
+            title: "whatIsThePurpose".tr(),
+            text: "theGymMobile".tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.howCanIDownload.tr(),
-            text: AppStrings.theGymMobile.tr(),
+            title: "howCanIDownload".tr(),
+            text: "theGymMobile".tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.isTheGymMobile.tr(),
-            text: AppStrings.theGymMobile.tr(),
+            title: "isTheGymMobile".tr(),
+            text: "theGymMobile".tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.canIBookFitnessClasses.tr(),
-            text: AppStrings.theGymMobile.tr(),
+            title: "canIBookFitnessClasses".tr(),
+            text: "theGymMobile".tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.doesTheGymMobile.tr(),
-            text: AppStrings.theGymMobile.tr(),
+            title: "doesTheGymMobile".tr(),
+            text: "theGymMobile".tr(),
           ),
           8.verticalSpace,
           ExpansionTileWidget(
-            title: AppStrings.canITrackMyFitness.tr(),
-            text: AppStrings.theGymMobile.tr(),
+            title: "canITrackMyFitness".tr(),
+            text: "theGymMobile".tr(),
           ),
           8.verticalSpace,
         ],

@@ -10,33 +10,68 @@ import 'package:gym_app/logic/localData/shared_pref.dart';
 import 'package:gym_app/service_locator.dart';
 
 class HomeProvider extends ChangeNotifier {
+  // final UserModel user;
+  // String? selectedGoal = sl<SharedPrefController>().getUserData().selectedGoal;
+  // List<String>? selectedGoalIdList = [];
+  // GoalModel? goalModel;
+  // CategoryModel? categoryModel;
+  // bool isAdditional = false;
+  //
+  // HomeProvider() : user = sl<SharedPrefController>().getUserData() {
+  //   selectedGoal = user.selectedGoal;
+  //   updateUserGoal(user.selectedGoal);
+  // }
+
   final UserModel user;
-  String? selectedGoal = sl<SharedPrefController>().getUserData().selectedGoal;
+  String? selectedGoal;
   List<String>? selectedGoalIdList = [];
   GoalModel? goalModel;
   CategoryModel? categoryModel;
   bool isAdditional = false;
 
-  HomeProvider() : user = sl<SharedPrefController>().getUserData() {
+  HomeProvider() : user = _loadUserData() {
     selectedGoal = user.selectedGoal;
-    updateUserGoal(user.selectedGoal);
+    notifyListeners();
+    // updateUserGoal(user.selectedGoal);
+  }
+  static UserModel _loadUserData() {
+    try {
+      final userData = sl<SharedPrefController>().getUserData();
+      return userData;
+    } catch (e) {
+      print('Error loading user data: $e');
+      // Handle the error or provide default user data if necessary
+      return UserModel(
+        uid: '',
+        name: '',
+        email: '',
+        image: '',
+        phone: '',
+        selectedGoal: "DLlfkpNUXfPdjm8HIYmg",
+        level: "",
+      );
+    }
   }
 
   // ----------------- Update the user's goal in Firestore ---------------------
   Future<void> updateUserGoal(String newGoalId) async {
     try {
-      // Update the 'goal' field in the user's document
-      await sl<FirebaseFirestore>()
-          .collection(FirebaseConstant.usersCollection)
-          .doc(user.uid)
-          .update({FirebaseConstant.goal: newGoalId});
-      await getGoalData(newGoalId);
-      // If you also want to update the local user model, you can do that here
-      UserModel currentUser = sl<SharedPrefController>().getUserData();
-      setSelectedGoal(newGoalId);
-      currentUser = currentUser.copyWith(selectedGoal: newGoalId);
-      sl<SharedPrefController>().saveUserData(currentUser);
-      notifyListeners();
+      if (newGoalId.isNotEmpty) {
+        // Update the 'goal' field in the user's document
+        await sl<FirebaseFirestore>()
+            .collection(FirebaseConstant.usersCollection)
+            .doc(user.uid)
+            .update({FirebaseConstant.goal: newGoalId});
+        await getGoalData(newGoalId);
+        // If you also want to update the local user model, you can do that here
+        UserModel currentUser = sl<SharedPrefController>().getUserData();
+        setSelectedGoal(newGoalId);
+        currentUser = currentUser.copyWith(selectedGoal: newGoalId);
+        sl<SharedPrefController>().saveUserData(currentUser);
+        notifyListeners();
+      } else {
+        print('Error: newGoalId is null or empty.');
+      }
     } catch (e) {
       print('Error updating user goal: $e');
     }
