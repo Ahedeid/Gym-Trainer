@@ -40,6 +40,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
+    Provider.of<HomeProvider>(context, listen: false).initUserData();
     super.initState();
   }
 
@@ -102,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Visibility(
                 visible: homeProvider.isShow,
                 child: CustomTextField(
-                  hintText: "Search".tr(),
+                  hintText: search.tr(),
                   prefixIcon: CustomSvgAssets(
                     path: AppIcons.search,
                   ),
@@ -113,7 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               13.addVerticalSpace,
-              Text("${sl<SharedPrefController>().getUserData().selectedGoal}"),
               SearchResultWidget(),
               HeaderSectionWidget(
                 onTap: () {},
@@ -220,7 +220,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                   final categoryDocs = snapshot.data!.docs;
                   final resultList = homeProvider.filterExerciseByGoal(
-                      categoryDocs, homeProvider.goalModel?.id);
+                      categoryDocs, homeProvider.selectedGoal);
                   homeProvider.setExerciseDetailsList(resultList);
                   return VerticalExerciseList(resultList: resultList);
                 },
@@ -252,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   }
                   final categoryDocs = snapshot.data!.docs;
                   final resultList = homeProvider.filterExerciseByGoal(
-                      categoryDocs, homeProvider.goalModel?.id);
+                      categoryDocs, homeProvider.selectedGoal);
 
                   return HorizontalExerciseList(resultList: resultList);
                 },

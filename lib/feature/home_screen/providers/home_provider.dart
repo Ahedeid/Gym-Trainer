@@ -22,36 +22,44 @@ class HomeProvider extends ChangeNotifier {
   //   updateUserGoal(user.selectedGoal);
   // }
 
-  final UserModel user;
+  UserModel? user;
   String? selectedGoal;
   List<String>? selectedGoalIdList = [];
   GoalModel? goalModel;
   CategoryModel? categoryModel;
   bool isAdditional = false;
 
-  HomeProvider() : user = _loadUserData() {
-    selectedGoal = user.selectedGoal;
+  // HomeProvider() : user = _loadUserData() {
+  //   selectedGoal = user.selectedGoal;
+  //   notifyListeners();
+  //   // updateUserGoal(user.selectedGoal);
+  // }
+
+  initUserData() {
+    user = sl<SharedPrefController>().getUserData();
     notifyListeners();
-    // updateUserGoal(user.selectedGoal);
+    selectedGoal = user!.selectedGoal;
+    updateUserGoal(selectedGoal!);
+    // notifyListeners();
   }
-  static UserModel _loadUserData() {
-    try {
-      final userData = sl<SharedPrefController>().getUserData();
-      return userData;
-    } catch (e) {
-      print('Error loading user data: $e');
-      // Handle the error or provide default user data if necessary
-      return UserModel(
-        uid: '',
-        name: '',
-        email: '',
-        image: '',
-        phone: '',
-        selectedGoal: "DLlfkpNUXfPdjm8HIYmg",
-        level: "",
-      );
-    }
-  }
+  // static UserModel _loadUserData() {
+  //   try {
+  //     final userData = sl<SharedPrefController>().getUserData();
+  //     return userData;
+  //   } catch (e) {
+  //     print('Error loading user data: $e');
+  //     // Handle the error or provide default user data if necessary
+  //     return UserModel(
+  //       uid: '',
+  //       name: '',
+  //       email: '',
+  //       image: '',
+  //       phone: '',
+  //       selectedGoal: "DLlfkpNUXfPdjm8HIYmg",
+  //       level: "",
+  //     );
+  //   }
+  // }
 
   // ----------------- Update the user's goal in Firestore ---------------------
   Future<void> updateUserGoal(String newGoalId) async {
@@ -60,7 +68,7 @@ class HomeProvider extends ChangeNotifier {
         // Update the 'goal' field in the user's document
         await sl<FirebaseFirestore>()
             .collection(FirebaseConstant.usersCollection)
-            .doc(user.uid)
+            .doc(user!.uid)
             .update({FirebaseConstant.goal: newGoalId});
         await getGoalData(newGoalId);
         // If you also want to update the local user model, you can do that here

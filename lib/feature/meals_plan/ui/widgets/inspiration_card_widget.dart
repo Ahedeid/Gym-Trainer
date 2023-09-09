@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/feature/meals_plan/models/meal_plan_model.dart';
 import 'package:gym_app/utils/extensions/sized_box.dart';
@@ -65,20 +64,16 @@ class InspirationCardWidget extends StatelessWidget {
               4.addVerticalSpace,
               Row(
                 children: [
-                  RatingBar.builder(
-                    initialRating: double.parse(mealPlan!.rating),
-                    minRating: 1,
-                    direction: Axis.horizontal,
-                    allowHalfRating: true,
-                    itemCount: 5,
-                    itemSize: 16,
-                    itemBuilder: (context, _) => Icon(
-                      Icons.star,
-                      color: Colors.amber,
-                    ),
-                    onRatingUpdate: (rating) {
-                      print(rating);
-                    },
+                  Row(
+                    children: List.generate(5, (index) {
+                      return Icon(
+                        Icons.star,
+                        size: 16,
+                        color: index < double.parse(mealPlan!.rating)
+                            ? Colors.amber
+                            : Colors.grey,
+                      );
+                    }),
                   ),
                   Text(
                     "${mealPlan!.rating} ",
