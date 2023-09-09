@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
@@ -16,7 +17,7 @@ class HeaderSectionWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          title!,
+          title!.tr(),
           style: TextStyle(
               color: ColorManager.black,
               fontSize: 18,
@@ -25,7 +26,7 @@ class HeaderSectionWidget extends StatelessWidget {
         GestureDetector(
           onTap: onTap,
           child: Text(
-            trailing!,
+            trailing!.tr(),
             style: TextStyle(
                 color: ColorManager.black,
                 fontSize: FontSize.s12.sp,

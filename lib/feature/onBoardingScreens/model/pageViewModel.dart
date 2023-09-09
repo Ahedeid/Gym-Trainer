@@ -1,4 +1,5 @@
 import 'package:gym_app/utils/resources/images_constant.dart';
+import 'package:gym_app/utils/resources/strings_in_app.dart';
 
 class PageViewModel {
   final String? imagePath;
@@ -13,18 +14,18 @@ class PageViewModel {
   static List<PageViewModel> data = [
     PageViewModel(
       imagePath: ImageApp.backgroundImageFirst,
-      title: "headerToOnBoarding[0]",
-      bodyText: "bodyToOnBoarding[0]",
+      title: headerToOnBoarding[0].tr(),
+      bodyText: bodyToOnBoarding[0].tr(),
     ),
     PageViewModel(
       imagePath: ImageApp.backgroundImageSecond,
-      title: "headerToOnBoarding[1]",
-      bodyText: "bodyToOnBoarding[1]",
+      title: headerToOnBoarding[1].tr(),
+      bodyText: bodyToOnBoarding[1].tr(),
     ),
     PageViewModel(
       imagePath: ImageApp.backgroundImageThird,
-      title: "headerToOnBoarding[2]",
-      bodyText: "bodyToOnBoarding[2]",
+      title: headerToOnBoarding[2].tr(),
+      bodyText: bodyToOnBoarding[2].tr(),
     )
   ];
 }
