@@ -161,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: SizedBox.shrink(),
                         )
                       : SizedBox(
-                          height: 120.h,
+                          height: 100.h,
                           child: StreamBuilder<QuerySnapshot>(
                             stream: sl<FirebaseFirestore>()
                                 .collection(
