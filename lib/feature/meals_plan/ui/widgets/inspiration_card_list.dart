@@ -17,7 +17,7 @@ class InspirationCardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-      padding: EdgeInsets.zero,
+      padding: EdgeInsets.only(bottom: 32),
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: planList.length,
