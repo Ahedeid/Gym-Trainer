@@ -51,20 +51,20 @@ class BottomSheetDetailsWidget extends StatelessWidget {
               )
             ],
           ),
-          // 8.addVerticalSpace,
+          8.addVerticalSpace,
           CustomSvgAssets(
             path: AppIcons.subscribe,
             color: ColorManager.secondary400,
           ),
-          Spacer(),
-          // 24.addVerticalSpace,
+          // Spacer(),
+          24.addVerticalSpace,
           Text(
             AppStrings.youMustSubscribeToPaid.tr(),
             textAlign: TextAlign.center,
             style: StyleManger.headline4(),
           ),
-          Spacer(),
-          // 32.addVerticalSpace,
+          // Spacer(),
+          32.addVerticalSpace,
           CustomButtonWidget(
             title: AppStrings.subscribeNow.tr(),
             onPressed: () {
