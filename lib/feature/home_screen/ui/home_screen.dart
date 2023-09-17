@@ -40,8 +40,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    Provider.of<HomeProvider>(context, listen: false).initUserData();
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<HomeProvider>(context, listen: false).initUserData();
+    });
   }
 
   List<CategoryModel>? resultList;
