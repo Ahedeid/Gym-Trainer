@@ -37,7 +37,7 @@ class BottomSheetDetailsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "limitReached".tr(),
+                limitReached.tr(),
                 style: StyleManger.headline3(),
               ),
               IconButton(
@@ -57,9 +57,9 @@ class BottomSheetDetailsWidget extends StatelessWidget {
             color: ColorManager.secondary400,
           ),
           // Spacer(),
-          24.addVerticalSpace,
+          8.addVerticalSpace,
           Text(
-            "youMustSubscribeToPaid".tr(),
+            youMustSubscribeToPaid.tr(),
             textAlign: TextAlign.center,
             style: StyleManger.headline4(),
           ),
@@ -83,7 +83,7 @@ class BottomSheetDetailsWidget extends StatelessWidget {
                   ),
                 ),
           ),
-          32.addVerticalSpace,
+          20.addVerticalSpace,
         ],
       ),
     );
