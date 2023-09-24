@@ -1,5 +1,8 @@
 
 ## Design
+![WhatsApp Image 2023-09-24 at 2 04 55 PM](https://github.com/Ahedeid/Gym-Trainer/assets/69312571/1c2b1373-9911-4dcb-9037-4470ab840433)
+![WhatsApp Image 2023-09-24 at 2 04 55 PM (1)](https://github.com/Ahedeid/Gym-Trainer/assets/69312571/56b5744d-02ec-4543-b05f-5d44940aeaa9)
+
 
  
 # Gym Trainer
