@@ -14,18 +14,18 @@ class PageViewModel {
   static List<PageViewModel> data = [
     PageViewModel(
       imagePath: ImageApp.backgroundImageFirst,
-      title: headerToOnBoarding[0].tr(),
-      bodyText: bodyToOnBoarding[0].tr(),
+      title: headerToOnBoarding[0],
+      bodyText: bodyToOnBoarding[0],
     ),
     PageViewModel(
       imagePath: ImageApp.backgroundImageSecond,
-      title: headerToOnBoarding[1].tr(),
-      bodyText: bodyToOnBoarding[1].tr(),
+      title: headerToOnBoarding[1],
+      bodyText: bodyToOnBoarding[1],
     ),
     PageViewModel(
       imagePath: ImageApp.backgroundImageThird,
-      title: headerToOnBoarding[2].tr(),
-      bodyText: bodyToOnBoarding[2].tr(),
+      title: headerToOnBoarding[2],
+      bodyText: bodyToOnBoarding[2],
     )
   ];
 }
