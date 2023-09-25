@@ -37,7 +37,7 @@ class BottomSheetDetailsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                limitReached.tr(),
+                'limitReached'.tr(),
                 style: StyleManger.headline3(),
               ),
               IconButton(
@@ -59,7 +59,7 @@ class BottomSheetDetailsWidget extends StatelessWidget {
           // Spacer(),
           8.addVerticalSpace,
           Text(
-            youMustSubscribeToPaid.tr(),
+            'youMustSubscribeToPaid'.tr(),
             textAlign: TextAlign.center,
             style: StyleManger.headline4(),
           ),
