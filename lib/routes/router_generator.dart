@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/BNBUser.dart';
+import 'package:gym_app/feature/Training/providers/training_provider.dart';
 import 'package:gym_app/feature/articles/models/articles_model.dart';
 import 'package:gym_app/feature/articles/ui/articles_details_screen.dart';
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
@@ -14,7 +15,7 @@ import 'package:gym_app/feature/home_screen/ui/start_training.dart';
 import 'package:gym_app/feature/meals_plan/models/meal_plan_model.dart';
 import 'package:gym_app/feature/meals_plan/ui/plan_details.dart';
 import 'package:gym_app/feature/notification/ui/notification_screen.dart';
-import 'package:gym_app/feature/onBoardingScreens/page_view.dart';
+import 'package:gym_app/feature/on_boarding_screens/page_view.dart';
 import 'package:gym_app/feature/profile/provider/profile_provider.dart';
 import 'package:gym_app/feature/profile/ui/coming_soon_screen.dart';
 import 'package:gym_app/feature/profile/ui/faq_screen.dart';
@@ -31,7 +32,6 @@ import 'package:gym_app/feature/registrations/ui/loginScreen.dart';
 import 'package:gym_app/feature/registrations/ui/reSetPassword.dart';
 import 'package:gym_app/feature/registrations/ui/signUpScreen.dart';
 import 'package:gym_app/feature/splash_screen.dart';
-import 'package:gym_app/feature/Training/providers/training_provider.dart';
 import 'package:gym_app/routes/screen_name.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:provider/provider.dart';
@@ -214,11 +214,13 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => MealPlanDetails(mealPlan: mealPlan),
         );
-        // ------------------------- ArticlesDetailsScreen -----------------------------
+      // ------------------------- ArticlesDetailsScreen -----------------------------
       case ScreenName.articlesDetailsScreen:
         var articlesObject = settings.arguments as ArticlesModel;
         return MaterialPageRoute(
-          builder: (_) => ArticlesDetailsScreen(articles: articlesObject,),
+          builder: (_) => ArticlesDetailsScreen(
+            articles: articlesObject,
+          ),
         );
 
       default:
