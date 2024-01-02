@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/feature/onBoardingScreens/model/pageViewModel.dart';
+import 'package:gym_app/feature/on_boarding_screens/model/pageViewModel.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
 import 'package:gym_app/utils/resources/images_constant.dart';

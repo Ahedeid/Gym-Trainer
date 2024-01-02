@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/feature/onBoardingScreens/model/pageViewModel.dart';
+import 'package:gym_app/feature/on_boarding_screens/model/pageViewModel.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/font_size.dart';
-
 
 class BodyTxtOnBoarding extends StatelessWidget {
   const BodyTxtOnBoarding({
     Key? key,
     required List<PageViewModel> data,
     required int index,
-  }) : _data = data, _index = index, super(key: key);
+  })  : _data = data,
+        _index = index,
+        super(key: key);
 
   final List<PageViewModel> _data;
   final int _index;

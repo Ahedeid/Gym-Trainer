@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gym_app/feature/onBoardingScreens/model/pageViewModel.dart';
-import 'package:gym_app/feature/onBoardingScreens/widget/bodyTextOnBoarding.dart';
-import 'package:gym_app/feature/onBoardingScreens/widget/cust_button_onBording.dart';
-import 'package:gym_app/feature/onBoardingScreens/widget/headerTextOnBording.dart';
-import 'package:gym_app/feature/onBoardingScreens/widget/on_boarding_indicatort.dart';
+import 'package:gym_app/feature/on_boarding_screens/model/pageViewModel.dart';
+import 'package:gym_app/feature/on_boarding_screens/widget/bodyTextOnBoarding.dart';
+import 'package:gym_app/feature/on_boarding_screens/widget/cust_button_onBording.dart';
+import 'package:gym_app/feature/on_boarding_screens/widget/headerTextOnBording.dart';
+import 'package:gym_app/feature/on_boarding_screens/widget/on_boarding_indicatort.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 
