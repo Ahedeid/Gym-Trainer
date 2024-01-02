@@ -28,7 +28,7 @@ class UserModel {
       image: data['image'] ?? '',
       phone: data['phone'] ?? '',
       selectedGoal: data['goal'] ?? "DLlfkpNUXfPdjm8HIYmg",
-      level: data['level'] ?? "",
+      level: data['level'].toString(),
     );
   }
 
