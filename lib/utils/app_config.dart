@@ -10,7 +10,7 @@ class AppConfig {
   var nav = sl<AppRouter>();
 
   void onBoardingStatue() {
-    Timer(const Duration(seconds: 3), () {
+    Timer(const Duration(seconds: 5), () {
       checkFirstSeen();
     });
   }

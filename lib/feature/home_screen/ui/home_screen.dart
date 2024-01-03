@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart' as utilsSize;
 import 'package:gym_app/feature/home_screen/models/categorie_model.dart';
 import 'package:gym_app/feature/home_screen/providers/home_provider.dart';
+import 'package:gym_app/feature/home_screen/ui/shimmer/category_shimmer.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/category_List_Widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/goal_list.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/header_section_widget.dart';
@@ -153,6 +154,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: category.tr(),
                 trailing: seeAll.tr(),
               ),
+              // ShimmerList(
+              // itemCount: 1,
+              // ),
               15.addVerticalSpace,
               homeProvider.selectedGoalIdList == null
                   ? Center(
@@ -176,8 +180,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
-                                return Center(
-                                    child: CircularProgressIndicator());
+                                return HorizontalShimmerList(
+                                  itemCount: 4,
+                                );
                               }
                               final categoryDocs = snapshot.data!.docs;
                               if (categoryDocs.isEmpty) {
