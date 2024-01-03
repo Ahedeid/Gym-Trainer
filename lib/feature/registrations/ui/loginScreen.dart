@@ -38,18 +38,19 @@ class _LoginScreenState extends State<LoginScreen> {
             currentFocus.focusedChild!.unfocus();
           }
         },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: AppSizes.paddingHorizontal),
-          child: Consumer<LoginProvider>(
-            builder: (context, value, child) => Form(
-              key: value.loginFormKey,
-              child: SingleChildScrollView(
+        child: Consumer<LoginProvider>(
+          builder: (context, value, child) => Form(
+            key: value.loginFormKey,
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppSizes.paddingHorizontal,
+                    vertical: MediaQuery.sizeOf(context).height * 0.1),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
+                    // SizedBox(height: MediaQuery.sizeOf(context).height * 0.1),
                     Text(
                       welcomeToProFitness.tr(),
                       style: TextStyle(
