@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/feature/profile/ui/profile_screen.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
-import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/custom_button.dart';
@@ -89,10 +88,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
           title: saveChanges.tr(), // Translate the button text.
           onPressed: () {
             // Update the app's locale based on the selected language.
-            final newLocale = selectedLanguage == "en"
-                ? const Locale("en", "US")
-                : const Locale("ar", "AR");
-            sl<AppRouter>().navigatorKey.currentContext!.setLocale(newLocale);
+            setState(() {
+              context.setLocale(selectedLanguage == "en"
+                  ? const Locale("en", "US")
+                  : const Locale("ar", "AR"));
+            });
 
             // Save the selected language to shared preferences.
             sl<SharedPrefController>().setLanguage(selectedLanguage);

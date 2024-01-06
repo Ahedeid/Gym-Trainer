@@ -31,11 +31,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
+  // @override
+  // void didChangeDependencies() {
+  //   if (ModalRoute.of(context)?.settings.arguments == true) {
+  //     // Rebuild necessary widgets
+  //     setState(() {});
+  //   } // TODO: implement didChangeDependencies
+  //   super.didChangeDependencies();
+  // }
+  // @override
+  // void didPop() {
+  //
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: yourProfile.tr(),
+        title: "yourProfile".tr(),
       ),
       body: RefreshIndicator(
         onRefresh: () async {},

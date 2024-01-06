@@ -27,7 +27,7 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   //-------------------------- EditUserProfile ----------------------------------
-  //
+
   Future<void> EditUserProfile({
     required String name,
     required String email,
