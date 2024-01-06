@@ -491,7 +491,7 @@ const dynamic bodyToOnBoarding = [
 // const String termsConditions = "Terms&Conditions";
 const String fAQsConditionsAppBar = "FAQ’s 💭";
 const String fAQsConditions = "FAQ’s";
-const String yourProfile = "Your Profile! 🙅🏻‍♂️";
+const String yourProfile = "Your Profile";
 const String canITrackMyFitness =
     "6. Can I track my fitness progress using the gym mobile application?";
 const String doesTheGymMobile =
