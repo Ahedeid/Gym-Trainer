@@ -71,7 +71,7 @@ class ProfileProvider extends ChangeNotifier {
         .doc(id)
         .get();
     user = UserModel.fromDocumentSnapshot(userDoc);
-    notifyListeners();
+    // notifyListeners();
   }
 
   // --------------------------- get data user ------------------------------------

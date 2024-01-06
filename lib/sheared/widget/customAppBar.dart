@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gym_app/routes/app_router.dart';
 import 'package:gym_app/service_locator.dart';
@@ -45,7 +46,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           : SizedBox(),
       title: Text(
-        title.toUpperCase(),
+        "$title".tr(),
         maxLines: 2,
         style: StyleManger.headLineBar(),
       ),
