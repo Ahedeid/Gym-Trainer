@@ -203,10 +203,11 @@
 //           .tr();
 // }
 
+import 'package:easy_localization/easy_localization.dart';
+
 const String comingSoon = 'Coming Soon';
 const String thisFeatureIsPlan = 'This feature is plan to next update';
 const String ch1 = 'Change Language!';
-// Change 'const' to 'const' for each string
 const String technoGym = "TECHNO GYM";
 const String signUp = "SIGNUP";
 const String email = "Email address";
@@ -494,6 +495,8 @@ const String fAQsConditions = "FAQ’s";
 const String yourProfile = "Your Profile";
 const String canITrackMyFitness =
     "6. Can I track my fitness progress using the gym mobile application?";
+const String youMustSubscribeToPaid = 'youMustSubscribeToPaid';
+
 const String doesTheGymMobile =
     "5. Does the gym mobile application provide personal training options?";
 const String canIBookFitnessClasses =
@@ -541,8 +544,5 @@ const String weAreCommittedToProtecting =
 // const String notificationsAppBar = 'Notifications! 🔔'.tr();
 // const String gallery = 'Gallery'.tr();
 // const String camera = 'Camera'.tr();
-// const String limitReached = 'Limit Reached'.tr();
+String limitReached = "limitReached".tr();
 // const String description = 'Description'.tr();
-// const String youMustSubscribeToPaid =
-//     'You can\'t access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services'
-//         .tr();
