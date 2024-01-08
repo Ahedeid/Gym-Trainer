@@ -170,5 +170,9 @@
     "Description": "Description",
     "You must subscribe to paid subscriptions in order to access this feature and enjoy our distinguished services": "You must subscribe to paid subscriptions in order to access this feature and enjoy our distinguished services",
     "Articles":"Articles \uD83D\uDCD6",
-    "comingSoon":"Coming Soon"
+    "comingSoon":"Coming Soon",
+    "limitReached":"Limit Reached",
+
+    "youMustSubscribeToPaid" : "You can't access here, you must subscribe to paid subscriptions in order to be able to access here and enjoy our distinguished services"
+
 }
