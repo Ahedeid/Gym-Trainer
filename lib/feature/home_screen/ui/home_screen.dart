@@ -10,7 +10,6 @@ import 'package:gym_app/feature/home_screen/ui/widgets/category_List_Widget.dart
 import 'package:gym_app/feature/home_screen/ui/widgets/goal_list.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/header_section_widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/horizontal_exercise_list.dart';
-import 'package:gym_app/feature/home_screen/ui/widgets/search_result_widget.dart';
 import 'package:gym_app/feature/home_screen/ui/widgets/vertical_exercise_list.dart';
 import 'package:gym_app/logic/firebase_constant.dart';
 import 'package:gym_app/logic/localData/shared_pref.dart';
@@ -117,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               13.addVerticalSpace,
-              SearchResultWidget(),
+              // SearchResultWidget(),
               HeaderSectionWidget(
                 onTap: () {},
                 title: selectGoal.tr(),
@@ -135,9 +134,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Text('Error: ${snapshot.error}');
                     }
 
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
-                    }
+                    // if (snapshot.connectionState == ConnectionState.waiting) {
+                    //   return Center(child: CircularProgressIndicator());
+                    // }
                     return GoalList(
                       snapshot: snapshot,
                     );
@@ -288,22 +287,11 @@ class AppBarBody extends StatelessWidget {
         Row(
           children: [
             CircleAvatar(
-              radius: 22.r,
-              child: ClipOval(
-                child: CachedNetworkImage(
-                  imageUrl: "${sl<SharedPrefController>().getUserData().image}",
-                  placeholder: (context, url) => Image.asset(
-                    ImageApp.backgroundImageSecond,
-                    fit: BoxFit.cover,
-                    height: 44,
-                    width: 44,
-                  ), // Placeholder widget while loading
-                  errorWidget: (context, url, error) => Image.asset(ImageApp
-                      .backgroundImageSecond), // Display default image on error
-                ),
-              ),
-              backgroundColor: ColorManager.primary,
-            ),
+                radius: 20,
+                foregroundImage: CachedNetworkImageProvider(
+                    "${sl<SharedPrefController>().getUserData().image}"),
+                backgroundColor: ColorManager.primary,
+                backgroundImage: AssetImage(ImageApp.logo)),
             15.addHorizontalSpace,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
