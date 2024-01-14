@@ -128,7 +128,7 @@ class MealPlanDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HeaderSectionWidget(
-                    title: "description".tr(),
+                    title: "Description".tr(),
                     trailing: "",
                   ),
                   10.addVerticalSpace,
@@ -142,6 +142,7 @@ class MealPlanDetails extends StatelessWidget {
                 ],
               ),
             ),
+            30.addVerticalSpace
           ],
         ),
       ),

@@ -32,7 +32,7 @@ class MealsPlan extends StatelessWidget {
               20.addVerticalSpace,
               HeaderSectionWidget(
                 title: dailyInspiration.tr(),
-                trailing: seeAll.tr(),
+                trailing: "",
               ),
               10.addVerticalSpace,
               StreamBuilder<QuerySnapshot>(

@@ -9,6 +9,7 @@ import 'package:gym_app/service_locator.dart';
 import 'package:gym_app/sheared/widget/bottomSheetDedailsWidget.dart';
 import 'package:gym_app/sheared/widget/customAppBar.dart';
 import 'package:gym_app/sheared/widget/main_container.dart';
+import 'package:gym_app/utils/extensions/sized_box.dart';
 import 'package:gym_app/utils/resources/colors_manger.dart';
 import 'package:gym_app/utils/resources/sizes_in_app.dart';
 import 'package:gym_app/utils/resources/strings_in_app.dart';
@@ -156,6 +157,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
             ),
+            10.addVerticalSpace,
+            Center(
+              child: Text(
+                "Version 1.1.1\n13.1.2024",
+                style: TextStyle(color: ColorManager.gray),
+                textAlign: TextAlign.center,
+              ),
+            )
           ],
         ),
       ),
